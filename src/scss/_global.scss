@@ -1,0 +1,11 @@
+////////////// MAIN CAROUSEL //////////////
+.main_carousel {
+    .img {
+        width: 100%;
+        height: 600px;
+    }
+
+    li.slick-active button {
+        background-color: $themColor !important;
+    }
+}
