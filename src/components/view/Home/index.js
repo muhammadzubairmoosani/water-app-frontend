@@ -1,14 +1,15 @@
 import React from "react";
 import MainCarousel from "./carousel";
 import NineteenLiter from "./nineteenLiter";
+import { Layout } from "../../common/index";
 
 const Home = () => {
   return (
     <div>
       <MainCarousel />
-      <div>
+      <Layout>
         <NineteenLiter />
-      </div>
+      </Layout>
     </div>
   );
 };

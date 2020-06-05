@@ -1,6 +1,5 @@
 import React from "react";
 import Slider from "react-slick";
-
 function CustomNextArrow(props) {
   const { onClick } = props;
   return (
@@ -9,13 +8,12 @@ function CustomNextArrow(props) {
       onClick={onClick}
     >
       <img
-        src={require("../../../assets/icons/nextthem-color.png")}
+        src={require("../../../assets/icons/next-gradient.svg")}
         alt="arrow-img"
       />
     </div>
   );
 }
-
 function CustomPrevArrow(props) {
   const { onClick } = props;
   return (
@@ -24,17 +22,16 @@ function CustomPrevArrow(props) {
       onClick={onClick}
     >
       <img
-        src={require("../../../assets/icons/nextthem-color.png")}
+        src={require("../../../assets/icons/next-gradient.svg")}
         alt="arrow-img"
       />
     </div>
   );
 }
-
 const settings = {
-  className: "",
   centerMode: true,
   infinite: true,
+  autoplay: true,
   centerPadding: "135px",
   slidesToShow: 2,
   speed: 500,
@@ -45,7 +42,6 @@ const settings = {
     {
       breakpoint: 576,
       settings: {
-        className: "",
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 1,
@@ -57,7 +53,6 @@ const settings = {
     {
       breakpoint: 768,
       settings: {
-        className: "",
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 1,
@@ -69,7 +64,6 @@ const settings = {
     {
       breakpoint: 992,
       settings: {
-        className: "",
         slidesToShow: 2,
         centerMode: true,
         centerPadding: "105px",
@@ -80,7 +74,6 @@ const settings = {
     {
       breakpoint: 1080,
       settings: {
-        className: "",
         slidesToShow: 2,
         centerMode: true,
         centerPadding: "180px",
@@ -90,9 +83,7 @@ const settings = {
     },
   ],
 };
-
 const CardCarousel = ({ children }) => {
   return <Slider {...settings}>{children}</Slider>;
 };
-
 export default CardCarousel;

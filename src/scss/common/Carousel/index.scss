@@ -1,0 +1,109 @@
+////////////// ANT DESIGN MAIN CAROUSEL //////////////
+.ant-carousel-vertical .slick-dots-right {
+    right: 20px !important;
+}
+
+.slick-dots li button:before {
+    display: none !important;
+}
+////////////// CARD CAROUSEL //////////////
+.service-segment-custom-slider-left-arrow {
+    left: -72px;
+    z-index: 1001;
+    img {
+        transform: rotate(180deg);
+    }
+}
+
+.service-segment-custom-slider-right-arrow {
+    right: -33px;
+}
+
+.service-segment-custom-slider-left-arrow,
+.service-segment-custom-slider-right-arrow {
+    font-size: 0;
+    line-height: 0;
+    top: 40%;
+    width: 20px;
+    height: 20px;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: 0;
+    background: 0 0;
+    position: absolute;
+    display: block;
+    padding: 0;
+
+    img {
+        width: 64px;
+        height: 80px;
+    }
+}
+
+@include xs {
+    .service-segment-custom-slider-right-arrow {
+        right: 15px;
+    }
+
+    .service-segment-custom-slider-left-arrow {
+        left: 10px;
+    }
+
+    .service-segment-custom-slider-left-arrow,
+    .service-segment-custom-slider-right-arrow {
+        img {
+            width: 25px;
+            height: 35px;
+        }
+    }
+}
+
+@include sm {
+    .service-segment-custom-slider-right-arrow {
+        right: 35px;
+    }
+
+    .service-segment-custom-slider-left-arrow {
+        left: 50px;
+    }
+
+    .service-segment-custom-slider-left-arrow,
+    .service-segment-custom-slider-right-arrow {
+        img {
+            width: 25px;
+            height: 35px;
+        }
+    }
+}
+
+@include md {
+    .service-segment-custom-slider-right-arrow {
+        right: 15px;
+    }
+
+    .service-segment-custom-slider-left-arrow {
+        left: 10px;
+    }
+
+    .service-segment-custom-slider-left-arrow,
+    .service-segment-custom-slider-right-arrow {
+        img {
+            width: 35px;
+            height: 45px;
+        }
+    }
+}
+
+@include lg {
+    .service-segment-custom-slider-right-arrow {
+        right: 50px;
+    }
+
+    .service-segment-custom-slider-left-arrow {
+        left: 10px;
+    }
+}

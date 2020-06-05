@@ -2,8 +2,7 @@
 .wallcard_container {
     width: 100%;
 
-    .nest_container {
-        @include flex_col;
+    .items_container {
         text-align: center;
 
         .top_img_contain {
@@ -11,18 +10,18 @@
             margin: 0 auto;
             height: 25px;
             position: relative;
-            
+
             :first-child {
                 position: absolute;
                 left: 0;
             }
-            
+
             :nth-child(2) {
                 position: absolute;
                 bottom: 0;
                 left: 10.5px;
             }
-            
+
             :last-child {
                 position: absolute;
                 right: 0;
@@ -43,7 +42,6 @@
             height: 60px;
 
             @include xs {
-                //   font-size: map-get($size, h2);
                 font-size: 20px;
                 height: 44px;
             }
@@ -55,7 +53,6 @@
 
         .sub_heading {
             font-size: 14px;
-            // color: map-get($color, clr_blue3);
             color: $themColor;
             letter-spacing: 1.4px;
             text-transform: uppercase;
@@ -63,12 +60,32 @@
             margin: 0;
         }
     }
-}
 
+    .wall_card_body {
+        margin-top: 30px;
+
+        @include xs {
+            margin-top: 10px;
+        }
+        @include sm {
+            margin-top: 15px;
+        }
+        @include md {
+            margin-top: 15px;
+        }
+        @include lg {
+            margin-top: 30px;
+        }
+    }
+}
 ////////////// COMPANY CARD //////////////
-.ant-card-meta-description {
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+.company_card_wrapper {
+    @include flex;
+
+    .ant-card-meta-description {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 }
