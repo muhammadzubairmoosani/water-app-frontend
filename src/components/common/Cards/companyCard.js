@@ -6,7 +6,6 @@ const CompanyCard = ({ props }) => {
   return (
     <div className="company_card_wrapper">
       <Card
-        style={{ width: 300 }}
         cover={<img alt="example" src={props.img} />}
         actions={[
           <span>

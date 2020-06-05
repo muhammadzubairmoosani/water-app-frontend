@@ -1,0 +1,45 @@
+////////////// NAVBAR //////////////
+.nav {
+    @include flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.ant-menu {
+    overflow: hidden !important;
+}
+
+.ant-page-header-heading-extra {
+    margin: 0 15px 0 0 !important;
+}
+
+.ant-layout-header {
+    background-color: $whiteColor !important;
+    padding: 0.5em 0 !important;
+    height: auto !important;
+}
+
+.ant-page-header {
+    padding: 0 !important;
+}
+
+.ant-menu-item {
+    color: rgba(0, 0, 0, 0.85) !important;
+    font-weight: bold;
+}
+
+.ant-menu {
+    background-color: $whiteColor !important;
+}
+
+.ant-menu-horizontal {
+    border-bottom: none !important;
+}
+
+.ant-menu-item-selected {
+    border-bottom: 2px solid $themColor !important;
+}
+
+.ant-menu-item-selected {
+    color: $themColor !important;
+}

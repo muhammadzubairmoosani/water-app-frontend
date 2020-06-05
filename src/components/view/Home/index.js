@@ -1,7 +1,8 @@
 import React from "react";
 import MainCarousel from "./carousel";
 import CardCarouselSegment from "../../common/Carousels/cardCarouselSegment";
-import { Layout } from "../../common/index";
+import { Layout, Header } from "../../common/index";
+
 const data = [
   {
     _id: 1,
@@ -38,6 +39,7 @@ const data = [
 const Home = () => {
   return (
     <div>
+      <Header />
       <MainCarousel />
       <Layout>
         <CardCarouselSegment

@@ -82,10 +82,14 @@
 .company_card_wrapper {
     @include flex;
 
-    .ant-card-meta-description {
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+    .ant-card {
+        width: 300px;
+
+        .ant-card-meta-description {
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     }
 }
