@@ -6,12 +6,13 @@
 .slick-dots li button:before {
     display: none !important;
 }
-////////////// CARD CAROUSEL //////////////
+////////////// CARD CAROUSEL SEGMENT //////////////
 .service-segment-custom-slider-left-arrow {
     left: -72px;
     z-index: 1001;
     img {
-        transform: rotate(180deg);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
     }
 }
 
@@ -107,3 +108,19 @@
         left: 10px;
     }
 }
+
+.card_carousel_segment {
+    background-color: white;
+    margin-top: 63.97px;
+
+    @include xs {
+        margin-top: 20px;
+    }
+    @include sm {
+        margin-top: 20px;
+    }
+    @include md {
+        margin-top: 30px;
+    }
+}
+
