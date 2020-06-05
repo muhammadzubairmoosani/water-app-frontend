@@ -2,7 +2,6 @@ import React from "react";
 import MainCarousel from "./carousel";
 import CardCarouselSegment from "../../common/Carousels/cardCarouselSegment";
 import { Layout, Header } from "../../common/index";
-
 const data = [
   {
     _id: 1,
@@ -35,7 +34,6 @@ const data = [
     detail: "hello world hello world hello world hello world hello world",
   },
 ];
-
 const Home = () => {
   return (
     <div>
@@ -71,5 +69,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;

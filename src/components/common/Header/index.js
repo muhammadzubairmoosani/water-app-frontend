@@ -1,11 +1,12 @@
 import React from "react";
 import { Menu, PageHeader } from "antd";
-
 const Header = () => {
   return (
     <div className="nav">
       <PageHeader
-        extra={<img src={require("../../../assets/icons/logo.png")} alt="logo" />}
+        extra={
+          <img src={require("../../../assets/icons/logo.png")} alt="logo" />
+        }
         className="site-page-header"
       />
       <Menu theme="light" mode="horizontal" defaultSelectedKeys={["1"]}>
@@ -17,5 +18,4 @@ const Header = () => {
     </div>
   );
 };
-
 export default Header;
