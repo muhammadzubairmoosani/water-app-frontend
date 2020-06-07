@@ -1,8 +1,9 @@
 ////////////// NAVBAR //////////////
-.nav {
+header {
     @include flex;
     justify-content: space-around;
     flex-wrap: nowrap;
+    height: 70px;
 }
 
 .ant-menu {
@@ -11,10 +12,16 @@
 
 .ant-page-header-heading-extra {
     margin: 0 15px 0 0 !important;
+
+    @include xs {
+        img {
+            width: 120px;
+        }
+    }
 }
 
 .ant-layout-header {
-    background-color: $whiteColor !important;
+    background-color: $white !important;
     padding: 0.5em 0 !important;
     height: auto !important;
 }
@@ -29,7 +36,7 @@
 }
 
 .ant-menu {
-    background-color: $whiteColor !important;
+    background-color: $white !important;
 }
 
 .ant-menu-horizontal {

@@ -1,0 +1,121 @@
+footer {
+  position: relative;
+  background: url("../../../assets//images/jong-marshes-79mNMAvSORg-unsplash.jpg") 100% 100% / 100% 100% no-repeat;
+  height: 700px;
+  @include flex;
+  align-items: flex-start;
+
+  @include xs {
+    height: 1100px;
+  }
+  @include sm {
+    height: 780px;
+  }
+  @include md {
+    height: 800px;
+  }
+
+  .back_shadow {
+    background: transparent linear-gradient(180deg, rgba(66, 66, 66, 0.85098), #2b2b2b) 0 0 no-repeat padding-box;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .footer_nest_contain {
+    position: absolute;
+    margin-top: 5.5em;
+
+    @include xs {
+      margin-top: 3.5em;
+    }
+    @include sm {
+      margin-top: 3.5em;
+    }
+    @include md {
+      margin-top: 4.5em;
+    }
+
+    .heading {
+      color: $white !important;
+    }
+
+    .list_wrapper {
+      display: flex;
+      flex-flow: row;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      width: 1200px;
+      max-width: 1200px;
+
+      @include xs {
+        flex-wrap: wrap;
+        width: auto;
+      }
+      @include sm {
+        flex-wrap: wrap;
+        width: auto;
+      }
+      @include md {
+        flex-wrap: wrap;
+        width: auto;
+      }
+
+      ul {
+        padding: 0;
+
+        .title {
+          color: #fff;
+          text-decoration: none;
+          font-family: Poppins_Medium;
+          font-size: 24px;
+
+          &:hover {
+            color: $white;
+            cursor: default;
+            text-decoration: none;
+          }
+        }
+
+        li {
+          font-family: Poppins_Medium;
+          list-style: none;
+          color: #bfbfbf;
+          font-size: 16px;
+          line-height: 2.7em;
+          width: fit-content;
+
+          &:hover {
+            color: $themColor;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .copyright_contian {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-top: 0.1px solid #4b4b4b;
+
+    .copyright_text {
+      margin: 45px 0 47px 0;
+      color: #bfbfbf;
+      text-align: center;
+      font-family: Poppins_Regular;
+
+      @include xs {
+        margin: 25px 0 27px 0;
+      }
+      @include xs {
+        margin: 35px 0 37px 0;
+      }
+    }
+  }
+}

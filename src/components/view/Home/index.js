@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import MainCarousel from "./carousel";
 import CardCarouselSegment from "../../common/Carousels/cardCarouselSegment";
-import { Layout, Header } from "../../common/index";
+import { Layout } from "../../common/index";
 const data = [
   {
     _id: 1,
@@ -36,8 +36,7 @@ const data = [
 ];
 const Home = () => {
   return (
-    <div>
-      <Header />
+    <Fragment>
       <MainCarousel />
       <Layout>
         <CardCarouselSegment
@@ -66,7 +65,7 @@ const Home = () => {
           array={data}
         />
       </Layout>
-    </div>
+    </Fragment>
   );
 };
 export default Home;

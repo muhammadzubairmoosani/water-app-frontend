@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, PageHeader } from "antd";
 const Header = () => {
   return (
-    <div className="nav">
+    <header>
       <PageHeader
         extra={
           <img src={require("../../../assets/icons/logo.png")} alt="logo" />
@@ -15,7 +15,7 @@ const Header = () => {
         <Menu.Item key="3">About Us</Menu.Item>
         <Menu.Item key="4">Contact Us</Menu.Item>
       </Menu>
-    </div>
+    </header>
   );
 };
 export default Header;
