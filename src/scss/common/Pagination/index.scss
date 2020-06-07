@@ -1,0 +1,32 @@
+.ant-pagination {
+    width: 100%;
+    text-align: center;
+
+    .ant-pagination-prev:focus,
+    .ant-pagination-prev:hover .ant-pagination-item-link,
+    .ant-pagination-prev:focus,
+    .ant-pagination-next:hover .ant-pagination-item-link {
+        color: $themColor;
+        border-color: $themColor;
+    }
+}
+
+.ant-pagination-item-active {
+    border-color: $themColor;
+    a {
+        color: $themColor;
+        &:hover {
+            color: $themColor;
+        }
+    }
+}
+.ant-pagination-item:hover {
+    &:hover {
+        border-color: $themColor;
+    }
+    a {
+        &:hover {
+            color: $themColor;
+        }
+    }
+}

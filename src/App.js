@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
-import { Home } from "./components/index";
-import { Header, Footer } from "./components/common/index";
+import { Home, Header, Footer, CompanyList } from "./components/index";
 import { BackTop } from "antd";
 const App = () => {
   return (
     <Fragment>
-      <BackTop visibilityHeight="800" />
+      <BackTop />
       <Header />
       <Home />
+      {/* <CompanyList /> */}
       <Footer />
     </Fragment>
   );
