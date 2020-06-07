@@ -1,5 +1,6 @@
 import React from "react";
-const WallCard = ({ heading, subHeading, children }) => {
+import { Link } from "react-router-dom";
+const WallCard = ({ heading, subHeading, children, route }) => {
   return (
     <div className="wallcard_container">
       <div className="items_container">
@@ -18,7 +19,9 @@ const WallCard = ({ heading, subHeading, children }) => {
           />
         </div>
         <h1 className="heading">{heading}</h1>
-        <p className="sub_heading">{subHeading}</p>
+        <Link to={route}>
+          <p className="sub_heading">{subHeading}</p>
+        </Link>
       </div>
       <div className="wall_card_body">{children}</div>
     </div>

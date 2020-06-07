@@ -1,0 +1,80 @@
+////////////// WALL CARD //////////////
+.wallcard_container {
+    width: 100%;
+
+    .items_container {
+        text-align: center;
+
+        .top_img_contain {
+            width: 37px;
+            margin: 0 auto;
+            height: 25px;
+            position: relative;
+
+            :first-child {
+                position: absolute;
+                left: 0;
+            }
+
+            :nth-child(2) {
+                position: absolute;
+                bottom: 0;
+                left: 10.5px;
+            }
+
+            :last-child {
+                position: absolute;
+                right: 0;
+            }
+
+            img {
+                width: 16px;
+                height: 14px;
+            }
+        }
+
+        .heading {
+            // font-family: Lemonada-Medium;
+            font-size: 40px;
+            // color: map-get($color, clr_gray8);
+            color: gray;
+            margin: 0;
+            height: 60px;
+
+            @include xs {
+                font-size: 20px;
+                height: 44px;
+            }
+            @include sm {
+                font-size: 25px;
+                height: 44px;
+            }
+        }
+
+        .sub_heading {
+            font-size: 14px;
+            color: $themColor;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+        }
+    }
+
+    .wall_card_body {
+        margin-top: 30px;
+
+        @include xs {
+            margin-top: 10px;
+        }
+        @include sm {
+            margin-top: 15px;
+        }
+        @include md {
+            margin-top: 15px;
+        }
+        @include lg {
+            margin-top: 30px;
+        }
+    }
+}

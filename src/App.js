@@ -1,15 +1,18 @@
-import React, { Fragment } from "react";
-import { Home, Header, Footer, CompanyList } from "./components/index";
+import React from "react";
+import { Home, Header, Footer, CompanyList,ContactUs } from "./components/index";
 import { BackTop } from "antd";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const App = () => {
   return (
-    <Fragment>
+    <Router>
       <BackTop />
       <Header />
-      <Home />
-      {/* <CompanyList /> */}
+      <Switch>
+        <Route exact path="/" component={ContactUs} />
+        <Route exact path="/company-list" component={CompanyList} />
+      </Switch>
       <Footer />
-    </Fragment>
+    </Router>
   );
 };
 export default App;

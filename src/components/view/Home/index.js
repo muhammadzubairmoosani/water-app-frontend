@@ -12,26 +12,31 @@ const Home = () => {
           heading="19 liters water gallon service"
           subHeading="see all"
           array={data}
+          route={"/company-list"}
         />
         <CardCarouselSegment
           heading="1,000 liters water service"
           subHeading="see all"
           array={data}
+          route={"/company-list"}
         />
         <CardCarouselSegment
           heading="2,000 liters water service"
           subHeading="see all"
           array={data}
+          route={"/company-list"}
         />
         <CardCarouselSegment
           heading="3,000 liters water service"
           subHeading="see all"
           array={data}
+          route={"/company-list"}
         />
         <CardCarouselSegment
           heading="6,000 liters water service"
           subHeading="see all"
           array={data}
+          route={"/company-list"}
         />
       </Layout>
     </Fragment>
