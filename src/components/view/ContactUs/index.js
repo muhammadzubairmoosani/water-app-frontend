@@ -1,22 +1,13 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
+import { UserOutlined, MailOutlined } from "@ant-design/icons";
+import { Banner } from "../../common";
+const { TextArea } = Input;
 
-const layout = {
-  labelCol: {
-    span: 2,
-  },
-  wrapperCol: {
-    span: 10,
-  },
-};
 const validateMessages = {
-  required: "${label} is required!",
+  required: "${name} is required!",
   types: {
-    email: "${label} is not validate email!",
-    number: "${label} is not a validate number!",
-  },
-  number: {
-    range: "${label} must be between ${min} and ${max}",
+    email: "${name} is not validate email!",
   },
 };
 
@@ -26,54 +17,72 @@ const ContactUs = () => {
   };
 
   return (
-    <Form
-      className="contact_us"
-      {...layout}
-      name="nest-messages"
-      onFinish={onFinish}
-      validateMessages={validateMessages}
-      size="large"
-    >
-      <Form.Item
-        name={["user", "name"]}
-        label="Name"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
+    <>
+      <Banner heading="Contact Us" subHeading="sub heading" />
+      <Form
+        className="contact_us_container"
+        name="nest-messages"
+        onFinish={onFinish}
+        validateMessages={validateMessages}
       >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={["user", "email"]}
-        label="Email"
-        rules={[
-          {
-            required: true,
-            type: "email",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name={["user", "introduction"]}
-        label="Introduction"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input.TextArea />
-      </Form.Item>
-      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 17 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <div className="back_shadow_contain"></div>
+        <Form.Item
+          name="name"
+          rules={[
+            {
+              required: true,
+              max: 100,
+            },
+          ]}
+        >
+          <Input
+            allowClear
+            placeholder="Enter your Name"
+            prefix={<UserOutlined className="site-form-item-icon" />}
+          />
+        </Form.Item>
+
+        <Form.Item
+          name="email"
+          rules={[
+            {
+              required: true,
+              type: "email",
+              max: 100,
+            },
+          ]}
+        >
+          <Input
+            allowClear
+            placeholder="Enter your Email"
+            prefix={<MailOutlined className="site-form-item-icon" />}
+          />
+        </Form.Item>
+
+        <Form.Item
+          name="message"
+          rules={[
+            {
+              required: true,
+              min: 30,
+              max: 500,
+            },
+          ]}
+        >
+          <TextArea
+            allowClear
+            placeholder="Enter your Message"
+            autoSize={{ minRows: 3, maxRows: 5 }}
+          />
+        </Form.Item>
+
+        <Form.Item className="btn_contain">
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 export default ContactUs;
