@@ -39,10 +39,10 @@
     display: block;
     padding: 0;
 
-    img {
-        width: 64px;
-        height: 80px;
-    }
+    // img {
+    //     width: 64px;
+    //     height: 80px;
+    // }
 }
 
 @include xs {
@@ -51,14 +51,14 @@
     }
 
     .service-segment-custom-slider-left-arrow {
-        left: 10px;
+        left: 5px;
     }
 
     .service-segment-custom-slider-left-arrow,
     .service-segment-custom-slider-right-arrow {
         img {
-            width: 25px;
-            height: 35px;
+            width: 30px;
+            // height: 35px;
         }
     }
 }
@@ -69,14 +69,14 @@
     }
 
     .service-segment-custom-slider-left-arrow {
-        left: 50px;
+        left: 20px;
     }
 
     .service-segment-custom-slider-left-arrow,
     .service-segment-custom-slider-right-arrow {
         img {
-            width: 25px;
-            height: 35px;
+            width: 35px;
+            // height: 35px;
         }
     }
 }
@@ -94,7 +94,7 @@
     .service-segment-custom-slider-right-arrow {
         img {
             width: 35px;
-            height: 45px;
+            // height: 45px;
         }
     }
 }

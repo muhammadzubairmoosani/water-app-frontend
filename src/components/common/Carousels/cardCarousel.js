@@ -8,7 +8,7 @@ function CustomNextArrow(props) {
       onClick={onClick}
     >
       <img
-        src={require("../../../assets/icons/next-gradient.svg")}
+        src={require("../../../assets/icons/nextthem-color.png")}
         alt="arrow-img"
       />
     </div>
@@ -22,7 +22,7 @@ function CustomPrevArrow(props) {
       onClick={onClick}
     >
       <img
-        src={require("../../../assets/icons/next-gradient.svg")}
+        src={require("../../../assets/icons/nextthem-color.png")}
         alt="arrow-img"
       />
     </div>
