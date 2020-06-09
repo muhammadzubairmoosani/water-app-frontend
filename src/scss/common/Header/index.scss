@@ -13,9 +13,13 @@ header {
 .ant-page-header-heading-extra {
     margin: 0 15px 0 0 !important;
 
+    img {
+        width: 145px;
+    }
+
     @include xs {
         img {
-            width: 120px;
+            width: 125px;
         }
     }
 }
@@ -45,8 +49,8 @@ header {
 
 .ant-menu-item-selected {
     border-bottom: 2px solid $themColor !important;
-}
 
-.ant-menu-item-selected {
-    color: $themColor !important;
+    a {
+        color: $themColor !important;
+    }
 }

@@ -4,7 +4,8 @@ const WallCard = ({ heading, subHeading, children, route }) => {
   return (
     <div className="wallcard_container">
       <div className="items_container">
-        <div className="top_img_contain">
+        {/* <img src={require("../../../assets/icons/drops.jpg")} alt="drops"/> */}
+        {/* <div className="top_img_contain">
           <img
             src={require("../../../assets/icons/raindrop.png")}
             alt="raindrop"
@@ -17,7 +18,7 @@ const WallCard = ({ heading, subHeading, children, route }) => {
             src={require("../../../assets/icons/raindrop.png")}
             alt="raindrop"
           />
-        </div>
+        </div> */}
         <h1 className="heading">{heading}</h1>
         <Link to={route}>
           <p className="sub_heading">{subHeading}</p>

@@ -80,17 +80,20 @@ footer {
         }
 
         li {
-          font-family: Poppins_Medium;
           list-style: none;
-          color: #bfbfbf;
-          font-size: 16px;
-          line-height: 2.7em;
-          width: fit-content;
 
-          &:hover {
-            color: $themColor;
-            cursor: pointer;
-            text-decoration: underline;
+          a {
+            font-family: Poppins_Medium;
+            color: #bfbfbf;
+            font-size: 16px;
+            line-height: 2.7em;
+            width: fit-content;
+
+            &:hover {
+              color: $themColor;
+              cursor: pointer;
+              text-decoration: underline;
+            }
           }
         }
       }

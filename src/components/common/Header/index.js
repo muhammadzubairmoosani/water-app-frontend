@@ -6,7 +6,9 @@ const Header = () => {
     <header>
       <PageHeader
         extra={
-          <img src={require("../../../assets/icons/logo.png")} alt="logo" />
+          <Link to="/" style={{ cursor: "default" }}>
+            <img src={require("../../../assets/icons/rsz_2logo.jpg")} alt="logo" />
+          </Link>
         }
         className="site-page-header"
       />
@@ -14,10 +16,15 @@ const Header = () => {
         <Menu.Item to="/" key="1">
           <Link to="/">Home</Link>
         </Menu.Item>
+
         <Menu.Item key="2">
           <Link to="/company-list">Companies</Link>
         </Menu.Item>
-        <Menu.Item key="3">About Us</Menu.Item>
+
+        <Menu.Item key="3">
+          <Link to="/about-us">About Us</Link>
+        </Menu.Item>
+
         <Menu.Item key="4">
           <Link to="/contact-us">Contact Us</Link>
         </Menu.Item>
