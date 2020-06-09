@@ -7,7 +7,7 @@ const Header = () => {
       <PageHeader
         extra={
           <Link to="/" style={{ cursor: "default" }}>
-            <img src={require("../../../assets/icons/rsz_2logo.jpg")} alt="logo" />
+            <img src={require("../../../assets/icons/logo.jpg")} alt="logo" />
           </Link>
         }
         className="site-page-header"
