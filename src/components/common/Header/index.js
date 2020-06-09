@@ -1,5 +1,6 @@
 import React from "react";
 import { Menu, PageHeader } from "antd";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
@@ -10,10 +11,16 @@ const Header = () => {
         className="site-page-header"
       />
       <Menu theme="light" mode="horizontal" defaultSelectedKeys={["1"]}>
-        <Menu.Item key="1">Home</Menu.Item>
-        <Menu.Item key="2">Companies</Menu.Item>
+        <Menu.Item to="/" key="1">
+          <Link to="/">Home</Link>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <Link to="/company-list">Companies</Link>
+        </Menu.Item>
         <Menu.Item key="3">About Us</Menu.Item>
-        <Menu.Item key="4">Contact Us</Menu.Item>
+        <Menu.Item key="4">
+          <Link to="/contact-us">Contact Us</Link>
+        </Menu.Item>
       </Menu>
     </header>
   );

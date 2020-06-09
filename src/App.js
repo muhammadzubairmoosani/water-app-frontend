@@ -8,8 +8,9 @@ const App = () => {
       <BackTop />
       <Header />
       <Switch>
-        <Route exact path="/" component={ContactUs} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/company-list" component={CompanyList} />
+        <Route exact path="/contact-us" component={ContactUs} />
       </Switch>
       <Footer />
     </Router>

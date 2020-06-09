@@ -1,4 +1,4 @@
 import { Home, CompanyList, ContactUs } from "./view/index";
-import { Header, Layout, Footer } from "./common/index";
+import { Header, Layout, Footer, Heading } from "./common/index";
 
-export { Home, Header, Layout, Footer, CompanyList, ContactUs };
+export { Home, Header, Layout, Footer, CompanyList, ContactUs, Heading };

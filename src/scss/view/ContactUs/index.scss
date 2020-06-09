@@ -1,22 +1,18 @@
 .contact_us_container {
-    background: url("../../../assets/images/silas-baisch-K785Da4A_JA-unsplash.jpg") 100% 0% / cover;
-    max-width: 600px;
-    margin: 3em auto;
-    box-shadow: $b_shadow;
+    max-width: 500px;
+    height: 450px;
+    margin: 0 auto;
     border-radius: $radius;
-    padding: 4em 2.5em 2.5em;
-    box-sizing: content-box;
-    position: relative;
+    @include animation_return;
+    @include flex_col;
+    align-items: unset;
+
+    .ant-input-affix-wrapper {
+        box-shadow: $b_shadow;
+    }
 
     @include xs {
-        width: 90%;
-        padding: 2em 1em 2em;
-        box-sizing: border-box;
-    }
-    @include sm {
-        width: 80%;
-        padding: 2em;
-        box-sizing: border-box;
+        padding: 0 1em;
     }
 
     .back_shadow_contain {
@@ -26,8 +22,20 @@
 
     .btn_contain {
         margin-bottom: 0 !important;
+
         .ant-form-item-control-input-content {
             text-align: right;
+        }
+
+        button {
+            background-color: $themColor;
+            color: $white;
+            width: 90px;
+            border-radius: $radius;
+
+            &:hover {
+                border-color: $themColor;
+            }
         }
     }
 }

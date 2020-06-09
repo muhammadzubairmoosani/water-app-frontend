@@ -5,6 +5,7 @@ import Header from "./Header/index";
 import Footer from "./Footer/index";
 import Banner from "./Banner/index";
 import Pagination from "./Pagination/index";
+import Heading from "./Heading/index";
 
 export {
   WallCard,
@@ -15,4 +16,5 @@ export {
   Footer,
   Banner,
   Pagination,
+  Heading,
 };
