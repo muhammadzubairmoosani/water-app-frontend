@@ -39,3 +39,19 @@
         }
     }
 }
+
+.msg_contain {
+    position: relative;
+    margin-bottom: 1.2em;
+
+    .msgLength {
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        color: #767676;
+        font-size: 0.75em;
+        // font-family: Poppins_Regular;
+        letter-spacing: 0.03333em;
+        font-weight: 400;
+    }
+}

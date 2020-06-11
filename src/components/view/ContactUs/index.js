@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Layout, Heading } from "../../common";
+import { connect } from "react-redux";
+import { authAction } from "../../../store/actions/index";
 
 const { TextArea } = Input;
 
@@ -12,9 +14,10 @@ const validateMessages = {
   },
 };
 
-const ContactUs = () => {
+const ContactUs = ({ actionDispatch }) => {
+  const [messageLength, setMessageLength] = useState(0);
   const onFinish = (values) => {
-    console.log(values);
+    actionDispatch(values);
   };
   return (
     <Layout>
@@ -40,7 +43,6 @@ const ContactUs = () => {
             prefix={<UserOutlined className="site-form-item-icon" />}
           />
         </Form.Item>
-
         <Form.Item
           name="email"
           rules={[
@@ -57,22 +59,26 @@ const ContactUs = () => {
             prefix={<MailOutlined className="site-form-item-icon" />}
           />
         </Form.Item>
-        <Form.Item
-          name="message"
-          rules={[
-            {
-              required: true,
-              min: 30,
-              max: 500,
-            },
-          ]}
-        >
-          <TextArea
-            allowClear
-            placeholder="Type your Message..."
-            autoSize={{ minRows: 3, maxRows: 5 }}
-          />
-        </Form.Item>
+        <div className="msg_contain">
+          <Form.Item
+            name="message"
+            rules={[
+              {
+                required: true,
+                min: 30,
+                max: 500,
+              },
+            ]}
+          >
+            <TextArea
+              allowClear
+              placeholder="Type your Message..."
+              autoSize={{ minRows: 3, maxRows: 5 }}
+              onChange={(e) => setMessageLength(e.target.value.length)}
+            />
+          </Form.Item>
+          <div className="msgLength">{`${messageLength} / 500 max`}</div>
+        </div>
         <Form.Item className="btn_contain">
           <Button htmlType="submit">Send</Button>
         </Form.Item>
@@ -80,4 +86,11 @@ const ContactUs = () => {
     </Layout>
   );
 };
-export default ContactUs;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actionDispatch: (payload) => dispatch(authAction.contactUs(payload)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ContactUs);
