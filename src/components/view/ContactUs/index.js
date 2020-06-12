@@ -33,7 +33,7 @@ const ContactUs = ({ actionDispatch }) => {
           rules={[
             {
               required: true,
-              max: 100,
+              max: 50,
             },
           ]}
         >

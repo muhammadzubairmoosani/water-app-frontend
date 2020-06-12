@@ -4,7 +4,7 @@ const WallCard = ({ heading, subHeading, children, route }) => {
   return (
     <div className="wallcard_container">
       <div className="items_container">
-        <img src={require("../../../assets/icons/drops.jpg")} alt="drops" />
+        <img src={require("../../../assets/icons/drops.png")} alt="drops" />
         <h1 className="heading">{heading}</h1>
         <Link to={route}>
           <p className="sub_heading">{subHeading}</p>

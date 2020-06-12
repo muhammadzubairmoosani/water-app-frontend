@@ -1,5 +1,12 @@
 import React from "react";
-import { Home, Header, Footer, CompanyList,ContactUs } from "./components/index";
+import {
+  Home,
+  Header,
+  Footer,
+  CompanyList,
+  ContactUs,
+  BuyerLogin,
+} from "./components/index";
 import { BackTop } from "antd";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const App = () => {
@@ -9,6 +16,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/buyer-login" component={BuyerLogin} />
         <Route exact path="/company-list" component={CompanyList} />
         <Route exact path="/contact-us" component={ContactUs} />
       </Switch>
