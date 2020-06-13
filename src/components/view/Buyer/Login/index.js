@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Heading } from "../../../common";
-import { Form, Input, Button, Checkbox } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Row, Col } from "antd";
+import { MobileOutlined, MailOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const BuyerLogin = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
+
+  const useTimeOut = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  };
+
   return (
     <div className="login">
       <Layout>
@@ -24,33 +35,49 @@ const BuyerLogin = () => {
             rules={[
               {
                 required: true,
-                message: "Please input your Username!",
+                message: "Please Enter your Mobile Number!",
                 max: 50,
               },
             ]}
           >
             <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Username"
+              prefix={<MobileOutlined className="site-form-item-icon" />}
+              placeholder="mobile number"
             />
           </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: "Please input your Password!",
-                max: 100,
-              },
-            ]}
-          >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Item>
-          <Form.Item>
+          <Row gutter={5}>
+            <Col span={15}>
+              <Form.Item
+                name="code"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Enter Pin Code!",
+                    max: 100,
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<MailOutlined className="site-form-item-icon" />}
+                  type="text"
+                  placeholder="Pin Code"
+                />
+              </Form.Item>
+            </Col>
+
+            <Col span={9}>
+              <Button
+                type="primary"
+                block
+                loading={isLoading}
+                onClick={useTimeOut}
+              >
+                Send Code
+              </Button>
+            </Col>
+          </Row>
+
+          {/* <Form.Item>
             <Form.Item name="remember" valuePropName="checked" noStyle>
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
@@ -58,7 +85,7 @@ const BuyerLogin = () => {
             <a className="login-form-forgot" href="">
               Forgot password
             </a>
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item>
             <Button
@@ -68,7 +95,7 @@ const BuyerLogin = () => {
             >
               Log in
             </Button>
-            Or <a href="">register now!</a>
+            Or <Link to="buyer-signin">Register now!</Link>
           </Form.Item>
         </Form>
       </Layout>
