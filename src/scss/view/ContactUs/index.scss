@@ -1,56 +1,64 @@
-.contact_us_container {
-    max-width: 500px;
-    height: 420px;
-    margin: 0 auto;
-    @include animation_return;
-    @include flex_col;
-    align-items: unset;
-
-    @include xs {
-        padding: 0 0.7em;
-        height: 300px;
+.contact_us {
+    .layout {
+        max-width: 700px;
+        margin: 0 0 0 auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
-    .ant-input-affix-wrapper {
-        box-shadow: $shadow;
-    }
+    .contact_us_container {
+        max-width: 500px;
+        height: 420px;
+        margin: 0 auto;
+        @include animation_return;
+        @include flex_col;
+        align-items: unset;
 
-    .btn_contain {
-        margin-bottom: 0 !important;
-
-        .ant-form-item-control-input-content {
-            text-align: right;
+        @include xs {
+            padding: 0 0.7em;
+            height: 300px;
         }
 
-        button {
-            background-color: $themColor;
-            color: $white;
-            width: 90px;
-            border-radius: $radius;
+        .ant-input-affix-wrapper {
+            box-shadow: $shadow;
+        }
 
-            @include xs {
-                width: 100%;
+        .btn_contain {
+            margin-bottom: 0 !important;
+
+            .ant-form-item-control-input-content {
+                text-align: right;
             }
 
-            &:hover {
-                border-color: $themColor;
+            button {
+                background-color: $themColor;
+                color: $white;
+                width: 90px;
+                border-radius: $radius;
+
+                @include xs {
+                    width: 100%;
+                }
+
+                &:hover {
+                    border-color: $themColor;
+                }
             }
         }
     }
-}
 
-.msg_contain {
-    position: relative;
-    margin-bottom: 1.2em;
+    .msg_contain {
+        position: relative;
+        margin-bottom: 1.2em;
 
-    .msgLength {
-        position: absolute;
-        right: 0;
-        bottom: 5px;
-        color: #767676;
-        font-size: 0.75em;
-        // font-family: Poppins_Regular;
-        letter-spacing: 0.03333em;
-        font-weight: 400;
+        .msgLength {
+            position: absolute;
+            right: 0;
+            bottom: 5px;
+            color: #767676;
+            font-size: 0.75em;
+            // font-family: Poppins_Regular;
+            letter-spacing: 0.03333em;
+            font-weight: 400;
+        }
     }
 }

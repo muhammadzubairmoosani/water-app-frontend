@@ -19,7 +19,7 @@ const BuyerLogin = () => {
   };
 
   return (
-    <div className="login">
+    <aside className="login">
       <Layout>
         <Heading heading="Buyer Login" />
         <Form
@@ -99,7 +99,7 @@ const BuyerLogin = () => {
           </Form.Item>
         </Form>
       </Layout>
-    </div>
+    </aside>
   );
 };
 export default BuyerLogin;
