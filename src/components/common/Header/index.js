@@ -5,39 +5,6 @@ import { DownOutlined } from "@ant-design/icons";
 const { SubMenu } = Menu;
 
 const Header = () => {
-  const menu = (
-    <Menu>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.alipay.com/"
-        >
-          1st menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.taobao.com/"
-        >
-          2nd menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.tmall.com/"
-        >
-          3rd menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item danger>a danger item</Menu.Item>
-    </Menu>
-  );
-
   return (
     <header>
       <PageHeader
@@ -49,7 +16,7 @@ const Header = () => {
         className="site-page-header"
       />
       <Menu theme="light" mode="horizontal" defaultSelectedKeys={["1"]}>
-        <Menu.Item to="/" key="1">
+        <Menu.Item key="1">
           <Link to="/">Home</Link>
         </Menu.Item>
 
@@ -65,7 +32,9 @@ const Header = () => {
           <Link to="/contact-us">Contact Us</Link>
         </Menu.Item>
         <SubMenu key="5" title="Login" icon={<DownOutlined />}>
-          <Menu.Item key="setting:1">Buyer</Menu.Item>
+          <Menu.Item key="setting:1">
+            <Link to="/buyer-login">Buyer</Link>
+          </Menu.Item>
           <Menu.Item key="setting:2">Supplier</Menu.Item>
         </SubMenu>
       </Menu>

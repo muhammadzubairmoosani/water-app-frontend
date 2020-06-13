@@ -1,24 +1,19 @@
 .layout {
-    width: 1080px;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 20px 40px;
+    padding: 20px 40px 70px;
 
     @include xs {
-        width: 100%;
         padding: 20px 0;
     }
     @include sm {
-        width: 100%;
         padding: 20px 0;
     }
     @include md {
-        width: 100%;
         padding: 20px 0;
         // max-width: 750px !important;
     }
     @include lg {
-        width: 100%;
         padding: 20px 0;
     }
 }

@@ -18,13 +18,13 @@ const Footer = () => {
             <ul>
               <li className="title">Company Detail</li>
               <li>
-                <Link>Address</Link>
+                <Link>Company Address</Link>
               </li>
               <li>
-                <Link>Number</Link>
+                <Link>+92 315 0000000</Link>
               </li>
               <li>
-                <Link>Email Address</Link>
+                <Link>paniwala@gmail.com</Link>
               </li>
             </ul>
             <ul>
