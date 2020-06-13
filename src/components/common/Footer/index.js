@@ -18,43 +18,43 @@ const Footer = () => {
             <ul>
               <li className="title">Company Detail</li>
               <li>
-                <Link>Company Address</Link>
+                <span>Company Address</span>
               </li>
               <li>
-                <Link>+92 315 0000000</Link>
+                <span>+92 315 0000000</span>
               </li>
               <li>
-                <Link>paniwala@gmail.com</Link>
+                <span>paniwala@gmail.com</span>
               </li>
             </ul>
             <ul>
               <li className="title">Pani Wala's</li>
               <li>
-                <Link>About Us</Link>
+                <Link to="#">About Us</Link>
               </li>
               <li>
                 <Link to="contact-us">Contact Us</Link>
               </li>
               <li>
-                <Link>Advertise on Paniwala</Link>
+                <Link to="#">Advertise on Paniwala</Link>
               </li>
               <li>
-                <Link>Terms of Use</Link>
+                <Link to="#">Terms of Use</Link>
               </li>
               <li>
-                <Link>Help and Support</Link>
+                <Link to="#">Help and Support</Link>
               </li>
             </ul>
             <ul>
               <li className="title">Connect with Us</li>
               <li>
-                <Link>Facebook</Link>
+                <Link to="#">Facebook</Link>
               </li>
               <li>
-                <Link>Linked-In</Link>
+                <Link to="#">Linked-In</Link>
               </li>
               <li>
-                <Link>Twitter</Link>
+                <Link to="#">Twitter</Link>
               </li>
             </ul>
             <ul>
@@ -63,16 +63,16 @@ const Footer = () => {
                 <Link to="/buyer-login">Login</Link>
               </li>
               <li>
-                <Link>Sign-up</Link>
+                <Link to="#">Sign-up</Link>
               </li>
             </ul>
             <ul>
               <li className="title">Supplier</li>
               <li>
-                <Link>Login</Link>
+                <Link to="#">Login</Link>
               </li>
               <li>
-                <Link>Register</Link>
+                <Link to="#">Register</Link>
               </li>
             </ul>
           </div>
