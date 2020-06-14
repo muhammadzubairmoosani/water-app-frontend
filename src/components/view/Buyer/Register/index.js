@@ -33,7 +33,6 @@ const BuyerRegister = () => {
           ]}
         >
           <Input
-            allowClear
             placeholder="Name (Required)"
             prefix={<UserOutlined className="site-form-item-icon" />}
           />
@@ -53,7 +52,6 @@ const BuyerRegister = () => {
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
             placeholder="Mobile Number (Required)"
-            allowClear
             type="number"
             addonBefore={<span>+92</span>}
             style={{
@@ -75,7 +73,6 @@ const BuyerRegister = () => {
           hasFeedback
         >
           <Input.Password
-            allowClear
             placeholder="Password (Required)"
             prefix={<LockOutlined className="site-form-item-icon" />}
           />
@@ -105,7 +102,6 @@ const BuyerRegister = () => {
           ]}
         >
           <Input.Password
-            allowClear
             placeholder="Confirm Password (Required)"
             prefix={<LockOutlined className="site-form-item-icon" />}
           />
@@ -122,7 +118,6 @@ const BuyerRegister = () => {
           ]}
         >
           <Input
-            allowClear
             placeholder="Address (Required)"
             prefix={<HomeOutlined className="site-form-item-icon" />}
           />

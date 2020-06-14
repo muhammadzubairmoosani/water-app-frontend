@@ -27,7 +27,6 @@ const BuyerLogin = () => {
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
             placeholder="Mobile Number"
-            allowClear
             type="number"
             addonBefore={<span>+92</span>}
             style={{
@@ -50,7 +49,6 @@ const BuyerLogin = () => {
           <Input.Password
             prefix={<LockOutlined className="site-form-item-icon" />}
             placeholder="Password"
-            allowClear
           />
         </Form.Item>
 
