@@ -35,7 +35,9 @@ const Header = () => {
           <Menu.Item key="setting:1">
             <Link to="/buyer-login">Buyer</Link>
           </Menu.Item>
-          <Menu.Item key="setting:2">Supplier</Menu.Item>
+          <Menu.Item key="setting:2">
+            <Link to="/supplier-login">Supplier</Link>
+          </Menu.Item>
         </SubMenu>
       </Menu>
     </header>

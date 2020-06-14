@@ -1,11 +1,13 @@
 import { Header, Layout, Footer, Heading } from "./common/index";
 import {
   Home,
-  SupplierList,
   ContactUs,
-  BuyerLogin,
   ErrorPage,
-  BuyerRegister
+  BuyerLogin,
+  BuyerRegister,
+  SupplierList,
+  SupplierLogin,
+  SupplierRegister,
 } from "./view/index";
 
 export {
@@ -13,10 +15,12 @@ export {
   Header,
   Layout,
   Footer,
-  SupplierList,
-  ContactUs,
   Heading,
-  BuyerLogin,
+  ContactUs,
   ErrorPage,
-  BuyerRegister
+  BuyerLogin,
+  BuyerRegister,
+  SupplierList,
+  SupplierLogin,
+  SupplierRegister,
 };
