@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
-import { UserOutlined, MailOutlined } from "@ant-design/icons";
+import { UserOutlined, MobileOutlined } from "@ant-design/icons";
 import { Layout, Heading } from "../../common";
 import { connect } from "react-redux";
 import { authAction } from "../../../store/actions/index";
-
 const { TextArea } = Input;
-
-const validateMessages = {
-  required: "${name} is required!",
-  types: {
-    email: "${name} is not validate email!",
-  },
-};
 
 const ContactUs = ({ actionDispatch }) => {
   const [messageLength, setMessageLength] = useState(0);
@@ -27,7 +19,6 @@ const ContactUs = ({ actionDispatch }) => {
           className="contact_us_container"
           name="nest-messages"
           onFinish={onFinish}
-          validateMessages={validateMessages}
         >
           <Form.Item
             name="name"
@@ -40,26 +31,27 @@ const ContactUs = ({ actionDispatch }) => {
           >
             <Input
               allowClear
-              placeholder="Enter your Name"
+              placeholder="name"
               prefix={<UserOutlined className="site-form-item-icon" />}
             />
           </Form.Item>
+
           <Form.Item
-            name="email"
+            name="mobile"
             rules={[
               {
                 required: true,
-                type: "email",
-                max: 100,
+                max: 11,
               },
             ]}
           >
             <Input
-              allowClear
-              placeholder="Enter your Email"
-              prefix={<MailOutlined className="site-form-item-icon" />}
+              prefix={<MobileOutlined className="site-form-item-icon" />}
+              placeholder="03220000000"
+              type="number"
             />
           </Form.Item>
+
           <div className="msg_contain">
             <Form.Item
               name="message"
@@ -73,7 +65,7 @@ const ContactUs = ({ actionDispatch }) => {
             >
               <TextArea
                 allowClear
-                placeholder="Type your Message..."
+                placeholder="Message..."
                 autoSize={{ minRows: 3, maxRows: 5 }}
                 onChange={(e) => setMessageLength(e.target.value.length)}
               />
@@ -94,5 +86,4 @@ const mapDispatchToProps = (dispatch) => {
     actionDispatch: (payload) => dispatch(authAction.contactUs(payload)),
   };
 };
-
 export default connect(null, mapDispatchToProps)(ContactUs);
