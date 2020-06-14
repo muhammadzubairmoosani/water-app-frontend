@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Heading } from "../../../common";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, TreeSelect, Select } from "antd";
 import { Link } from "react-router-dom";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import {
   MobileOutlined,
   LockOutlined,
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
+
+// const formItemLayout = {
+//   labelCol: {
+//     xs: { span: 24 },
+//     sm: { span: 4 },
+//   },
+//   wrapperCol: {
+//     xs: { span: 24 },
+//     sm: { span: 20 },
+//   },
+// };
+// const formItemLayoutWithOutLabel = {
+//   wrapperCol: {
+//     xs: { span: 24, offset: 0 },
+//     sm: { span: 20, offset: 4 },
+//   },
+// };
+
+const { Option } = Select;
 
 const SupplierRegister = () => {
   const onFinish = (values) => {
@@ -28,7 +48,18 @@ const SupplierRegister = () => {
           rules={[{ required: true, max: 50 }]}
         >
           <Input
-            placeholder="Company/Supplier Name (Required)"
+            placeholder="Company Name (Required)"
+            prefix={<UserOutlined className="site-form-item-icon" />}
+          />
+        </Form.Item>
+
+        <Form.Item
+          name="ownerName"
+          hasFeedback
+          rules={[{ required: true, max: 50 }]}
+        >
+          <Input
+            placeholder="Owner/Supplier Name (Required)"
             prefix={<UserOutlined className="site-form-item-icon" />}
           />
         </Form.Item>
@@ -40,18 +71,20 @@ const SupplierRegister = () => {
         >
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
-            placeholder="Mobile Number (Required)"
+            placeholder="Mobile Number1 (Required)"
             type="number"
             addonBefore={<span>+92</span>}
             style={{ width: "100%" }}
           />
         </Form.Item>
 
-        <Form.Item name="whatsApp" rules={[{ max: 10 }]}>
+        <Form.Item name="mobile2" hasFeedback rules={[{ min: 10, max: 10 }]}>
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
-            placeholder="WhatsApp Number (Optional)"
+            placeholder="Mobile Number2 (Optional)"
+            type="number"
             addonBefore={<span>+92</span>}
+            style={{ width: "100%" }}
           />
         </Form.Item>
 
@@ -102,6 +135,53 @@ const SupplierRegister = () => {
             prefix={<HomeOutlined className="site-form-item-icon" />}
           />
         </Form.Item>
+
+        <Form.List name="names">
+          {(fields, { add, remove }) => {
+            return (
+              <div>
+                {fields.map((field, index) => (
+                  <Form.Item
+                    required={false}
+                    key={field.key}
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <Form.Item {...field} style={{ marginBottom: "0" }}>
+                      <Input.Group compact>
+                        <Select defaultValue="Zhejiang">
+                          <Option value="Zhejiang">Zhejiang</Option>
+                          <Option value="Jiangsu">Jiangsu</Option>
+                        </Select>
+                        <Input style={{ width: "60%" }} placeholder="Price" />
+                      </Input.Group>
+                    </Form.Item>
+
+                    {fields.length > 1 ? (
+                      <MinusCircleOutlined
+                        className="dynamic-delete-button"
+                        style={{ margin: "0 8px" }}
+                        onClick={() => {
+                          remove(field.name);
+                        }}
+                      />
+                    ) : null}
+                  </Form.Item>
+                ))}
+                <Form.Item>
+                  <Button
+                    type="dashed"
+                    onClick={() => {
+                      add();
+                    }}
+                    style={{ width: "100%" }}
+                  >
+                    <PlusOutlined /> Add field
+                  </Button>
+                </Form.Item>
+              </div>
+            );
+          }}
+        </Form.List>
 
         <Checkbox style={{ marginBottom: "12px" }}>
           I have read the <Link to="#">agreement</Link>
