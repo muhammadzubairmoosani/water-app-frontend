@@ -1,7 +1,7 @@
 import { Header, Layout, Footer, Heading } from "./common/index";
 import {
   Home,
-  CompanyList,
+  SupplierList,
   ContactUs,
   BuyerLogin,
   ErrorPage,
@@ -13,7 +13,7 @@ export {
   Header,
   Layout,
   Footer,
-  CompanyList,
+  SupplierList,
   ContactUs,
   Heading,
   BuyerLogin,

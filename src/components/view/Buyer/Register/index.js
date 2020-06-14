@@ -123,7 +123,7 @@ const BuyerRegister = () => {
           />
         </Form.Item>
 
-        <Checkbox>
+        <Checkbox style={{ marginBottom: "12px" }}>
           I have read the <Link to="#">agreement</Link>
         </Checkbox>
 
@@ -136,7 +136,7 @@ const BuyerRegister = () => {
           >
             Register
           </Button>
-          Or <Link to="buyer-login">Login</Link>
+          Or <Link to="buyer-login">Login now!</Link>
         </Form.Item>
       </Form>
     </Layout>

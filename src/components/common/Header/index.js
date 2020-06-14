@@ -21,7 +21,7 @@ const Header = () => {
         </Menu.Item>
 
         <Menu.Item key="2">
-          <Link to="/company-list">Companies</Link>
+          <Link to="/supplier-list">Companies</Link>
         </Menu.Item>
 
         <Menu.Item key="3">

@@ -1,7 +1,7 @@
 import Home from "./Home/index";
-import { CompanyList } from "./Company/index";
+import { SupplierList } from "./Supplier/index";
 import ContactUs from "./ContactUs/index";
 import { BuyerLogin, BuyerRegister } from "./Buyer/index";
 import ErrorPage from "./ErrorPage/index";
 
-export { Home, CompanyList, ContactUs, BuyerLogin, ErrorPage, BuyerRegister };
+export { Home, SupplierList, ContactUs, BuyerLogin, ErrorPage, BuyerRegister };

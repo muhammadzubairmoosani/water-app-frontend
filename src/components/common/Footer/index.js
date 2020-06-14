@@ -16,9 +16,9 @@ const Footer = () => {
         <WallCard heading="footer" subHeading="sub heading">
           <div className="list_wrapper">
             <ul>
-              <li className="title">Company Detail</li>
+              <li className="title">Supplier Detail</li>
               <li>
-                <span>Company Address</span>
+                <span>Supplier Address</span>
               </li>
               <li>
                 <span>+92 315 0000000</span>

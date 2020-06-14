@@ -3,7 +3,7 @@ import {
   Home,
   Header,
   Footer,
-  CompanyList,
+  SupplierList,
   ContactUs,
   BuyerLogin,
   ErrorPage,
@@ -20,7 +20,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/buyer-login" component={BuyerLogin} />
         <Route exact path="/buyer-register" component={BuyerRegister} />
-        <Route exact path="/company-list" component={CompanyList} />
+        <Route exact path="/supplier-list" component={SupplierList} />
         <Route exact path="/contact-us" component={ContactUs} />
         <Route component={ErrorPage} />
       </Switch>
