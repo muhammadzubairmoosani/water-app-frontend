@@ -9,3 +9,26 @@
         background-color: $themColor !important;
     }
 }
+
+.aside_layout {
+    max-width: 500px !important;
+    margin: 0 0 0 auto !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.aside_container {
+    max-width: 300px !important;
+    height: 430px !important;
+    margin: 0 auto !important;
+    @include animation_return;
+    @include flex_col;
+    align-items: unset !important;
+
+    @include xs {
+        padding: 0 0.7em !important;
+        height: 350px !important;
+    }
+    .ant-input-affix-wrapper {
+        box-shadow: $shadow !important;
+    }
+}

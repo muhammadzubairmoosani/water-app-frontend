@@ -10,63 +10,63 @@ const BuyerLogin = () => {
   };
 
   return (
-    <aside className="login">
-      <Layout>
-        <Heading heading="Buyer Login" />
-        <Form
-          name="normal_login"
-          className="login-form login_container"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
+    <Layout className="aside_layout">
+      <Heading heading="Buyer Login" />
+      <Form name="normal_login" className="aside_container" onFinish={onFinish}>
+        <Form.Item
+          name="mobile"
+          hasFeedback
+          rules={[
+            {
+              required: true,
+              min: 10,
+              max: 10,
+            },
+          ]}
         >
-          <Form.Item
-            name="mobile"
-            rules={[
-              {
-                required: true,
-                message: "Please Enter your Mobile Number!",
-                max: 50,
-              },
-            ]}
-          >
-            <Input
-              prefix={<MobileOutlined className="site-form-item-icon" />}
-              placeholder="mobile number"
-            />
-          </Form.Item>
+          <Input
+            prefix={<MobileOutlined className="site-form-item-icon" />}
+            placeholder="Mobile Number"
+            allowClear
+            type="number"
+            addonBefore={<span>+92</span>}
+            style={{
+              width: "100%",
+            }}
+          />
+        </Form.Item>
 
-          <Form.Item
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: "Please input your Password!",
-                max: 100,
-              },
-            ]}
-          >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Item>
+        <Form.Item
+          name="password"
+          hasFeedback
+          rules={[
+            {
+              required: true,
+              min: 8,
+              max: 30,
+            },
+          ]}
+        >
+          <Input.Password
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            placeholder="Password"
+            allowClear
+          />
+        </Form.Item>
 
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Log in
-            </Button>
-            Or <Link to="buyer-signin">Register now!</Link>
-          </Form.Item>
-        </Form>
-      </Layout>
-    </aside>
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+            block
+          >
+            Log in
+          </Button>
+          Or <Link to="buyer-register">Register now!</Link>
+        </Form.Item>
+      </Form>
+    </Layout>
   );
 };
 export default BuyerLogin;

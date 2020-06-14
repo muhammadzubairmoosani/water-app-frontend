@@ -5,6 +5,7 @@ import {
   ContactUs,
   BuyerLogin,
   ErrorPage,
+  BuyerRegister
 } from "./view/index";
 
 export {
@@ -17,4 +18,5 @@ export {
   Heading,
   BuyerLogin,
   ErrorPage,
+  BuyerRegister
 };
