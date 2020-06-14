@@ -25,12 +25,7 @@ const BuyerRegister = () => {
         <Form.Item
           name="name"
           hasFeedback
-          rules={[
-            {
-              required: true,
-              max: 50,
-            },
-          ]}
+          rules={[{ required: true, max: 50 }]}
         >
           <Input
             placeholder="Name (Required)"
@@ -41,13 +36,7 @@ const BuyerRegister = () => {
         <Form.Item
           name="mobile"
           hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 10,
-              max: 10,
-            },
-          ]}
+          rules={[{ required: true, min: 10, max: 10 }]}
         >
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
@@ -63,13 +52,7 @@ const BuyerRegister = () => {
         <Form.Item
           name="password"
           hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 8,
-              max: 30,
-            },
-          ]}
+          rules={[{ required: true, min: 8, max: 30 }]}
           hasFeedback
         >
           <Input.Password
@@ -83,11 +66,7 @@ const BuyerRegister = () => {
           dependencies={["password"]}
           hasFeedback
           rules={[
-            {
-              required: true,
-              min: 8,
-              max: 30,
-            },
+            { required: true, min: 8, max: 30 },
             ({ getFieldValue }) => ({
               validator(rule, value) {
                 if (!value || getFieldValue("password") === value) {
@@ -110,12 +89,7 @@ const BuyerRegister = () => {
         <Form.Item
           name="Address"
           hasFeedback
-          rules={[
-            {
-              required: true,
-              max: 500,
-            },
-          ]}
+          rules={[{ required: true, max: 300 }]}
         >
           <Input
             placeholder="Address (Required)"
