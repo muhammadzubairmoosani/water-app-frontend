@@ -1,20 +1,38 @@
 .register {
-    .ant-select {
-        width: 100%;
-    }
     .ant-col {
         padding: 0;
     }
+
     .price_input {
         @include xs {
             margin-top: 1em;
         }
     }
-    .ant-select {
+
+    .add_service_select {
         width: 100% !important;
     }
-    .ant-input-group{
+
+    .add_service_group {
         @include flex;
         justify-content: space-between;
+    }
+
+    .minus_icon_col {
+        @include xs {
+            margin-top: 12px;
+        }
+    }
+
+    .w_100 {
+        width: 100%;
+    }
+
+    .agreement {
+        margin-top: 12px;
+    }
+
+    .add_service_form_item {
+        margin-bottom: 0;
     }
 }

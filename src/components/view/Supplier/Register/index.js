@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 import { Layout, Heading } from "../../../common";
-import {
-  Form,
-  Input,
-  Button,
-  Checkbox,
-  TreeSelect,
-  Select,
-  Row,
-  Col,
-} from "antd";
+import { Form, Input, Button, Checkbox, Select, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import {
@@ -18,23 +9,6 @@ import {
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-
-// const formItemLayout = {
-//   labelCol: {
-//     xs: { span: 24 },
-//     sm: { span: 4 },
-//   },
-//   wrapperCol: {
-//     xs: { span: 24 },
-//     sm: { span: 20 },
-//   },
-// };
-// const formItemLayoutWithOutLabel = {
-//   wrapperCol: {
-//     xs: { span: 24, offset: 0 },
-//     sm: { span: 20, offset: 4 },
-//   },
-// };
 
 const { Option } = Select;
 
@@ -83,7 +57,7 @@ const SupplierRegister = () => {
             placeholder="Mobile Number1 (Required)"
             type="number"
             addonBefore={<span>+92</span>}
-            style={{ width: "100%" }}
+            className="w_100"
           />
         </Form.Item>
 
@@ -93,7 +67,7 @@ const SupplierRegister = () => {
             placeholder="Mobile Number2 (Optional)"
             type="number"
             addonBefore={<span>+92</span>}
-            style={{ width: "100%" }}
+            className="w_100"
           />
         </Form.Item>
 
@@ -149,13 +123,28 @@ const SupplierRegister = () => {
           {(fields, { add, remove }) => {
             return (
               <div>
-                {fields.map((field, index) => (
-                  <Form.Item required={false} key={field.key}>
-                    <Form.Item {...field} style={{ marginBottom: "0" }}>
+                {fields.map((field) => (
+                  <Form.Item key={field.key}>
+                    <Form.Item
+                      rules={[
+                        {
+                          required: true,
+                          message: "You must select at least one!",
+                        },
+                      ]}
+                      {...field}
+                      className="add_service_form_item"
+                    >
                       <Row>
-                        <Input.Group>
-                          <Col xs={{ span: 24 }} sm={{ span: 15 }}>
-                            <Select defaultValue="19 Liter Gallon">
+                        <Input.Group className="add_service_group">
+                          <Col
+                            xs={{ span: 24 }}
+                            sm={{ span: fields.length > 1 ? 13 : 15 }}
+                          >
+                            <Select
+                              className="add_service_select"
+                              defaultValue="19 Liter Gallon"
+                            >
                               <Option value="19 Liter Gallon">
                                 19 Liter Gallon
                               </Option>
@@ -164,35 +153,27 @@ const SupplierRegister = () => {
                               <Option value="3000 Gallon">3000 Gallon</Option>
                             </Select>
                           </Col>
-                          <Col xs={{ span: 24 }} sm={{ span: 8 }}>
+                          <Col xs={{ span: 21 }} sm={{ span: 8 }}>
                             <Input
                               placeholder="Price"
                               className="price_input"
                             />
                           </Col>
+                          {fields.length > 1 ? (
+                            <Col className="minus_icon_col" xs={{ span: 2 }}>
+                              <MinusCircleOutlined
+                                className="dynamic-delete-button"
+                                onClick={() => remove(field.name)}
+                              />
+                            </Col>
+                          ) : null}
                         </Input.Group>
                       </Row>
                     </Form.Item>
-
-                    {fields.length > 1 ? (
-                      <MinusCircleOutlined
-                        className="dynamic-delete-button"
-                        style={{ margin: "0 8px" }}
-                        onClick={() => {
-                          remove(field.name);
-                        }}
-                      />
-                    ) : null}
                   </Form.Item>
                 ))}
                 <Form.Item>
-                  <Button
-                    type="dashed"
-                    onClick={() => {
-                      add();
-                    }}
-                    style={{ width: "100%" }}
-                  >
+                  <Button type="dashed" onClick={() => add()} className="w_100">
                     <PlusOutlined /> Add More Service
                   </Button>
                 </Form.Item>
@@ -201,7 +182,7 @@ const SupplierRegister = () => {
           }}
         </Form.List>
 
-        <Checkbox style={{ marginBottom: "12px" }}>
+        <Checkbox className="agreement">
           I have read the <Link to="#">agreement</Link>
         </Checkbox>
 
