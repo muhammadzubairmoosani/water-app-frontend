@@ -1,0 +1,20 @@
+.register {
+    .ant-select {
+        width: 100%;
+    }
+    .ant-col {
+        padding: 0;
+    }
+    .price_input {
+        @include xs {
+            margin-top: 1em;
+        }
+    }
+    .ant-select {
+        width: 100% !important;
+    }
+    .ant-input-group{
+        @include flex;
+        justify-content: space-between;
+    }
+}

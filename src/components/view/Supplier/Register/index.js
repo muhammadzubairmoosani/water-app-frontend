@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { Layout, Heading } from "../../../common";
-import { Form, Input, Button, Checkbox, TreeSelect, Select } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Checkbox,
+  TreeSelect,
+  Select,
+  Row,
+  Col,
+} from "antd";
 import { Link } from "react-router-dom";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import {
@@ -39,7 +48,7 @@ const SupplierRegister = () => {
       <Heading heading="Supplier Registration" />
       <Form
         name="normal_login"
-        className="login-form aside_container"
+        className="login-form aside_container register"
         onFinish={onFinish}
       >
         <Form.Item
@@ -141,19 +150,28 @@ const SupplierRegister = () => {
             return (
               <div>
                 {fields.map((field, index) => (
-                  <Form.Item
-                    required={false}
-                    key={field.key}
-                    style={{ display: "flex", alignItems: "center" }}
-                  >
+                  <Form.Item required={false} key={field.key}>
                     <Form.Item {...field} style={{ marginBottom: "0" }}>
-                      <Input.Group compact>
-                        <Select defaultValue="Zhejiang">
-                          <Option value="Zhejiang">Zhejiang</Option>
-                          <Option value="Jiangsu">Jiangsu</Option>
-                        </Select>
-                        <Input style={{ width: "60%" }} placeholder="Price" />
-                      </Input.Group>
+                      <Row>
+                        <Input.Group>
+                          <Col xs={{ span: 24 }} sm={{ span: 15 }}>
+                            <Select defaultValue="19 Liter Gallon">
+                              <Option value="19 Liter Gallon">
+                                19 Liter Gallon
+                              </Option>
+                              <Option value="1000 Gallon">1000 Gallon</Option>
+                              <Option value="2000 Gallon">2000 Gallon</Option>
+                              <Option value="3000 Gallon">3000 Gallon</Option>
+                            </Select>
+                          </Col>
+                          <Col xs={{ span: 24 }} sm={{ span: 8 }}>
+                            <Input
+                              placeholder="Price"
+                              className="price_input"
+                            />
+                          </Col>
+                        </Input.Group>
+                      </Row>
                     </Form.Item>
 
                     {fields.length > 1 ? (
@@ -175,7 +193,7 @@ const SupplierRegister = () => {
                     }}
                     style={{ width: "100%" }}
                   >
-                    <PlusOutlined /> Add field
+                    <PlusOutlined /> Add More Service
                   </Button>
                 </Form.Item>
               </div>

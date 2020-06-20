@@ -18,7 +18,7 @@
 
 .aside_container {
     max-width: 300px !important;
-    height: 430px !important;
+    min-height: 430px !important;
     margin: 0 auto !important;
     @include animation_return;
     @include flex_col;
