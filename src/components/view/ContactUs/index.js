@@ -47,7 +47,7 @@ const ContactUs = ({ actionDispatch }) => {
         >
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
-            placeholder="03220000000"
+            placeholder="Mobile"
             type="number"
           />
         </Form.Item>
@@ -65,7 +65,7 @@ const ContactUs = ({ actionDispatch }) => {
           >
             <TextArea
               allowClear
-              placeholder="Message..."
+              placeholder="Type your message..."
               autoSize={{ minRows: 3, maxRows: 5 }}
               onChange={(e) => setMessageLength(e.target.value.length)}
             />

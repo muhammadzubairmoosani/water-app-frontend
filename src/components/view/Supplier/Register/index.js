@@ -147,9 +147,27 @@ const SupplierRegister = () => {
                             <Option value="19 Liter Gallon">
                               19 Liter Gallon
                             </Option>
-                            <Option value="1000 Gallon">1000 Gallon</Option>
-                            <Option value="2000 Gallon">2000 Gallon</Option>
-                            <Option value="3000 Gallon">3000 Gallon</Option>
+                            <Option value="1000 Gallon">
+                              200 Gallons Service
+                            </Option>
+                            <Option value="2000 Gallon">
+                              1,000 Gallons Service
+                            </Option>
+                            <Option value="3000 Gallon">
+                              2000 Gallons Service
+                            </Option>
+                            <Option value="3000 Gallon">
+                              3,000 Gallons Service
+                            </Option>
+                            <Option value="3000 Gallon">
+                              4,000 Gallons Service
+                            </Option>
+                            <Option value="3000 Gallon">
+                              6,000 Gallons Service
+                            </Option>
+                            <Option value="3000 Gallon">
+                              10,000 Gallons Service
+                            </Option>
                           </Select>
                         </Col>
                         <Col xs={{ span: 21 }} sm={{ span: 8 }}>

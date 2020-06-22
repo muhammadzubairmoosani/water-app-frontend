@@ -1,7 +1,6 @@
 import React from "react";
 import { Menu, PageHeader } from "antd";
 import { Link } from "react-router-dom";
-import { DownOutlined } from "@ant-design/icons";
 const { SubMenu } = Menu;
 
 const Header = () => {
@@ -24,14 +23,11 @@ const Header = () => {
           <Link to="/supplier-list">Companies</Link>
         </Menu.Item>
 
-        <Menu.Item key="3">
-          <Link to="/about-us">About Us</Link>
-        </Menu.Item>
-
         <Menu.Item key="4">
           <Link to="/contact-us">Contact Us</Link>
         </Menu.Item>
-        <SubMenu key="5" title="Login" icon={<DownOutlined />}>
+
+        <SubMenu key="5" title="Login">
           <Menu.Item key="setting:1">
             <Link to="/buyer-login">Buyer</Link>
           </Menu.Item>
@@ -39,6 +35,16 @@ const Header = () => {
             <Link to="/supplier-login">Supplier</Link>
           </Menu.Item>
         </SubMenu>
+
+        <SubMenu key="6" title="Register" >
+          <Menu.Item key="setting:3">
+            <Link to="/buyer-register">Buyer</Link>
+          </Menu.Item>
+          <Menu.Item key="setting:4">
+            <Link to="/supplier-register">Supplier</Link>
+          </Menu.Item>
+        </SubMenu>
+
       </Menu>
     </header>
   );

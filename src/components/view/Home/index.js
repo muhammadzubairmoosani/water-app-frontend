@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import MainCarousel from "./carousel";
+import AboutUs from "./aboutUs";
 import CardCarouselSegment from "../../common/Carousels/cardCarouselSegment";
 import { Layout } from "../../common/index";
 import { data } from "../../../util/supplierCardData";
@@ -39,6 +40,7 @@ const Home = () => {
           route={"/supplier-list"}
         />
       </Layout>
+      <AboutUs />
     </Fragment>
   );
 };
