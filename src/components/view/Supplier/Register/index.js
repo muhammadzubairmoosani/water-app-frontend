@@ -120,66 +120,61 @@ const SupplierRegister = () => {
         </Form.Item>
 
         <Form.List name="names">
-          {(fields, { add, remove }) => {
-            return (
-              <div>
-                {fields.map((field) => (
-                  <Form.Item key={field.key}>
-                    <Form.Item
-                      rules={[
-                        {
-                          required: true,
-                          message: "You must select at least one!",
-                        },
-                      ]}
-                      {...field}
-                      className="add_service_form_item"
-                    >
-                      <Row>
-                        <Input.Group className="add_service_group">
-                          <Col
-                            xs={{ span: 24 }}
-                            sm={{ span: fields.length > 1 ? 13 : 15 }}
+          {(fields, { add, remove }) => (
+            <div>
+              {fields.map((field) => (
+                <Form.Item key={field.key}>
+                  <Form.Item
+                    rules={[
+                      {
+                        required: true,
+                        message: "You must select at least one!",
+                      },
+                    ]}
+                    {...field}
+                    className="add_service_form_item"
+                  >
+                    <Row>
+                      <Input.Group className="add_service_group">
+                        <Col
+                          xs={{ span: 24 }}
+                          sm={{ span: fields.length > 1 ? 13 : 15 }}
+                        >
+                          <Select
+                            className="add_service_select"
+                            defaultValue="19 Liter Gallon"
                           >
-                            <Select
-                              className="add_service_select"
-                              defaultValue="19 Liter Gallon"
-                            >
-                              <Option value="19 Liter Gallon">
-                                19 Liter Gallon
-                              </Option>
-                              <Option value="1000 Gallon">1000 Gallon</Option>
-                              <Option value="2000 Gallon">2000 Gallon</Option>
-                              <Option value="3000 Gallon">3000 Gallon</Option>
-                            </Select>
-                          </Col>
-                          <Col xs={{ span: 21 }} sm={{ span: 8 }}>
-                            <Input
-                              placeholder="Price"
-                              className="price_input"
+                            <Option value="19 Liter Gallon">
+                              19 Liter Gallon
+                            </Option>
+                            <Option value="1000 Gallon">1000 Gallon</Option>
+                            <Option value="2000 Gallon">2000 Gallon</Option>
+                            <Option value="3000 Gallon">3000 Gallon</Option>
+                          </Select>
+                        </Col>
+                        <Col xs={{ span: 21 }} sm={{ span: 8 }}>
+                          <Input placeholder="Price" className="price_input" />
+                        </Col>
+                        {fields.length > 1 ? (
+                          <Col className="minus_icon_col" xs={{ span: 2 }}>
+                            <MinusCircleOutlined
+                              className="dynamic-delete-button"
+                              onClick={() => remove(field.name)}
                             />
                           </Col>
-                          {fields.length > 1 ? (
-                            <Col className="minus_icon_col" xs={{ span: 2 }}>
-                              <MinusCircleOutlined
-                                className="dynamic-delete-button"
-                                onClick={() => remove(field.name)}
-                              />
-                            </Col>
-                          ) : null}
-                        </Input.Group>
-                      </Row>
-                    </Form.Item>
+                        ) : null}
+                      </Input.Group>
+                    </Row>
                   </Form.Item>
-                ))}
-                <Form.Item>
-                  <Button type="dashed" onClick={() => add()} className="w_100">
-                    <PlusOutlined /> Add More Service
-                  </Button>
                 </Form.Item>
-              </div>
-            );
-          }}
+              ))}
+              <Form.Item>
+                <Button type="dashed" onClick={() => add()} className="w_100">
+                  <PlusOutlined /> Add More Service
+                </Button>
+              </Form.Item>
+            </div>
+          )}
         </Form.List>
 
         <Checkbox className="agreement">
