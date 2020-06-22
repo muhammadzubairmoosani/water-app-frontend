@@ -4,7 +4,7 @@ import { Carousel } from "antd";
 const MainCarousel = () => {
   return (
     <div className="main_carousel">
-      <Carousel draggable effect="fade" dotPosition="right" autoplay>
+      <Carousel effect="fade" dotPosition="right" autoplay>
         <div>
           <img
             className="img"
