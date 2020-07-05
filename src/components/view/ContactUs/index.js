@@ -2,29 +2,25 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, MobileOutlined } from "@ant-design/icons";
 import { Layout, Heading } from "../../common";
-import { connect } from "react-redux";
-import { authAction } from "../../../store/actions/index";
+import { _contactUs } from "../../../server/methods/index";
+
 const { TextArea } = Input;
-
-const ContactUs = ({ actionDispatch }) => {
+const ContactUs = () => {
   const [messageLength, setMessageLength] = useState(0);
-  const onFinish = (values) => {
-    actionDispatch(values);
-  };
-
   return (
     <Layout className="aside_layout">
       <Heading heading="Contact Us" />
       <Form
         className="aside_container"
         name="nest-messages"
-        onFinish={onFinish}
+        onFinish={(values) => _contactUs(values)}
       >
         <Form.Item
           name="name"
           rules={[
             {
               required: true,
+              min: 3,
               max: 50,
             },
           ]}
@@ -41,6 +37,7 @@ const ContactUs = ({ actionDispatch }) => {
           rules={[
             {
               required: true,
+              min: 11,
               max: 11,
             },
           ]}
@@ -58,7 +55,6 @@ const ContactUs = ({ actionDispatch }) => {
             rules={[
               {
                 required: true,
-                min: 30,
                 max: 500,
               },
             ]}
@@ -82,9 +78,4 @@ const ContactUs = ({ actionDispatch }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actionDispatch: (payload) => dispatch(authAction.contactUs(payload)),
-  };
-};
-export default connect(null, mapDispatchToProps)(ContactUs);
+export default ContactUs;
