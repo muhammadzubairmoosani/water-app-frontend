@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Layout, Heading } from "../../../common";
 import { Form, Input, Button, Checkbox, Select, Row, Col } from "antd";
 import { Link } from "react-router-dom";
@@ -9,21 +9,31 @@ import {
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-// import { _signUpBuyer } from "../../../../server/methods/index";
+import { _signUpSupplier } from "../../../../server/methods/index";
 
 const { Option } = Select;
 
 const SupplierRegister = () => {
+  const [service, setService] = useState([]);
+
+  const _onRemove = (index) => {
+    setService(...service.filter((i, indx) => index !== indx));
+  };
+
+  useEffect(()=>console.log(service),[service])
   return (
     <Layout className="aside_layout">
       <Heading heading="Supplier Registration" />
       <Form
         name="normal_login"
         className="login-form aside_container register"
-        // onFinish={(values) => _signUpBuyer(values)}
+        onFinish={(values) => {
+          values.services = { service: service, price: values.services };
+          _signUpSupplier(values);
+        }}
       >
         <Form.Item
-          name="companyName"
+          name="company_name"
           hasFeedback
           rules={[{ required: true, max: 50 }]}
         >
@@ -34,7 +44,7 @@ const SupplierRegister = () => {
         </Form.Item>
 
         <Form.Item
-          name="ownerName"
+          name="name"
           hasFeedback
           rules={[{ required: true, max: 50 }]}
         >
@@ -45,13 +55,13 @@ const SupplierRegister = () => {
         </Form.Item>
 
         <Form.Item
-          name="mobile"
+          name="mobile1"
           hasFeedback
           rules={[{ required: true, min: 10, max: 10 }]}
         >
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
-            placeholder="Mobile Number1 (Required)"
+            placeholder="Mobile Number-1 (Required)"
             type="number"
             addonBefore={<span>+92</span>}
             className="w_100"
@@ -61,7 +71,7 @@ const SupplierRegister = () => {
         <Form.Item name="mobile2" hasFeedback rules={[{ min: 10, max: 10 }]}>
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
-            placeholder="Mobile Number2 (Optional)"
+            placeholder="Mobile Number-2 (Optional)"
             type="number"
             addonBefore={<span>+92</span>}
             className="w_100"
@@ -91,7 +101,6 @@ const SupplierRegister = () => {
                 if (!value || getFieldValue("password") === value) {
                   return Promise.resolve();
                 }
-
                 return Promise.reject(
                   "The two passwords that you entered do not match!"
                 );
@@ -106,7 +115,7 @@ const SupplierRegister = () => {
         </Form.Item>
 
         <Form.Item
-          name="address"
+          name="company_address"
           hasFeedback
           rules={[{ required: true, max: 500 }]}
         >
@@ -116,7 +125,7 @@ const SupplierRegister = () => {
           />
         </Form.Item>
 
-        <Form.List name="names">
+        <Form.List name="services">
           {(fields, { add, remove }) => (
             <div>
               {fields.map((field) => (
@@ -140,6 +149,9 @@ const SupplierRegister = () => {
                           <Select
                             className="add_service_select"
                             defaultValue="19 Liter Gallon"
+                            onChange={(value) =>
+                              setService(...service, value)
+                            }
                           >
                             <Option value="19 Liter Gallon">
                               19 Liter Gallon
@@ -174,7 +186,10 @@ const SupplierRegister = () => {
                           <Col className="minus_icon_col" xs={{ span: 2 }}>
                             <MinusCircleOutlined
                               className="dynamic-delete-button"
-                              onClick={() => remove(field.name)}
+                              onClick={() => {
+                                remove(field.name);
+                                _onRemove(field.name);
+                              }}
                             />
                           </Col>
                         ) : null}
