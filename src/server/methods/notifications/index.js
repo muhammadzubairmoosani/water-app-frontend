@@ -2,7 +2,7 @@ import api from "../../config/api";
 const { notification } = require("antd");
 
 notification.config({
-  duration: 4.5,
+  duration: 4,
 });
 
 const _contactUs = (values) => {

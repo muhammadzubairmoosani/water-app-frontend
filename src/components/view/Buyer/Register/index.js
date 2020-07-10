@@ -8,19 +8,16 @@ import {
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
+import { _signUpBuyer } from "../../../../server/methods/index";
 
 const BuyerRegister = () => {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-
   return (
     <Layout className="aside_layout">
       <Heading heading="Buyer Registration" />
       <Form
         name="normal_login"
         className="login-form aside_container"
-        onFinish={onFinish}
+        onFinish={(values) => _signUpBuyer(values)}
       >
         <Form.Item
           name="name"
