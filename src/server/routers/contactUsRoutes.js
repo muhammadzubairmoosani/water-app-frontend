@@ -9,13 +9,6 @@ router.post("/contact-us", (req, res, next) => {
     .catch(next);
 });
 
-// router.get("/", (req, res, next) => {
-//   contactUsSchema
-//     .find({})
-//     .then((snap) => res.send(snap))
-//     .catch(next);
-// });
-
 const contactUsRouters = router;
 
 module.exports = contactUsRouters;

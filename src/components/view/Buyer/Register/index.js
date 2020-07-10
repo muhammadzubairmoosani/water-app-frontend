@@ -84,7 +84,7 @@ const BuyerRegister = () => {
         </Form.Item>
 
         <Form.Item
-          name="Address"
+          name="address"
           hasFeedback
           rules={[{ required: true, max: 300 }]}
         >

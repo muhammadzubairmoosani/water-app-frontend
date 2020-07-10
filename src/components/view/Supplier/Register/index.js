@@ -106,7 +106,7 @@ const SupplierRegister = () => {
         </Form.Item>
 
         <Form.Item
-          name="Address"
+          name="address"
           hasFeedback
           rules={[{ required: true, max: 500 }]}
         >
