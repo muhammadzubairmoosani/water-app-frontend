@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from "react";
-import { Layout, Heading } from "../../../common";
+import React,{useState} from "react";
+import { Layout, Heading, ImageUploader } from "../../../common";
 import { Form, Input, Button, Checkbox, Select, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
@@ -14,25 +14,18 @@ import { _signUpSupplier } from "../../../../server/methods/index";
 const { Option } = Select;
 
 const SupplierRegister = () => {
-  const [service, setService] = useState([]);
+  const [fileList, setFileList] = useState([]);
 
-  const _onRemove = (index) => {
-    setService(...service.filter((i, indx) => index !== indx));
-  };
-
-  useEffect(()=>console.log(service),[service])
   return (
     <Layout className="aside_layout">
       <Heading heading="Supplier Registration" />
       <Form
         name="normal_login"
         className="login-form aside_container register"
-        onFinish={(values) => {
-          values.services = { service: service, price: values.services };
-          _signUpSupplier(values);
-        }}
+        onFinish={(values) => _signUpSupplier(fileList.map(item =>item.originFileObj))}
+        // onFinish={(values) => _signUpSupplier(fileList.map(item =>console.log("==",item) ))}
       >
-        <Form.Item
+        {/* <Form.Item
           name="company_name"
           hasFeedback
           rules={[{ required: true, max: 50 }]}
@@ -123,9 +116,14 @@ const SupplierRegister = () => {
             placeholder="Company Address (Required)"
             prefix={<HomeOutlined className="site-form-item-icon" />}
           />
-        </Form.Item>
+        </Form.Item> */}
 
-        <Form.List name="services">
+        <ImageUploader fileList={fileList} setFileList={setFileList} 
+          name="image"
+        
+        />
+
+        {/* <Form.List name="services">
           {(fields, { add, remove }) => (
             <div>
               {fields.map((field) => (
@@ -149,9 +147,6 @@ const SupplierRegister = () => {
                           <Select
                             className="add_service_select"
                             defaultValue="19 Liter Gallon"
-                            onChange={(value) =>
-                              setService(...service, value)
-                            }
                           >
                             <Option value="19 Liter Gallon">
                               19 Liter Gallon
@@ -186,10 +181,7 @@ const SupplierRegister = () => {
                           <Col className="minus_icon_col" xs={{ span: 2 }}>
                             <MinusCircleOutlined
                               className="dynamic-delete-button"
-                              onClick={() => {
-                                remove(field.name);
-                                _onRemove(field.name);
-                              }}
+                              onClick={() => remove(field.name)}
                             />
                           </Col>
                         ) : null}
@@ -209,7 +201,7 @@ const SupplierRegister = () => {
 
         <Checkbox className="agreement">
           I have read the <Link to="#">agreement</Link>
-        </Checkbox>
+        </Checkbox> */}
 
         <Form.Item>
           <Button

@@ -1,5 +1,5 @@
 import api from "../../../config/api";
-var passwordHash = require("password-hash");
+const passwordHash = require("password-hash");
 const { notification } = require("antd");
 notification.config({
   duration: 4,
@@ -20,11 +20,7 @@ const _signUpBuyer = (values) => {
         description: "Your account has been successfully created!",
       });
     })
-    .catch((err) =>
-      notification.error({
-        message: err.message,
-      })
-    );
+    .catch((err) => notification.error({ message: err.message }));
 };
 
 export { _signUpBuyer };

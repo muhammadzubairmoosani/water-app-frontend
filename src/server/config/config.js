@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
+require('dotenv').config()
 
-const connection =
-  "mongodb+srv://pani-wala:pani-wala@cluster0.yu3ij.mongodb.net/pani-wala?retryWrites=true&w=majority";
-
-mongoose.connect(connection, {
+mongoose.connect(process.env.DATABASE_CONNECTION, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

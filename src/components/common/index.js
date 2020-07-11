@@ -6,6 +6,7 @@ import Footer from "./Footer/index";
 import Banner from "./Banner/index";
 import Pagination from "./Pagination/index";
 import Heading from "./Heading/index";
+import { ImageUploader } from "./ImageUploader/index";
 
 export {
   WallCard,
@@ -17,4 +18,5 @@ export {
   Banner,
   Pagination,
   Heading,
+  ImageUploader,
 };
