@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Layout, Heading, ImageUploader } from "../../../common";
 import { Form, Input, Button, Checkbox, Select, Row, Col } from "antd";
 import { Link } from "react-router-dom";
@@ -10,23 +10,24 @@ import {
   HomeOutlined,
 } from "@ant-design/icons";
 import { _signUpSupplier } from "../../../../service/methods/index";
-
 const { Option } = Select;
 
 const SupplierRegister = () => {
   const [fileList, setFileList] = useState([]);
-
   return (
     <Layout className="aside_layout">
       <Heading heading="Supplier Registration" />
       <Form
         name="normal_login"
         className="login-form aside_container register"
-        onFinish={(values) => _signUpSupplier(fileList[0].originFileObj)}
-        // onFinish={(values) => _signUpSupplier(fileList.map(item =>item.originFileObj))}
-        // onFinish={(values) => _signUpSupplier(fileList.map(item =>console.log("==",item) ))}
+        onFinish={(values) =>
+          _signUpSupplier({
+            values,
+            fileList: fileList.map((item) => item.originFileObj)
+          })
+        }
       >
-        {/* <Form.Item
+        <Form.Item
           name="company_name"
           hasFeedback
           rules={[{ required: true, max: 50 }]}
@@ -117,14 +118,15 @@ const SupplierRegister = () => {
             placeholder="Company Address (Required)"
             prefix={<HomeOutlined className="site-form-item-icon" />}
           />
-        </Form.Item> */}
+        </Form.Item>
 
-        <ImageUploader fileList={fileList} setFileList={setFileList} 
+        <ImageUploader
+          fileList={fileList}
+          setFileList={setFileList}
           name="image"
-        
         />
 
-        {/* <Form.List name="services">
+        <Form.List name="services">
           {(fields, { add, remove }) => (
             <div>
               {fields.map((field) => (
@@ -202,7 +204,7 @@ const SupplierRegister = () => {
 
         <Checkbox className="agreement">
           I have read the <Link to="#">agreement</Link>
-        </Checkbox> */}
+        </Checkbox>
 
         <Form.Item>
           <Button

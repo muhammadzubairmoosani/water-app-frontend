@@ -8,7 +8,7 @@ notification.config({
 const _signUpBuyer = (values) => {
   const { name, mobile, password, address } = values;
   api
-    .post("./buyer-register", {
+    .post("/buyer-register", {
       name: name,
       mobile: mobile,
       password: passwordHash.generate(password),
