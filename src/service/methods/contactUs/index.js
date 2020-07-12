@@ -1,4 +1,4 @@
-import api from "../../config/api";
+import api from "../../../service/api";
 const { notification } = require("antd");
 
 notification.config({
@@ -8,7 +8,7 @@ notification.config({
 const _contactUs = (values) => {
   const { name, mobile, message } = values;
   api
-    .post("./contact-us", {
+    .post("/contact-us", {
       name: name,
       mobile: mobile,
       message: message,
