@@ -23,4 +23,21 @@ const _signUpBuyer = (values) => {
     .catch((err) => notification.error({ message: err.message }));
 };
 
+const _loginBuyer = (values) => {
+  const { mobile, password } = values;
+  api
+    .get("/buyer-login", {
+      mobile: mobile,
+      password: passwordHash.generate(password),
+    })
+    .then(
+      (user) => console.log(user)
+      // notification.success({
+      //   message: "Thanks for create account.",
+      //   description: "Your account has been successfully created!",
+      // })
+    )
+    .catch((err) => notification.error({ message: err.message }));
+};
+
 export { _signUpBuyer };

@@ -1,10 +1,23 @@
 .about_us {
-    height: 400px;
-    background-color: #1a3871;
+    // height: 400px;
+    background-color: #ddded7;
     color: $white;
 
     .wallcard_container {
         padding: 4em 10em 5em;
+
+        @include xs {
+            padding: 1.5em;
+        }
+
+        @include sm {
+            padding: 4em 5em 5em;
+        }
+
+        p {
+            color: #666;
+            font-weight: bold;
+        }
 
         .heading {
             color: $white;
