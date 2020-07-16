@@ -14,12 +14,12 @@ const _signUpBuyer = (values) => {
       password: passwordHash.generate(password),
       address: address,
     })
-    .then(() => {
+    .then(() =>
       notification.success({
         message: "Thanks for create account.",
         description: "Your account has been successfully created!",
-      });
-    })
+      })
+    )
     .catch((err) => notification.error({ message: err.message }));
 };
 

@@ -23,7 +23,7 @@ const SupplierRegister = () => {
         onFinish={(values) =>
           _signUpSupplier({
             values,
-            fileList: fileList.map((item) => item.originFileObj)
+            fileList: fileList.map((item) => item.originFileObj),
           })
         }
       >

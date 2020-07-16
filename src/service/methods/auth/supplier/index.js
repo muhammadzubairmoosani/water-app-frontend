@@ -14,37 +14,32 @@ const _signUpSupplier = ({ values, fileList }) => {
     password,
     company_address,
   } = values;
-  const thumbnailUrls = [];
-  fileList.map((file) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "pani-wala");
-    api
-      .post(process.env.REACT_APP_CLOUDINARY_URL, formData)
-      .then(({ data }) => {
-        thumbnailUrls.push(data.secure_url);
-        if (fileList.length === thumbnailUrls.length) {
-          api
-            .post("/supplier-register", {
-              company_name,
-              name,
-              mobile1,
-              mobile2,
-              password: passwordHash.generate(password),
-              company_address,
-              thumbnailUrls,
-            })
-            .then(() => {
-              notification.success({
-                message: "Thanks for create account.",
-                description: "Your account has been successfully created!",
-              });
-            })
-            .catch((err) => notification.error({ message: err.message }));
-        }
+  Promise.all(
+    fileList.map((file) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "pani-wala");
+      return api.post(process.env.REACT_APP_CLOUDINARY_URL, formData);
+    })
+  )
+    .then((res) =>
+      api.post("/supplier-register", {
+        company_name,
+        name,
+        mobile1,
+        mobile2,
+        password: passwordHash.generate(password),
+        company_address,
+        images: res.map(({ data }) => data.secure_url),
       })
-      .catch((err) => notification.error({ message: err.message }));
-  });
+    )
+    .then(() =>
+      notification.success({
+        message: "Thanks for create account.",
+        description: "Your account has been successfully created!",
+      })
+    )
+    .catch((err) => notification.error({ message: err.message }));
 };
 
 export { _signUpSupplier };
