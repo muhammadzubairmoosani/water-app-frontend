@@ -5,7 +5,25 @@ notification.config({
   duration: 4,
 });
 
-const _signUpBuyer = (values) => {
+const _loginBuyer = (values) => {
+  const { mobile, password } = values;
+  // console.log(values);
+  api
+    .get("/buyer-login", {
+      mobile: mobile,
+    })
+    .then(
+      (user) => console.log(user)
+      // notification.success({
+      //   message: "Thanks for create account.",
+      //   description: "Your account has been successfully created!",
+      // })
+    )
+    .catch((err) => notification.error({ message: err.message }));
+  // password: passwordHash.generate(password),
+};
+
+const _registerBuyer = (values) => {
   const { name, mobile, password, address } = values;
   api
     .post("/buyer-register", {
@@ -23,21 +41,4 @@ const _signUpBuyer = (values) => {
     .catch((err) => notification.error({ message: err.message }));
 };
 
-const _loginBuyer = (values) => {
-  const { mobile, password } = values;
-  api
-    .get("/buyer-login", {
-      mobile: mobile,
-      password: passwordHash.generate(password),
-    })
-    .then(
-      (user) => console.log(user)
-      // notification.success({
-      //   message: "Thanks for create account.",
-      //   description: "Your account has been successfully created!",
-      // })
-    )
-    .catch((err) => notification.error({ message: err.message }));
-};
-
-export { _signUpBuyer };
+export { _registerBuyer, _loginBuyer };

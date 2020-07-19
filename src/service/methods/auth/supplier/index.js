@@ -1,11 +1,12 @@
 import api from "../../../../service/api";
 import passwordHash from "password-hash";
-import { notification } from "antd";
+const { notification } = require("antd");
 notification.config({
   duration: 4,
 });
 
-const _signUpSupplier = ({ values, fileList }) => {
+const _registerSupplier = ({ values, fileList }) => {
+  console.log(values);
   const {
     company_name,
     name,
@@ -42,4 +43,4 @@ const _signUpSupplier = ({ values, fileList }) => {
     .catch((err) => notification.error({ message: err.message }));
 };
 
-export { _signUpSupplier };
+export { _registerSupplier };

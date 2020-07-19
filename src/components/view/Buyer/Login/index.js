@@ -3,16 +3,17 @@ import { Layout, Heading } from "../../../common";
 import { Form, Input, Button } from "antd";
 import { MobileOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { _loginBuyer } from "../../../../service/methods/index";
 
 const BuyerLogin = () => {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-
   return (
     <Layout className="aside_layout">
       <Heading heading="Buyer Login" />
-      <Form name="normal_login" className="aside_container" onFinish={onFinish}>
+      <Form
+        name="normal_login"
+        className="aside_container"
+        onFinish={(values) => _loginBuyer(values)}
+      >
         <Form.Item
           name="mobile"
           hasFeedback
