@@ -5,8 +5,27 @@ notification.config({
   duration: 4,
 });
 
+const _supplierLogin = (values) => {
+  const { mobile, password } = values;
+  api
+    .get(`/supplier-login/${mobile}`)
+    .then(({ data }) => {
+      if (passwordHash.verify(password, data.password)) {
+        notification.success({
+          message: "Login Success!",
+        });
+      } else {
+        notification.error({
+          message: "Your account is not registered yet!",
+          description:
+            "Please check your mobile number and password and try again thnak you!",
+        });
+      }
+    })
+    .catch((err) => notification.error({ message: err.message }));
+};
+
 const _registerSupplier = ({ values, fileList }) => {
-  console.log(values);
   const {
     company_name,
     name,
@@ -43,4 +62,4 @@ const _registerSupplier = ({ values, fileList }) => {
     .catch((err) => notification.error({ message: err.message }));
 };
 
-export { _registerSupplier };
+export { _registerSupplier, _supplierLogin };

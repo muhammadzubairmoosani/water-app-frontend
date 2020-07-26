@@ -21,8 +21,6 @@ const _loginBuyer = (values) => {
             "Please check your mobile number and password and try again thnak you!",
         });
       }
-      console.log(data.password);
-      console.log(data);
     })
     .catch((err) => notification.error({ message: err.message }));
 };
