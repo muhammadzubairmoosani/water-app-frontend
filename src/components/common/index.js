@@ -1,4 +1,4 @@
-import { WallCard, SupplierCard } from "./Cards/index";
+import { WallCard, ProductCard } from "./Cards/index";
 import { CardCarousel } from "./Carousels/index";
 import Layout from "./Layout/index";
 import Header from "./Header/index";
@@ -10,7 +10,7 @@ import { ImageUploader } from "./ImageUploader/index";
 
 export {
   WallCard,
-  SupplierCard,
+  ProductCard,
   CardCarousel,
   Layout,
   Header,

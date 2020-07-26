@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, SupplierCard, Pagination, Heading } from "../../common/index";
+import { Layout, ProductCard, Pagination, Heading } from "../../common/index";
 import { data } from "../../../util/supplierCardData";
 const SupplierList = () => {
   return (
@@ -8,7 +8,7 @@ const SupplierList = () => {
         <Heading heading="Supplier List" />
         {data.map((item) => (
           <div key={item._id}>
-            <SupplierCard props={item} />
+            <ProductCard props={item} />
           </div>
         ))}
         <Pagination props="50" />

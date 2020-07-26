@@ -2,9 +2,9 @@ import React from "react";
 import { Card, Skeleton, Avatar } from "antd";
 import { PhoneOutlined } from "@ant-design/icons";
 const { Meta } = Card;
-const SupplierCard = ({ props }) => {
+const ProductCard = ({ props }) => {
   return (
-    <div className="supplier_card_wrapper">
+    <div className="product_card_wrapper">
       <Card
         cover={<img alt="example" src={props.img} />}
         actions={[
@@ -25,4 +25,4 @@ const SupplierCard = ({ props }) => {
     </div>
   );
 };
-export default SupplierCard;
+export default ProductCard;

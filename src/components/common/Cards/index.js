@@ -1,4 +1,4 @@
 import WallCard from "./wallCard";
-import SupplierCard from "./supplierCard";
+import ProductCard from "./productCard";
 
-export { WallCard, SupplierCard };
+export { WallCard, ProductCard };
