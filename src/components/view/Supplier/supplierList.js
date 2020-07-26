@@ -12,15 +12,22 @@ const SupplierList = () => {
     <div className="supplier_list_container">
       <Layout>
         <Heading heading="Supplier List" />
-        {false ? (
-          <ProductCardSkeleton />
-        ) : (
+        {true ? (
           <>
             {data.map((item) => (
               <div key={item._id}>
                 <ProductCard props={item} />
               </div>
             ))}
+          </>
+        ) : (
+          <>
+            <ProductCardSkeleton />
+            <ProductCardSkeleton />
+            <ProductCardSkeleton />
+            <ProductCardSkeleton />
+            <ProductCardSkeleton />
+            <ProductCardSkeleton />
           </>
         )}
         <Pagination props="50" />
