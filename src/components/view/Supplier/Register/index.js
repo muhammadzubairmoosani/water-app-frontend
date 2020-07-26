@@ -9,7 +9,7 @@ import {
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import { _registerSupplier } from "../../../../service/methods/index";
+import { _suplierRegister } from "../../../../service/methods/index";
 const { Option } = Select;
 
 const SupplierRegister = () => {
@@ -21,7 +21,7 @@ const SupplierRegister = () => {
         name="normal_login"
         className="login-form aside_container register"
         onFinish={(values) =>
-          _registerSupplier({
+          _suplierRegister({
             values,
             fileList: fileList.map((item) => item.originFileObj),
           })

@@ -8,7 +8,7 @@ import {
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import { _registerBuyer } from "../../../../service/methods/index";
+import { _buyerRegister } from "../../../../service/methods/index";
 
 const BuyerRegister = () => {
   return (
@@ -17,7 +17,7 @@ const BuyerRegister = () => {
       <Form
         name="normal_login"
         className="login-form aside_container"
-        onFinish={(values) => _registerBuyer(values)}
+        onFinish={(values) => _buyerRegister(values)}
       >
         <Form.Item
           name="name"

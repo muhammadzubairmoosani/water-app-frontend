@@ -25,7 +25,7 @@ const _supplierLogin = (values) => {
     .catch((err) => notification.error({ message: err.message }));
 };
 
-const _registerSupplier = ({ values, fileList }) => {
+const _suplierRegister = ({ values, fileList }) => {
   const {
     company_name,
     name,
@@ -62,4 +62,4 @@ const _registerSupplier = ({ values, fileList }) => {
     .catch((err) => notification.error({ message: err.message }));
 };
 
-export { _registerSupplier, _supplierLogin };
+export { _suplierRegister, _supplierLogin };

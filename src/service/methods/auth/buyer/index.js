@@ -5,7 +5,7 @@ notification.config({
   duration: 4,
 });
 
-const _loginBuyer = (values) => {
+const _buyerLogin = (values) => {
   const { mobile, password } = values;
   api
     .get(`/buyer-login/${mobile}`)
@@ -25,7 +25,7 @@ const _loginBuyer = (values) => {
     .catch((err) => notification.error({ message: err.message }));
 };
 
-const _registerBuyer = (values) => {
+const _buyerRegister = (values) => {
   const { name, mobile, password, address } = values;
   api
     .post("/buyer-register", {
@@ -43,4 +43,4 @@ const _registerBuyer = (values) => {
     .catch((err) => notification.error({ message: err.message }));
 };
 
-export { _registerBuyer, _loginBuyer };
+export { _buyerRegister, _buyerLogin };

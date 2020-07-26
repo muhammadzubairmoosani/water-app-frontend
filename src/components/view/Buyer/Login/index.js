@@ -3,7 +3,7 @@ import { Layout, Heading } from "../../../common";
 import { Form, Input, Button } from "antd";
 import { MobileOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { _loginBuyer } from "../../../../service/methods/index";
+import { _buyerLogin } from "../../../../service/methods/index";
 
 const BuyerLogin = () => {
   return (
@@ -12,7 +12,7 @@ const BuyerLogin = () => {
       <Form
         name="normal_login"
         className="aside_container"
-        onFinish={(values) => _loginBuyer(values)}
+        onFinish={(values) => _buyerLogin(values)}
       >
         <Form.Item
           name="mobile"
