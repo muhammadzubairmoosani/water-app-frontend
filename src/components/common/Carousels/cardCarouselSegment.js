@@ -1,5 +1,5 @@
 import React from "react";
-import { WallCard, ProductCard, CardCarousel } from "../index";
+import { WallCard, ProductCard, CardCarousel } from "../";
 const CardCarouselSegment = ({ heading, subHeading, array, route }) => {
   return (
     <div className="card_carousel_segment">

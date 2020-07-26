@@ -1,4 +1,4 @@
-import BuyerLogin from "./Login/index";
-import BuyerRegister from "./Register/index";
+import BuyerLogin from "./Login";
+import BuyerRegister from "./Register";
 
 export { BuyerLogin, BuyerRegister };

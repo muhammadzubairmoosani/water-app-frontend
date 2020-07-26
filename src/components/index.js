@@ -1,4 +1,4 @@
-import { Header, Layout, Footer, Heading } from "./common/index";
+import { Header, Layout, Footer, Heading } from "./common";
 import {
   Home,
   ContactUs,
@@ -8,7 +8,7 @@ import {
   SupplierList,
   SupplierLogin,
   SupplierRegister,
-} from "./view/index";
+} from "./view";
 
 export {
   Home,

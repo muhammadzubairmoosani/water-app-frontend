@@ -1,5 +1,5 @@
 import React from "react";
-import { WallCard } from "../../common/index";
+import { WallCard } from "../../common";
 
 const AboutUs = () => {
   return (

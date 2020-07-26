@@ -9,7 +9,7 @@ import {
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import { _suplierRegister } from "../../../../service/methods/index";
+import { _suplierRegister } from "../../../../service/methods";
 const { Option } = Select;
 
 const SupplierRegister = () => {

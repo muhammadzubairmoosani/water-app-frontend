@@ -8,7 +8,7 @@ import {
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import { _buyerRegister } from "../../../../service/methods/index";
+import { _buyerRegister } from "../../../../service/methods";
 
 const BuyerRegister = () => {
   return (

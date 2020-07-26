@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, MobileOutlined } from "@ant-design/icons";
 import { Layout, Heading } from "../../common";
-import { _contactUs } from "../../../service/methods/index";
+import { _contactUs } from "../../../service/methods";
 
 const { TextArea } = Input;
 const ContactUs = () => {

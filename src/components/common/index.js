@@ -1,12 +1,13 @@
-import { WallCard, ProductCard } from "./Cards/index";
-import { CardCarousel } from "./Carousels/index";
-import Layout from "./Layout/index";
-import Header from "./Header/index";
-import Footer from "./Footer/index";
-import Banner from "./Banner/index";
-import Pagination from "./Pagination/index";
-import Heading from "./Heading/index";
-import { ImageUploader } from "./ImageUploader/index";
+import { WallCard, ProductCard } from "./Cards";
+import { CardCarousel } from "./Carousels";
+import Layout from "./Layout";
+import Header from "./Header";
+import Footer from "./Footer";
+import Banner from "./Banner";
+import Pagination from "./Pagination";
+import Heading from "./Heading";
+import { ImageUploader } from "./ImageUploader";
+import { ProductCardSkeleton } from "./Skeletons";
 
 export {
   WallCard,
@@ -19,4 +20,5 @@ export {
   Pagination,
   Heading,
   ImageUploader,
+  ProductCardSkeleton,
 };

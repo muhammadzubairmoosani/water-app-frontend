@@ -10,7 +10,7 @@ import {
   SupplierList,
   SupplierLogin,
   SupplierRegister,
-} from "./components/index";
+} from "./components";
 import { BackTop } from "antd";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const App = () => {

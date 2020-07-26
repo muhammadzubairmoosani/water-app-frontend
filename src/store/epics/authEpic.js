@@ -1,5 +1,5 @@
 import { Observable } from "rxjs/Rx";
-import { authAction } from "../actions/index";
+import { authAction } from "../actions";
 
 export default class authEpic {
   static signIn = (action$) =>

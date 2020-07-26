@@ -1,6 +1,6 @@
-import { _contactUs } from "./contactUs/index";
-import { _buyerLogin, _buyerRegister } from "./auth/buyer/index";
-import { _suplierRegister, _supplierLogin } from "./auth/supplier/index";
+import { _contactUs } from "./contactUs";
+import { _buyerLogin, _buyerRegister } from "./auth/buyer";
+import { _suplierRegister, _supplierLogin } from "./auth/supplier";
 
 export {
   _contactUs,

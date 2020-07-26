@@ -3,7 +3,7 @@ import { Layout, Heading } from "../../../common";
 import { Form, Input, Button } from "antd";
 import { MobileOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { _buyerLogin } from "../../../../service/methods/index";
+import { _buyerLogin } from "../../../../service/methods";
 
 const BuyerLogin = () => {
   return (
