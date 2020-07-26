@@ -7,20 +7,24 @@ notification.config({
 
 const _loginBuyer = (values) => {
   const { mobile, password } = values;
-  // console.log(values);
   api
-    .get("/buyer-login", {
-      mobile: mobile,
+    .get(`/buyer-login/${mobile}`)
+    .then(({ data }) => {
+      if (passwordHash.verify(password, data.password)) {
+        notification.success({
+          message: "Login Success!",
+        });
+      } else {
+        notification.error({
+          message: "Your account is not registered yet!",
+          description:
+            "Please check your mobile number and password and try again thnak you!",
+        });
+      }
+      console.log(data.password);
+      console.log(data);
     })
-    .then(
-      (user) => console.log(user)
-      // notification.success({
-      //   message: "Thanks for create account.",
-      //   description: "Your account has been successfully created!",
-      // })
-    )
     .catch((err) => notification.error({ message: err.message }));
-  // password: passwordHash.generate(password),
 };
 
 const _registerBuyer = (values) => {
