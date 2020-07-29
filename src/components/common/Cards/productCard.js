@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Skeleton, Avatar } from "antd";
+import { Card, Avatar } from "antd";
 import { PhoneOutlined } from "@ant-design/icons";
 const { Meta } = Card;
 const ProductCard = ({ props }) => {
@@ -13,14 +13,11 @@ const ProductCard = ({ props }) => {
           </span>,
         ]}
       >
-        {/* will setup Skeleton */}
-        <Skeleton loading={false} avatar active>
-          <Meta
-            avatar={<Avatar src={props.img} />}
-            title={"Card title"}
-            description={props.detail}
-          />
-        </Skeleton>
+        <Meta
+          avatar={<Avatar src={props.img} />}
+          title={"Card title"}
+          description={props.detail}
+        />
       </Card>
     </div>
   );

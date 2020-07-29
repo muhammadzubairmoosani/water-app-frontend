@@ -1,9 +1,6 @@
 import api from "../../../../service/api";
-const passwordHash = require("password-hash");
-const { notification } = require("antd");
-notification.config({
-  duration: 4,
-});
+import { Notification } from "../../../../components/common";
+import passwordHash from "password-hash";
 
 const _buyerLogin = (values) => {
   const { mobile, password } = values;
@@ -11,18 +8,18 @@ const _buyerLogin = (values) => {
     .get(`/buyer-login/${mobile}`)
     .then(({ data }) => {
       if (passwordHash.verify(password, data.password)) {
-        notification.success({
+        Notification.success({
           message: "Login Success!",
         });
       } else {
-        notification.error({
+        Notification.error({
           message: "Your account is not registered yet!",
           description:
             "Please check your mobile number and password and try again thnak you!",
         });
       }
     })
-    .catch((err) => notification.error({ message: err.message }));
+    .catch((err) => Notification.error({ message: err.message }));
 };
 
 const _buyerRegister = (values) => {
@@ -35,12 +32,12 @@ const _buyerRegister = (values) => {
       address: address,
     })
     .then(() =>
-      notification.success({
+      Notification.success({
         message: "Thanks for create account.",
         description: "Your account has been successfully created!",
       })
     )
-    .catch((err) => notification.error({ message: err.message }));
+    .catch((err) => Notification.error({ message: err.message }));
 };
 
 export { _buyerRegister, _buyerLogin };

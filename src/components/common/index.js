@@ -8,6 +8,7 @@ import Pagination from "./Pagination";
 import Heading from "./Heading";
 import { ImageUploader } from "./ImageUploader";
 import { ProductCardSkeleton } from "./Skeletons";
+import Notification from "./Notification";
 
 export {
   WallCard,
@@ -21,4 +22,5 @@ export {
   Heading,
   ImageUploader,
   ProductCardSkeleton,
+  Notification,
 };

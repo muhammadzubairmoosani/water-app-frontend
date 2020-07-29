@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Layout,
   ProductCard,
   Pagination,
   Heading,
   ProductCardSkeleton,
+  Notification,
 } from "../../common";
 import { data } from "../../../util/supplierCardData";
+import { _supplierList } from "../../../service/methods";
+
 const SupplierList = () => {
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    _supplierList()
+      .then(({ data }) => setList(data))
+      .catch(({ message }) => Notification.error({ message: message }));
+  }, []);
+
   return (
     <div className="supplier_list_container">
       <Layout>
