@@ -1,9 +1,5 @@
 import api from "../../../service/api";
-const { notification } = require("antd");
-
-notification.config({
-  duration: 4,
-});
+import { Notification } from "../../../components/common";
 
 const _contactUs = (values) => {
   const { name, mobile, message } = values;
@@ -14,13 +10,13 @@ const _contactUs = (values) => {
       message: message,
     })
     .then(() => {
-      notification.success({
+      Notification.success({
         message: "Thanks for contacting us.",
         description: "Your message has been received.",
       });
     })
     .catch((err) =>
-      notification.error({
+      Notification.error({
         message: err.message,
       })
     );
