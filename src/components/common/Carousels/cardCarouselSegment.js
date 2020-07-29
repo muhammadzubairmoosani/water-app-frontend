@@ -7,7 +7,7 @@ const CardCarouselSegment = ({ heading, subHeading, array, route }) => {
         <CardCarousel>
           {array.map((companies) => (
             <div key={companies._id}>
-              <ProductCard props={companies} />
+              <ProductCard product={companies} />
             </div>
           ))}
         </CardCarousel>
