@@ -31,7 +31,7 @@ function CustomPrevArrow(props) {
 const settings = {
   centerMode: true,
   infinite: true,
-  autoplay: true,
+  autoplay: false,
   centerPadding: "135px",
   slidesToShow: 2,
   speed: 500,
@@ -72,7 +72,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 1080,
+      breakpoint: 1024,
       settings: {
         slidesToShow: 2,
         centerMode: true,

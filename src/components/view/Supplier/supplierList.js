@@ -7,7 +7,7 @@ import {
   ProductCardSkeleton,
   Notification,
 } from "../../common";
-import { _supplierList } from "../../../service/methods";
+import { _getSupplierList } from "../../../service/methods";
 
 const SupplierList = () => {
   const [list, setList] = useState([]);
@@ -15,7 +15,7 @@ const SupplierList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    _supplierList()
+    _getSupplierList()
       .then(({ data }) => {
         setList(data);
         setIsLoading(false);

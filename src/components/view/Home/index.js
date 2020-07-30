@@ -3,8 +3,8 @@ import MainCarousel from "./carousel";
 import AboutUs from "./aboutUs";
 import CardCarouselSegment from "../../common/Carousels/cardCarouselSegment";
 import { Layout, Notification } from "../../common";
-import { data } from "../../../util/supplierCardData";
-import { _supplierList } from "../../../service/methods";
+// import { data } from "../../../util/supplierCardData";
+import { _getSupplierList } from "../../../service/methods";
 
 const Home = () => {
   const [list, setList] = useState([]);
@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    _supplierList()
+    _getSupplierList()
       .then(({ data }) => {
         setList(data);
         setIsLoading(false);

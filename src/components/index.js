@@ -8,6 +8,7 @@ import {
   SupplierList,
   SupplierLogin,
   SupplierRegister,
+  SupplierDetail,
 } from "./view";
 
 export {
@@ -23,4 +24,5 @@ export {
   SupplierList,
   SupplierLogin,
   SupplierRegister,
+  SupplierDetail,
 };

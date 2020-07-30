@@ -10,6 +10,7 @@ import {
   SupplierList,
   SupplierLogin,
   SupplierRegister,
+  SupplierDetail,
 } from "./components";
 import { BackTop } from "antd";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact path="/supplier-list" component={SupplierList} />
         <Route exact path="/supplier-login" component={SupplierLogin} />
         <Route exact path="/supplier-register" component={SupplierRegister} />
+        <Route exact path="/supplier-detail/:id" component={SupplierDetail} />
         <Route exact path="/buyer-login" component={BuyerLogin} />
         <Route exact path="/buyer-register" component={BuyerRegister} />
         <Route component={ErrorPage} />

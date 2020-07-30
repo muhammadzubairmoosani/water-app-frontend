@@ -1,7 +1,9 @@
 import React from "react";
 import { Card, Avatar } from "antd";
 import { PhoneOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
+
 const ProductCard = ({ product }) => {
   const { images, company_name } = product;
   return (
@@ -9,16 +11,16 @@ const ProductCard = ({ product }) => {
       <Card
         cover={<img alt="example" src={images[0]} />}
         actions={[
-          <span>
+          <Link to={`supplier-detail/${product._id}`}>
             <PhoneOutlined style={{ transform: "rotate(100deg)" }} /> Order Now
-          </span>,
+          </Link>,
         ]}
       >
         <Meta
           avatar={<Avatar src={images[1]} />}
           title={company_name}
           description={
-            "hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world"
+            "hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world"
           }
         />
       </Card>

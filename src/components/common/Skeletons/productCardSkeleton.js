@@ -1,25 +1,25 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-const ProductCardSkeleton = (props) => (
+const ProductCardSkeleton = ({ className }) => (
   <ContentLoader
-    speed={2}
-    width={300}
-    height={405}
-    viewBox="0 0 300 405"
+    speed={1}
+    width={250}
+    height={395}
+    viewBox="0 0 250 395"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
     style={{ margin: "1em" }}
-    {...props}
+    className={className}
   >
-    <rect x="0" y="0" rx="10" ry="10" width="300" height="185" />
-    <circle cx="52" cy="176" r="27" />
-    <rect x="0" y="214" rx="0" ry="0" width="300" height="22" />
-    <rect x="0" y="257" rx="0" ry="0" width="300" height="14" />
-    <rect x="0" y="277" rx="0" ry="0" width="300" height="14" />
-    <rect x="0" y="297" rx="0" ry="0" width="300" height="14" />
-    <rect x="0" y="317" rx="0" ry="0" width="300" height="14" />
-    <rect x="0" y="358" rx="0" ry="0" width="300" height="47" />
+    <rect x="0" y="0" rx="10" ry="10" width="250" height="160" />
+    <circle cx="52" cy="155" r="27" />
+    <rect x="0" y="205" rx="0" ry="0" width="250" height="22" />
+    <rect x="0" y="254" rx="0" ry="0" width="250" height="14" />
+    <rect x="0" y="274" rx="0" ry="0" width="250" height="14" />
+    <rect x="0" y="294" rx="0" ry="0" width="250" height="14" />
+    <rect x="0" y="314" rx="0" ry="0" width="250" height="14" />
+    <rect x="0" y="348" rx="0" ry="0" width="250" height="47" />
   </ContentLoader>
 );
 
