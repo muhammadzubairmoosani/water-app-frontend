@@ -50,7 +50,6 @@ const BuyerRegister = () => {
           name="password"
           hasFeedback
           rules={[{ required: true, min: 8, max: 30 }]}
-          hasFeedback
         >
           <Input.Password
             placeholder="Password (Required)"

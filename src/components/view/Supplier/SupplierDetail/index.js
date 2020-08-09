@@ -17,7 +17,7 @@ const SupplierDetail = ({ match }) => {
         setIsLoading(false);
         Notification.error({ message: message });
       });
-  }, []);
+  }, [match.params.id]);
 
   return (
     <Layout>
