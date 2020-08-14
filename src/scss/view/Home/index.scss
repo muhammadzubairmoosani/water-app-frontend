@@ -1,3 +1,15 @@
+////////////// MAIN CAROUSEL //////////////
+.main_carousel {
+    .img {
+        width: 100%;
+    }
+
+    li.slick-active button {
+        background-color: $themColor !important;
+    }
+}
+
+////////////// ABOUT ME //////////////
 .about_us {
     // height: 400px;
     background-color: #ddded7;

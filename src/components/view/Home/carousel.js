@@ -8,28 +8,28 @@ const MainCarousel = () => {
         <div>
           <img
             className="img"
-            src={require("../../../assets/images/footer.webp")}
+            src={require("../../../assets/images/slider1.webp")}
             alt="carousel"
           />
         </div>
         <div>
           <img
             className="img"
-            src={require("../../../assets/images/huseyin-akuzum-UfkuFDsXTwI-unsplash.jpg")}
+            src={require("../../../assets/images/slider2.webp")}
             alt="carousel"
           />
         </div>
         <div>
           <img
             className="img"
-            src={require("../../../assets/images/louis-hansel-shotsoflouis-Y-8uuOZGKrY-unsplash.jpg")}
+            src={require("../../../assets/images/slider3.webp")}
             alt="carousel"
           />
         </div>
         <div>
           <img
             className="img"
-            src={require("../../../assets/images/img1.jpg")}
+            src={require("../../../assets/images/slider4.webp")}
             alt="carousel"
           />
         </div>
