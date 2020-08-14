@@ -80,6 +80,13 @@ $break-points: (
     }
 }
 
+// Custom Range for inconvenient sizes
+@mixin min_max($min, $max) {
+    @media (min-width: $min+"px") and (max-width: $max+"px") {
+      @content;
+    }
+  }
+
 //////////////// Poppins Fonts Family ///////////////
 @font-face {
     font-family: "Poppins_Medium";

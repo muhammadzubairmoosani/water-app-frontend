@@ -8,7 +8,7 @@ const MainCarousel = () => {
         <div>
           <img
             className="img"
-            src={require("../../../assets/images/jong-marshes-79mNMAvSORg-unsplash.jpg")}
+            src={require("../../../assets/images/footer.webp")}
             alt="carousel"
           />
         </div>

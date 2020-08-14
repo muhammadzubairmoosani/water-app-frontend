@@ -11,7 +11,7 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="back_shadow"></div>
+      {/* <div className="back_shadow"></div> */}
       <div className="footer_nest_contain">
         <WallCard heading="footer" subHeading="sub heading">
           <div className="list_wrapper">
