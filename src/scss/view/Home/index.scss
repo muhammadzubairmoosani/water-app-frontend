@@ -1,12 +1,24 @@
 ////////////// MAIN CAROUSEL //////////////
 .main_carousel {
-    .img {
+    img {
         width: 100%;
     }
 
     li.slick-active button {
         background-color: $themColor !important;
     }
+}
+
+.ant-carousel-vertical .slick-dots-right {
+    right: 20px !important;
+}
+
+.slick-dots {
+    width: auto !important;
+}
+
+.slick-dots li button:before {
+    display: none !important;
 }
 
 ////////////// ABOUT ME //////////////
