@@ -91,46 +91,6 @@ $break-points: (
     src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
 
-//////// useless
-// $color: (
-//     clr_white: #ffffff,
-//     clr_off_white: #f2f0ec,
-//     clr_gray0: #c4c4c4,
-//     clr_gray1: #bfbfbf,
-//     clr_gray3: #7e7e7e,
-//     clr_gray4: #818181,
-//     clr_gray5: #737373,
-//     clr_gray6: #4b4b4b,
-//     clr_gray7: #424242d9,
-//     clr_gray8: #424242,
-//     clr_gray9: #343434,
-//     clr_gray10: #2b2b2bba,
-//     clr_gray11: #2b2b2b,
-//     clr_gray12: #424242ba,
-//     clr_gray13: #767676,
-//     clr_gray14: #262626,
-//     clr_gray15: #d5d5d5,
-//     clr_shadow1: #ffffff00,
-//     clr_shadow2: #00000029,
-//     clr_black: #000000,
-//     clr_blue1: #50bac3,
-//     clr_blue2: #009cdc,
-//     clr_blue3: #00a0ff,
-//     clr_blue4: #0063b0,
-//     clr_blue5: #002b7f,
-//     clr_red1: #e36955,
-//     clr_red2: #e82727,
-//     clr_red3: #e50019,
-//     clr_yellow1: #ffee00,
-//     clr_yellow2: #f1ae44,
-//     clr_yellow3: #ff9f00,
-//     clr_yellow4: #f77e0b,
-//     clr_yellow5: #f06d06,
-//     clr_green1: #8abb2a,
-//     clr_green2: #145629,
-//     clr_purple: #863bae,
-//     clr_bootstrap_dark: #292b2c,
-// );
 ///////////// ANIMATION ////////////
 @mixin animation {
     -webkit-animation: animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
