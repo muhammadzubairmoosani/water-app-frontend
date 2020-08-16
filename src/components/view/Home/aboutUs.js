@@ -5,7 +5,11 @@ const AboutUs = () => {
   return (
     <div className="about_us">
       <div>
-        <img src={require("../../../assets/images/about-me.webp")} alt="..." />
+        <img
+          className="supplier_img"
+          src={require("../../../assets/images/about-me.webp")}
+          alt="..."
+        />
       </div>
       <WallCard heading={"About Us"} subHeading={"PANI WALA"}>
         <p>
