@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ImageUploader, WallCard } from "../../../common";
+import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
 import { Form, Input, Button, Checkbox, Select, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
@@ -15,7 +16,7 @@ const { Option } = Select;
 const SupplierRegister = () => {
   const [fileList, setFileList] = useState([]);
   return (
-    <WallCard className="supplier_register" heading="Supplier Login">
+    <WallCard className="supplier_register" heading="Supplier Register">
       <Form
         name="normal_login"
         className="login-form aside_container register"
@@ -118,13 +119,34 @@ const SupplierRegister = () => {
           />
         </Form.Item>
 
-        <ImageUploader
+        {/* <CloudinaryContext cloudName="pani-wala">
+          <Image publicId="my-images/back_ckxp37">
+            <Transformation width="400" crop="scale" overlay="cloudinary_icon"/>
+          </Image>
+        </CloudinaryContext> */}
+
+        {/* <CloudinaryContext cloudName="demo">
+          <Image publicId="sample">
+            <Transformation
+              overlay="cloudinary_icon"
+              gravity="south_east"
+              x="5"
+              y="5"
+              width="50"
+              opacity="60"
+              effect="brightness:200"
+            />
+
+          </Image>
+        </CloudinaryContext> */}
+
+        {/* <ImageUploader
           fileList={fileList}
           setFileList={setFileList}
           name="image"
-        />
+        /> */}
 
-        <Form.List name="services">
+        {/* <Form.List name="services">
           {(fields, { add, remove }) => (
             <div>
               {fields.map((field) => (
@@ -199,7 +221,7 @@ const SupplierRegister = () => {
             </div>
           )}
         </Form.List>
-
+ */}
         <Checkbox className="agreement">
           I have read the <Link to="#">agreement</Link>
         </Checkbox>

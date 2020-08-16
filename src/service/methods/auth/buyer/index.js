@@ -26,6 +26,7 @@ const _buyerRegister = (values) => {
   const { name, mobile, password, address } = values;
   api
     .post("/buyer-register", {
+      time_stemp: Date.now(),
       name: name,
       mobile: mobile,
       password: passwordHash.generate(password),
