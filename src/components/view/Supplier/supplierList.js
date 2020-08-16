@@ -14,18 +14,35 @@ const SupplierList = () => {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // const [lastScrollTop, setLastScrollTop] = useState(0);
+  // const [firstFetch, setFirstFetch] = useState(true);
+  // const [bodyOffset, setBodyOffset] = useState(
+  //   document.body.getBoundingClientRect()
+  // );
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", listener);
+  //   return () => window.removeEventListener("scroll", listener);
+  // });
+
   useEffect(() => {
     setIsLoading(true);
-    _getSupplierList(0, 9)
+    _getSupplierList(list.length, 9)
       .then(({ data }) => {
-        setList(data);
+        setList([...list, ...data]);
         setIsLoading(false);
+        setFirstFetch(false);
       })
       .catch(({ message }) => {
         setIsLoading(false);
         Notification.error({ message: message });
       });
   }, []);
+
+  // const listener = () => {
+  //   setBodyOffset(document.body.getBoundingClientRect());
+  //   setLastScrollTop(-bodyOffset.top);
+  // };
 
   return (
     <div className="supplier_list_container">
