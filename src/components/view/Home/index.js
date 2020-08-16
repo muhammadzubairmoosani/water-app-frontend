@@ -31,7 +31,7 @@ const Home = () => {
           "loading..."
         ) : (
           <CardCarouselSegment
-            heading="19 liters water gallon service"
+            heading="19 liters gallon services"
             subHeading="see all"
             array={list}
             route={"/supplier-list"}
@@ -41,7 +41,7 @@ const Home = () => {
           "loading..."
         ) : (
           <CardCarouselSegment
-            heading="1,000 liters water service"
+            heading="1,000 liters services"
             subHeading="see all"
             array={list}
             route={"/supplier-list"}
@@ -52,7 +52,7 @@ const Home = () => {
           "loading..."
         ) : (
           <CardCarouselSegment
-            heading="2,000 liters water service"
+            heading="2,000 liters services"
             subHeading="see all"
             array={list}
             route={"/supplier-list"}
@@ -62,7 +62,7 @@ const Home = () => {
           "loading..."
         ) : (
           <CardCarouselSegment
-            heading="3,000 liters water service"
+            heading="3,000 liters services"
             subHeading="see all"
             array={list}
             route={"/supplier-list"}
@@ -72,7 +72,7 @@ const Home = () => {
           "loading..."
         ) : (
           <CardCarouselSegment
-            heading="6,000 liters water service"
+            heading="6,000 liters services"
             subHeading="see all"
             array={list}
             route={"/supplier-list"}

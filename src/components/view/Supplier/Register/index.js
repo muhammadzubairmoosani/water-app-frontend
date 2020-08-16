@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Heading, ImageUploader } from "../../../common";
+import { ImageUploader, WallCard } from "../../../common";
 import { Form, Input, Button, Checkbox, Select, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
@@ -15,8 +15,7 @@ const { Option } = Select;
 const SupplierRegister = () => {
   const [fileList, setFileList] = useState([]);
   return (
-    <Layout className="aside_layout">
-      <Heading heading="Supplier Registration" />
+    <WallCard className="supplier_register" heading="Supplier Login">
       <Form
         name="normal_login"
         className="login-form aside_container register"
@@ -217,7 +216,7 @@ const SupplierRegister = () => {
           Or <Link to="supplier-login">Login now!</Link>
         </Form.Item>
       </Form>
-    </Layout>
+    </WallCard>
   );
 };
 

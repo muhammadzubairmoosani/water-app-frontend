@@ -10,34 +10,24 @@
         }
 
         .heading {
-            // font-family: Lemonada-Medium;
-            font-size: 40px;
-            // color: map-get($color, clr_gray8);
-            color: gray;
-            margin: 0;
-            height: 60px;
-
-            @include xs {
-                font-size: 20px;
-                // height: 44px;
-                // font-weight: bold;
-                height: 100%;
-                line-height: 1em;
-                margin: 10px 0;
-            }
-            @include sm {
-                font-size: 28px;
-                height: 44px;
-            }
+            font-family: Lemonada-SemiBold;
+            color: $themColor;
+            margin-right: .5em;
+            margin-left: .5em;
         }
 
         .sub_heading {
-            font-size: 14px;
+            font-size: 16px;
+            font-family: Lemonada-Regular;
             color: $themColor;
             letter-spacing: 1.4px;
             text-transform: uppercase;
             font-weight: bold;
             margin: 0;
+
+            @include xs {
+                font-size: 14px;
+            }
         }
     }
 

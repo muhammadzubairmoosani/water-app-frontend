@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer_nest_contain">
-        <WallCard heading="footer" subHeading="sub heading">
+        <WallCard heading="Pani Wala's">
           <div className="list_wrapper">
             <ul>
               <li className="title">Supplier Detail</li>

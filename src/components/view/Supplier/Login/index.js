@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Heading } from "../../../common";
+import { WallCard } from "../../../common";
 import { Form, Input, Button } from "antd";
 import { MobileOutlined, LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -7,8 +7,7 @@ import { _supplierLogin } from "../../../../service/methods";
 
 const SupplierLogin = () => {
   return (
-    <Layout className="aside_layout">
-      <Heading heading="Supplier Login" />
+    <WallCard className="supplier_login" heading="Supplier Login">
       <Form
         name="normal_login"
         className="aside_container"
@@ -51,7 +50,7 @@ const SupplierLogin = () => {
           Or <Link to="supplier-register">Register now!</Link>
         </Form.Item>
       </Form>
-    </Layout>
+    </WallCard>
   );
 };
 export default SupplierLogin;

@@ -1,35 +1,18 @@
 footer {
   background: url("../../../assets/images/footer.webp") 100% 100% / 100% 100% no-repeat;
-  height: 700px;
   @include flex_col;
   justify-content: space-between;
 
-  @include xs {
-    height: 1100px;
-  }
-  @include sm {
-    height: 780px;
-  }
-  @include md {
-    height: 800px;
-  }
-
   .footer_nest_contain {
-    margin-top: 5.5em;
+    margin: 5em 0;
 
     @include xs {
-      margin-top: 3.5em;
+      margin: 2em 0;
     }
     @include sm {
-      margin-top: 3.5em;
-    }
-    @include md {
-      margin-top: 4.5em;
+      margin: 3em 0;
     }
 
-    .heading {
-      color: $white !important;
-    }
 
     .list_wrapper {
       @include flex;
@@ -51,6 +34,13 @@ footer {
           font-family: Poppins_Medium;
           font-size: 24px;
 
+          @include xs {
+            font-size: 18px;
+          }
+          @include sm {
+            font-size: 18px;
+          }
+
           &:hover {
             color: $white;
             cursor: default;
@@ -68,6 +58,13 @@ footer {
             font-size: 16px;
             line-height: 2.7em;
             width: fit-content;
+
+            @include xs {
+              font-size: 12px;
+            }
+            @include sm {
+              font-size: 12px;
+            }
 
             &:hover {
               color: $themColor;

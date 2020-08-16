@@ -7,7 +7,7 @@ const MainCarousel = () => {
       <Carousel
         effect="fade"
         dotPosition={window.innerWidth >= 600 ? "right" : "bottom"}
-        autoplay
+        // autoplay
       >
         <div>
           <img

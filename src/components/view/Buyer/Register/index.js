@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Heading } from "../../../common";
+import { WallCard } from "../../../common";
 import { Form, Input, Button, Checkbox } from "antd";
 import { Link } from "react-router-dom";
 import {
@@ -12,8 +12,7 @@ import { _buyerRegister } from "../../../../service/methods";
 
 const BuyerRegister = () => {
   return (
-    <Layout className="aside_layout">
-      <Heading heading="Buyer Registration" />
+    <WallCard className="buyer_register" heading="Buyer Register">
       <Form
         name="normal_login"
         className="login-form aside_container"
@@ -109,7 +108,7 @@ const BuyerRegister = () => {
           Or <Link to="buyer-login">Login now!</Link>
         </Form.Item>
       </Form>
-    </Layout>
+    </WallCard>
   );
 };
 

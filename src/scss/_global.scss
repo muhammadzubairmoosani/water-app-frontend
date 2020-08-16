@@ -1,26 +1,24 @@
-.aside_layout {
-    max-width: 500px !important;
-    margin: 0 0 0 auto !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-}
-
-.aside_container {
-    max-width: 300px !important;
-    min-height: 430px !important;
-    margin: 0 auto !important;
-    @include animation_return;
+.buyer_login,
+.buyer_register,
+.supplier_login,
+.supplier_register {
     @include flex_col;
-    align-items: unset !important;
+    align-items: unset;
+    padding: 3em 0px;
+    min-height: calc(100vh - 72px);
 
-    @include xs {
-        padding: 0 0.7em !important;
-        min-height: 350px !important;
-    }
-    .ant-input-affix-wrapper {
-        box-shadow: $shadow !important;
+    form {
+        padding: 0 20px;
+        max-width: 350px;
+        margin: 0 auto;
+        @include animation_return;
+
+        .ant-input-affix-wrapper {
+            box-shadow: $shadow;
+        }
     }
 }
 
-.shadow{
+.shadow {
     box-shadow: $shadow;
 }
