@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, MobileOutlined } from "@ant-design/icons";
-import { Layout, Heading, WallCard } from "../../common";
+import { WallCard } from "../../common";
 import { _contactUs } from "../../../service/methods";
 
 const { TextArea } = Input;
 const ContactUs = () => {
   const [messageLength, setMessageLength] = useState(0);
   return (
-    // <div className="contact_us">
-    //   <img src="" alt="..." />
-    //   <Layout className="aside_layout">
-    //     <Heading heading="Contact Us" />
     <WallCard className="contact_us" heading="Contact Us">
       <Form
         className="aside_container"
@@ -79,8 +75,6 @@ const ContactUs = () => {
         </Form.Item>
       </Form>
     </WallCard>
-    //   </Layout>
-    // </div>
   );
 };
 
