@@ -1,7 +1,8 @@
 .buyer_login,
 .buyer_register,
 .supplier_login,
-.supplier_register {
+.supplier_register,
+.contact_us {
     @include flex_col;
     align-items: unset;
     padding: 3em 0px;

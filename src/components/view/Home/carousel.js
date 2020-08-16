@@ -7,11 +7,11 @@ const MainCarousel = () => {
       <Carousel
         effect="fade"
         dotPosition={window.innerWidth >= 600 ? "right" : "bottom"}
-        // autoplay
+        autoplay
       >
         <div>
           <img
-            src={require("../../../assets/images/slider1.webp")}
+            src={require("../../../assets/images/index1.webp")}
             alt="carousel"
           />
         </div>
