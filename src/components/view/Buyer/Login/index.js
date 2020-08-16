@@ -8,11 +8,7 @@ import { _buyerLogin } from "../../../../service/methods";
 const BuyerLogin = () => {
   return (
     <WallCard className="buyer_login" heading="Buyer Login">
-      <Form
-        name="normal_login"
-        className="aside_container"
-        onFinish={(values) => _buyerLogin(values)}
-      >
+      <Form name="normal_login" onFinish={(values) => _buyerLogin(values)}>
         <Form.Item
           name="mobile"
           hasFeedback

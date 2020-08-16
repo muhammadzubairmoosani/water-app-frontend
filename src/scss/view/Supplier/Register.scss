@@ -1,4 +1,4 @@
-.register {
+.supplier_register {
     .ant-col {
         padding: 0;
     }
@@ -34,5 +34,12 @@
 
     .add_service_form_item {
         margin-bottom: 0;
+    }
+
+    .ant-upload-list-picture-card-container,
+    .ant-upload.ant-upload-select-picture-card,
+    .ant-upload-list-item {
+        width: 130px;
+        height: 130px;
     }
 }

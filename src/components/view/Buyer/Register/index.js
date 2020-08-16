@@ -15,7 +15,7 @@ const BuyerRegister = () => {
     <WallCard className="buyer_register" heading="Buyer Register">
       <Form
         name="normal_login"
-        className="login-form aside_container"
+        className="login-form"
         onFinish={(values) => _buyerRegister(values)}
       >
         <Form.Item

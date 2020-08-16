@@ -9,11 +9,7 @@ const ContactUs = () => {
   const [messageLength, setMessageLength] = useState(0);
   return (
     <WallCard className="contact_us" heading="Contact Us">
-      <Form
-        className="aside_container"
-        name="nest-messages"
-        onFinish={(values) => _contactUs(values)}
-      >
+      <Form name="nest-messages" onFinish={(values) => _contactUs(values)}>
         <Form.Item
           name="name"
           rules={[
