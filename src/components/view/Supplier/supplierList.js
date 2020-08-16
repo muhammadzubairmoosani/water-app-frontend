@@ -16,7 +16,7 @@ const SupplierList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    _getSupplierList()
+    _getSupplierList(0, 9)
       .then(({ data }) => {
         setList(data);
         setIsLoading(false);

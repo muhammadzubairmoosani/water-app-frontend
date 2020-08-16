@@ -1,6 +1,7 @@
 import api from "../../api";
 
-const _getSupplierList = () => api.get(`/supplier-list`);
+const _getSupplierList = (skip, limit) =>
+  api.get(`/supplier-list/${skip}/${limit}`);
 
 const _getSupplierDetail = (id) => api.get(`/supplier-detail/${id}`);
 
