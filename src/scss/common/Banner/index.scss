@@ -1,50 +1,50 @@
-.banner_container {
-    background: url("../../../assets/images/output-onlinepngtools.png") 100% 0% / cover;
-    height: 272px;
-    @include flex;
-    position: relative;
+// .banner_container {
+//     background: url("../../../assets/images/output-onlinepngtools.png") 100% 0% / cover;
+//     height: 272px;
+//     @include flex;
+//     position: relative;
 
-    @include xs {
-        height: 220px;
-    }
+//     @include xs {
+//         height: 220px;
+//     }
 
-    .back_shadow {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background-color: #d9d9d9;
-        opacity: 0.2;
-    }
+//     .back_shadow {
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         left: 0;
+//         bottom: 0;
+//         background-color: #d9d9d9;
+//         opacity: 0.2;
+//     }
 
-    .nested_contain {
-        font-family: Lemonada-Regular;
-        color: $white;
-        z-index: 1;
+//     .nested_contain {
+//         font-family: Lemonada-Regular;
+//         color: $white;
+//         z-index: 1;
 
-        @include xs {
-            text-align: center;
-            margin: 0 1em;
-        }
-        @include sm {
-            text-align: center;
-            margin: 0 1em;
-        }
-        @include md {
-            margin: 0 1em;
-        }
+//         @include xs {
+//             text-align: center;
+//             margin: 0 1em;
+//         }
+//         @include sm {
+//             text-align: center;
+//             margin: 0 1em;
+//         }
+//         @include md {
+//             margin: 0 1em;
+//         }
 
-        h1,
-        p {
-            margin: 0;
-        }
+//         h1,
+//         p {
+//             margin: 0;
+//         }
 
-        h1 {
-            font-size: 60px;
-            @include xs {
-                font-size: 33px;
-            }
-        }
-    }
-}
+//         h1 {
+//             font-size: 60px;
+//             @include xs {
+//                 font-size: 33px;
+//             }
+//         }
+//     }
+// }

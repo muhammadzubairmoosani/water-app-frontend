@@ -1,18 +1,16 @@
 .contact_us {
-    
+    .text_area {
+        margin-bottom: 2px;
+    }
     .msg_contain {
-        position: relative;
         margin-bottom: 1.2em;
 
         .msgLength {
-            position: absolute;
-            right: 0;
-            bottom: 5px;
             color: #767676;
             font-size: 0.75em;
-            // font-family: Poppins_Regular;
             letter-spacing: 0.03333em;
             font-weight: 400;
+            text-align: right;
         }
     }
 }

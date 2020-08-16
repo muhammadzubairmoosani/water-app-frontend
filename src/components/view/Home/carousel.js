@@ -11,7 +11,7 @@ const MainCarousel = () => {
       >
         <div>
           <img
-            src={require("../../../assets/images/slider1.webp")}
+            src={require("../../../assets/images/index1.webp")}
             alt="carousel"
           />
         </div>

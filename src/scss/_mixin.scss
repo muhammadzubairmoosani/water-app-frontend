@@ -98,6 +98,17 @@ $break-points: (
     src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
 
+//////////////// Lemonada Fonts Family ///////////////
+@font-face {
+    font-family: "Lemonada-SemiBold";
+    src: url("../assets/fonts/Lemonada-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lemonada-Regular";
+    src: url("../assets/fonts/Lemonada-Regular.ttf") format("truetype");
+}
+
 ///////////// ANIMATION ////////////
 @mixin animation {
     -webkit-animation: animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
