@@ -19,7 +19,6 @@ const SupplierList = () => {
   const fetchData = useCallback(() => {
     _getSupplierList(supplierList.length, 9)
       .then(({ data }) => {
-        console.log(data.length);
         if (!data.length) return setIsFetch(false);
         setSupplierList((supplierList) => [...supplierList, ...data]);
       })
@@ -35,12 +34,12 @@ const SupplierList = () => {
       <Layout>
         <Heading heading="Supplier List" />
         <InfiniteScroll
-          className="layout"
+          className="list"
           dataLength={supplierList.length}
           next={fetchData}
           hasMore={isfetch}
           loader={
-            <div className="skeleton_wrapper">
+            <div className="list">
               <ProductCardSkeleton />
               <ProductCardSkeleton />
               <ProductCardSkeleton />
