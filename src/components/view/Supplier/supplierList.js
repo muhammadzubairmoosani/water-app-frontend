@@ -49,7 +49,7 @@ const SupplierList = () => {
       >
         <Layout>
           <Heading heading="Supplier List" />
-          {(!supplierList.length && !isfetch) ? (
+          {!supplierList.length && !isfetch ? (
             <>
               <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
                 <Button type="primary" onClick={() => history.goBack()}>
