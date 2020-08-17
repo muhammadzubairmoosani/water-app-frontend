@@ -1,54 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Layout,
   ProductCard,
-  Pagination,
   Heading,
   ProductCardSkeleton,
   Notification,
 } from "../../common";
+import { useHistory } from "react-router-dom";
 import { _getSupplierList } from "../../../service/methods";
-import { Empty } from "antd";
+import { Empty, Button } from "antd";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const SupplierList = () => {
-  const [list, setList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory();
+  const [supplierList, setSupplierList] = useState([]);
+  const [isfetch, setIsFetch] = useState(true);
 
-  // const [lastScrollTop, setLastScrollTop] = useState(0);
-  // const [firstFetch, setFirstFetch] = useState(true);
-  // const [bodyOffset, setBodyOffset] = useState(
-  //   document.body.getBoundingClientRect()
-  // );
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", listener);
-  //   return () => window.removeEventListener("scroll", listener);
-  // });
-
-  useEffect(() => {
-    setIsLoading(true);
-    _getSupplierList(list.length, 9)
+  const fetchData = useCallback(() => {
+    _getSupplierList(supplierList.length, 9)
       .then(({ data }) => {
-        setList([...list, ...data]);
-        setIsLoading(false);
-        setFirstFetch(false);
+        console.log(data.length);
+        if (!data.length) return setIsFetch(false);
+        setSupplierList((supplierList) => [...supplierList, ...data]);
       })
       .catch(({ message }) => {
-        setIsLoading(false);
         Notification.error({ message: message });
       });
-  }, []);
+  }, [supplierList.length]);
 
-  // const listener = () => {
-  //   setBodyOffset(document.body.getBoundingClientRect());
-  //   setLastScrollTop(-bodyOffset.top);
-  // };
+  useEffect(() => fetchData(), []);
 
   return (
     <div className="supplier_list_container">
-      <Layout>
-        <Heading heading="Supplier List" />
-        {isLoading ? (
+      <InfiniteScroll
+        dataLength={supplierList.length}
+        next={fetchData}
+        hasMore={isfetch}
+        loader={
           <>
             <ProductCardSkeleton />
             <ProductCardSkeleton />
@@ -57,21 +45,25 @@ const SupplierList = () => {
             <ProductCardSkeleton />
             <ProductCardSkeleton />
           </>
-        ) : list.length ? (
-          <>
-            {list.map((supplier) => (
-              <div key={supplier._id}>
-                <ProductCard product={supplier} />
-              </div>
-            ))}
-          </>
-        ) : (
-          <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg" />
-          // <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-        )}
-
-        <Pagination props="50" />
-      </Layout>
+        }
+      >
+        <Layout>
+          <Heading heading="Supplier List" />
+          {(!supplierList.length && !isfetch) ? (
+            <>
+              <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
+                <Button type="primary" onClick={() => history.goBack()}>
+                  Go Back
+                </Button>
+              </Empty>
+            </>
+          ) : (
+            supplierList.map((supplier) => (
+              <ProductCard product={supplier} key={supplier._id} />
+            ))
+          )}
+        </Layout>
+      </InfiniteScroll>
     </div>
   );
 };
