@@ -32,23 +32,24 @@ const SupplierList = () => {
 
   return (
     <div className="supplier_list_container">
-      <InfiniteScroll
-        dataLength={supplierList.length}
-        next={fetchData}
-        hasMore={isfetch}
-        loader={
-          <>
-            <ProductCardSkeleton />
-            <ProductCardSkeleton />
-            <ProductCardSkeleton />
-            <ProductCardSkeleton />
-            <ProductCardSkeleton />
-            <ProductCardSkeleton />
-          </>
-        }
-      >
-        <Layout>
-          <Heading heading="Supplier List" />
+      <Layout>
+        <Heading heading="Supplier List" />
+        <InfiniteScroll
+          className="layout"
+          dataLength={supplierList.length}
+          next={fetchData}
+          hasMore={isfetch}
+          loader={
+            <div className="skeleton_wrapper">
+              <ProductCardSkeleton />
+              <ProductCardSkeleton />
+              <ProductCardSkeleton />
+              <ProductCardSkeleton />
+              <ProductCardSkeleton />
+              <ProductCardSkeleton />
+            </div>
+          }
+        >
           {!supplierList.length && !isfetch ? (
             <>
               <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
@@ -62,8 +63,8 @@ const SupplierList = () => {
               <ProductCard product={supplier} key={supplier._id} />
             ))
           )}
-        </Layout>
-      </InfiniteScroll>
+        </InfiniteScroll>
+      </Layout>
     </div>
   );
 };

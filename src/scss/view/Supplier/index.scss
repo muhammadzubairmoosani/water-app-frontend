@@ -1,7 +1,8 @@
 @import "./Register.scss";
 
 .supplier_list_container {
-    .layout {
+    .layout,
+    .skeleton_wrapper {
         @include flex;
     }
 }
