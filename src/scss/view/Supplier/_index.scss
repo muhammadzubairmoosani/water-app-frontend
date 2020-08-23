@@ -3,5 +3,6 @@
 .supplier_list_container {
     .list {
         @include flex;
+        position: relative;
     }
 }
