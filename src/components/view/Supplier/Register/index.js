@@ -29,7 +29,9 @@ const SupplierRegister = () => {
         <Form.Item
           name="company_name"
           hasFeedback
-          rules={[{ required: true, max: 50 }]}
+          rules={[
+            { required: true, max: 50, message: "Company name is Required!" },
+          ]}
         >
           <Input
             placeholder="Company Name (Required)"
@@ -40,7 +42,7 @@ const SupplierRegister = () => {
         <Form.Item
           name="name"
           hasFeedback
-          rules={[{ required: true, max: 50 }]}
+          rules={[{ required: true, max: 50, message: "Name is Required!" }]}
         >
           <Input
             placeholder="Owner/Supplier Name (Required)"
@@ -51,7 +53,14 @@ const SupplierRegister = () => {
         <Form.Item
           name="mobile1"
           hasFeedback
-          rules={[{ required: true, min: 10, max: 10 }]}
+          rules={[
+            {
+              required: true,
+              min: 10,
+              max: 10,
+              message: "Mobile-1 is Required!",
+            },
+          ]}
         >
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
@@ -75,7 +84,14 @@ const SupplierRegister = () => {
         <Form.Item
           name="password"
           hasFeedback
-          rules={[{ required: true, min: 8, max: 30 }]}
+          rules={[
+            {
+              required: true,
+              min: 8,
+              max: 30,
+              message: "Password is Required!",
+            },
+          ]}
         >
           <Input.Password
             placeholder="Password (Required)"
@@ -88,7 +104,12 @@ const SupplierRegister = () => {
           dependencies={["password"]}
           hasFeedback
           rules={[
-            { required: true, min: 8, max: 30 },
+            {
+              required: true,
+              min: 8,
+              max: 30,
+              message: "Confirm password is Required!",
+            },
             ({ getFieldValue }) => ({
               validator(rule, value) {
                 if (!value || getFieldValue("password") === value) {
@@ -110,7 +131,7 @@ const SupplierRegister = () => {
         <Form.Item
           name="company_address"
           hasFeedback
-          rules={[{ required: true, max: 500 }]}
+          rules={[{ required: true, max: 500, message: "Address is Required!" }]}
         >
           <Input
             placeholder="Company Address (Required)"
@@ -210,6 +231,7 @@ const SupplierRegister = () => {
             htmlType="submit"
             className="login-form-button"
             block
+            loading={false}
           >
             Register
           </Button>

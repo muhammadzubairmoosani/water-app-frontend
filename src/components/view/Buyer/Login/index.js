@@ -17,6 +17,7 @@ const BuyerLogin = () => {
               required: true,
               min: 10,
               max: 10,
+              message: "Mobile is Required!",
             },
           ]}
         >
@@ -39,6 +40,7 @@ const BuyerLogin = () => {
               required: true,
               min: 8,
               max: 30,
+              message: "Password is Required!",
             },
           ]}
         >

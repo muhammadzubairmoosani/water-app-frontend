@@ -12,7 +12,14 @@ const SupplierLogin = () => {
         <Form.Item
           name="mobile"
           hasFeedback
-          rules={[{ required: true, min: 10, max: 10 }]}
+          rules={[
+            {
+              required: true,
+              min: 10,
+              max: 10,
+              message: "Mobile is Required!",
+            },
+          ]}
         >
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
@@ -26,7 +33,14 @@ const SupplierLogin = () => {
         <Form.Item
           name="password"
           hasFeedback
-          rules={[{ required: true, min: 8, max: 30 }]}
+          rules={[
+            {
+              required: true,
+              min: 8,
+              max: 30,
+              message: "Password is Required!",
+            },
+          ]}
         >
           <Input.Password
             prefix={<LockOutlined className="site-form-item-icon" />}

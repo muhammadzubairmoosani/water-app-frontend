@@ -42,6 +42,7 @@ const _suplierRegister = ({ values, fileList }) => {
     .then((res) =>
       api.post("/supplier-register", {
         time_stemp: Date.now(),
+        user_type: "supplier",
         company_name,
         name,
         mobile1,

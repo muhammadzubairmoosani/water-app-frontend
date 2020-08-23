@@ -17,6 +17,7 @@ const ContactUs = () => {
               required: true,
               min: 3,
               max: 50,
+              message: "Name is Required!",
             },
           ]}
         >
@@ -34,6 +35,7 @@ const ContactUs = () => {
               required: true,
               min: 11,
               max: 11,
+              message: "Mobile is Required!",
             },
           ]}
         >

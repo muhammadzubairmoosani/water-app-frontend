@@ -21,7 +21,7 @@ const BuyerRegister = () => {
         <Form.Item
           name="name"
           hasFeedback
-          rules={[{ required: true, max: 50 }]}
+          rules={[{ required: true, max: 50, message: "Name is Required!" }]}
         >
           <Input
             placeholder="Name (Required)"
@@ -32,7 +32,14 @@ const BuyerRegister = () => {
         <Form.Item
           name="mobile"
           hasFeedback
-          rules={[{ required: true, min: 10, max: 10 }]}
+          rules={[
+            {
+              required: true,
+              min: 10,
+              max: 10,
+              message: "Mobile is Required!",
+            },
+          ]}
         >
           <Input
             prefix={<MobileOutlined className="site-form-item-icon" />}
@@ -48,7 +55,14 @@ const BuyerRegister = () => {
         <Form.Item
           name="password"
           hasFeedback
-          rules={[{ required: true, min: 8, max: 30 }]}
+          rules={[
+            {
+              required: true,
+              min: 8,
+              max: 30,
+              message: "Password is Required!",
+            },
+          ]}
         >
           <Input.Password
             placeholder="Password (Required)"
@@ -61,7 +75,12 @@ const BuyerRegister = () => {
           dependencies={["password"]}
           hasFeedback
           rules={[
-            { required: true, min: 8, max: 30 },
+            {
+              required: true,
+              min: 8,
+              max: 30,
+              message: "Confirm password is Required!",
+            },
             ({ getFieldValue }) => ({
               validator(rule, value) {
                 if (!value || getFieldValue("password") === value) {
@@ -84,7 +103,9 @@ const BuyerRegister = () => {
         <Form.Item
           name="address"
           hasFeedback
-          rules={[{ required: true, max: 300 }]}
+          rules={[
+            { required: true, max: 300, message: "Address is Required!" },
+          ]}
         >
           <Input
             placeholder="Address (Required)"
@@ -92,7 +113,7 @@ const BuyerRegister = () => {
           />
         </Form.Item>
 
-        <Checkbox style={{ marginBottom: "12px" }}>
+        <Checkbox>
           I have read the <Link to="#">agreement</Link>
         </Checkbox>
 
