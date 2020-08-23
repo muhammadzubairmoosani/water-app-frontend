@@ -22,8 +22,9 @@ const _buyerLogin = (values) => {
     .catch((err) => Notification.error({ message: err.message }));
 };
 
-const _buyerRegister = (values) => {
+const _buyerRegister = (values,uid) => {
   const { name, mobile, password, address } = values;
+  console.log({uid})
   api
     .post("/buyer-register", {
       time_stemp: Date.now(),

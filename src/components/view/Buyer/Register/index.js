@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { WallCard } from "../../../common";
-import { Form, Input, Button, Checkbox, Modal, Row, Col } from "antd";
+import React, { useState, useEffect } from "react";
+import firebase from "../../../../config/index";
+import { WallCard, Notification } from "../../../common";
+import { Form, Input, Button, Checkbox, Modal } from "antd";
 import { Link } from "react-router-dom";
 import {
   MobileOutlined,
@@ -11,14 +12,45 @@ import {
 import { _buyerRegister } from "../../../../service/methods";
 
 const BuyerRegister = () => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
+  const [code, setCode] = useState("");
+
+  useEffect(() => {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      { size: "invisible" }
+    );
+  }, []);
 
   return (
     <WallCard className="buyer_register" heading="Buyer Register">
       <Form
         name="normal_login"
         className="login-form"
-        onFinish={(values) => _buyerRegister(values)}
+        onFinish={(values) => {
+          const phoneNumber = `+92${values.mobile}`;
+          const appVerifier = window.recaptchaVerifier;
+          firebase
+            .auth()
+            .signInWithPhoneNumber(phoneNumber, appVerifier)
+            .then((confirmResult) => {
+              setModal(!modal);
+              confirmResult
+                .confirm(code)
+                .then((res) => {
+                  _buyerRegister({ ...values, uid: res.user.uid });
+                  setModal(!modal);
+                  console.log("user", res.user.uid);
+                })
+                .catch(({ message }) =>
+                  Notification.error({ message: message })
+                );
+            })
+            .catch(({ message }) => {
+              Notification.error({ message: message });
+              console.log("error", message);
+            });
+        }}
       >
         <Form.Item
           name="name"
@@ -125,13 +157,13 @@ const BuyerRegister = () => {
             htmlType="submit"
             className="login-form-button"
             block
+            onClick={() => setModal(!modal)}
           >
             Register
           </Button>
           Or <Link to="buyer-login">Login now!</Link>
         </Form.Item>
       </Form>
-      <Button onClick={() => setModal(!modal)}>click</Button>
       <Modal
         title="Code Confirmation"
         visible={modal}
@@ -154,10 +186,11 @@ const BuyerRegister = () => {
               },
             ]}
           >
-            <Input />
+            <Input onChange={(e) => setCode(e.target.value)} />
           </Form.Item>
         </Form.Item>
       </Modal>
+      <div id="recaptcha-container"></div>
     </WallCard>
   );
 };

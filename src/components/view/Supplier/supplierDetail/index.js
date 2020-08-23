@@ -46,10 +46,7 @@ const SupplierDetail = () => {
   useEffect(() => {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha-container",
-      {
-        size: "invisible",
-        // other options
-      }
+      { size: "invisible" }
     );
   }, []);
   return (
