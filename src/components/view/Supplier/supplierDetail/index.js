@@ -1,51 +1,115 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Notification } from "../../../common";
-import { _getSupplierDetail } from "../../../../service/methods";
-// import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
+import firebase from "../../../../config/index";
 
-const SupplierDetail = ({ match }) => {
-  const [supplierDetail, setSupplierDetail] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+const SupplierDetail = () => {
+  //   const showCaptcha = () => {
+  //     let recaptcha = new firebase.auth.RecaptchaVerifier("recaptcha");
+  //     let number = "+923152396525";
+  //     firebase
+  //       .auth()
+  //       .signInWithPhoneNumber(number, recaptcha)
+  //       .then((e) => {
+  //         let code = prompt("enter the code", "");
+  //         if (code == null) return;
+  //         e.confirm(code)
+  //           .then((res) => {
+  //             console.log("user", res.user);
+  //             document.querySelector("lable").textContent =
+  //               res.user + " number is verified!";
+  //           })
+  //           .catch(({ message }) => console.log(message));
+  //       });
+  //   };
+
+  const onClick = () => {
+    const phoneNumber = "+923152396525";
+    const appVerifier = window.recaptchaVerifier;
+    firebase
+      .auth()
+      .signInWithPhoneNumber(phoneNumber, appVerifier)
+      .then((confirmResult) => {
+        let code = prompt("enter the code", "");
+        if (code == null) return;
+        confirmResult
+          .confirm(code)
+          .then((res) => {
+            console.log("user", res.user.uid);
+          })
+          .catch(({ message }) => console.log(message));
+      })
+      .catch((error) => {
+        // error
+        console.log("error", error);
+      });
+  };
 
   useEffect(() => {
-    setIsLoading(true);
-    _getSupplierDetail(match.params.id)
-      .then(({ data }) => {
-        setSupplierDetail(data);
-        setIsLoading(false);
-      })
-      .catch(({ message }) => {
-        setIsLoading(false);
-        Notification.error({ message: message });
-      });
-  }, [match.params.id]);
-
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      {
+        size: "invisible",
+        // other options
+      }
+    );
+  }, []);
   return (
-    <Layout>
-      <h1>Name: {isLoading ? "loading..." : supplierDetail.name}</h1>
+    <div>
+      <label></label>
+      <input
+        id="recaptcha-container"
+        type="button"
+        onClick={onClick}
+        value="click"
+      />
+      {/* <button onClick={onClick}>click me</button> */}
+    </div>
+    // <form action="">
+    //   <div>
+    //     {/* <input type="number" placeholder="number" />
+    //     <div>{}</div>
+    //     <button>send code</button>
+    //   </div>
 
-      {/* <CloudinaryContext cloudName="pani-wala">
-          <Image publicId="my-images/back_ckxp37">
-            <Transformation width="400" crop="scale" overlay="cloudinary_icon"/>
-          </Image>
-        </CloudinaryContext> */}
-
-      {/* <CloudinaryContext cloudName="demo">
-          <Image publicId="sample">
-            <Transformation
-              overlay="cloudinary_icon"
-              gravity="south_east"
-              x="5"
-              y="5"
-              width="50"
-              opacity="60"
-              effect="brightness:200"
-            />
-
-          </Image>
-        </CloudinaryContext> */}
-    </Layout>
+    //   <div>
+    //     <input type="number" placeholder="enter code" />
+    //     <br />
+    // */}
+    //   </div>
+    // </form>
   );
 };
 
 export default SupplierDetail;
+
+// function phoneAuth() {
+//   //get the number
+//   var number = document.getElementById("number").value;
+//   //phone number authentication function of firebase
+//   //it takes two parameter first one is number,,,second one is recaptcha
+//   firebase
+//     .auth()
+//     .signInWithPhoneNumber(number, window.recaptchaVerifier)
+//     .then(function (confirmationResult) {
+//       //s is in lowercase
+//       window.confirmationResult = confirmationResult;
+//       coderesult = confirmationResult;
+//       console.log(coderesult);
+//       alert("Message sent");
+//     })
+//     .catch(function (error) {
+//       alert(error.message);
+//     });
+// }
+// function codeverify() {
+//   var code = document.getElementById("verificationCode").value;
+//   coderesult
+//     .confirm(code)
+//     .then(function (result) {
+//       alert("Successfully registered");
+//       var user = result.user;
+//       console.log(user);
+//     })
+//     .catch(function (error) {
+//       alert(error.message);
+//     });
+// }
