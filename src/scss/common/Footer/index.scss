@@ -13,13 +13,13 @@ footer {
       margin: 3em 0;
     }
 
-
     .list_wrapper {
       @include flex;
       justify-content: space-evenly;
       align-items: flex-start;
       width: 1200px;
       max-width: 1200px;
+      text-transform: capitalize;
 
       @include min_max(0, 1200) {
         width: auto;

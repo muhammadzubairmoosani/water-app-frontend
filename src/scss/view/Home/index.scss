@@ -26,9 +26,9 @@
     @include flex;
     flex-wrap: nowrap;
     justify-content: space-around;
-    background-color: #f5f5f5;
+    // background-color: #f5f5f5;
     color: $white;
-    height: 450px;
+    // height: 450px;
 
     .supplier_img {
         width: 100%;
@@ -46,11 +46,11 @@
         padding: 0 1.5em;
 
         @include xs {
-            padding: 0 1.5em;
+            padding: 1.5em;
         }
 
         @include sm {
-            padding: 0 1.5em;
+            padding: 1.5em;
         }
 
         p {
@@ -58,6 +58,10 @@
             font-weight: bold; // will change color
             font-size: 18px;
             text-transform: capitalize;
+
+            @include xs {
+                font-size: 14px;
+            }
         }
 
         .heading {

@@ -17,11 +17,16 @@
             @include animation;
         }
 
+        .ant-card-meta-title {
+            text-transform: capitalize;
+        }
+
         .ant-card-meta-description {
             display: -webkit-box;
             -webkit-line-clamp: 5;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            text-transform: capitalize;
         }
 
         .ant-avatar {

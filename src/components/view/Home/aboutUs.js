@@ -4,13 +4,6 @@ import { WallCard } from "../../common";
 const AboutUs = () => {
   return (
     <div className="about_us">
-      <div>
-        <img
-          className="supplier_img"
-          src={require("../../../assets/images/about-me.webp")}
-          alt="..."
-        />
-      </div>
       <WallCard heading={"About Us"} subHeading={"PANI WALA"}>
         <p>
           Pani Wala is an on-demand Water Delivery Services that connects you to
@@ -20,6 +13,14 @@ const AboutUs = () => {
           customers by providing easy modes of payment - COD.
         </p>
       </WallCard>
+      <div>
+        <img
+          className="supplier_img"
+          src={require("../../../assets/images/delivery-man-medical-protective-mask-holding-big-bottle-with-clean-water-delivery-truck-background_148087-190.jpg")}
+          alt="..."
+        />
+      </div>
+
     </div>
   );
 };

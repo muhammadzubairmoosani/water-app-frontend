@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="product_card_wrapper">
       <Card
-        cover={<img alt="example" src={images[0]} />}
+        cover={<img alt="example" src={images ? images[0] : "default image"} />}
         actions={[
           <Link to={`supplier-detail/${product._id}`}>
             <PhoneOutlined style={{ transform: "rotate(100deg)" }} /> Order Now
@@ -17,7 +17,9 @@ const ProductCard = ({ product }) => {
         ]}
       >
         <Meta
-          avatar={<Avatar src={images[1]} />}
+          avatar={
+            <Avatar src={images ? images[1] || images[0] : "default image"} />
+          }
           title={company_name}
           description={
             "hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world"
