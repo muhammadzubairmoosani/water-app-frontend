@@ -3,8 +3,6 @@ import { CardCarousel } from "./Carousels";
 import Layout from "./Layout";
 import Header from "./Header";
 import Footer from "./Footer";
-import Banner from "./Banner";
-import Pagination from "./Pagination";
 import Heading from "./Heading";
 import { ImageUploader } from "./ImageUploader";
 import { ProductCardSkeleton } from "./Skeletons";
@@ -17,8 +15,6 @@ export {
   Layout,
   Header,
   Footer,
-  Banner,
-  Pagination,
   Heading,
   ImageUploader,
   ProductCardSkeleton,

@@ -83,7 +83,7 @@ const settings = {
     },
   ],
 };
-const CardCarousel = ({ children }) => {
-  return <Slider {...settings}>{children}</Slider>;
-};
+const CardCarousel = ({ children }) => (
+  <Slider {...settings}>{children}</Slider>
+);
 export default CardCarousel;

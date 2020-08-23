@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { WallCard } from "../";
 import { Link } from "react-router-dom";
-
 const Footer = () => {
   const [year, setYear] = useState(0);
-
   useEffect(() => {
     setYear(new Date().getFullYear());
   }, [year]);
-
   return (
     <footer>
       <div className="footer_nest_contain">
