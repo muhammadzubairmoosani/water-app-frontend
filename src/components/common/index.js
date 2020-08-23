@@ -1,5 +1,5 @@
 import { WallCard, ProductCard } from "./Cards";
-import { CardCarousel } from "./Carousels";
+import { CardCarousel, CardCarouselSegment } from "./Carousels";
 import Layout from "./Layout";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -12,6 +12,7 @@ export {
   WallCard,
   ProductCard,
   CardCarousel,
+  CardCarouselSegment,
   Layout,
   Header,
   Footer,

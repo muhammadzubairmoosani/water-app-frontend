@@ -1,9 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import MainCarousel from "./carousel";
 import AboutUs from "./aboutUs";
-import CardCarouselSegment from "../../common/Carousels/cardCarouselSegment";
-import { Layout, Notification } from "../../common";
-// import { data } from "../../../util/supplierCardData";
+import { Layout, Notification, CardCarouselSegment } from "../../common";
 import { _getSupplierList } from "../../../service/methods";
 
 const Home = () => {
@@ -27,57 +25,41 @@ const Home = () => {
     <Fragment>
       <MainCarousel />
       <Layout>
-        {isLoading ? (
-          "loading..."
-        ) : (
-          <CardCarouselSegment
-            heading="19 liters gallon services"
-            subHeading="see all"
-            array={list}
-            route={"/supplier-list"}
-          />
-        )}
-        {isLoading ? (
-          "loading..."
-        ) : (
-          <CardCarouselSegment
-            heading="1,000 liters services"
-            subHeading="see all"
-            array={list}
-            route={"/supplier-list"}
-          />
-        )}
-
-        {isLoading ? (
-          "loading..."
-        ) : (
-          <CardCarouselSegment
-            heading="2,000 liters services"
-            subHeading="see all"
-            array={list}
-            route={"/supplier-list"}
-          />
-        )}
-        {isLoading ? (
-          "loading..."
-        ) : (
-          <CardCarouselSegment
-            heading="3,000 liters services"
-            subHeading="see all"
-            array={list}
-            route={"/supplier-list"}
-          />
-        )}
-        {isLoading ? (
-          "loading..."
-        ) : (
-          <CardCarouselSegment
-            heading="6,000 liters services"
-            subHeading="see all"
-            array={list}
-            route={"/supplier-list"}
-          />
-        )}
+        <CardCarouselSegment
+          heading="19 liters gallon services"
+          subHeading="see all"
+          array={list}
+          route={"/supplier-list"}
+          loading={isLoading}
+        />
+        <CardCarouselSegment
+          heading="1,000 liters services"
+          subHeading="see all"
+          array={list}
+          route={"/supplier-list"}
+          loading={isLoading}
+        />
+        <CardCarouselSegment
+          heading="2,000 liters services"
+          subHeading="see all"
+          array={list}
+          route={"/supplier-list"}
+          loading={isLoading}
+        />
+        <CardCarouselSegment
+          heading="3,000 liters services"
+          subHeading="see all"
+          array={list}
+          route={"/supplier-list"}
+          loading={isLoading}
+        />
+        <CardCarouselSegment
+          heading="6,000 liters services"
+          subHeading="see all"
+          array={list}
+          route={"/supplier-list"}
+          loading={isLoading}
+        />
       </Layout>
       <AboutUs />
     </Fragment>

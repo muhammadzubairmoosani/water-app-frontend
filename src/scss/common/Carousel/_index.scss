@@ -123,4 +123,8 @@
             font-size: 21px;
         }
     }
+
+    .skeleton_wrapper {
+        @include flex;
+    }
 }
