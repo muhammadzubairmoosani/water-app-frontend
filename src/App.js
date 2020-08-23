@@ -12,12 +12,20 @@ import {
   SupplierRegister,
   SupplierDetail,
 } from "./components";
-import { BackTop } from "antd";
+import { BackTop, Button } from "antd";
+import { ArrowUpOutlined } from "@ant-design/icons";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const App = () => {
   return (
     <Router>
-      <BackTop />
+      <BackTop>
+        <Button
+          shape="circle"
+          color="#3fcaef"
+          size="large"
+          icon={<ArrowUpOutlined style={{ color: "#3fcaef" }} />}
+        />
+      </BackTop>
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
