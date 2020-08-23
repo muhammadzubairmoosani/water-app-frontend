@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { WallCard } from "../../../common";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, Modal, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import {
   MobileOutlined,
@@ -11,6 +11,8 @@ import {
 import { _buyerRegister } from "../../../../service/methods";
 
 const BuyerRegister = () => {
+  const [modal, setModal] = useState(true);
+
   return (
     <WallCard className="buyer_register" heading="Buyer Register">
       <Form
@@ -129,6 +131,33 @@ const BuyerRegister = () => {
           Or <Link to="buyer-login">Login now!</Link>
         </Form.Item>
       </Form>
+      <Button onClick={() => setModal(!modal)}>click</Button>
+      <Modal
+        title="Code Confirmation"
+        visible={modal}
+        onOk={() => setModal(!modal)}
+        onCancel={() => setModal(!modal)}
+        okText="Send Code"
+      >
+        <Form.Item
+          label="6 digit code:"
+          extra="A text message with varification code was just sent to *** *** ***67"
+        >
+          <Form.Item
+            name="captcha"
+            noStyle
+            rules={[
+              {
+                required: true,
+                max: 6,
+                message: "Please input the captcha you got!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </Form.Item>
+      </Modal>
     </WallCard>
   );
 };

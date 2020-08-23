@@ -27,3 +27,10 @@
 .shadow {
     box-shadow: $shadow;
 }
+
+// will remove from this place
+.ant-modal-content{
+    .ant-form-item-extra{
+        max-width: 300px;
+    }
+}
