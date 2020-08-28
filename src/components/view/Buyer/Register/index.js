@@ -42,7 +42,7 @@ const BuyerRegister = () => {
               confirmResult
                 .confirm(code)
                 .then((res) => {
-                  _buyerRegister({ ...values, uid: res.user.uid });
+                  _buyerRegister({ values, uid: res.user.uid });
                 })
                 .catch(({ message }) =>
                   Notification.error({ message: message })

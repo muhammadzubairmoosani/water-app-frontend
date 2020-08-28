@@ -22,18 +22,19 @@ const _buyerLogin = (values) => {
     .catch((err) => Notification.error({ message: err.message }));
 };
 
-const _buyerRegister = (values, uid) => {
+const _buyerRegister = ({ values, uid }) => {
+  console.log({ uid });
+  console.log(values);
   const { name, mobile, password, address } = values;
   api
     .post("/buyer-register", {
       time_stemp: Date.now(),
-      user_type: "buyer",
+      role: "buyer",
+      firebase_uid: uid,
       name: name,
       mobile: mobile,
       password: passwordHash.generate(password),
       address: address,
-      firebaseUid: uid,
-      role: "buyer",
     })
     .then(() =>
       Notification.success({

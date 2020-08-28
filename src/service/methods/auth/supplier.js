@@ -22,7 +22,7 @@ const _supplierLogin = (values) => {
     .catch((err) => Notification.error({ message: err.message }));
 };
 
-const _suplierRegister = ({ values, fileList }) => {
+const _suplierRegister = ({ values, fileList, uid }) => {
   const {
     company_name,
     name,
@@ -42,7 +42,8 @@ const _suplierRegister = ({ values, fileList }) => {
     .then((res) =>
       api.post("/supplier-register", {
         time_stemp: Date.now(),
-        user_type: "supplier",
+        role: "supplier",
+        firebase_uid: uid,
         company_name,
         name,
         mobile1,
