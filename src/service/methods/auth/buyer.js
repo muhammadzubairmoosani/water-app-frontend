@@ -1,5 +1,5 @@
-import api from "../../../../service/api";
-import { Notification } from "../../../../components/common";
+import api from "../../api";
+import { Notification } from "../../../components/common";
 import passwordHash from "password-hash";
 
 const _buyerLogin = (values) => {
@@ -22,9 +22,8 @@ const _buyerLogin = (values) => {
     .catch((err) => Notification.error({ message: err.message }));
 };
 
-const _buyerRegister = (values,uid) => {
+const _buyerRegister = (values, uid) => {
   const { name, mobile, password, address } = values;
-  console.log({uid})
   api
     .post("/buyer-register", {
       time_stemp: Date.now(),
@@ -33,6 +32,8 @@ const _buyerRegister = (values,uid) => {
       mobile: mobile,
       password: passwordHash.generate(password),
       address: address,
+      firebaseUid: uid,
+      role: "buyer",
     })
     .then(() =>
       Notification.success({

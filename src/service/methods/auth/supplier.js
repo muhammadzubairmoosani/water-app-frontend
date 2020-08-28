@@ -1,5 +1,5 @@
-import api from "../../../../service/api";
-import { Notification } from "../../../../components/common";
+import api from "../../api";
+import { Notification } from "../../../components/common";
 import passwordHash from "password-hash";
 
 const _supplierLogin = (values) => {
@@ -15,7 +15,7 @@ const _supplierLogin = (values) => {
         Notification.error({
           message: "Your account is not registered yet!",
           description:
-            "Please check your mobile number and password and try again thnak you!",
+            "Please check your mobile number or password and try again thnak you!",
         });
       }
     })

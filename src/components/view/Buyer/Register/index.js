@@ -12,8 +12,8 @@ import {
 import { _buyerRegister } from "../../../../service/methods";
 
 const BuyerRegister = () => {
-  const [modal, setModal] = useState(false);
-  const [code, setCode] = useState("");
+  // const [modal, setModal] = useState(false);
+  // const [code, setCode] = useState("");
 
   useEffect(() => {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
@@ -34,13 +34,15 @@ const BuyerRegister = () => {
             .auth()
             .signInWithPhoneNumber(phoneNumber, appVerifier)
             .then((confirmResult) => {
-              setModal(!modal);
+              const code = prompt(
+                "PaniVala will send you a text message with a 6-digt verification code.",
+                ""
+              );
+              if (code == null) return;
               confirmResult
                 .confirm(code)
                 .then((res) => {
                   _buyerRegister({ ...values, uid: res.user.uid });
-                  setModal(!modal);
-                  console.log("user", res.user.uid);
                 })
                 .catch(({ message }) =>
                   Notification.error({ message: message })
@@ -48,7 +50,6 @@ const BuyerRegister = () => {
             })
             .catch(({ message }) => {
               Notification.error({ message: message });
-              console.log("error", message);
             });
         }}
       >
@@ -157,14 +158,13 @@ const BuyerRegister = () => {
             htmlType="submit"
             className="login-form-button"
             block
-            onClick={() => setModal(!modal)}
           >
             Register
           </Button>
           Or <Link to="buyer-login">Login now!</Link>
         </Form.Item>
       </Form>
-      <Modal
+      {/* <Modal
         title="Code Confirmation"
         visible={modal}
         onOk={() => setModal(!modal)}
@@ -189,7 +189,7 @@ const BuyerRegister = () => {
             <Input onChange={(e) => setCode(e.target.value)} />
           </Form.Item>
         </Form.Item>
-      </Modal>
+      </Modal> */}
       <div id="recaptcha-container"></div>
     </WallCard>
   );
