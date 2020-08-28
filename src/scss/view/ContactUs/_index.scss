@@ -1,12 +1,23 @@
 .contact_us {
-    .text_area {
+    .text_area_wrapper {
         margin-bottom: 2px;
+        
+        textarea {
+            font-weight: bold;
+            font-size: 15px;
+            color: $gray;
+        }
     }
+
+    form {
+        max-width: 400px;
+    }
+
     .msg_contain {
         margin-bottom: 1.2em;
 
         .msgLength {
-            color: #767676;
+            color: $gray1;
             font-size: 0.75em;
             letter-spacing: 0.03333em;
             font-weight: 400;

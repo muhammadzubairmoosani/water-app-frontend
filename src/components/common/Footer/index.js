@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer_nest_contain">
-        <WallCard heading="Pani Wala's">
+        <WallCard heading="Pani Vala">
           <div className="list_wrapper">
             <ul>
               <li className="title">Supplier Detail</li>
@@ -20,11 +20,11 @@ const Footer = () => {
                 <span>+92 315 0000000</span>
               </li>
               <li>
-                <span>paniwala@gmail.com</span>
+                <span>panivala@gmail.com</span>
               </li>
             </ul>
             <ul>
-              <li className="title">Pani Wala's</li>
+              <li className="title">Pani Vala's</li>
               <li>
                 <Link to="#">About Us</Link>
               </li>
@@ -32,7 +32,7 @@ const Footer = () => {
                 <Link to="contact-us">Contact Us</Link>
               </li>
               <li>
-                <Link to="#">Advertise on Paniwala</Link>
+                <Link to="#">Advertise on Panivala</Link>
               </li>
               <li>
                 <Link to="#">Terms of Use</Link>
@@ -75,7 +75,7 @@ const Footer = () => {
         </WallCard>
       </div>
       <div className="copyright_contian">
-        <p className="copyright_text">{`© Copyright ${year} by paniwala.com`}</p>
+        <p className="copyright_text">{`© Copyright ${year} by panivala.com`}</p>
       </div>
     </footer>
   );

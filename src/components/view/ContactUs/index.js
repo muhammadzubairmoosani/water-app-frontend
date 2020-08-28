@@ -49,7 +49,7 @@ const ContactUs = () => {
         <div className="msg_contain">
           <Form.Item
             name="message"
-            className="text_area"
+            className="text_area_wrapper"
             rules={[
               {
                 required: true,
@@ -60,7 +60,7 @@ const ContactUs = () => {
             <TextArea
               allowClear
               placeholder="Type your message..."
-              autoSize={{ minRows: 3, maxRows: 5 }}
+              autoSize={{ minRows: 5, maxRows: 8 }}
               onChange={(e) => setMessageLength(e.target.value.length)}
             />
           </Form.Item>
