@@ -8,9 +8,9 @@ const Slider = ({ effect, dotPosition, autoplay, images, className }) => (
     autoplay={autoplay}
     className={className}
   >
-    {images.map((image) => (
-      <div>
-        <img src={image} alt="carousel_img" />
+    {(images || []).map((image) => (
+      <div key={image}>
+        <img src={image} width="100%" alt="carousel_img" />
       </div>
     ))}
   </Carousel>
