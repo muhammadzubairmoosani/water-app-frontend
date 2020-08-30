@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Modal } from "antd";
-import { WallCard } from "../../../common";
+import { WallCard } from "../";
 
 const CodeVarificationModal = ({
   modal,
@@ -9,7 +9,7 @@ const CodeVarificationModal = ({
   codeVerify,
   mob,
   loading,
-  reSendCodeLoading
+  reSendCodeLoading,
 }) => (
   <Modal
     visible={modal}
@@ -22,7 +22,7 @@ const CodeVarificationModal = ({
     <WallCard heading="Phone Varification">
       <Form layout="inline" onFinish={(values) => codeVerify(values.code)}>
         <Form.Item
-        className="form_item"
+          className="form_item"
           label={
             <b>
               Send varification code to your phone (

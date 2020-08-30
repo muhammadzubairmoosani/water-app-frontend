@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../../../../config/index";
-import { WallCard, Notification } from "../../../common";
+import { WallCard, Notification, CodeVarificationModal } from "../../../common";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { _buyerRegister } from "../../../../service/methods";
-import CodeVarificationModal from "./codeVarificationModal";
 import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 
 const BuyerRegister = () => {
