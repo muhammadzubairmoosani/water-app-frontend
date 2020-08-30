@@ -8,6 +8,7 @@ import { ImageUploader } from "./ImageUploader";
 import { ProductCardSkeleton } from "./Skeletons";
 import Notification from "./Notification";
 import { CodeVerificationModal } from "./Modals";
+import Slider from "./Slider";
 
 export {
   WallCard,
@@ -22,4 +23,5 @@ export {
   ProductCardSkeleton,
   Notification,
   CodeVerificationModal,
+  Slider,
 };
