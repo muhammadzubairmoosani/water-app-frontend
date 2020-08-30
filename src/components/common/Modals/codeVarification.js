@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Button, Modal } from "antd";
 import { WallCard } from "../";
 
-const CodeVarificationModal = ({
+const CodeVerificationModal = ({
   modal,
   setModal,
   reSendCode,
@@ -17,15 +17,15 @@ const CodeVarificationModal = ({
     confirmLoading={reSendCodeLoading}
     okText={"Resend code"}
     onCancel={() => setModal(!modal)}
-    className="code_varification_modal"
+    className="code_verification_modal"
   >
-    <WallCard heading="Phone Varification">
+    <WallCard heading="Phone Verification">
       <Form layout="inline" onFinish={(values) => codeVerify(values.code)}>
         <Form.Item
           className="form_item"
           label={
             <b>
-              Send varification code to your phone (
+              Send verification code to your phone (
               <span>
                 +92*******
                 {mob.substr(mob.length - 3)}
@@ -57,4 +57,4 @@ const CodeVarificationModal = ({
   </Modal>
 );
 
-export default CodeVarificationModal;
+export default CodeVerificationModal;

@@ -7,7 +7,7 @@ import Heading from "./Heading";
 import { ImageUploader } from "./ImageUploader";
 import { ProductCardSkeleton } from "./Skeletons";
 import Notification from "./Notification";
-import { CodeVarificationModal } from "./Modals";
+import { CodeVerificationModal } from "./Modals";
 
 export {
   WallCard,
@@ -21,5 +21,5 @@ export {
   ImageUploader,
   ProductCardSkeleton,
   Notification,
-  CodeVarificationModal,
+  CodeVerificationModal,
 };

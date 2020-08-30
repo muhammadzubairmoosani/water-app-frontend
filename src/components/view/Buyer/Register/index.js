@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../../../../config/index";
-import { WallCard, Notification, CodeVarificationModal } from "../../../common";
+import { WallCard, Notification, CodeVerificationModal } from "../../../common";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { _buyerRegister } from "../../../../service/methods";
@@ -171,8 +171,8 @@ const BuyerRegister = () => {
           Or <Link to="buyer-login">Login now!</Link>
         </Form.Item>
       </Form>
-      {/* code varification modal start */}
-      <CodeVarificationModal
+      {/* code verification modal start */}
+      <CodeVerificationModal
         modal={modal}
         setModal={setModal}
         reSendCode={() => console.log("re-send code")}
@@ -181,7 +181,7 @@ const BuyerRegister = () => {
         loading={verifyIsLoading}
         reSendCodeLoading={submitLoading}
       />
-      {/* code varification modal end */}
+      {/* code verification modal end */}
 
       {/* recaptcha-container div must be required for phone varifivation*/}
       <div id="recaptcha-container"></div>

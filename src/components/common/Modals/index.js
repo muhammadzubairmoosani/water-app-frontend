@@ -1,3 +1,3 @@
-import CodeVarificationModal from "./codeVarification";
+import CodeVerificationModal from "./codeVarification";
 
-export { CodeVarificationModal };
+export { CodeVerificationModal };
