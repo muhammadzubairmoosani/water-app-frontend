@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ImageUploader, WallCard } from "../../../common";
-import { Form, Input, Button, Checkbox, Select, Row, Col } from "antd";
+import { Form, Input, Button, Select, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import {
@@ -221,9 +221,6 @@ const SupplierRegister = () => {
           )}
         </Form.List>
  */}
-        <Checkbox className="agreement">
-          I have read the <Link to="#">agreement</Link>
-        </Checkbox>
 
         <Form.Item>
           <Button

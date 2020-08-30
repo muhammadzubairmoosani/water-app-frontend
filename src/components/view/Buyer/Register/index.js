@@ -1,57 +1,74 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../../../../config/index";
 import { WallCard, Notification } from "../../../common";
-import { Form, Input, Button, Checkbox, Modal } from "antd";
+import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
+import { _buyerRegister } from "../../../../service/methods";
+import VarificationModal from "./varificationModal";
 import {
   MobileOutlined,
   LockOutlined,
   UserOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import { _buyerRegister } from "../../../../service/methods";
 
 const BuyerRegister = () => {
-  // const [modal, setModal] = useState(false);
-  // const [code, setCode] = useState("");
+  const [modal, setModal] = useState(false);
+  const [values, setValues] = useState({});
+  const [cResult, setCResult] = useState(null);
+  const [verifyIsLoading, setVerifyIsLoading] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
 
-  useEffect(() => {
+  const captcha = () => {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha-container",
       { size: "invisible" }
     );
-  }, []);
+  };
+
+  const sendCode = (values) => {
+    setSubmitLoading(true);
+    const phoneNumber = `+92${values.mobile}`;
+    const appVerifier = window.recaptchaVerifier;
+    firebase
+      .auth()
+      .signInWithPhoneNumber(phoneNumber, appVerifier)
+      .then((confirmResult) => {
+        setCResult(confirmResult);
+        setValues(values);
+        setModal(!modal);
+        setSubmitLoading(false);
+      })
+      .catch(({ message }) => {
+        Notification.error({ message: message });
+        setSubmitLoading(false);
+      });
+  };
+
+  const confirmCode = (code) => {
+    if (!code) return;
+    setVerifyIsLoading(true);
+    cResult
+      .confirm(code)
+      .then((res) => {
+        _buyerRegister({ values, uid: res.user.uid });
+        setModal(!modal);
+        setVerifyIsLoading(false);
+      })
+      .catch(({ message }) => {
+        Notification.error({ message: message });
+        setVerifyIsLoading(false);
+      });
+  };
+
+  useEffect(() => captcha(), []);
 
   return (
     <WallCard className="buyer_register" heading="Buyer Register">
       <Form
         name="normal_login"
         className="login-form"
-        onFinish={(values) => {
-          const phoneNumber = `+92${values.mobile}`;
-          const appVerifier = window.recaptchaVerifier;
-          firebase
-            .auth()
-            .signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then((confirmResult) => {
-              const code = prompt(
-                "PaniVala will send you a text message with a 6-digt verification code.",
-                ""
-              );
-              if (code == null) return;
-              confirmResult
-                .confirm(code)
-                .then((res) => {
-                  _buyerRegister({ values, uid: res.user.uid });
-                })
-                .catch(({ message }) =>
-                  Notification.error({ message: message })
-                );
-            })
-            .catch(({ message }) => {
-              Notification.error({ message: message });
-            });
-        }}
+        onFinish={(values) => sendCode(values)}
       >
         <Form.Item
           name="name"
@@ -148,15 +165,12 @@ const BuyerRegister = () => {
           />
         </Form.Item>
 
-        <Checkbox>
-          I have read the <Link to="#">agreement</Link>
-        </Checkbox>
-
         <Form.Item>
           <Button
             type="primary"
             htmlType="submit"
             className="login-form-button"
+            loading={submitLoading}
             block
           >
             Register
@@ -164,32 +178,19 @@ const BuyerRegister = () => {
           Or <Link to="buyer-login">Login now!</Link>
         </Form.Item>
       </Form>
-      {/* <Modal
-        title="Code Confirmation"
-        visible={modal}
-        onOk={() => setModal(!modal)}
-        onCancel={() => setModal(!modal)}
-        okText="Send Code"
-      >
-        <Form.Item
-          label="6 digit code:"
-          extra="A text message with varification code was just sent to *** *** ***67"
-        >
-          <Form.Item
-            name="captcha"
-            noStyle
-            rules={[
-              {
-                required: true,
-                max: 6,
-                message: "Please input the captcha you got!",
-              },
-            ]}
-          >
-            <Input onChange={(e) => setCode(e.target.value)} />
-          </Form.Item>
-        </Form.Item>
-      </Modal> */}
+      {/* code varification modal start */}
+      <VarificationModal
+        modal={modal}
+        setModal={setModal}
+        reSendCode={() => console.log("re-send code")}
+        codeVerify={confirmCode}
+        mob={values?.mobile || ""}
+        loading={verifyIsLoading}
+        reSendCodeLoading={submitLoading}
+      />
+      {/* code varification modal end */}
+
+      {/* recaptcha-container div must be required for phone varifivation*/}
       <div id="recaptcha-container"></div>
     </WallCard>
   );

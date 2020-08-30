@@ -23,8 +23,6 @@ const _buyerLogin = (values) => {
 };
 
 const _buyerRegister = ({ values, uid }) => {
-  console.log({ uid });
-  console.log(values);
   const { name, mobile, password, address } = values;
   api
     .post("/buyer-register", {
