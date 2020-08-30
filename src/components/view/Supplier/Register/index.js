@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { ImageUploader, WallCard } from "../../../common";
 import { Form, Input, Button, Select, Row, Col } from "antd";
 import { Link } from "react-router-dom";
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import {
-  MobileOutlined,
   LockOutlined,
   UserOutlined,
   HomeOutlined,
+  MinusCircleOutlined,
+  PlusOutlined,
 } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 const { Option } = Select;
@@ -63,7 +63,6 @@ const SupplierRegister = () => {
           ]}
         >
           <Input
-            prefix={<MobileOutlined className="site-form-item-icon" />}
             placeholder="Mobile Number-1 (Required)"
             type="number"
             addonBefore={<span>+92</span>}
@@ -73,7 +72,6 @@ const SupplierRegister = () => {
 
         <Form.Item name="mobile2" hasFeedback rules={[{ min: 10, max: 10 }]}>
           <Input
-            prefix={<MobileOutlined className="site-form-item-icon" />}
             placeholder="Mobile Number-2 (Optional)"
             type="number"
             addonBefore={<span>+92</span>}
@@ -131,7 +129,9 @@ const SupplierRegister = () => {
         <Form.Item
           name="company_address"
           hasFeedback
-          rules={[{ required: true, max: 500, message: "Address is Required!" }]}
+          rules={[
+            { required: true, max: 500, message: "Address is Required!" },
+          ]}
         >
           <Input
             placeholder="Company Address (Required)"

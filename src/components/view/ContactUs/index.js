@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
-import { UserOutlined, MobileOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import { WallCard } from "../../common";
 import { _contactUs } from "../../../service/methods";
 
@@ -39,11 +39,7 @@ const ContactUs = () => {
             },
           ]}
         >
-          <Input
-            prefix={<MobileOutlined className="site-form-item-icon" />}
-            placeholder="Mobile"
-            type="number"
-          />
+          <Input placeholder="Mobile" type="number" />
         </Form.Item>
 
         <div className="msg_contain">

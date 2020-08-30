@@ -1,7 +1,7 @@
 import React from "react";
 import { WallCard } from "../../../common";
 import { Form, Input, Button } from "antd";
-import { MobileOutlined, LockOutlined } from "@ant-design/icons";
+import { LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { _buyerLogin } from "../../../../service/methods";
 
@@ -22,7 +22,6 @@ const BuyerLogin = () => {
           ]}
         >
           <Input
-            prefix={<MobileOutlined className="site-form-item-icon" />}
             placeholder="Mobile Number"
             type="number"
             addonBefore={<span>+92</span>}

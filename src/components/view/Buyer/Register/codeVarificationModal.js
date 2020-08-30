@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Button, Modal } from "antd";
 import { WallCard } from "../../../common";
 
-const VarificationModal = ({
+const CodeVarificationModal = ({
   modal,
   setModal,
   reSendCode,
@@ -55,4 +55,4 @@ const VarificationModal = ({
   </Modal>
 );
 
-export default VarificationModal;
+export default CodeVarificationModal;

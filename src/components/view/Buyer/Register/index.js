@@ -4,13 +4,8 @@ import { WallCard, Notification } from "../../../common";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { _buyerRegister } from "../../../../service/methods";
-import VarificationModal from "./varificationModal";
-import {
-  MobileOutlined,
-  LockOutlined,
-  UserOutlined,
-  HomeOutlined,
-} from "@ant-design/icons";
+import CodeVarificationModal from "./codeVarificationModal";
+import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 
 const BuyerRegister = () => {
   const [modal, setModal] = useState(false);
@@ -94,7 +89,6 @@ const BuyerRegister = () => {
           ]}
         >
           <Input
-            prefix={<MobileOutlined className="site-form-item-icon" />}
             placeholder="Mobile Number (Required)"
             type="number"
             addonBefore={<span>+92</span>}
@@ -179,7 +173,7 @@ const BuyerRegister = () => {
         </Form.Item>
       </Form>
       {/* code varification modal start */}
-      <VarificationModal
+      <CodeVarificationModal
         modal={modal}
         setModal={setModal}
         reSendCode={() => console.log("re-send code")}
