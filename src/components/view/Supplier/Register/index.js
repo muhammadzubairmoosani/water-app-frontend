@@ -40,7 +40,13 @@ const SupplierRegister = () => {
         <Form.Item
           name="name"
           hasFeedback
-          rules={[{ required: true, max: 50 }]}
+          rules={[
+            {
+              required: true,
+              min: 3,
+              max: 50,
+            },
+          ]}
         >
           <Input
             placeholder="Owner/Supplier Name (Required)"

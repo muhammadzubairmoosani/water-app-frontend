@@ -67,7 +67,13 @@ const BuyerRegister = () => {
         <Form.Item
           name="name"
           hasFeedback
-          rules={[{ required: true, max: 50 }]}
+          rules={[
+            {
+              required: true,
+              min: 3,
+              max: 50,
+            },
+          ]}
         >
           <Input
             placeholder="Name (Required)"
