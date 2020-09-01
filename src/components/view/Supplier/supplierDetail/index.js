@@ -31,10 +31,10 @@ const SupplierDetail = () => {
       <Heading heading="Supplier Detail" />
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col xs={24} md={16} className="gutter-row">
-          <RightPanel />
+          <LeftPanel />
         </Col>
         <Col xs={24} md={8} className="border gutter-row">
-          <LeftPanel />
+          <RightPanel />
         </Col>
       </Row>
     </Layout>
@@ -42,7 +42,6 @@ const SupplierDetail = () => {
 };
 
 export default SupplierDetail;
-
 
 // Cloudinary image with water mark code start
 // import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
