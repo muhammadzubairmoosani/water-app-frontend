@@ -1,8 +1,8 @@
 import React from "react";
 import { Descriptions } from "antd";
 
-const GrayCard = ({ title, children }) => (
-  <Descriptions title="About Us">
+const GrayCard = ({ title, className, children }) => (
+  <Descriptions title={title} className={className}>
     <Descriptions.Item>{children}</Descriptions.Item>
   </Descriptions>
 );
