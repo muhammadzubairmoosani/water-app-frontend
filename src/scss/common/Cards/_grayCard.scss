@@ -1,0 +1,13 @@
+.ant-descriptions {
+    background-color: $offWhite;
+    padding: 1em 1.5em;
+    border-radius: $radius;
+
+    .ant-descriptions-title {
+        color: $themeColor;
+    }
+
+    .ant-descriptions-item-content {
+        padding: 0 0.5em;
+    }
+}

@@ -1,4 +1,4 @@
-import { WallCard, ProductCard } from "./Cards";
+import { WallCard, ProductCard, GrayCard } from "./Cards";
 import { CardCarousel, CardCarouselSegment } from "./Carousels";
 import Layout from "./Layout";
 import Header from "./Header";
@@ -24,4 +24,5 @@ export {
   Notification,
   CodeVerificationModal,
   Slider,
+  GrayCard,
 };
