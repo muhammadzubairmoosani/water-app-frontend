@@ -67,7 +67,7 @@ const BuyerRegister = () => {
         <Form.Item
           name="name"
           hasFeedback
-          rules={[{ required: true, max: 50, message: "Name is Required!" }]}
+          rules={[{ required: true, max: 50 }]}
         >
           <Input
             placeholder="Name (Required)"
@@ -83,7 +83,6 @@ const BuyerRegister = () => {
               required: true,
               min: 10,
               max: 10,
-              message: "Mobile is Required!",
             },
           ]}
         >
@@ -105,7 +104,6 @@ const BuyerRegister = () => {
               required: true,
               min: 8,
               max: 30,
-              message: "Password is Required!",
             },
           ]}
         >
@@ -124,7 +122,6 @@ const BuyerRegister = () => {
               required: true,
               min: 8,
               max: 30,
-              message: "Confirm password is Required!",
             },
             ({ getFieldValue }) => ({
               validator(rule, value) {
@@ -148,9 +145,7 @@ const BuyerRegister = () => {
         <Form.Item
           name="address"
           hasFeedback
-          rules={[
-            { required: true, max: 300, message: "Address is Required!" },
-          ]}
+          rules={[{ required: true, max: 300 }]}
         >
           <Input
             placeholder="Address (Required)"

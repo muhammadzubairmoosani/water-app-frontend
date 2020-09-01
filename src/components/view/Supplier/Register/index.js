@@ -29,9 +29,7 @@ const SupplierRegister = () => {
         <Form.Item
           name="company_name"
           hasFeedback
-          rules={[
-            { required: true, max: 50, message: "Company name is Required!" },
-          ]}
+          rules={[{ required: true, max: 50 }]}
         >
           <Input
             placeholder="Company Name (Required)"
@@ -42,7 +40,7 @@ const SupplierRegister = () => {
         <Form.Item
           name="name"
           hasFeedback
-          rules={[{ required: true, max: 50, message: "Name is Required!" }]}
+          rules={[{ required: true, max: 50 }]}
         >
           <Input
             placeholder="Owner/Supplier Name (Required)"
@@ -58,7 +56,6 @@ const SupplierRegister = () => {
               required: true,
               min: 10,
               max: 10,
-              message: "Mobile-1 is Required!",
             },
           ]}
         >
@@ -87,7 +84,6 @@ const SupplierRegister = () => {
               required: true,
               min: 8,
               max: 30,
-              message: "Password is Required!",
             },
           ]}
         >
@@ -106,7 +102,6 @@ const SupplierRegister = () => {
               required: true,
               min: 8,
               max: 30,
-              message: "Confirm password is Required!",
             },
             ({ getFieldValue }) => ({
               validator(rule, value) {
@@ -129,9 +124,7 @@ const SupplierRegister = () => {
         <Form.Item
           name="company_address"
           hasFeedback
-          rules={[
-            { required: true, max: 500, message: "Address is Required!" },
-          ]}
+          rules={[{ required: true, max: 500 }]}
         >
           <Input
             placeholder="Company Address (Required)"

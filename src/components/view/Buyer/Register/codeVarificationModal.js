@@ -9,7 +9,7 @@ const CodeVerificationModal = ({
   codeVerify,
   mob,
   loading,
-  reSendCodeLoading
+  reSendCodeLoading,
 }) => (
   <Modal
     visible={modal}
@@ -22,7 +22,7 @@ const CodeVerificationModal = ({
     <WallCard heading="Phone Verification">
       <Form layout="inline" onFinish={(values) => codeVerify(values.code)}>
         <Form.Item
-        className="form_item"
+          className="form_item"
           label={
             <b>
               Send verification code to your phone (
@@ -41,7 +41,6 @@ const CodeVerificationModal = ({
               required: true,
               max: 6,
               min: 6,
-              message: "Please enter the 6-digit code you got!",
             },
           ]}
         >

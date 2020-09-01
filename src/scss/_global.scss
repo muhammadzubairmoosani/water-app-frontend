@@ -10,7 +10,7 @@
 
     form {
         padding: 0 20px;
-        max-width: 350px;
+        max-width: 400px;
         margin: 0 auto;
         @include animation_return;
 
@@ -21,9 +21,33 @@
         .login-form-button {
             margin: 0.5em 0;
         }
+
+        input.ant-input,
+        textarea {
+            font-weight: bold;
+            font-size: 15px;
+            color: $gray;
+        }
+
+        .ant-input-group-addon:first-child {
+            box-shadow: $shadow;
+        }
     }
 }
 
 .shadow {
     box-shadow: $shadow;
+}
+
+.ant-back-top-content {
+    background-color: $themeColor;
+    border: 1px solid $themeColor;
+}
+
+.ant-back-top-content:hover {
+    background-color: transparent;
+
+    svg {
+        color: $themeColor;
+    }
 }

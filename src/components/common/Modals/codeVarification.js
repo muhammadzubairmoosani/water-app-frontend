@@ -41,7 +41,6 @@ const CodeVerificationModal = ({
               required: true,
               max: 6,
               min: 6,
-              message: "Please enter the 6-digit code you got!",
             },
           ]}
         >

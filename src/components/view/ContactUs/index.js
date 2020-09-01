@@ -12,12 +12,12 @@ const ContactUs = () => {
       <Form name="nest-messages" onFinish={(values) => _contactUs(values)}>
         <Form.Item
           name="name"
+          hasFeedback
           rules={[
             {
               required: true,
               min: 3,
               max: 50,
-              message: "Name is Required!",
             },
           ]}
         >
@@ -30,16 +30,21 @@ const ContactUs = () => {
 
         <Form.Item
           name="mobile"
+          hasFeedback
           rules={[
             {
               required: true,
-              min: 11,
-              max: 11,
-              message: "Mobile is Required!",
+              min: 10,
+              max: 10,
             },
           ]}
         >
-          <Input placeholder="Mobile" type="number" />
+          <Input
+            placeholder="Mobile Number"
+            type="number"
+            allowClear
+            addonBefore={<span>+92</span>}
+          />
         </Form.Item>
 
         <div className="msg_contain">

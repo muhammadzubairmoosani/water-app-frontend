@@ -17,11 +17,11 @@ const BuyerLogin = () => {
               required: true,
               min: 10,
               max: 10,
-              message: "Mobile is Required!",
             },
           ]}
         >
           <Input
+            allowClear
             placeholder="Mobile Number"
             type="number"
             addonBefore={<span>+92</span>}
@@ -39,7 +39,6 @@ const BuyerLogin = () => {
               required: true,
               min: 8,
               max: 30,
-              message: "Password is Required!",
             },
           ]}
         >
