@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ImageUploader, WallCard } from "../../../common";
-import { Form, Input, Button, Select, Row, Col } from "antd";
+import { Form, Input, Button, Select, Row, Col, TreeSelect } from "antd";
 import { Link } from "react-router-dom";
 import {
   LockOutlined,
@@ -10,10 +10,49 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
+
+const { SHOW_PARENT } = TreeSelect;
 const { Option } = Select;
+const { TextArea } = Input;
 
 const SupplierRegister = () => {
+  const [messageLength, setMessageLength] = useState(0);
   const [fileList, setFileList] = useState([]);
+  const [areaOfService, setAreaOfService] = useState(undefined);
+
+  useEffect(() => console.log(areaOfService), [areaOfService]);
+
+  const treeData = [
+    {
+      title: "area 1",
+      value: "area 1",
+    },
+    {
+      title: "area 2",
+      value: "area 2",
+    },
+    {
+      title: "area 3",
+      value: "area 3",
+    },
+    {
+      title: "area 4",
+      value: "area 4",
+    },
+  ];
+
+  const tProps = {
+    treeData,
+    value: areaOfService,
+    onChange: setAreaOfService,
+    treeCheckable: true,
+    showCheckedStrategy: SHOW_PARENT,
+    placeholder: "Area of Working...",
+    style: {
+      width: "100%",
+    },
+  };
+
   return (
     <WallCard className="supplier_register" heading="Supplier Register">
       <Form
@@ -66,21 +105,21 @@ const SupplierRegister = () => {
           ]}
         >
           <Input
-            placeholder="Mobile Number-1 (Required)"
+            placeholder="Mobile Number (Required)"
             type="number"
             addonBefore={<span>+92</span>}
             className="w_100"
           />
         </Form.Item>
 
-        <Form.Item name="mobile2" hasFeedback rules={[{ min: 10, max: 10 }]}>
+        {/* <Form.Item name="mobile2" hasFeedback rules={[{ min: 10, max: 10 }]}>
           <Input
             placeholder="Mobile Number-2 (Optional)"
             type="number"
             addonBefore={<span>+92</span>}
             className="w_100"
           />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           name="password"
@@ -137,6 +176,29 @@ const SupplierRegister = () => {
             prefix={<HomeOutlined className="site-form-item-icon" />}
           />
         </Form.Item>
+
+        <TreeSelect allowClear {...tProps} />
+
+        <div className="msg_contain">
+          <Form.Item
+            name="message"
+            className="text_area_wrapper"
+            rules={[
+              {
+                required: true,
+                max: 500,
+              },
+            ]}
+          >
+            <TextArea
+              allowClear
+              placeholder="Tell something about your company... (Required)"
+              autoSize={{ minRows: 5, maxRows: 8 }}
+              onChange={(e) => setMessageLength(e.target.value.length)}
+            />
+          </Form.Item>
+          <div className="msgLength">{`${messageLength} / 500 max`}</div>
+        </div>
 
         <ImageUploader
           fileList={fileList}

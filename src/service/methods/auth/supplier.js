@@ -27,7 +27,7 @@ const _suplierRegister = ({ values, fileList, uid }) => {
     company_name,
     name,
     mobile1,
-    mobile2,
+    // mobile2,
     password,
     company_address,
   } = values;
@@ -47,7 +47,7 @@ const _suplierRegister = ({ values, fileList, uid }) => {
         company_name,
         name,
         mobile1,
-        mobile2,
+        // mobile2,
         password: passwordHash.generate(password),
         company_address,
         images: res.map(({ data }) => data.secure_url),

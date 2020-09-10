@@ -5,6 +5,7 @@ import { WallCard } from "../../common";
 import { _contactUs } from "../../../service/methods";
 
 const { TextArea } = Input;
+
 const ContactUs = () => {
   const [messageLength, setMessageLength] = useState(0);
   return (
