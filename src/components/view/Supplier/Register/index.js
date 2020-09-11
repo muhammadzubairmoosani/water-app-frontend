@@ -177,7 +177,9 @@ const SupplierRegister = () => {
           />
         </Form.Item>
 
-        <TreeSelect allowClear {...tProps} />
+        <Form.Item name="area_of_working" rules={[{ required: true, min: 1 }]}>
+          <TreeSelect {...tProps} />
+        </Form.Item>
 
         <div className="msg_contain">
           <Form.Item
@@ -200,13 +202,8 @@ const SupplierRegister = () => {
           <div className="msgLength">{`${messageLength} / 500 max`}</div>
         </div>
 
-        <ImageUploader
-          fileList={fileList}
-          setFileList={setFileList}
-          name="image"
-        />
 
-        {/* <Form.List name="services">
+        <Form.List name="services">
           {(fields, { add, remove }) => (
             <div>
               {fields.map((field) => (
@@ -281,7 +278,13 @@ const SupplierRegister = () => {
             </div>
           )}
         </Form.List>
- */}
+
+        <ImageUploader
+          fileList={fileList}
+          setFileList={setFileList}
+          name="image"
+        />
+
 
         <Form.Item>
           <Button

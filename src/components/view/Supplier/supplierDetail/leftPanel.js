@@ -7,7 +7,8 @@ const LeftPanel = ({ images }) => {
 
   return (
     <>
-      <div>
+      <GrayCard title={"Company Name"}>
+        <div>
         <img
           src={require("../../../../assets/images/slider1.webp")}
           // src={images && images[selectedImgIndex]}
@@ -29,7 +30,9 @@ const LeftPanel = ({ images }) => {
             />
           ))}
         </div>
-      </div>
+        </div>
+
+      </GrayCard>
       <GrayCard title="About Us">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever

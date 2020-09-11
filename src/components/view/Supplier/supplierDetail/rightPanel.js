@@ -3,8 +3,18 @@ import { GrayCard } from "../../../common";
 
 const RightPanel = () => (
   <>
-    <GrayCard title="Address" className="address_container">
-      M.R Kyani Rd, Civil Lines, Karachi, Karachi City, Sindh
+    <GrayCard title="Services">
+      <ul>
+        <li>19 liter gallon service</li>
+        <li>1000 liter water service</li>
+      </ul>
+    </GrayCard>
+    <GrayCard title="Area of Service">
+      <ul>
+        <li>M.A Jinnah Road</li>
+        <li>Marriott Road</li>
+        <li>Kharader Tower</li>
+      </ul>
     </GrayCard>
     <GrayCard title="Contact">
       Zubair Moosani <br />
@@ -12,10 +22,8 @@ const RightPanel = () => (
       <br />
       +92 347 2396383
     </GrayCard>
-    <GrayCard title="Deals In">
-      19 liter gallon service
-      <br />
-      1000 liter water service
+    <GrayCard title="Company Location">
+      M.R Kyani Rd, Civil Lines, Karachi, Karachi City, Sindh
     </GrayCard>
   </>
 );

@@ -20,15 +20,15 @@
         color: $gray3;
     }
 
-    .address_container {
-        @include md {
-            margin-top: 0;
-        }
-        @include lg {
-            margin-top: 0;
-        }
-        @include xl {
-            margin-top: 0;
-        }
-    }
+    // .address_container {
+    //     @include md {
+    //         margin-top: 0;
+    //     }
+    //     @include lg {
+    //         margin-top: 0;
+    //     }
+    //     @include xl {
+    //         margin-top: 0;
+    //     }
+    // }
 }
