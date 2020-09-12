@@ -23,14 +23,7 @@ const _supplierLogin = (values) => {
 };
 
 const _suplierRegister = ({ values, fileList, uid }) => {
-  const {
-    company_name,
-    name,
-    mobile1,
-    // mobile2,
-    password,
-    company_address,
-  } = values;
+  const { company_name, name, mobile1, password, company_address } = values;
   Promise.all(
     fileList.map((file) => {
       const formData = new FormData();
@@ -47,7 +40,6 @@ const _suplierRegister = ({ values, fileList, uid }) => {
         company_name,
         name,
         mobile1,
-        // mobile2,
         password: passwordHash.generate(password),
         company_address,
         images: res.map(({ data }) => data.secure_url),

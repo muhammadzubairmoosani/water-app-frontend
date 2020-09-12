@@ -18,7 +18,14 @@ const { TextArea } = Input;
 const SupplierRegister = () => {
   const [messageLength, setMessageLength] = useState(0);
   const [fileList, setFileList] = useState([]);
+  const [services, setServices] = useState([{ key: 0, isListField: true }]);
   const [areaOfService, setAreaOfService] = useState(undefined);
+
+  const _removeServiceField = (key) => {
+    const newServices = services;
+    newServices.splice(key, 1);
+    setServices(newServices);
+  };
 
   useEffect(() => console.log(areaOfService), [areaOfService]);
 
@@ -41,11 +48,23 @@ const SupplierRegister = () => {
     },
   ];
 
+  const servicesTitle = [
+    "19 Liter Gallon",
+    "200 Gallons Service",
+    "1,000 Gallons Service",
+    "2000 Gallons Service",
+    "3,000 Gallons Service",
+    "4,000 Gallons Service",
+    "6,000 Gallons Service",
+    "10,000 Gallons Service",
+  ];
+
   const tProps = {
     treeData,
     value: areaOfService,
     onChange: setAreaOfService,
     treeCheckable: true,
+    allowClear: true,
     showCheckedStrategy: SHOW_PARENT,
     placeholder: "Area of Working...",
     style: {
@@ -107,19 +126,11 @@ const SupplierRegister = () => {
           <Input
             placeholder="Mobile Number (Required)"
             type="number"
+            allowClear
             addonBefore={<span>+92</span>}
             className="w_100"
           />
         </Form.Item>
-
-        {/* <Form.Item name="mobile2" hasFeedback rules={[{ min: 10, max: 10 }]}>
-          <Input
-            placeholder="Mobile Number-2 (Optional)"
-            type="number"
-            addonBefore={<span>+92</span>}
-            className="w_100"
-          />
-        </Form.Item> */}
 
         <Form.Item
           name="password"
@@ -177,8 +188,11 @@ const SupplierRegister = () => {
           />
         </Form.Item>
 
-        <Form.Item name="area_of_working" rules={[{ required: true, min: 1 }]}>
-          <TreeSelect {...tProps} />
+        <Form.Item name="area_of_working" rules={[{ required: true }]}>
+          <TreeSelect {...tProps} 
+            
+          
+          />
         </Form.Item>
 
         <div className="msg_contain">
@@ -202,66 +216,48 @@ const SupplierRegister = () => {
           <div className="msgLength">{`${messageLength} / 500 max`}</div>
         </div>
 
-
         <Form.List name="services">
-          {(fields, { add, remove }) => (
+          {() => (
             <div>
-              {fields.map((field) => (
-                <Form.Item key={field.key}>
+              {services.map((service) => (
+                <Form.Item key={service.key}>
                   <Form.Item
                     rules={[
                       {
                         required: true,
-                        message: "You must select at least one!",
+                        message: "You must add at least one service!",
                       },
                     ]}
-                    {...field}
+                    {...service}
                     className="add_service_form_item"
                   >
                     <Row>
                       <Input.Group className="add_service_group">
                         <Col
                           xs={{ span: 24 }}
-                          sm={{ span: fields.length > 1 ? 13 : 15 }}
+                          sm={{ span: services.length > 1 ? 13 : 15 }}
                         >
                           <Select
                             className="add_service_select"
                             defaultValue="19 Liter Gallon"
                           >
-                            <Option value="19 Liter Gallon">
-                              19 Liter Gallon
-                            </Option>
-                            <Option value="1000 Gallon">
-                              200 Gallons Service
-                            </Option>
-                            <Option value="2000 Gallon">
-                              1,000 Gallons Service
-                            </Option>
-                            <Option value="3000 Gallon">
-                              2000 Gallons Service
-                            </Option>
-                            <Option value="3000 Gallon">
-                              3,000 Gallons Service
-                            </Option>
-                            <Option value="3000 Gallon">
-                              4,000 Gallons Service
-                            </Option>
-                            <Option value="3000 Gallon">
-                              6,000 Gallons Service
-                            </Option>
-                            <Option value="3000 Gallon">
-                              10,000 Gallons Service
-                            </Option>
+                            {servicesTitle.map((title) => (
+                              <Option value={title}>{title}</Option>
+                            ))}
                           </Select>
                         </Col>
                         <Col xs={{ span: 21 }} sm={{ span: 8 }}>
-                          <Input placeholder="Price" className="price_input" />
+                          <Input
+                            addonBefore={<span>Rs.</span>}
+                            placeholder="Price"
+                            className="price_input"
+                          />
                         </Col>
-                        {fields.length > 1 ? (
+                        {services.length > 1 ? (
                           <Col className="minus_icon_col" xs={{ span: 2 }}>
                             <MinusCircleOutlined
                               className="dynamic-delete-button"
-                              onClick={() => remove(field.name)}
+                              onClick={() => _removeServiceField(service.key)}
                             />
                           </Col>
                         ) : null}
@@ -271,7 +267,19 @@ const SupplierRegister = () => {
                 </Form.Item>
               ))}
               <Form.Item>
-                <Button type="dashed" onClick={() => add()} className="w_100">
+                <Button
+                  type="dashed"
+                  onClick={() =>
+                    setServices([
+                      ...services,
+                      {
+                        key: services.length,
+                        isListField: true,
+                      },
+                    ])
+                  }
+                  className="w_100"
+                >
                   <PlusOutlined /> Add More Service
                 </Button>
               </Form.Item>
@@ -284,7 +292,6 @@ const SupplierRegister = () => {
           setFileList={setFileList}
           name="image"
         />
-
 
         <Form.Item>
           <Button

@@ -22,6 +22,7 @@ const SupplierLogin = () => {
         >
           <Input
             placeholder="Mobile Number"
+            allowClear
             type="number"
             addonBefore={<span>+92</span>}
             style={{ width: "100%" }}
