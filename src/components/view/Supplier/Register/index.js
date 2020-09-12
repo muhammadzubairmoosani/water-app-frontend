@@ -21,11 +21,6 @@ const SupplierRegister = () => {
   const [services, setServices] = useState([{ key: 0, isListField: true }]);
   const [areaOfService, setAreaOfService] = useState(undefined);
 
-  const _removeServiceField = (key) => {
-    const newServices = services;
-    newServices.splice(key, 1);
-    setServices(newServices);
-  };
 
   useEffect(() => console.log(areaOfService), [areaOfService]);
 
@@ -65,12 +60,21 @@ const SupplierRegister = () => {
     onChange: setAreaOfService,
     treeCheckable: true,
     allowClear: true,
+    // hasFeedback: true,
     showCheckedStrategy: SHOW_PARENT,
     placeholder: "Area of Working...",
     style: {
       width: "100%",
     },
   };
+
+  const _removeServiceField = (key) => {
+    let newServices = services;
+    newServices.splice(key, 1);
+    console.log(newServices)
+    setServices(newServices);
+  };
+
 
   return (
     <WallCard className="supplier_register" heading="Supplier Register">
@@ -188,11 +192,16 @@ const SupplierRegister = () => {
           />
         </Form.Item>
 
-        <Form.Item name="area_of_working" rules={[{ required: true }]}>
-          <TreeSelect {...tProps} 
-            
-          
-          />
+        <Form.Item
+          name="area_of_working"
+          rules={[
+            {
+              required: true,
+              message: "You must add at least one area of working!",
+            },
+          ]}
+        >
+          <TreeSelect {...tProps} />
         </Form.Item>
 
         <div className="msg_contain">
@@ -208,7 +217,7 @@ const SupplierRegister = () => {
           >
             <TextArea
               allowClear
-              placeholder="Tell something about your company... (Required)"
+              placeholder="Tell something about your company for growing you business... (Required)"
               autoSize={{ minRows: 5, maxRows: 8 }}
               onChange={(e) => setMessageLength(e.target.value.length)}
             />
