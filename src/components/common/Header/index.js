@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const { SubMenu } = Menu;
 
 const Header = () => (
-  <header>
+  <header className="_header">
     <PageHeader
       extra={
         <Link to="/">

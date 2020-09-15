@@ -8,6 +8,7 @@ import {
   SupplierDetail,
 } from "./Supplier";
 import { BuyerLogin, BuyerRegister } from "./Buyer";
+import { AdminDashboard } from "./Dashboard";
 
 export {
   Home,
@@ -19,4 +20,5 @@ export {
   SupplierLogin,
   SupplierRegister,
   SupplierDetail,
+  AdminDashboard
 };

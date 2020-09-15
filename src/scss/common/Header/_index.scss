@@ -1,66 +1,65 @@
 ////////////// NAVBAR //////////////
-header {
+._header {
     @include flex;
     justify-content: space-around;
     flex-wrap: nowrap;
     height: 75px;
     box-shadow: $shadow;
-}
 
-.ant-menu {
-    overflow: hidden !important;
-}
-
-.ant-page-header-heading-extra {
-    margin: 0 15px 0 0 !important;
-
-    img {
-        width: 145px;
+    .ant-menu {
+        overflow: hidden !important;
     }
 
-    @include xs {
+    .ant-page-header-heading-extra {
+        margin: 0 15px 0 0 !important;
+
         img {
-            width: 125px;
+            width: 145px;
+        }
+
+        @include xs {
+            img {
+                width: 125px;
+            }
         }
     }
-}
 
-.ant-layout-header {
-    background-color: $white !important;
-    padding: 0.5em 0 !important;
-    height: auto !important;
-}
-
-.ant-page-header {
-    padding: 0 !important;
-}
-
-.ant-menu-item {
-    color: rgba(0, 0, 0, 0.85) !important;
-    font-weight: bold;
-}
-
-.ant-menu-submenu-title {
-    font-weight: bold;
-}
-
-.ant-menu {
-    background-color: $white !important;
-}
-
-.ant-menu-horizontal {
-    border-bottom: none !important;
-}
-
-.ant-menu-item-selected {
-    border-bottom: 2px solid $themeColor !important;
-
-    a {
-        color: $themeColor !important;
+    .ant-layout-header {
+        background-color: $white !important;
+        padding: 0.5em 0 !important;
+        height: auto !important;
     }
-}
 
-.ant-menu-submenu-popup {
-    box-shadow: $shadow;
+    .ant-page-header {
+        padding: 0 !important;
+    }
 
+    .ant-menu-item {
+        color: rgba(0, 0, 0, 0.85) !important;
+        font-weight: bold;
+    }
+
+    .ant-menu-submenu-title {
+        font-weight: bold;
+    }
+
+    .ant-menu {
+        background-color: $white !important;
+    }
+
+    .ant-menu-horizontal {
+        border-bottom: none !important;
+    }
+
+    .ant-menu-item-selected {
+        border-bottom: 2px solid $themeColor !important;
+
+        a {
+            color: $themeColor !important;
+        }
+    }
+
+    .ant-menu-submenu-popup {
+        box-shadow: $shadow;
+    }
 }
