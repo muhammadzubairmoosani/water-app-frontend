@@ -182,7 +182,7 @@ const SupplierRegister = () => {
         </Form.Item>
 
         <Form.Item
-          name="company_address"
+          name="address"
           hasFeedback
           rules={[{ required: true, max: 500 }]}
         >
@@ -206,7 +206,7 @@ const SupplierRegister = () => {
 
         <div className="msg_contain">
           <Form.Item
-            name="message"
+            name="description"
             className="text_area_wrapper"
             rules={[
               {
@@ -297,7 +297,7 @@ const SupplierRegister = () => {
               }
               className="w_100"
             >
-              <PlusOutlined /> Add More Service
+              <PlusOutlined /> Add More Services
             </Button>
           </Form.Item>
         </div>

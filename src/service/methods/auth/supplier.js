@@ -23,7 +23,15 @@ const _supplierLogin = (values) => {
 };
 
 const _suplierRegister = ({ values, fileList, uid }) => {
-  const { company_name, name, mobile1, password, company_address } = values;
+  const {
+    company_name,
+    name,
+    mobile1,
+    password,
+    address,
+    area_of_working,
+    description,
+  } = values;
   Promise.all(
     fileList.map((file) => {
       const formData = new FormData();
@@ -41,13 +49,15 @@ const _suplierRegister = ({ values, fileList, uid }) => {
         name,
         mobile1,
         password: passwordHash.generate(password),
-        company_address,
+        address,
         images: res.map(({ data }) => data.secure_url),
+        area_of_working,
+        description,
       })
     )
     .then(() =>
       Notification.success({
-        message: "Thanks for create account.",
+        message: "Thanks for create account at Pani-Vala.",
         description: "Your account has been successfully created!",
       })
     )

@@ -19,7 +19,7 @@ const App = () => {
   return (
     <Router>
       <BackTop />
-      {/* <Header /> */}
+      <Header />
       <Switch>
         {/* <Route exact path="/" component={AdminDashboard} /> */}
         <Route exact path="/" component={Home} />

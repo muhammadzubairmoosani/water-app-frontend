@@ -11,7 +11,6 @@ const SupplierDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [images, setImages] = useState("");
   const { id } = useParams();
-
   useEffect(() => {
     _getSupplierDetail(id)
       .then(({ data }) => {
