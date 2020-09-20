@@ -33,6 +33,8 @@ const _suplierRegister = ({ values, fileList, uid }) => {
     description,
   } = values;
 
+  console.log("values", values);
+
   Promise.all(
     fileList.map((file) => {
       const formData = new FormData();
@@ -58,8 +60,7 @@ const _suplierRegister = ({ values, fileList, uid }) => {
     )
     .then(() =>
       Notification.success({
-        message: "Thanks for create account at Pani-Vala.",
-        description: "Your account has been successfully created!",
+        message: "Your account has been successfully created!",
       })
     )
     .catch((err) => Notification.error({ message: err.message }));

@@ -18,6 +18,10 @@
         border: 1px solid $themeColor;
     }
 
+    .slider_img{
+        max-height: 500px;
+    }
+
     .ant-descriptions-item-content {
         font-size: 14px;
         font-weight: bold;
@@ -45,7 +49,4 @@
         padding-left: 15px;
     }
 
-    .slider_img{
-        max-height: 500px;
-    }
 }
