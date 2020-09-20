@@ -1,6 +1,6 @@
 .supplier_detail {
     .ant-row {
-        margin: auto !important; 
+        margin: auto !important;
     }
 
     .avatar {
@@ -25,6 +25,10 @@
     }
 
     .slider_card {
+        :first-child {
+            width: 100%;
+        }
+
         .ant-descriptions-title {
             font-size: 22px;
             margin-bottom: 10px;
@@ -39,5 +43,9 @@
 
     ol {
         padding-left: 15px;
+    }
+
+    .slider_img{
+        max-height: 500px;
     }
 }

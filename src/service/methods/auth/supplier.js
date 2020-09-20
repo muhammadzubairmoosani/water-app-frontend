@@ -32,6 +32,7 @@ const _suplierRegister = ({ values, fileList, uid }) => {
     area_of_working,
     description,
   } = values;
+
   Promise.all(
     fileList.map((file) => {
       const formData = new FormData();
@@ -44,7 +45,7 @@ const _suplierRegister = ({ values, fileList, uid }) => {
       api.post("/supplier-register", {
         time_stemp: Date.now(),
         role: "supplier",
-        firebase_uid: uid,
+        firebase_uid: "uid",
         company_name,
         name,
         mobile1,

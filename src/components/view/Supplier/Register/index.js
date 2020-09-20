@@ -25,20 +25,20 @@ const SupplierRegister = () => {
 
   const treeData = [
     {
-      title: "area 1",
-      value: "area 1",
+      title: "Garden",
+      value: "Garden",
     },
     {
-      title: "area 2",
-      value: "area 2",
+      title: "Old Haji Camp",
+      value: "Old Haji Camp",
     },
     {
-      title: "area 3",
-      value: "area 3",
+      title: "Saddar",
+      value: "Saddar",
     },
     {
-      title: "area 4",
-      value: "area 4",
+      title: "Kharadar",
+      value: "Kharadar",
     },
   ];
 
@@ -227,9 +227,7 @@ const SupplierRegister = () => {
 
         {/* <Form.List name="services"> */}
         <div>
-          {
-          
-          services.map((service, key) => (
+          {services.map((service, key) => (
             <Form.Item key={key}>
               {console.log(service)}
               <Form.Item
@@ -270,9 +268,9 @@ const SupplierRegister = () => {
                           className="dynamic-delete-button"
                           onClick={() => {
                             // _removeServiceField(service.key);
-                            let newServices = services
-                            newServices.splice(key, 1)
-                            console.log(newServices)
+                            let newServices = services;
+                            newServices.splice(key, 1);
+                            console.log(newServices);
                             // setServices([...newServices]);
                           }}
                         />

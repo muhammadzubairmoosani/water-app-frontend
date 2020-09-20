@@ -1,29 +1,34 @@
 import React from "react";
 import { GrayCard } from "../../../common";
+import { Skeleton } from "antd";
 
-const RightPanel = () => (
+const RightPanel = ({ name, mobile1, address, area_of_working, loading }) => (
   <>
     <GrayCard title="Services">
-      <ul>
-        <li>19 liter gallon service</li>
-        <li>1000 liter water service</li>
-      </ul>
+      <Skeleton active loading={loading}>
+        <ul>
+          <li>19 liter gallon service</li>
+          <li>1000 liter water service</li>
+        </ul>
+      </Skeleton>
     </GrayCard>
     <GrayCard title="Area of Service">
-      <ol>
-        <li>M.A Jinnah Road</li>
-        <li>Marriott Road</li>
-        <li>Kharader Tower</li>
-      </ol>
+      <Skeleton active loading={loading}>
+        <ol>
+          {area_of_working && area_of_working.map((area) => <li>{area}</li>)}
+        </ol>
+      </Skeleton>
     </GrayCard>
-    <GrayCard title="Contact">
-      Zubair Moosani <br />
-      +92 315 2396525
-      <br />
-      +92 347 2396383
+    <GrayCard title="Contact detail">
+      <Skeleton active loading={loading}>
+        {name} <br />
+        {mobile1}
+      </Skeleton>
     </GrayCard>
     <GrayCard title="Company Location">
-      M.R Kyani Rd, Civil Lines, Karachi, Karachi City, Sindh
+      <Skeleton active loading={loading}>
+        {address}
+      </Skeleton>
     </GrayCard>
   </>
 );

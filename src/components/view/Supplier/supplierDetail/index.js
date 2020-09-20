@@ -16,7 +16,6 @@ const SupplierDetail = () => {
       .then(({ data }) => {
         setSupplierDetail(data);
         setImages(data.images);
-        console.log(data);
         setIsLoading(false);
       })
       .catch(({ message }) => {
@@ -30,10 +29,15 @@ const SupplierDetail = () => {
       <Heading heading="Supplier Detail" />
       <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
         <Col xs={24} md={16} className="gutter-row">
-          <LeftPanel />
+          <LeftPanel
+            images={images}
+            name={supplierDetail.company_name}
+            description={supplierDetail.description}
+            loading={isLoading}
+          />
         </Col>
         <Col xs={24} md={8} className="border gutter-row">
-          <RightPanel />
+          <RightPanel {...supplierDetail} loading={isLoading} />
         </Col>
       </Row>
     </Layout>
@@ -41,32 +45,3 @@ const SupplierDetail = () => {
 };
 
 export default SupplierDetail;
-
-// Cloudinary image with water mark code start
-// import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
-
-{
-  /* <CloudinaryContext cloudName="pani-wala">
-          <Image publicId="my-images/back_ckxp37">
-            <Transformation width="400" crop="scale" overlay="cloudinary_icon"/>
-          </Image>
-        </CloudinaryContext> */
-}
-
-{
-  /* <CloudinaryContext cloudName="demo">
-          <Image publicId="sample">
-            <Transformation
-              overlay="cloudinary_icon"
-              gravity="south_east"
-              x="5"
-              y="5"
-              width="50"
-              opacity="60"
-              effect="brightness:200"
-            />
-
-          </Image>
-        </CloudinaryContext> */
-}
-// Cloudinary image with water mark code end

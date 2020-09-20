@@ -1,14 +1,15 @@
 .ant-descriptions {
     background-color: $gray4;
-    padding: 1em 1.5em;
+    padding: 1em;
     border-radius: $radius;
     margin-top: 1.5em;
 
     .ant-descriptions-title {
         color: $themeColor;
+        text-transform: capitalize;
     }
 
     .ant-descriptions-item-content {
-        padding: 0 0.5em;
+        width: 100%;
     }
 }
