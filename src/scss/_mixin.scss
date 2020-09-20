@@ -2,14 +2,17 @@ $white: #fff;
 $offWhite: #fafafa;
 $black: #000;
 $themeColor: #3fcaef;
-$themeWidth: 1080px;
 $shadowColor1: #424242d9;
 $shadowColor2: #2b2b2b;
 $gray: #808080;
 $gray1: #767676;
 $gray2: #909090;
 $gray3: #686868;
+$gray4: #f2f2f2;
+$gray5: #9a9a9a;
 $lightGray: #f0f2f5;
+
+$themeLayout: 1024px;
 $shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 $bgShadow: #1f1f1f;
 $radius: 4px;
@@ -36,6 +39,12 @@ $radius: 4px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@mixin truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 $break-points: (
@@ -172,3 +181,48 @@ $break-points: (
         transform: translateZ(50px) translateY(-5px);
     }
 }
+
+// ==================== create break-points by zubair - start
+// $break-points: (
+//     xs-max: 575px,
+//     sm-min: 576px,
+//     md-min: 768px,
+//     lg-min: 992px,
+//     xl-min: 1200px,
+// );
+
+// // Extra small devices (landscape phones, 0px and up)
+// @mixin xs {
+//     @media (max-width: map-get($break-points, xs-max)) {
+//         @content;
+//     }
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @mixin sm {
+//     @media (max-width: map-get($break-points, sm-min)) {
+//         @content;
+//     }
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @mixin md {
+//     @media (max-width: map-get($break-points, md-min)) {
+//         @content;
+//     }
+// }
+
+// // Large devices (desktops, 992px and up)
+// @mixin lg {
+//     @media (max-width: map-get($break-points, lg-min)) {
+//         @content;
+//     }
+// }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @mixin xl {
+//     @media (max-width: map-get($break-points, xl-min)) {
+//         @content;
+//     }
+// }
+// ==================== create break-points by zubair - end

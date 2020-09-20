@@ -10,11 +10,11 @@ const RightPanel = () => (
       </ul>
     </GrayCard>
     <GrayCard title="Area of Service">
-      <ul>
+      <ol>
         <li>M.A Jinnah Road</li>
         <li>Marriott Road</li>
         <li>Kharader Tower</li>
-      </ul>
+      </ol>
     </GrayCard>
     <GrayCard title="Contact">
       Zubair Moosani <br />

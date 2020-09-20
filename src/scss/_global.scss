@@ -51,3 +51,7 @@
         color: $themeColor;
     }
 }
+
+.truncate {
+    @include truncate;
+}

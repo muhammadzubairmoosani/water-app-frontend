@@ -29,7 +29,7 @@ const SupplierDetail = () => {
   return (
     <Layout className="supplier_detail">
       <Heading heading="Supplier Detail" />
-      <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+      <Row gutter={{ xs: 8, sm: 16, md: 24 }}>
         <Col xs={24} md={16} className="gutter-row">
           <LeftPanel />
         </Col>

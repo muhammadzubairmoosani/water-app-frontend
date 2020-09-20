@@ -7,7 +7,7 @@ const LeftPanel = ({ images }) => {
 
   return (
     <>
-      <GrayCard title={"Company Name"}>
+      <GrayCard title={"Company Name"} className="slider_card">
         <div>
         <img
           src={require("../../../../assets/images/slider1.webp")}

@@ -1,8 +1,12 @@
 .supplier_detail {
+    .ant-row {
+        margin: auto !important; 
+    }
+
     .avatar {
         margin-right: 8px;
         border: 1px solid $gray2;
-        padding: 5px;
+        padding: 3px;
         cursor: pointer;
     }
 
@@ -15,20 +19,25 @@
     }
 
     .ant-descriptions-item-content {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: bold;
-        color: $gray3;
+        color: $gray5;
     }
 
-    // .address_container {
-    //     @include md {
-    //         margin-top: 0;
-    //     }
-    //     @include lg {
-    //         margin-top: 0;
-    //     }
-    //     @include xl {
-    //         margin-top: 0;
-    //     }
-    // }
+    .slider_card {
+        .ant-descriptions-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            @include truncate;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    ol {
+        padding-left: 15px;
+    }
 }
