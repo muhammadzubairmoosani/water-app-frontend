@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
+import Profile from "./Profile";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -30,7 +31,9 @@ const SupplierDashboard = () => {
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
-          ></div>
+          >
+            <Profile />
+          </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
           Ant Design ©2018 Created by Ant UED
