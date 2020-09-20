@@ -9,7 +9,7 @@ import {
   SupplierLogin,
   SupplierRegister,
   SupplierDetail,
-  AdminDashboard,
+  SupplierDashboard,
 } from "./view";
 
 export {
@@ -26,5 +26,5 @@ export {
   SupplierLogin,
   SupplierRegister,
   SupplierDetail,
-  AdminDashboard,
+  SupplierDashboard,
 };

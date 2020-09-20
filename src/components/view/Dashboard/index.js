@@ -1,3 +1,3 @@
-import AdminDashboard from "./Admin";
+import SupplierDashboard from "./Supplier";
 
-export { AdminDashboard };
+export { SupplierDashboard };
