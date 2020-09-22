@@ -15,6 +15,7 @@ const SupplierDashboard = () => {
         collapsed={collapsed}
         onCollapse={() => setCollapsed(!collapsed)}
       >
+        <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             Profile

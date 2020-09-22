@@ -19,10 +19,10 @@ const App = () => {
   return (
     <Router>
       <BackTop />
-      {/* <Header /> */}
+      <Header />
       <Switch>
-        <Route exact path="/" component={SupplierDashboard} />
-        {/* <Route exact path="/" component={Home} /> */}
+        {/* <Route exact path="/" component={SupplierDashboard} /> */}
+        <Route exact path="/" component={Home} />
         <Route exact path="/contact-us" component={ContactUs} />
         <Route exact path="/supplier-list" component={SupplierList} />
         <Route exact path="/supplier-login" component={SupplierLogin} />

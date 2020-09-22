@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { ImageUploader, WallCard } from "../../../common";
+import {
+  ImageUploader,
+  WallCard,
+  CodeVerificationModal,
+  Notification,
+} from "../../../common";
 import { Form, Input, Button, Select, Row, Col, TreeSelect } from "antd";
 import { Link } from "react-router-dom";
 import {
@@ -10,6 +15,7 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
+import firebase from "../../../../config/index";
 
 const { SHOW_PARENT } = TreeSelect;
 const { Option } = Select;
@@ -22,6 +28,61 @@ const SupplierRegister = () => {
   const [areaOfService, setAreaOfService] = useState(undefined);
 
   // useEffect(() => console.log(areaOfService), [areaOfService]);
+
+  const [modal, setModal] = useState(false);
+  const [values, setValues] = useState({});
+  const [cResult, setCResult] = useState(null);
+  const [verifyIsLoading, setVerifyIsLoading] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
+
+  const captcha = () => {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      { size: "invisible" }
+    );
+  };
+
+  const sendCode = (values) => {
+    setSubmitLoading(true);
+    console.log(values);
+    const phoneNumber = `+92${values.mobile}`;
+    const appVerifier = window.recaptchaVerifier;
+    firebase
+      .auth()
+      .signInWithPhoneNumber(phoneNumber, appVerifier)
+      .then((confirmResult) => {
+        setCResult(confirmResult);
+        setValues(values);
+        setModal(!modal);
+        setSubmitLoading(false);
+      })
+      .catch(({ message }) => {
+        Notification.error({ message: message });
+        setSubmitLoading(false);
+      });
+  };
+
+  const confirmCode = (code) => {
+    if (!code) return;
+    setVerifyIsLoading(true);
+    cResult
+      .confirm(code)
+      .then((res) => {
+        _suplierRegister({
+          values,
+          uid: res.user.uid,
+          fileList: fileList.map((item) => item.originFileObj),
+        });
+        setModal(!modal);
+        setVerifyIsLoading(false);
+      })
+      .catch(({ message }) => {
+        Notification.error({ message: message });
+        setVerifyIsLoading(false);
+      });
+  };
+
+  useEffect(() => captcha(), []);
 
   const treeData = [
     {
@@ -81,12 +142,13 @@ const SupplierRegister = () => {
       <Form
         name="normal_login"
         className="login-form"
-        onFinish={(values) =>
-          _suplierRegister({
-            values,
-            fileList: fileList.map((item) => item.originFileObj),
-          })
-        }
+        onFinish={(values) => sendCode(values)}
+        // onFinish={(values) =>
+        //   _suplierRegister({
+        //     values,
+        //     fileList: fileList.map((item) => item.originFileObj),
+        //   })
+        // }
       >
         <Form.Item
           name="company_name"
@@ -117,7 +179,7 @@ const SupplierRegister = () => {
         </Form.Item>
 
         <Form.Item
-          name="mobile1"
+          name="mobile"
           hasFeedback
           rules={[
             {
@@ -236,14 +298,30 @@ const SupplierRegister = () => {
             type="primary"
             htmlType="submit"
             className="login-form-button"
+            loading={submitLoading}
             block
-            loading={false}
           >
             Register
           </Button>
           Or <Link to="supplier-login">Login now!</Link>
         </Form.Item>
       </Form>
+
+      {/* code verification modal start */}
+      <CodeVerificationModal
+        modal={modal}
+        setModal={setModal}
+        reSendCode={() => console.log("re-send code")}
+        codeVerify={confirmCode}
+        mob={values?.mobile || ""}
+        loading={verifyIsLoading}
+        reSendCodeLoading={submitLoading}
+      />
+      {/* code verification modal end */}
+
+      {/* recaptcha-container div must be required for phone varifivation start*/}
+      <div id="recaptcha-container"></div>
+      {/* recaptcha-container div must be required for phone varifivation end*/}
     </WallCard>
   );
 };

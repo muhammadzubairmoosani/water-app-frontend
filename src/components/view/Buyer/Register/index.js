@@ -186,6 +186,7 @@ const BuyerRegister = () => {
 
       {/* recaptcha-container div must be required for phone varifivation*/}
       <div id="recaptcha-container"></div>
+
     </WallCard>
   );
 };
