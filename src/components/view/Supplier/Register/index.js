@@ -5,13 +5,9 @@ import {
   CodeVerificationModal,
   Notification,
 } from "../../../common";
-import { Form, Input, Button, Select, TreeSelect } from "antd";
+import { Form, Input, Button, TreeSelect } from "antd";
 import { Link } from "react-router-dom";
-import {
-  LockOutlined,
-  UserOutlined,
-  HomeOutlined,
-} from "@ant-design/icons";
+import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import firebase from "../../../../config/index";
 

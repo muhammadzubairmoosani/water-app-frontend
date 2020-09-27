@@ -12,21 +12,23 @@ const Footer = () => {
         <WallCard heading="Pani Vala">
           <div className="list_wrapper">
             <ul>
-              <li className="title">Supplier Detail</li>
+              <li className="title">Contact Info</li>
               <li>
-                <span>Supplier Address</span>
+                <span>Location...</span>
               </li>
               <li>
                 <span>+92 315 0000000</span>
               </li>
               <li>
-                <span>panivala@gmail.com</span>
+                <a href="mailto:info.panivala@gmail.com">
+                  info.panivala@gmail.com
+                </a>
               </li>
             </ul>
             <ul>
               <li className="title">Pani Vala's</li>
               <li>
-                <Link to="#">About Us</Link>
+                <a href="#about_us">About Us</a>
               </li>
               <li>
                 <Link to="contact-us">Contact Us</Link>
@@ -54,21 +56,12 @@ const Footer = () => {
               </li>
             </ul>
             <ul>
-              <li className="title">Buyer</li>
-              <li>
-                <Link to="/buyer-login">Login</Link>
-              </li>
-              <li>
-                <Link to="#">Sign-up</Link>
-              </li>
-            </ul>
-            <ul>
               <li className="title">Supplier</li>
               <li>
-                <Link to="#">Login</Link>
+                <Link to="supplier-login">Login</Link>
               </li>
               <li>
-                <Link to="#">Register</Link>
+                <Link to="supplier-register">Register</Link>
               </li>
             </ul>
           </div>

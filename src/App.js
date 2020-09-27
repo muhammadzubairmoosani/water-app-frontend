@@ -5,8 +5,6 @@ import {
   Footer,
   ContactUs,
   ErrorPage,
-  BuyerLogin,
-  BuyerRegister,
   SupplierList,
   SupplierLogin,
   SupplierRegister,
@@ -27,8 +25,6 @@ const App = () => {
         <Route exact path="/supplier-list" component={SupplierList} />
         <Route exact path="/supplier-login" component={SupplierLogin} />
         <Route exact path="/supplier-register" component={SupplierRegister} />
-        <Route exact path="/buyer-login" component={BuyerLogin} />
-        <Route exact path="/buyer-register" component={BuyerRegister} />
         <Route exact path="/supplier-detail/:id" component={SupplierDetail} />
         <Route component={ErrorPage} />
       </Switch>
