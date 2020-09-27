@@ -32,7 +32,7 @@ const App = () => {
         <Route exact path="/supplier-detail/:id" component={SupplierDetail} />
         <Route component={ErrorPage} />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 };

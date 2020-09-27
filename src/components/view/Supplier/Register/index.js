@@ -5,30 +5,23 @@ import {
   CodeVerificationModal,
   Notification,
 } from "../../../common";
-import { Form, Input, Button, Select, Row, Col, TreeSelect } from "antd";
+import { Form, Input, Button, Select, TreeSelect } from "antd";
 import { Link } from "react-router-dom";
 import {
   LockOutlined,
   UserOutlined,
   HomeOutlined,
-  MinusCircleOutlined,
-  PlusOutlined,
 } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import firebase from "../../../../config/index";
 
 const { SHOW_PARENT } = TreeSelect;
-const { Option } = Select;
 const { TextArea } = Input;
 
 const SupplierRegister = () => {
   const [messageLength, setMessageLength] = useState(0);
   const [fileList, setFileList] = useState([]);
-  // const [services, setServices] = useState([{ key: 0, isListField: true }]);
   const [areaOfService, setAreaOfService] = useState(undefined);
-
-  // useEffect(() => console.log(areaOfService), [areaOfService]);
-
   const [modal, setModal] = useState(false);
   const [values, setValues] = useState({});
   const [cResult, setCResult] = useState(null);
@@ -44,7 +37,6 @@ const SupplierRegister = () => {
 
   const sendCode = (values) => {
     setSubmitLoading(true);
-    console.log(values);
     const phoneNumber = `+92${values.mobile}`;
     const appVerifier = window.recaptchaVerifier;
     firebase
@@ -103,17 +95,6 @@ const SupplierRegister = () => {
     },
   ];
 
-  const servicesTitle = [
-    "19 Liter Gallon",
-    "200 Gallons Service",
-    "1,000 Gallons Service",
-    "2000 Gallons Service",
-    "3,000 Gallons Service",
-    "4,000 Gallons Service",
-    "6,000 Gallons Service",
-    "10,000 Gallons Service",
-  ];
-
   const tProps = {
     treeData,
     value: areaOfService,
@@ -128,27 +109,12 @@ const SupplierRegister = () => {
     },
   };
 
-  const _removeServiceField = (key) => {
-    let newServices = services;
-    newServices.splice(key, 1);
-    console.log(newServices);
-    setServices(newServices);
-  };
-
-  const [services, setServices] = useState([{ key: 0, isListField: true }]);
-
   return (
     <WallCard className="supplier_register" heading="Supplier Register">
       <Form
         name="normal_login"
         className="login-form"
         onFinish={(values) => sendCode(values)}
-        // onFinish={(values) =>
-        //   _suplierRegister({
-        //     values,
-        //     fileList: fileList.map((item) => item.originFileObj),
-        //   })
-        // }
       >
         <Form.Item
           name="company_name"
@@ -327,138 +293,3 @@ const SupplierRegister = () => {
 };
 
 export default SupplierRegister;
-
-{
-  /* <Form.List name="services"> */
-}
-// <div>
-//   {services.map((service, key) => (
-//     <Form.Item key={key}>
-//       {console.log(service)}
-//       <Form.Item
-//         rules={[
-//           {
-//             required: service.key === 0 ? true : false,
-//             message: "You must add at least one service!",
-//           },
-//         ]}
-//         {...service}
-//         className="add_service_form_item"
-//       >
-//         <Row>
-//           <Input.Group className="add_service_group">
-//             <Col
-//               xs={{ span: 24 }}
-//               sm={{ span: services.length > 1 ? 13 : 15 }}
-//             >
-//               <Select
-//                 className="add_service_select"
-//                 defaultValue="19 Liter Gallon"
-//               >
-//                 {servicesTitle.map((title) => (
-//                   <Option value={title}>{title}</Option>
-//                 ))}
-//               </Select>
-//             </Col>
-//             <Col xs={{ span: 21 }} sm={{ span: 8 }}>
-//               <Input
-//                 addonBefore={<span>Rs.</span>}
-//                 placeholder="Price"
-//                 className="price_input"
-//               />
-//             </Col>
-//             {services.length > 1 ? (
-//               <Col className="minus_icon_col" xs={{ span: 2 }}>
-//                 <MinusCircleOutlined
-//                   className="dynamic-delete-button"
-//                   onClick={() => {
-//                     // _removeServiceField(service.key);
-//                     let newServices = services;
-//                     newServices.splice(key, 1);
-//                     console.log(newServices);
-//                     // setServices([...newServices]);
-//                   }}
-//                 />
-//               </Col>
-//             ) : null}
-//           </Input.Group>
-//         </Row>
-//       </Form.Item>
-//     </Form.Item>
-//   ))}
-//   <Form.Item>
-//     <Button
-//       type="dashed"
-//       onClick={() =>
-//         setServices([
-//           ...services,
-//           {
-//             key: services.length,
-//             isListField: true,
-//           },
-//         ])
-//       }
-//       className="w_100"
-//     >
-//       <PlusOutlined /> Add More Services
-//     </Button>
-//   </Form.Item>
-// </div>
-{
-  /* </Form.List> */
-}
-
-// {services.map((service) => (
-//   <Form.Item key={service.key}>
-//     <Form.Item
-//       rules={[
-//         {
-//           required: service.name === 0 ? true : false,
-//           message: "You must add at least one service!",
-//         },
-//       ]}
-//       {...service}
-//       className="add_service_form_item"
-//     >
-//       <Row>
-//         <Input.Group className="add_service_group">
-//           <Col
-//             xs={{ span: 24 }}
-//             sm={{ span: services.length > 1 ? 13 : 15 }}
-//           >
-//             <Select
-//               className="add_service_select"
-//               defaultValue="19 Liter Gallon"
-//             >
-//               {servicesTitle.map((title) => (
-//                 <Option value={title}>{title}</Option>
-//               ))}
-//             </Select>
-//           </Col>
-//           <Col xs={{ span: 21 }} sm={{ span: 8 }}>
-//             <Input
-//               addonBefore={<span>Rs.</span>}
-//               placeholder="Price"
-//               className="price_input"
-//             />
-//           </Col>
-//           {services.length > 1 ? (
-//             <Col className="minus_icon_col" xs={{ span: 2 }}>
-//               <MinusCircleOutlined
-//                 className="dynamic-delete-button"
-//                 onClick={() => remove(service.name)}
-//               />
-//             </Col>
-//           ) : null}
-//         </Input.Group>
-//       </Row>
-//     </Form.Item>
-//   </Form.Item>
-// ))}
-// <Form.Item>
-//   <Button type="dashed" onClick={() => add()} className="w_100">
-//     <PlusOutlined /> Add More Service
-//   </Button>
-// </Form.Item>
-// </div>
-// )}

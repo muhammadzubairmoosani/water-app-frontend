@@ -7,15 +7,12 @@ import {
   SupplierRegister,
   SupplierDetail,
 } from "./Supplier";
-import { BuyerLogin, BuyerRegister } from "./Buyer";
 import { SupplierDashboard } from "./Dashboard";
 
 export {
   Home,
   ContactUs,
   ErrorPage,
-  BuyerLogin,
-  BuyerRegister,
   SupplierList,
   SupplierLogin,
   SupplierRegister,
