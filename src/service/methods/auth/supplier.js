@@ -26,7 +26,7 @@ const _suplierRegister = ({ values, uid, fileList }) => {
   const {
     company_name,
     name,
-    mobile1,
+    mobile,
     password,
     address,
     area_of_working,
@@ -50,7 +50,7 @@ const _suplierRegister = ({ values, uid, fileList }) => {
         firebase_uid: uid,
         company_name,
         name,
-        mobile1,
+        mobile,
         password: passwordHash.generate(password),
         address,
         images: res.map(({ data }) => data.secure_url),

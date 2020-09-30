@@ -1,0 +1,42 @@
+import React from "react";
+import { Form, Input } from "antd";
+
+export const TextField = ({
+  min = 0,
+  max = 50,
+  name,
+  placeholder,
+  icon,
+  required = true,
+  hasFeedback = true,
+  type = "text",
+  addonBefore,
+  className,
+  subClassname,
+  allowClear,
+}) => (
+  <Form.Item
+    name={name}
+    hasFeedback={hasFeedback}
+    rules={[{ required, min, max }]}
+    className={className}
+  >
+    {type === "password" ? (
+      <Input.Password
+        placeholder={placeholder}
+        prefix={icon}
+        addonBefore={addonBefore}
+        subClassname={subClassname}
+        allowClear={allowClear}
+      />
+    ) : (
+      <Input
+        placeholder={placeholder}
+        prefix={icon}
+        addonBefore={addonBefore}
+        subClassname={subClassname}
+        allowClear={allowClear}
+      />
+    )}
+  </Form.Item>
+);

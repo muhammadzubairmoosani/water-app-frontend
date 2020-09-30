@@ -9,6 +9,7 @@ import { ProductCardSkeleton } from "./Skeletons";
 import Notification from "./Notification";
 import { CodeVerificationModal } from "./Modals";
 import Slider from "./Slider";
+import { TextField, TextArea } from "./InputFields";
 
 export {
   WallCard,
@@ -25,4 +26,6 @@ export {
   CodeVerificationModal,
   Slider,
   GrayCard,
+  TextField,
+  TextArea,
 };

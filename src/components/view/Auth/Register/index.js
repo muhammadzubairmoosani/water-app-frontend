@@ -4,18 +4,18 @@ import {
   WallCard,
   CodeVerificationModal,
   Notification,
+  TextField,
+  TextArea,
 } from "../../../common";
-import { Form, Input, Button, TreeSelect } from "antd";
+import { Form, Button, TreeSelect } from "antd";
 import { Link } from "react-router-dom";
 import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import firebase from "../../../../config/index";
 
 const { SHOW_PARENT } = TreeSelect;
-const { TextArea } = Input;
 
 const SupplierRegister = () => {
-  const [messageLength, setMessageLength] = useState(0);
   const [fileList, setFileList] = useState([]);
   const [areaOfService, setAreaOfService] = useState(undefined);
   const [modal, setModal] = useState(false);
@@ -112,109 +112,43 @@ const SupplierRegister = () => {
         className="login-form"
         onFinish={(values) => sendCode(values)}
       >
-        <Form.Item
+        <TextField
           name="company_name"
-          hasFeedback
-          rules={[{ required: true, max: 50 }]}
-        >
-          <Input
-            placeholder="Company Name (Required)"
-            prefix={<UserOutlined className="site-form-item-icon" />}
-          />
-        </Form.Item>
+          placeholder="Company Name (Required)"
+          icon={<UserOutlined className="site-form-item-icon" />}
+        />
 
-        <Form.Item
+        <TextField
           name="name"
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 3,
-              max: 50,
-            },
-          ]}
-        >
-          <Input
-            placeholder="Owner/Supplier Name (Required)"
-            prefix={<UserOutlined className="site-form-item-icon" />}
-          />
-        </Form.Item>
+          min={3}
+          placeholder="Owner/Supplier Name (Required)"
+          icon={<UserOutlined className="site-form-item-icon" />}
+        />
 
-        <Form.Item
+        <TextField
           name="mobile"
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 10,
-              max: 10,
-            },
-          ]}
-        >
-          <Input
-            placeholder="Mobile Number (Required)"
-            type="number"
-            allowClear
-            addonBefore={<span>+92</span>}
-            className="w_100"
-          />
-        </Form.Item>
+          min={10}
+          max={10}
+          placeholder="Mobile Number (Required)"
+          type="number"
+          addonBefore={<span>+92</span>}
+          subClassname="w_100"
+        />
 
-        <Form.Item
+        <TextField
           name="password"
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 8,
-              max: 30,
-            },
-          ]}
-        >
-          <Input.Password
-            placeholder="Password (Required)"
-            prefix={<LockOutlined className="site-form-item-icon" />}
-          />
-        </Form.Item>
+          min={8}
+          placeholder="Password (Required)"
+          icon={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+        />
 
-        <Form.Item
-          name="confirm"
-          dependencies={["password"]}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 8,
-              max: 30,
-            },
-            ({ getFieldValue }) => ({
-              validator(rule, value) {
-                if (!value || getFieldValue("password") === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(
-                  "The two passwords that you entered do not match!"
-                );
-              },
-            }),
-          ]}
-        >
-          <Input.Password
-            placeholder="Confirm Password (Required)"
-            prefix={<LockOutlined className="site-form-item-icon" />}
-          />
-        </Form.Item>
-
-        <Form.Item
+        <TextField
           name="address"
-          hasFeedback
-          rules={[{ required: true, max: 500 }]}
-        >
-          <Input
-            placeholder="Company Address (Required)"
-            prefix={<HomeOutlined className="site-form-item-icon" />}
-          />
-        </Form.Item>
+          max={500}
+          placeholder="Company Address (Required)"
+          icon={<HomeOutlined className="site-form-item-icon" />}
+        />
 
         <Form.Item
           name="area_of_working"
@@ -228,26 +162,13 @@ const SupplierRegister = () => {
           <TreeSelect {...tProps} />
         </Form.Item>
 
-        <div className="msg_contain">
-          <Form.Item
-            name="description"
-            className="text_area_wrapper"
-            rules={[
-              {
-                required: true,
-                max: 500,
-              },
-            ]}
-          >
-            <TextArea
-              allowClear
-              placeholder="Tell something about your company for growing your business... (Required)"
-              autoSize={{ minRows: 5, maxRows: 8 }}
-              onChange={(e) => setMessageLength(e.target.value.length)}
-            />
-          </Form.Item>
-          <div className="msgLength">{`${messageLength} / 500 max`}</div>
-        </div>
+        <TextArea
+          name="description"
+          className="text_area_wrapper"
+          placeholder="Tell something about your company for growing your business... (Required)"
+          allowClear
+          max={500}
+        />
 
         <ImageUploader
           fileList={fileList}
