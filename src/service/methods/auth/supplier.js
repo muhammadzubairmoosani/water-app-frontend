@@ -6,8 +6,10 @@ const _supplierLogin = (values) => {
   const { mobile, password } = values;
   api
     .get(`/supplier-login/${mobile}`)
-    .then(({ data }) => {
+    .then((res) => {
+      const { data, token } = res.data;
       if (passwordHash.verify(password, data.password)) {
+        localStorage.setItem("user_token", token);
         Notification.success({
           message: "Login Success!",
         });
@@ -32,8 +34,6 @@ const _suplierRegister = ({ values, uid, fileList }) => {
     area_of_working,
     description,
   } = values;
-
-  console.log("values", values);
 
   Promise.all(
     fileList.map((file) => {

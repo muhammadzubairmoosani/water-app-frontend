@@ -1,6 +1,6 @@
 import React from "react";
-import { WallCard } from "../../../common";
-import { Form, Input, Button } from "antd";
+import { WallCard, TextField } from "../../../common";
+import { Form, Button } from "antd";
 import { LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { _supplierLogin } from "../../../../service/methods";
@@ -9,43 +9,22 @@ const SupplierLogin = () => {
   return (
     <WallCard className="supplier_login" heading="Supplier Login">
       <Form name="normal_login" onFinish={(value) => _supplierLogin(value)}>
-        <Form.Item
+        <TextField
           name="mobile"
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 10,
-              max: 10,
-            },
-          ]}
-        >
-          <Input
-            placeholder="Mobile Number"
-            allowClear
-            type="number"
-            addonBefore={<span>+92</span>}
-            style={{ width: "100%" }}
-          />
-        </Form.Item>
-
-        <Form.Item
+          min={10}
+          max={10}
+          placeholder="Mobile Number"
+          type="number"
+          addonBefore={<span>+92</span>}
+          style={{ width: "100%" }}
+        />
+        <TextField
+          min={8}
+          type="password"
           name="password"
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 8,
-              max: 30,
-            },
-          ]}
-        >
-          <Input.Password
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            placeholder="Password"
-          />
-        </Form.Item>
-
+          icon={<LockOutlined className="site-form-item-icon" />}
+          placeholder="Password"
+        />
         <Form.Item>
           <Button
             type="primary"
