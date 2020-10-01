@@ -1,7 +1,7 @@
 import api from "../../api";
 import { Notification } from "../../../components/common";
 import passwordHash from "password-hash";
-
+import { authAction } from "../../../store/actions";
 const _supplierLogin = (values) => {
   const { mobile, password } = values;
   api
@@ -10,6 +10,7 @@ const _supplierLogin = (values) => {
       const { data, token } = res.data;
       if (passwordHash.verify(password, data.password)) {
         localStorage.setItem("user_token", token);
+        authAction.isLoggedIn();
         Notification.success({
           message: "Login Success!",
         });

@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Menu, PageHeader } from "antd";
 import { Link } from "react-router-dom";
-const { SubMenu } = Menu;
+import { useSelector, useDispatch } from "react-redux";
+import authReducer from "../../../store/reducers/authReducer";
+import { authAction } from "../../../store/actions";
 
 const Header = () => {
-  const [user, setUser] = useState(null);
+  const { isLoggedIn } = useSelector(({ authReducer }) => authReducer);
+  const dispatch = useDispatch();
+  const [loggedIn, setLoggedIn] = useState(null);
+
   useEffect(() => {
-    const token = localStorage.getItem("user_token");
-    token ? setUser(true) : setUser(null);
+    dispatch(authAction.isLoggedIn());
   }, []);
+
+  useEffect(() => {
+    setLoggedIn(isLoggedIn)
+    console.log(isLoggedIn)
+  }, [isLoggedIn]);
+
   return (
     <header className="_header">
       <PageHeader
@@ -31,12 +41,12 @@ const Header = () => {
         <Menu.Item key="4">
           <Link to="/contact-us">Contact Us</Link>
         </Menu.Item>
-        {user && (
+        {loggedIn && (
           <Menu.Item>
             <a
               onClick={() => {
                 localStorage.removeItem("user_token");
-                setUser(null);
+                setLoggedIn(null);
               }}
             >
               log-out
