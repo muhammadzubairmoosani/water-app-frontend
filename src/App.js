@@ -5,8 +5,6 @@ import {
   Footer,
   ContactUs,
   ErrorPage,
-  BuyerLogin,
-  BuyerRegister,
   SupplierList,
   SupplierLogin,
   SupplierRegister,
@@ -15,25 +13,25 @@ import {
 } from "./components";
 import { BackTop } from "antd";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-const App = () => {
+
+import { PrivateRoute } from "./routing/AppRoutes";
+
+export const App = () => {
   return (
     <Router>
       <BackTop />
       <Header />
       <Switch>
-        {/* <Route exact path="/" component={SupplierDashboard} /> */}
+        <PrivateRoute exact path="/dashboard" component={SupplierDashboard} />
         <Route exact path="/" component={Home} />
         <Route exact path="/contact-us" component={ContactUs} />
         <Route exact path="/supplier-list" component={SupplierList} />
-        <Route exact path="/supplier-login" component={SupplierLogin} />
-        <Route exact path="/supplier-register" component={SupplierRegister} />
-        <Route exact path="/buyer-login" component={BuyerLogin} />
-        <Route exact path="/buyer-register" component={BuyerRegister} />
+        <PrivateRoute exact path="/supplier-login" component={SupplierLogin} />
+        <PrivateRoute exact path="/supplier-register" component={SupplierRegister} />
         <Route exact path="/supplier-detail/:id" component={SupplierDetail} />
         <Route component={ErrorPage} />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 };
-export default App;

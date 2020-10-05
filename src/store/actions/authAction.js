@@ -1,20 +1,25 @@
+import {
+  IS_LOGGED_IN,
+  IS_LOGGED_IN_SUCCESS,
+  IS_LOGGED_IN_FAILURE,
+} from "../contants";
+
 export default class authAction {
   ////////////////////////  CONTACT US  ////////////////////
-  static contactUs(payload) {
+  static isLoggedIn() {
     return {
-      type: "CONTCT_US",
+      type: IS_LOGGED_IN,
+    };
+  }
+  static isLoggedInSuccess(payload) {
+    return {
+      type: IS_LOGGED_IN_SUCCESS,
       payload,
     };
   }
-  static contactUsSuccess(payload) {
+  static isLoggedInFailure(error) {
     return {
-      type: "CONTCT_US_SUCCESS",
-      payload,
-    };
-  }
-  static contactUsFailure(error) {
-    return {
-      type: "CONTCT_US_FAILURE",
+      type: IS_LOGGED_IN_FAILURE,
       error,
     };
   }

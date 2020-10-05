@@ -1,9 +1,11 @@
-const initialState = {
-  signIn: null,
-  signInLoader: false,
-  signInError: null,
+import {
+  IS_LOGGED_IN,
+  IS_LOGGED_IN_SUCCESS,
+  IS_LOGGED_IN_FAILURE,
+} from "../contants";
 
-  isLoggedIn: false,
+const initialState = {
+  isLoggedIn: null,
   isLoggedInLoader: false,
   isLoggedInError: null,
 };
@@ -11,35 +13,31 @@ const initialState = {
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
     ////////////////////////// SIGNIN /////////////////////
-    case "SIGNIN":
+    case IS_LOGGED_IN:
       return {
         ...state,
-        signIn: null,
-        signInLoader: true,
-        signInError: null,
+        isLoggedIn: null,
+        isLoggedInLoader: true,
+        isLoggedInError: null,
       };
 
-    case "SIGNIN_SUCCESS":
+    case IS_LOGGED_IN_SUCCESS:
       return {
         ...state,
-        signIn: action.payload,
-        signInLoader: false,
-        signInError: null,
-
-        isLoggedIn: true,
+        isLoggedIn: action.payload,
         isLoggedInLoader: false,
         isLoggedInError: null,
       };
 
-    case "SIGNIN_FAILURE":
+    case IS_LOGGED_IN_FAILURE:
       return {
         ...state,
-        signIn: null,
-        signInLoader: false,
-        signInError: action.error,
+        isLoggedIn: null,
+        isLoggedInLoader: false,
+        isLoggedInError: action.error,
       };
 
-      default:
+    default:
       return state;
   }
 }

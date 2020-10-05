@@ -1,16 +1,21 @@
 import api from "../../api";
 import { Notification } from "../../../components/common";
 import passwordHash from "password-hash";
+import { useHistory } from "react-router-dom";
 
 const _supplierLogin = (values) => {
   const { mobile, password } = values;
+  const history = useHistory();
   api
     .get(`/supplier-login/${mobile}`)
-    .then(({ data }) => {
+    .then((res) => {
+      const { data, token } = res.data;
       if (passwordHash.verify(password, data.password)) {
+        localStorage.setItem("user_token", token);
         Notification.success({
           message: "Login Success!",
         });
+        history.push("/dashboard");
       } else {
         Notification.error({
           message: "Your account is not registered yet!",
@@ -26,14 +31,12 @@ const _suplierRegister = ({ values, uid, fileList }) => {
   const {
     company_name,
     name,
-    mobile1,
+    mobile,
     password,
     address,
     area_of_working,
     description,
   } = values;
-
-  console.log("values", values);
 
   Promise.all(
     fileList.map((file) => {
@@ -50,7 +53,7 @@ const _suplierRegister = ({ values, uid, fileList }) => {
         firebase_uid: uid,
         company_name,
         name,
-        mobile1,
+        mobile,
         password: passwordHash.generate(password),
         address,
         images: res.map(({ data }) => data.secure_url),

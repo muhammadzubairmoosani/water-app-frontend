@@ -2,7 +2,7 @@ import React from "react";
 import { GrayCard } from "../../../common";
 import { Skeleton } from "antd";
 
-const RightPanel = ({ name, mobile1, address, area_of_working, loading }) => (
+const RightPanel = ({ name, mobile, address, area_of_working, loading }) => (
   <>
     <GrayCard title="Services">
       <Skeleton active loading={loading}>
@@ -22,7 +22,7 @@ const RightPanel = ({ name, mobile1, address, area_of_working, loading }) => (
     <GrayCard title="Contact detail">
       <Skeleton active loading={loading}>
         {name} <br />
-        {mobile1}
+        {mobile}
       </Skeleton>
     </GrayCard>
     <GrayCard title="Company Location">

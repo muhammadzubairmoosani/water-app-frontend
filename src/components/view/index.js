@@ -1,21 +1,14 @@
 import Home from "./Home";
 import ContactUs from "./ContactUs";
 import ErrorPage from "./ErrorPage";
-import {
-  SupplierList,
-  SupplierLogin,
-  SupplierRegister,
-  SupplierDetail,
-} from "./Supplier";
-import { BuyerLogin, BuyerRegister } from "./Buyer";
+import { SupplierList, SupplierDetail } from "./Supplier";
+import { SupplierLogin, SupplierRegister } from "./Auth";
 import { SupplierDashboard } from "./Dashboard";
 
 export {
   Home,
   ContactUs,
   ErrorPage,
-  BuyerLogin,
-  BuyerRegister,
   SupplierList,
   SupplierLogin,
   SupplierRegister,
