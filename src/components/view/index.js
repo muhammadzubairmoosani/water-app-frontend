@@ -1,6 +1,6 @@
-import Home from "./Home";
-import ContactUs from "./ContactUs";
-import ErrorPage from "./ErrorPage";
+import { Home } from "./Home";
+import { ContactUs } from "./ContactUs";
+import { ErrorPage } from "./ErrorPage";
 import { SupplierList, SupplierDetail } from "./Supplier";
 import { SupplierLogin, SupplierRegister } from "./Auth";
 import { SupplierDashboard } from "./Dashboard";

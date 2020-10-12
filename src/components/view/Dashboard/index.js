@@ -1,3 +1,3 @@
-import SupplierDashboard from "./Supplier";
+import { SupplierDashboard } from "./Supplier";
 
 export { SupplierDashboard };

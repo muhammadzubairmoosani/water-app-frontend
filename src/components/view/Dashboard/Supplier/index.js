@@ -5,7 +5,7 @@ import Profile from "./Profile";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const SupplierDashboard = () => {
+export const SupplierDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -43,5 +43,3 @@ const SupplierDashboard = () => {
     </Layout>
   );
 };
-
-export default SupplierDashboard;

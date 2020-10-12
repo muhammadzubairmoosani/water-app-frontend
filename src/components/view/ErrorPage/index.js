@@ -1,7 +1,7 @@
 import React from "react";
 import { Result, Button } from "antd";
 import { useHistory } from "react-router-dom";
-const ErrorPage = () => {
+export const ErrorPage = () => {
   let history = useHistory();
   return (
     <Result
@@ -16,4 +16,3 @@ const ErrorPage = () => {
     />
   );
 };
-export default ErrorPage;

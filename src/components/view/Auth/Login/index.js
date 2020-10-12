@@ -5,39 +5,36 @@ import { LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { _supplierLogin } from "../../../../service/methods";
 
-const SupplierLogin = () => {
-  return (
-    <WallCard className="supplier_login" heading="Supplier Login">
-      <Form name="normal_login" onFinish={(value) => _supplierLogin(value)}>
-        <TextField
-          name="mobile"
-          min={10}
-          max={10}
-          placeholder="Mobile Number"
-          type="number"
-          addonBefore={<span>+92</span>}
-          style={{ width: "100%" }}
-        />
-        <TextField
-          min={8}
-          type="password"
-          name="password"
-          icon={<LockOutlined className="site-form-item-icon" />}
-          placeholder="Password"
-        />
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-            block
-          >
-            Log in
-          </Button>
-          Or <Link to="supplier-register">Register now!</Link>
-        </Form.Item>
-      </Form>
-    </WallCard>
-  );
-};
-export default SupplierLogin;
+export const SupplierLogin = () => (
+  <WallCard className="supplier_login" heading="Supplier Login">
+    <Form name="normal_login" onFinish={(value) => _supplierLogin(value)}>
+      <TextField
+        name="mobile"
+        min={10}
+        max={10}
+        placeholder="Mobile Number"
+        type="number"
+        addonBefore={<span>+92</span>}
+        style={{ width: "100%" }}
+      />
+      <TextField
+        min={8}
+        type="password"
+        name="password"
+        icon={<LockOutlined className="site-form-item-icon" />}
+        placeholder="Password"
+      />
+      <Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className="login-form-button"
+          block
+        >
+          Log in
+        </Button>
+        Or <Link to="supplier-register">Register now!</Link>
+      </Form.Item>
+    </Form>
+  </WallCard>
+);

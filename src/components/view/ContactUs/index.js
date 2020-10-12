@@ -4,7 +4,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { _contactUs } from "../../../service/methods";
 import { WallCard, Notification, TextField, TextArea } from "../../common";
 
-const ContactUs = () => {
+export const ContactUs = () => {
   const [isLoading, setIsLoading] = useState(false);
   return (
     <WallCard className="contact_us" heading="Contact Us">
@@ -59,5 +59,3 @@ const ContactUs = () => {
     </WallCard>
   );
 };
-
-export default ContactUs;
