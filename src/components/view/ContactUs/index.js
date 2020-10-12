@@ -1,75 +1,57 @@
 import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { WallCard } from "../../common";
 import { _contactUs } from "../../../service/methods";
-
-const { TextArea } = Input;
+import { WallCard, Notification, TextField, TextArea } from "../../common";
 
 const ContactUs = () => {
-  const [messageLength, setMessageLength] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <WallCard className="contact_us" heading="Contact Us">
-      <Form name="nest-messages" onFinish={(values) => _contactUs(values)}>
-        <Form.Item
+      <Form
+        name="nest-messages"
+        onFinish={(values) => {
+          setIsLoading(true);
+          _contactUs(values)
+            .then(() => {
+              Notification.success({
+                message: "Thanks for contacting us.",
+                description: "Your message has been received.",
+              });
+              setIsLoading(false);
+            })
+            .catch((err) => {
+              Notification.error({
+                message: err.message,
+              });
+              setIsLoading(false);
+            });
+        }}
+      >
+        <TextField
           name="name"
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 3,
-              max: 50,
-            },
-          ]}
-        >
-          <Input
-            allowClear
-            placeholder="name"
-            prefix={<UserOutlined className="site-form-item-icon" />}
-          />
-        </Form.Item>
-
-        <Form.Item
+          min={3}
+          placeholder="Owner/Supplier Name (Required)"
+          icon={<UserOutlined className="site-form-item-icon" />}
+        />
+        <TextField
           name="mobile"
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              min: 10,
-              max: 10,
-            },
-          ]}
-        >
-          <Input
-            placeholder="Mobile Number"
-            type="number"
-            allowClear
-            addonBefore={<span>+92</span>}
-          />
-        </Form.Item>
-
-        <div className="msg_contain">
-          <Form.Item
-            name="message"
-            className="text_area_wrapper"
-            rules={[
-              {
-                required: true,
-                max: 500,
-              },
-            ]}
-          >
-            <TextArea
-              allowClear
-              placeholder="Type your message..."
-              autoSize={{ minRows: 5, maxRows: 8 }}
-              onChange={(e) => setMessageLength(e.target.value.length)}
-            />
-          </Form.Item>
-          <div className="msgLength">{`${messageLength} / 500 max`}</div>
-        </div>
+          min={10}
+          max={10}
+          placeholder="Mobile Number (Required)"
+          type="number"
+          addonBefore={<span>+92</span>}
+          subClassname="w_100"
+        />
+        <TextArea
+          name="message"
+          className="text_area_wrapper"
+          placeholder="Type your message..."
+          allowClear
+          max={500}
+        />
         <Form.Item>
-          <Button htmlType="submit" type="primary" block>
+          <Button htmlType="submit" loading={isLoading} type="primary" block>
             Send Message
           </Button>
         </Form.Item>

@@ -1,26 +1,13 @@
 import api from "../../../service/api";
-import { Notification } from "../../../components/common";
 
 const _contactUs = (values) => {
   const { name, mobile, message } = values;
-  api
-    .post("/contact-us", {
-      time_stemp: Date.now(),
-      name: name,
-      mobile: mobile,
-      message: message,
-    })
-    .then(() => {
-      Notification.success({
-        message: "Thanks for contacting us.",
-        description: "Your message has been received.",
-      });
-    })
-    .catch((err) =>
-      Notification.error({
-        message: err.message,
-      })
-    );
+  return api.post("/contact-us", {
+    time_stemp: Date.now(),
+    name,
+    mobile,
+    message,
+  });
 };
 
 export { _contactUs };
