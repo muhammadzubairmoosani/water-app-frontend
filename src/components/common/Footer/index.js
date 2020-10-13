@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { WallCard } from "../";
 import { Link } from "react-router-dom";
+
 const Footer = () => {
   const [year, setYear] = useState(0);
   useEffect(() => {
@@ -28,10 +29,10 @@ const Footer = () => {
             <ul>
               <li className="title">Pani Vala's</li>
               <li>
-                <a href="#about_us">About Us</a>
+                <a href="/#about_us">About Us</a>
               </li>
               <li>
-                <Link to="contact-us">Contact Us</Link>
+                <Link to="/contact-us">Contact Us</Link>
               </li>
               <li>
                 <Link to="#">Advertise on Panivala</Link>
@@ -58,10 +59,10 @@ const Footer = () => {
             <ul>
               <li className="title">Supplier</li>
               <li>
-                <Link to="supplier-login">Login</Link>
+                <Link to="/supplier-login">Login</Link>
               </li>
               <li>
-                <Link to="supplier-register">Register</Link>
+                <Link to="/supplier-register">Register</Link>
               </li>
             </ul>
           </div>
