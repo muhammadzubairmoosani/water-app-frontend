@@ -13,7 +13,7 @@ export const ContactUs = () => {
     <WallCard className="contact_us" heading="Contact Us">
       <Form
         ref={form}
-        name="nest-messages"
+        // name="nest-messages"
         onFinish={(values) => {
           setIsLoading(true);
           _contactUs(values)
@@ -48,13 +48,6 @@ export const ContactUs = () => {
           addonBefore={<span>+92</span>}
           subClassname="w_100"
         />
-        {/* <TextArea
-          name="message"
-          className="text_area_wrapper"
-          placeholder="Type your message..."
-          allowClear
-          max={500}
-        /> */}
         <div className="msg_contain">
           <Form.Item
             name="message"

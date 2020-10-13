@@ -5,14 +5,13 @@ import {
   CodeVerificationModal,
   Notification,
   TextField,
-  TextArea,
 } from "../../../common";
-import { Form, Button, TreeSelect } from "antd";
+import { Form, Button, TreeSelect, Input } from "antd";
 import { Link } from "react-router-dom";
 import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import firebase from "../../../../config/index";
-
+const { TextArea } = Input;
 const { SHOW_PARENT } = TreeSelect;
 
 const SupplierRegister = () => {
@@ -23,6 +22,7 @@ const SupplierRegister = () => {
   const [cResult, setCResult] = useState(null);
   const [verifyIsLoading, setVerifyIsLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+  const [messageLength, setMessageLength] = useState(0);
 
   const captcha = () => {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
@@ -162,13 +162,26 @@ const SupplierRegister = () => {
           <TreeSelect {...tProps} />
         </Form.Item>
 
-        <TextArea
-          name="description"
-          className="text_area_wrapper"
-          placeholder="Tell something about your company for growing your business... (Required)"
-          allowClear
-          max={500}
-        />
+        <div className="msg_contain">
+          <Form.Item
+            name="message"
+            className="text_area_wrapper"
+            rules={[
+              {
+                required: true,
+                max: 500,
+              },
+            ]}
+          >
+            <TextArea
+              allowClear
+              placeholder="Type your message..."
+              autoSize={{ minRows: 5, maxRows: 8 }}
+              onChange={(e) => setMessageLength(e.target.value.length)}
+            />
+          </Form.Item>
+          <div className="msgLength">{`${messageLength} / 500 max`}</div>
+        </div>
 
         <ImageUploader
           fileList={fileList}
