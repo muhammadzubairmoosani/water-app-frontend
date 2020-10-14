@@ -27,7 +27,11 @@ export const App = () => {
         <Route exact path="/contact-us" component={ContactUs} />
         <Route exact path="/supplier-list" component={SupplierList} />
         <PrivateRoute exact path="/supplier-login" component={SupplierLogin} />
-        <PrivateRoute exact path="/supplier-register" component={SupplierRegister} />
+        <PrivateRoute
+          exact
+          path="/supplier-register"
+          component={SupplierRegister}
+        />
         <Route exact path="/supplier-detail/:id" component={SupplierDetail} />
         <Route component={ErrorPage} />
       </Switch>

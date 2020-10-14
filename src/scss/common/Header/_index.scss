@@ -1,65 +1,72 @@
 ////////////// NAVBAR //////////////
 ._header {
-    @include flex;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    height: 75px;
+  @include flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  height: 75px;
+  box-shadow: $shadow;
+  background-color: $white;
+  background: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 999;
+
+  .ant-menu {
+    overflow: hidden !important;
+  }
+
+  .ant-page-header-heading-extra {
+    margin: 0 15px 0 0 !important;
+
+    img {
+      width: 145px;
+    }
+
+    @include xs {
+      img {
+        width: 125px;
+      }
+    }
+  }
+
+  .ant-layout-header {
+    // background-color: $white !important;
+    padding: 0.5em 0 !important;
+    height: auto !important;
+  }
+
+  .ant-page-header {
+    padding: 0 !important;
+  }
+
+  .ant-menu-item {
+    color: rgba(0, 0, 0, 0.85) !important;
+    font-weight: bold;
+  }
+
+  .ant-menu-submenu-title {
+    font-weight: bold;
+  }
+
+  .ant-menu,
+  .site-page-header {
+    background-color: transparent !important;
+  }
+
+  .ant-menu-horizontal {
+    border-bottom: none !important;
+  }
+
+  .ant-menu-item-selected {
+    border-bottom: 2px solid $themeColor !important;
+
+    a {
+      color: $themeColor !important;
+    }
+  }
+
+  .ant-menu-submenu-popup {
     box-shadow: $shadow;
-
-    .ant-menu {
-        overflow: hidden !important;
-    }
-
-    .ant-page-header-heading-extra {
-        margin: 0 15px 0 0 !important;
-
-        img {
-            width: 145px;
-        }
-
-        @include xs {
-            img {
-                width: 125px;
-            }
-        }
-    }
-
-    .ant-layout-header {
-        background-color: $white !important;
-        padding: 0.5em 0 !important;
-        height: auto !important;
-    }
-
-    .ant-page-header {
-        padding: 0 !important;
-    }
-
-    .ant-menu-item {
-        color: rgba(0, 0, 0, 0.85) !important;
-        font-weight: bold;
-    }
-
-    .ant-menu-submenu-title {
-        font-weight: bold;
-    }
-
-    .ant-menu {
-        background-color: $white !important;
-    }
-
-    .ant-menu-horizontal {
-        border-bottom: none !important;
-    }
-
-    .ant-menu-item-selected {
-        border-bottom: 2px solid $themeColor !important;
-
-        a {
-            color: $themeColor !important;
-        }
-    }
-
-    .ant-menu-submenu-popup {
-        box-shadow: $shadow;
-    }
+  }
 }

@@ -8,17 +8,24 @@ const LeftPanel = ({ images, name, description, loading }) => {
     <>
       <GrayCard title={name} className="slider_card">
         <div>
-          <img
-            src={images && images[selectedImgIndex]}
-            width="100%"
-            alt="carousel_img"
-            className="slider_img"
-          />
+          <div className="img_container">
+            <img
+              src={images && images[selectedImgIndex]}
+              alt="carousel_img"
+              className="slider_img"
+            />
+
+            <img
+              src={require("../../../../assets/icons/logo.jpg")}
+              alt="carousel_img"
+              className="water_mark"
+            />
+          </div>
           <div className="thumbnail_wrapper">
             {(images || [1, 2, 3]).map((image, index) => (
               <Avatar
                 key={index}
-                onClick={() => setSelectedImgIndex(index)}
+                onMouseOver={() => setSelectedImgIndex(index)}
                 className={`avatar ${
                   index === selectedImgIndex ? "selected_img" : ""
                 }`}
@@ -36,32 +43,3 @@ const LeftPanel = ({ images, name, description, loading }) => {
 };
 
 export default LeftPanel;
-
-// Cloudinary image with water mark code start
-// import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
-
-{
-  /* <CloudinaryContext cloudName="pani-wala">
-          <Image publicId="my-images/back_ckxp37">
-            <Transformation width="400" crop="scale" overlay="cloudinary_icon"/>
-          </Image>
-        </CloudinaryContext> */
-}
-
-{
-  /* <CloudinaryContext cloudName="demo">
-          <Image publicId="sample">
-            <Transformation
-              overlay="cloudinary_icon"
-              gravity="south_east"
-              x="5"
-              y="5"
-              width="50"
-              opacity="60"
-              effect="brightness:200"
-            />
-
-          </Image>
-        </CloudinaryContext> */
-}
-// Cloudinary image with water mark code end
