@@ -21,11 +21,6 @@ export const App = () => (
     <Header />
     <div style={{ paddingTop: "75px" }}>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/contact-us" component={ContactUs} />
-        <Route exact path="/supplier-list" component={SupplierList} />
-        <Route exact path="/supplier-detail/:id" component={SupplierDetail} />
-        <Route component={ErrorPage} />
         <PrivateRoute exact path="/dashboard" component={SupplierDashboard} />
         <PrivateRoute exact path="/supplier-login" component={SupplierLogin} />
         <PrivateRoute
@@ -33,6 +28,11 @@ export const App = () => (
           path="/supplier-register"
           component={SupplierRegister}
         />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/contact-us" component={ContactUs} />
+        <Route exact path="/supplier-list" component={SupplierList} />
+        <Route exact path="/supplier-detail/:id" component={SupplierDetail} />
+        <Route component={ErrorPage} />
       </Switch>
     </div>
     <Footer />

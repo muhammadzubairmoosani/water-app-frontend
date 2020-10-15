@@ -1,11 +1,9 @@
 import api from "../../api";
 import { Notification } from "../../../components/common";
 import passwordHash from "password-hash";
-import { useHistory } from "react-router-dom";
 
 const _supplierLogin = (values) => {
   const { mobile, password } = values;
-  const history = useHistory();
   api
     .get(`/supplier-login/${mobile}`)
     .then((res) => {
@@ -15,7 +13,6 @@ const _supplierLogin = (values) => {
         Notification.success({
           message: "Login Success!",
         });
-        history.push("/dashboard");
       } else {
         Notification.error({
           message: "Your account is not registered yet!",
