@@ -20,7 +20,7 @@ export const Home = () => (
       autoplay
       className="main_carousel"
     />
-    <Layout>
+    <Layout className="card_carousel_container">
       <Services />
     </Layout>
     <AboutUs />
