@@ -1,4 +1,9 @@
 ////////////// CARD CAROUSEL SEGMENT //////////////
+.card_carousel_container{
+    @include xs {
+        padding: 0;
+    }
+}
 .service-segment-custom-slider-left-arrow {
     left: -72px;
     z-index: 1001;

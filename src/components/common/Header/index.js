@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Menu, PageHeader } from "antd";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import authReducer from "../../../store/reducers/authReducer";
 import { authAction } from "../../../store/actions";
 
 const Header = () => {
@@ -15,8 +14,8 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    setLoggedIn(isLoggedIn)
-    console.log(isLoggedIn)
+    setLoggedIn(isLoggedIn);
+    console.log(isLoggedIn);
   }, [isLoggedIn]);
 
   return (
@@ -24,7 +23,10 @@ const Header = () => {
       <PageHeader
         extra={
           <Link to="/">
-            <img src={require("../../../assets/icons/logo.jpg")} alt="logo" />
+            <img
+              src={require("../../../assets/icons/rsz_logo-removebg-preview.png")}
+              alt="logo"
+            />
           </Link>
         }
         className="site-page-header"

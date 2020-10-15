@@ -9,7 +9,7 @@ const Services = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    _getSupplierList()
+    _getSupplierList(0, 9)
       .then(({ data }) => {
         setList(data);
         setIsLoading(false);
@@ -20,43 +20,28 @@ const Services = () => {
       });
   }, []);
 
+  const titles = [
+    "19 liters gallon services",
+    "200 gallon services",
+    "1,000 gallon services",
+    "2,000 gallon services",
+    "3,000 gallon services",
+    "4,000 gallon services",
+    "6,000 gallon services",
+    "10,000 gallon services",
+  ];
   return (
     <Fragment>
-      <CardCarouselSegment
-        heading="19 liters gallon services"
-        subHeading="see all"
-        array={list}
-        route={"/supplier-list"}
-        loading={isLoading}
-      />
-      <CardCarouselSegment
-        heading="1,000 liters services"
-        subHeading="see all"
-        array={list}
-        route={"/supplier-list"}
-        loading={isLoading}
-      />
-      <CardCarouselSegment
-        heading="2,000 liters services"
-        subHeading="see all"
-        array={list}
-        route={"/supplier-list"}
-        loading={isLoading}
-      />
-      <CardCarouselSegment
-        heading="3,000 liters services"
-        subHeading="see all"
-        array={list}
-        route={"/supplier-list"}
-        loading={isLoading}
-      />
-      <CardCarouselSegment
-        heading="6,000 liters services"
-        subHeading="see all"
-        array={list}
-        route={"/supplier-list"}
-        loading={isLoading}
-      />
+      {titles.map((title, index) => (
+        <CardCarouselSegment
+          key={index}
+          heading={title}
+          subHeading="see all"
+          array={list}
+          route={"/supplier-list"}
+          loading={isLoading}
+        />
+      ))}
     </Fragment>
   );
 };

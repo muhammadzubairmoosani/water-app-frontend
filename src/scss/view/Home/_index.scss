@@ -1,69 +1,72 @@
 ////////////// MAIN CAROUSEL //////////////
 .main_carousel {
-    img {
-        width: 100%;
+  img {
+    width: 100%;
+    @include xs {
+      min-height: 180px;
     }
+  }
 
-    li.slick-active button {
-        background-color: $themeColor !important;
-    }
+  li.slick-active button {
+    background-color: $themeColor !important;
+  }
 }
 
 .ant-carousel-vertical .slick-dots-right {
-    right: 20px !important;
+  right: 20px !important;
 }
 
 .slick-dots {
-    width: auto !important;
+  width: auto !important;
 }
 
 .slick-dots li button:before {
-    display: none !important;
+  display: none !important;
 }
 
 ////////////// ABOUT ME //////////////
 .about_us {
-    @include flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    color: $white;
+  @include flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  color: $white;
 
-    .supplier_img {
-        width: 100%;
+  .supplier_img {
+    width: 100%;
 
-        @include xs {
-            display: none;
-        }
-        @include sm {
-            display: none;
-        }
+    @include xs {
+      display: none;
+    }
+    @include sm {
+      display: none;
+    }
+  }
+
+  .wallcard_container {
+    max-width: 800px;
+    padding: 0 1.5em;
+
+    @include xs {
+      padding: 1.5em;
     }
 
-    .wallcard_container {
-        max-width: 800px;
-        padding: 0 1.5em;
-
-        @include xs {
-            padding: 1.5em;
-        }
-
-        @include sm {
-            padding: 1.5em;
-        }
-
-        p {
-            color: #666; // may be it will change color
-            font-weight: bold; // may be it will change color
-            font-size: 18px;
-            text-transform: capitalize;
-
-            @include xs {
-                font-size: 14px;
-            }
-        }
-
-        .heading {
-            color: $themeColor; // will change color
-        }
+    @include sm {
+      padding: 1.5em;
     }
+
+    p {
+      color: #666; // may be it will change color
+      font-weight: bold; // may be it will change color
+      font-size: 18px;
+      text-transform: capitalize;
+
+      @include xs {
+        font-size: 14px;
+      }
+    }
+
+    .heading {
+      color: $themeColor; // will change color
+    }
+  }
 }

@@ -1,52 +1,67 @@
 .supplier_detail {
-    .ant-row {
-        margin: auto !important;
+  .ant-row {
+    margin: auto !important;
+  }
+
+  .slider_card {
+    :first-child {
+      width: 100%;
     }
 
-    .avatar {
-        margin-right: 8px;
-        border: 1px solid $gray2;
-        padding: 3px;
-        cursor: pointer;
+    .ant-descriptions-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+      @include truncate;
     }
+  }
 
-    .thumbnail_wrapper {
-        margin-top: 0.7em;
+  .img_container {
+    position: relative;
+
+    .water_mark {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 85px;
+      opacity: 0.5;
+      border-radius: $radius;
     }
+  }
 
-    .selected_img {
-        border: 1px solid $themeColor;
-    }
+  .slider_img {
+    max-height: 390px;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+  }
 
-    .slider_img{
-        max-height: 500px;
-    }
+  .avatar {
+    margin-right: 8px;
+    border: 1px solid $gray2;
+    padding: 3px;
+    cursor: pointer;
+  }
 
-    .ant-descriptions-item-content {
-        font-size: 14px;
-        font-weight: bold;
-        color: $gray5;
-    }
+  .thumbnail_wrapper {
+    margin-top: 0.7em;
+  }
 
-    .slider_card {
-        :first-child {
-            width: 100%;
-        }
+  .selected_img {
+    border: 1px solid $themeColor;
+  }
 
-        .ant-descriptions-title {
-            font-size: 22px;
-            margin-bottom: 10px;
-            @include truncate;
-        }
-    }
+  .ant-descriptions-item-content {
+    font-size: 14px;
+    font-weight: bold;
+    color: $gray5;
+  }
 
-    ul {
-        list-style: none;
-        padding: 0;
-    }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
 
-    ol {
-        padding-left: 15px;
-    }
-
+  ol {
+    padding-left: 15px;
+  }
 }
