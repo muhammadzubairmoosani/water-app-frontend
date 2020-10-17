@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import firebase from "../../../../config/index";
+import areaList from "../../../../util/areaList.json";
+
 const { TextArea } = Input;
 const { SHOW_PARENT } = TreeSelect;
 
@@ -72,27 +74,8 @@ const SupplierRegister = () => {
 
   useEffect(() => captcha(), []);
 
-  const treeData = [
-    {
-      title: "Garden",
-      value: "Garden",
-    },
-    {
-      title: "Old Haji Camp",
-      value: "Old Haji Camp",
-    },
-    {
-      title: "Saddar",
-      value: "Saddar",
-    },
-    {
-      title: "Kharadar",
-      value: "Kharadar",
-    },
-  ];
-
   const tProps = {
-    treeData,
+    treeData: areaList.areas,
     value: areaOfService,
     onChange: setAreaOfService,
     treeCheckable: true,
