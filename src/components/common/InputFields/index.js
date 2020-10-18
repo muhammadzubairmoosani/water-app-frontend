@@ -1,4 +1,6 @@
 import { TextField } from "./textField";
-import TextArea from "./textAreaField";
+import { TextAreaField } from "./textAreaField";
+import { DynamicTextField } from "./DynamicTextField";
+import { MultiSelectDropDown } from "./MultiSelectDropDown";
 
-export { TextField, TextArea };
+export { TextField, TextAreaField, DynamicTextField, MultiSelectDropDown };

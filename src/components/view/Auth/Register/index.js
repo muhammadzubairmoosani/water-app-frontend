@@ -5,41 +5,28 @@ import {
   CodeVerificationModal,
   Notification,
   TextField,
+  DynamicTextField,
+  MultiSelectDropDown,
+  TextAreaField,
 } from "../../../common";
-import { Form, Button, TreeSelect, Input } from "antd";
+import { Form, Button } from "antd";
 import { Link } from "react-router-dom";
 import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
-import firebase from "../../../../config/index";
+import { _sendCode, _captcha } from "../../../../service/helpers";
 import areaList from "../../../../util/areaList.json";
-
-const { TextArea } = Input;
-const { SHOW_PARENT } = TreeSelect;
 
 const SupplierRegister = () => {
   const [fileList, setFileList] = useState([]);
-  const [areaOfService, setAreaOfService] = useState(undefined);
   const [modal, setModal] = useState(false);
   const [values, setValues] = useState({});
   const [cResult, setCResult] = useState(null);
-  const [verifyIsLoading, setVerifyIsLoading] = useState(false);
+  const [isVerifyLoading, setIsVerifyLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
-  const [messageLength, setMessageLength] = useState(0);
-
-  const captcha = () => {
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      "recaptcha-container",
-      { size: "invisible" }
-    );
-  };
 
   const sendCode = (values) => {
     setSubmitLoading(true);
-    const phoneNumber = `+92${values.mobile}`;
-    const appVerifier = window.recaptchaVerifier;
-    firebase
-      .auth()
-      .signInWithPhoneNumber(phoneNumber, appVerifier)
+    _sendCode(values.mobile)
       .then((confirmResult) => {
         setCResult(confirmResult);
         setValues(values);
@@ -54,7 +41,7 @@ const SupplierRegister = () => {
 
   const confirmCode = (code) => {
     if (!code) return;
-    setVerifyIsLoading(true);
+    setIsVerifyLoading(true);
     cResult
       .confirm(code)
       .then((res) => {
@@ -64,29 +51,15 @@ const SupplierRegister = () => {
           fileList: fileList.map((item) => item.originFileObj),
         });
         setModal(!modal);
-        setVerifyIsLoading(false);
+        setIsVerifyLoading(false);
       })
       .catch(({ message }) => {
         Notification.error({ message: message });
-        setVerifyIsLoading(false);
+        setIsVerifyLoading(false);
       });
   };
 
-  useEffect(() => captcha(), []);
-
-  const tProps = {
-    treeData: areaList.areas,
-    value: areaOfService,
-    onChange: setAreaOfService,
-    treeCheckable: true,
-    allowClear: true,
-    // hasFeedback: true,
-    showCheckedStrategy: SHOW_PARENT,
-    placeholder: "Area of Working...",
-    style: {
-      width: "100%",
-    },
-  };
+  useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
 
   return (
     <WallCard className="supplier_register" heading="Supplier Register">
@@ -94,20 +67,19 @@ const SupplierRegister = () => {
         name="normal_login"
         className="login-form"
         onFinish={(values) => sendCode(values)}
+        // onFinish={(values) => console.log(values)}
       >
         <TextField
           name="company_name"
           placeholder="Company Name (Required)"
           icon={<UserOutlined className="site-form-item-icon" />}
         />
-
         <TextField
           name="name"
           min={3}
           placeholder="Owner/Supplier Name (Required)"
           icon={<UserOutlined className="site-form-item-icon" />}
         />
-
         <TextField
           name="mobile"
           min={10}
@@ -117,7 +89,6 @@ const SupplierRegister = () => {
           addonBefore={<span>+92</span>}
           subClassname="w_100"
         />
-
         <TextField
           name="password"
           min={8}
@@ -125,53 +96,20 @@ const SupplierRegister = () => {
           icon={<LockOutlined className="site-form-item-icon" />}
           type="password"
         />
-
         <TextField
           name="address"
           max={500}
           placeholder="Company Address (Required)"
           icon={<HomeOutlined className="site-form-item-icon" />}
         />
-
-        <Form.Item
-          name="area_of_working"
-          rules={[
-            {
-              required: true,
-              message: "You must add at least one area of working!",
-            },
-          ]}
-        >
-          <TreeSelect {...tProps} />
-        </Form.Item>
-
-        <div className="msg_contain">
-          <Form.Item
-            name="message"
-            className="text_area_wrapper"
-            rules={[
-              {
-                required: true,
-                max: 500,
-              },
-            ]}
-          >
-            <TextArea
-              allowClear
-              placeholder="Type your message..."
-              autoSize={{ minRows: 5, maxRows: 8 }}
-              onChange={(e) => setMessageLength(e.target.value.length)}
-            />
-          </Form.Item>
-          <div className="msgLength">{`${messageLength} / 500 max`}</div>
-        </div>
-
+        <MultiSelectDropDown list={areaList.areas} />
+        <DynamicTextField />
+        <TextAreaField />
         <ImageUploader
           fileList={fileList}
           setFileList={setFileList}
           name="image"
         />
-
         <Form.Item>
           <Button
             type="primary"
@@ -193,13 +131,12 @@ const SupplierRegister = () => {
         reSendCode={() => console.log("re-send code")}
         codeVerify={confirmCode}
         mob={values?.mobile || ""}
-        loading={verifyIsLoading}
+        loading={isVerifyLoading}
         reSendCodeLoading={submitLoading}
       />
       {/* code verification modal end */}
-
       {/* recaptcha-container div must be required for phone varifivation start*/}
-      <div id="recaptcha-container"></div>
+      <div id="supplier-registration-recaptcha-container"></div>
       {/* recaptcha-container div must be required for phone varifivation end*/}
     </WallCard>
   );

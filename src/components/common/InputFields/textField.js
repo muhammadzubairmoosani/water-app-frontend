@@ -15,19 +15,26 @@ export const TextField = ({
   subClassname,
   allowClear,
   style,
+  fields,
+  fieldKey,
+  message,
+  help,
 }) => (
   <Form.Item
+    {...fields}
+    fieldKey={fieldKey}
     name={name}
     hasFeedback={hasFeedback}
-    rules={[{ required, min, max }]}
+    rules={[{ required, min, max, message }]}
     className={className}
+    help={help}
   >
     {type === "password" ? (
       <Input.Password
+        className={`shadow ${subClassname}`}
         placeholder={placeholder}
         prefix={icon}
         addonBefore={addonBefore}
-        subClassname={subClassname}
         allowClear={allowClear}
         style={style}
       />
@@ -38,7 +45,7 @@ export const TextField = ({
         type={type}
         style={style}
         addonBefore={addonBefore}
-        subClassname={subClassname}
+        className={`shadow ${subClassname}`}
         allowClear={allowClear}
       />
     )}
