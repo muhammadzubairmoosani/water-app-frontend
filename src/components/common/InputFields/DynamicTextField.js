@@ -6,6 +6,7 @@ import { TextField } from "./index";
 
 const { Option } = Select;
 export const DynamicTextField = () => {
+  // const [waterQty, setWaterQty] = useState("");
   const [services, setServices] = useState([
     { name: 0, key: 0, isListField: true, fieldKey: 0 },
   ]);
@@ -21,7 +22,11 @@ export const DynamicTextField = () => {
             >
               <TextField
                 addonBefore={
-                  <Select defaultValue="Liter" style={{ width: 90 }}>
+                  <Select
+                    // onChange={(qty) => setWaterQty(e)}
+                    defaultValue="Liter"
+                    style={{ width: 90 }}
+                  >
                     <Option value="Liter">Liter</Option>
                     <Option value="Gallon">Gallon</Option>
                   </Select>

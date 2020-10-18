@@ -103,7 +103,9 @@ const SupplierRegister = () => {
           icon={<HomeOutlined className="site-form-item-icon" />}
         />
         <MultiSelectDropDown list={areaList.areas} />
+
         <DynamicTextField />
+
         <TextAreaField />
         <ImageUploader
           fileList={fileList}
