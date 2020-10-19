@@ -3,55 +3,52 @@
 .supplier_login,
 .supplier_register,
 .contact_us {
-    @include flex_col;
-    align-items: unset;
-    padding: 3em 0px;
-    min-height: calc(100vh - 72px);
+  @include flex_col;
+  align-items: unset;
+  padding: 3em 0px;
+  min-height: calc(100vh - 72px);
 
-    form {
-        padding: 0 20px;
-        max-width: 400px;
-        margin: 0 auto;
-        @include animation_return;
+  form {
+    padding: 0 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    @include animation_return;
 
-        .ant-input-affix-wrapper {
-            box-shadow: $shadow;
-        }
-
-        .login-form-button {
-            margin: 0.5em 0;
-        }
-
-        input.ant-input,
-        textarea {
-            font-weight: bold;
-            font-size: 15px;
-            color: $gray;
-        }
-
-        .ant-input-group-addon:first-child {
-            box-shadow: $shadow;
-        }
+    .login-form-button {
+      margin: 0.5em 0;
     }
+
+    input.ant-input,
+    .ant-select-selector,
+    textarea {
+      font-weight: bold;
+      font-size: 15px;
+      color: $gray;
+    }
+
+    .ant-input-group-addon:first-child {
+      box-shadow: $shadow;
+    }
+  }
 }
 
 .shadow {
-    box-shadow: $shadow;
+  box-shadow: $shadow;
 }
 
 .ant-back-top-content {
-    background-color: $themeColor;
-    border: 1px solid $themeColor;
+  background-color: $themeColor;
+  border: 1px solid $themeColor;
 }
 
 .ant-back-top-content:hover {
-    background-color: transparent;
+  background-color: transparent;
 
-    svg {
-        color: $themeColor;
-    }
+  svg {
+    color: $themeColor;
+  }
 }
 
 .truncate {
-    @include truncate;
+  @include truncate;
 }

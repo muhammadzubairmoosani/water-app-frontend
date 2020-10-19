@@ -2,39 +2,35 @@ import React, { useState } from "react";
 import { Form, Input } from "antd";
 const { TextArea } = Input;
 
-const TextAreaField = ({
+export const TextAreaField = ({
   min = 0,
-  max = 50,
-  name,
-  placeholder,
+  max = 500,
+  name = "message",
+  placeholder = "Type your message here...",
   required = true,
-  hasFeedback = true,
-  className,
-  subClassname,
-  allowClear,
+  hasFeedback,
   minRows = 5,
   maxRows = 8,
+  message,
 }) => {
   const [messageLength, setMessageLength] = useState(0);
   return (
     <div className="msg_contain">
       <Form.Item
         name={name}
+        className="text_area_wrapper"
         hasFeedback={hasFeedback}
-        rules={[{ required, min, max }]}
-        className={className}
+        rules={[{ required, message, min, max }]}
       >
         <TextArea
-          allowClear={allowClear}
+          className="shadow"
+          allowClear
           placeholder={placeholder}
           autoSize={{ minRows, maxRows }}
           onChange={(e) => setMessageLength(e.target.value.length)}
-          className={subClassname}
         />
-        <div className="msgLength">{`${messageLength} / ${max} max`}</div>
       </Form.Item>
+      <div className="msgLength">{`${messageLength} / 500 max`}</div>
     </div>
   );
 };
-
-export default TextAreaField;
