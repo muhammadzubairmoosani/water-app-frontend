@@ -8,8 +8,9 @@ import {
   DynamicTextField,
   MultiSelectDropDown,
   TextAreaField,
+  CommonBtn,
 } from "../../../common";
-import { Form, Button } from "antd";
+import { Form } from "antd";
 import { Link } from "react-router-dom";
 import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
@@ -81,6 +82,13 @@ const SupplierRegister = () => {
           icon={<UserOutlined className="site-form-item-icon" />}
         />
         <TextField
+          name="address"
+          max={500}
+          placeholder="Company Address (Required)"
+          icon={<HomeOutlined className="site-form-item-icon" />}
+        />
+
+        <TextField
           name="mobile"
           min={10}
           max={10}
@@ -96,34 +104,29 @@ const SupplierRegister = () => {
           icon={<LockOutlined className="site-form-item-icon" />}
           type="password"
         />
-        <TextField
-          name="address"
-          max={500}
-          placeholder="Company Address (Required)"
-          icon={<HomeOutlined className="site-form-item-icon" />}
-        />
         <MultiSelectDropDown list={areaList.areas} />
 
         <DynamicTextField />
 
         <TextAreaField />
+
         <ImageUploader
           fileList={fileList}
           setFileList={setFileList}
           name="image"
         />
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-            loading={submitLoading}
-            block
-          >
-            Register
-          </Button>
-          Or <Link to="supplier-login">Login now!</Link>
-        </Form.Item>
+
+        <CommonBtn
+          bottomChildren={
+            <>
+              Or <Link to="supplier-login">Login now!</Link>
+            </>
+          }
+          loading={submitLoading}
+          className="login-form-button"
+        >
+          Register
+        </CommonBtn>
       </Form>
 
       {/* code verification modal start */}
@@ -137,6 +140,7 @@ const SupplierRegister = () => {
         reSendCodeLoading={submitLoading}
       />
       {/* code verification modal end */}
+
       {/* recaptcha-container div must be required for phone varifivation start*/}
       <div id="supplier-registration-recaptcha-container"></div>
       {/* recaptcha-container div must be required for phone varifivation end*/}

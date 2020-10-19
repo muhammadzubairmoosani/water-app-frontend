@@ -1,8 +1,14 @@
 import React, { useState, useRef } from "react";
-import { Form, Button } from "antd";
+import { Form } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { _contactUs } from "../../../service/methods";
-import { WallCard, Notification, TextField, TextAreaField } from "../../common";
+import {
+  WallCard,
+  Notification,
+  TextField,
+  TextAreaField,
+  CommonBtn,
+} from "../../common";
 
 export const ContactUs = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,11 +52,7 @@ export const ContactUs = () => {
           subClassname="w_100"
         />
         <TextAreaField />
-        <Form.Item>
-          <Button htmlType="submit" loading={isLoading} type="primary" block>
-            Send Message
-          </Button>
-        </Form.Item>
+        <CommonBtn loading={isLoading}>Send Message</CommonBtn>
       </Form>
     </WallCard>
   );

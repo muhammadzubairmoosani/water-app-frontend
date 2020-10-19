@@ -1,6 +1,6 @@
 import React from "react";
-import { WallCard, TextField } from "../../../common";
-import { Form, Button } from "antd";
+import { WallCard, TextField, CommonBtn } from "../../../common";
+import { Form } from "antd";
 import { LockOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { _supplierLogin } from "../../../../service/methods";
@@ -24,17 +24,17 @@ export const SupplierLogin = () => (
         icon={<LockOutlined className="site-form-item-icon" />}
         placeholder="Password"
       />
-      <Form.Item>
-        <Button
-          type="primary"
-          htmlType="submit"
-          className="login-form-button"
-          block
-        >
-          Log in
-        </Button>
-        Or <Link to="supplier-register">Register now!</Link>
-      </Form.Item>
+
+      <CommonBtn
+        className="login-form-button"
+        bottomChildren={
+          <>
+            Or <Link to="supplier-register">Register now!</Link>
+          </>
+        }
+      >
+        Log in
+      </CommonBtn>
     </Form>
   </WallCard>
 );

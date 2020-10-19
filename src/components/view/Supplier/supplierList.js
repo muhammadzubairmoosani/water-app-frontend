@@ -5,10 +5,11 @@ import {
   Heading,
   ProductCardSkeleton,
   Notification,
+  CommonBtn,
 } from "../../common";
 import { useHistory } from "react-router-dom";
 import { _getSupplierList } from "../../../service/methods";
-import { Empty, Button } from "antd";
+import { Empty } from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const SupplierList = () => {
@@ -52,9 +53,9 @@ const SupplierList = () => {
           {!supplierList.length && !isfetch ? (
             <>
               <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
-                <Button type="primary" onClick={() => history.goBack()}>
+                <CommonBtn block={false} onClick={() => history.goBack()}>
                   Go Back
-                </Button>
+                </CommonBtn>
               </Empty>
             </>
           ) : (

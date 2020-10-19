@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Select } from "antd";
 import { Space } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
-import { TextField } from "./index";
+import { TextField, CommonBtn } from "../index";
 
 const { Option } = Select;
 export const DynamicTextField = () => {
@@ -35,7 +35,7 @@ export const DynamicTextField = () => {
                 name={[field.name, "service"]}
                 fieldKey={[field.fieldKey, "service"]}
                 placeholder="19"
-                help="Water Quantity"
+                // help="Water Quantity"
                 message="* (Required)"
                 type="number"
                 style={{ width: 200 }}
@@ -62,25 +62,24 @@ export const DynamicTextField = () => {
               )}
             </Space>
           ))}
-          <Form.Item>
-            <Button
-              type="dashed"
-              onClick={() => {
-                setServices([
-                  ...services,
-                  {
-                    name: services.length,
-                    key: services.length,
-                    isListField: true,
-                    fieldKey: services.length,
-                  },
-                ]);
-              }}
-              block
-            >
-              <PlusOutlined /> Add field
-            </Button>
-          </Form.Item>
+
+          <CommonBtn
+            htmlType="button"
+            type="dashed"
+            onClick={() => {
+              setServices([
+                ...services,
+                {
+                  name: services.length,
+                  key: services.length,
+                  isListField: true,
+                  fieldKey: services.length,
+                },
+              ]);
+            }}
+          >
+            <PlusOutlined /> Add More Services
+          </CommonBtn>
         </div>
       )}
     </Form.List>

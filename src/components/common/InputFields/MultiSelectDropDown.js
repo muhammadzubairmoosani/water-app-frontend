@@ -19,7 +19,11 @@ export const MultiSelectDropDown = ({
     style: { width: "100%" },
   };
   return (
-    <Form.Item name="area_of_working" rules={[{ required, message }]}>
+    <Form.Item
+      name="area_of_working"
+      hasFeedback
+      rules={[{ required, message }]}
+    >
       <TreeSelect className="shadow" {...tProps} />
     </Form.Item>
   );

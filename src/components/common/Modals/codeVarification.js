@@ -5,17 +5,18 @@ import { WallCard } from "../";
 const CodeVerificationModal = ({
   modal,
   setModal,
-  reSendCode,
   codeVerify,
   mob,
   loading,
+  reSendCode,
   reSendCodeLoading,
 }) => (
   <Modal
     visible={modal}
-    onOk={reSendCode}
-    confirmLoading={reSendCodeLoading}
-    okText={"Resend code"}
+    // onOk={reSendCode}
+    // confirmLoading={reSendCodeLoading}
+    // okText={"Resend code"}
+    footer={null}
     onCancel={() => setModal(!modal)}
     className="code_verification_modal"
   >
@@ -33,7 +34,7 @@ const CodeVerificationModal = ({
               ).
             </b>
           }
-        ></Form.Item>
+        />
         <Form.Item
           name="code"
           rules={[

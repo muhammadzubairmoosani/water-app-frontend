@@ -9,6 +9,7 @@ import { ProductCardSkeleton } from "./Skeletons";
 import Notification from "./Notification";
 import { CodeVerificationModal } from "./Modals";
 import Slider from "./Slider";
+import { CommonBtn } from "./Buttons";
 import {
   TextField,
   TextAreaField,
@@ -35,4 +36,5 @@ export {
   TextAreaField,
   DynamicTextField,
   MultiSelectDropDown,
+  CommonBtn,
 };
