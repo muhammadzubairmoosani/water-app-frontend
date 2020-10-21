@@ -12,7 +12,7 @@ const CodeVerificationModal = ({
   reSendCodeLoading,
 }) => (
   <Modal
-    visible={true}
+    visible={modal}
     // onOk={reSendCode}
     // confirmLoading={reSendCodeLoading}
     // okText={"Resend code"}
