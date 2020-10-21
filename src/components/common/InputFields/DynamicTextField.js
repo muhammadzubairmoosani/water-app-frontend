@@ -62,24 +62,25 @@ export const DynamicTextField = () => {
               )}
             </Space>
           ))}
-
-          <CommonBtn
-            htmlType="button"
-            type="dashed"
-            onClick={() => {
-              setServices([
-                ...services,
-                {
-                  name: services.length,
-                  key: services.length,
-                  isListField: true,
-                  fieldKey: services.length,
-                },
-              ]);
-            }}
-          >
-            <PlusOutlined /> Add More Services
-          </CommonBtn>
+          <Form.Item>
+            <CommonBtn
+              htmlType="button"
+              type="dashed"
+              onClick={() => {
+                setServices([
+                  ...services,
+                  {
+                    name: services.length,
+                    key: services.length,
+                    isListField: true,
+                    fieldKey: services.length,
+                  },
+                ]);
+              }}
+            >
+              <PlusOutlined /> Add More Services
+            </CommonBtn>
+          </Form.Item>
         </div>
       )}
     </Form.List>

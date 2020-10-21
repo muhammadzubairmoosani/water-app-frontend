@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Modal } from "antd";
-import { WallCard } from "../";
+import { WallCard, CommonBtn } from "../";
 
 const CodeVerificationModal = ({
   modal,
@@ -12,7 +12,7 @@ const CodeVerificationModal = ({
   reSendCodeLoading,
 }) => (
   <Modal
-    visible={modal}
+    visible={true}
     // onOk={reSendCode}
     // confirmLoading={reSendCodeLoading}
     // okText={"Resend code"}
@@ -47,9 +47,7 @@ const CodeVerificationModal = ({
         >
           <div className="input_wrapper">
             <Input placeholder="Enter code" />
-            <Button type="primary" loading={loading} htmlType="submit">
-              Verify code
-            </Button>
+            <CommonBtn loading={loading}>Verify code</CommonBtn>
           </div>
         </Form.Item>
       </Form>

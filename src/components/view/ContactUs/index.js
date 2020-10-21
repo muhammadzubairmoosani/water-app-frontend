@@ -52,7 +52,9 @@ export const ContactUs = () => {
           subClassname="w_100"
         />
         <TextAreaField />
-        <CommonBtn loading={isLoading}>Send Message</CommonBtn>
+        <Form.Item>
+          <CommonBtn loading={isLoading}>Send Message</CommonBtn>
+        </Form.Item>
       </Form>
     </WallCard>
   );

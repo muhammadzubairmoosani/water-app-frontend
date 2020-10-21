@@ -24,17 +24,10 @@ export const SupplierLogin = () => (
         icon={<LockOutlined className="site-form-item-icon" />}
         placeholder="Password"
       />
-
-      <CommonBtn
-        className="login-form-button"
-        bottomChildren={
-          <>
-            Or <Link to="supplier-register">Register now!</Link>
-          </>
-        }
-      >
-        Log in
-      </CommonBtn>
+      <Form.Item>
+        <CommonBtn className="login-form-button">Log in</CommonBtn>
+        Or <Link to="supplier-register">Register now!</Link>
+      </Form.Item>
     </Form>
   </WallCard>
 );

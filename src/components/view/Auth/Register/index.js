@@ -115,18 +115,12 @@ const SupplierRegister = () => {
           setFileList={setFileList}
           name="image"
         />
-
-        <CommonBtn
-          bottomChildren={
-            <>
-              Or <Link to="supplier-login">Login now!</Link>
-            </>
-          }
-          loading={submitLoading}
-          className="login-form-button"
-        >
-          Register
-        </CommonBtn>
+        <Form.Item>
+          <CommonBtn loading={submitLoading} className="login-form-button">
+            Register
+          </CommonBtn>
+          Or <Link to="supplier-login">Login now!</Link>
+        </Form.Item>
       </Form>
 
       {/* code verification modal start */}
