@@ -16,6 +16,7 @@ import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import { _sendCode, _captcha } from "../../../../service/helpers";
 import areaList from "../../../../util/areaList.json";
+import { useCookies } from "react-cookie";
 
 const SupplierRegister = () => {
   const [fileList, setFileList] = useState([]);
@@ -24,6 +25,7 @@ const SupplierRegister = () => {
   const [cResult, setCResult] = useState(null);
   const [isVerifyLoading, setIsVerifyLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+  const [cookies, setCookie] = useCookies(["name"]);
 
   const sendCode = (values) => {
     setSubmitLoading(true);
@@ -62,15 +64,37 @@ const SupplierRegister = () => {
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
 
+  useEffect(() => console.log(cookies), [cookies]);
   return (
     <WallCard className="supplier_register" heading="Supplier Register">
       <Form
         name="normal_login"
         className="login-form"
-        onFinish={(values) => sendCode(values)}
+        initialValues={{
+          mobile: "3152396525",
+          password: "11111111",
+        }}
+        // onFinish={(values) => sendCode(values)}
         // onFinish={(values) => console.log(values)}
+        onFinish={(values) =>
+          _suplierRegister({
+            values,
+            uid: "",
+            fileList: [],
+          })
+            .then(({ data }) => {
+              const { access_token, refresh_token } = data;
+              const options = { path: "/", httpOnly: false };
+              setCookie("access_token", access_token, options);
+              setCookie("refresh_token", refresh_token, options);
+              Notification.success({
+                message: "Your account has been successfully created!",
+              });
+            })
+            .catch((err) => Notification.error({ message: err.message }))
+        }
       >
-        <TextField
+        {/* <TextField
           name="company_name"
           placeholder="Company Name (Required)"
           icon={<UserOutlined className="site-form-item-icon" />}
@@ -86,7 +110,7 @@ const SupplierRegister = () => {
           max={500}
           placeholder="Company Address (Required)"
           icon={<HomeOutlined className="site-form-item-icon" />}
-        />
+        /> */}
 
         <TextField
           name="mobile"
@@ -104,7 +128,8 @@ const SupplierRegister = () => {
           icon={<LockOutlined className="site-form-item-icon" />}
           type="password"
         />
-        <MultiSelectDropDown list={areaList.areas} />
+
+        {/* <MultiSelectDropDown list={areaList.areas} />
 
         <DynamicTextField />
 
@@ -114,7 +139,7 @@ const SupplierRegister = () => {
           fileList={fileList}
           setFileList={setFileList}
           name="image"
-        />
+        /> */}
         <Form.Item>
           <CommonBtn loading={submitLoading} className="login-form-button">
             Register
