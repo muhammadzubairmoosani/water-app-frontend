@@ -1,14 +1,17 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
+import { DashboardLayout } from "../components";
 
 export const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
       switch (rest.path) {
-        case "/dashboard":
-          return localStorage.getItem("user_token") ? (
-            <Component {...props} />
+        case "/supplier-dashboard":
+          return true ? (
+            <DashboardLayout>
+              <Component {...props} />
+            </DashboardLayout>
           ) : (
             <Redirect to="/supplier-login" />
           );

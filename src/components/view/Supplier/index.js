@@ -1,4 +1,5 @@
 import SupplierList from "./supplierList";
-import SupplierDetail from "./supplierDetail/index";
+import SupplierDetail from "./supplierDetail";
+import { SupplierDashboard } from "./supplierDashboard";
 
-export { SupplierList, SupplierDetail };
+export { SupplierList, SupplierDetail, SupplierDashboard };

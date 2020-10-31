@@ -1,9 +1,9 @@
 import { Home } from "./Home";
 import { ContactUs } from "./ContactUs";
 import { ErrorPage } from "./ErrorPage";
-import { SupplierList, SupplierDetail } from "./Supplier";
+import { SupplierList, SupplierDetail, SupplierDashboard } from "./Supplier";
 import { SupplierLogin, SupplierRegister } from "./Auth";
-import { SupplierDashboard } from "./Dashboard";
+// import { SupplierDashboard } from "./Dashboard";
 
 export {
   Home,

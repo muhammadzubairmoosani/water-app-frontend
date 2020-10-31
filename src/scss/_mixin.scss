@@ -12,174 +12,204 @@ $gray4: #f2f2f2;
 $gray5: #9a9a9a;
 $lightGray: #f0f2f5;
 
+$sky_blue: #5984ee;
+$light-blue: #4bbace;
+$pink: #e66793;
+$light-green: #45cd93;
+$primary: #1890ff;
+
 $themeLayout: 1024px;
 $shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 $bgShadow: #1f1f1f;
 $radius: 4px;
 
 @mixin bg_shadow {
-    background: $bgShadow;
-    opacity: 0.2;
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    right: 0;
-    left: 0;
+  background: $bgShadow;
+  opacity: 0.2;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 
 @mixin flex {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin flex_col {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 $break-points: (
-    screen-sm-max: 575.98px,
-    screen-sm-min: 576px,
-    screen-md-max: 767.98px,
-    screen-md-min: 768px,
-    screen-lg-max: 991.98px,
-    screen-lg-min: 992px,
-    screen-xl-max: 1079.98px,
-    screen-xl-min: 1080px,
+  screen-sm-max: 575.98px,
+  screen-sm-min: 576px,
+  screen-md-max: 767.98px,
+  screen-md-min: 768px,
+  screen-lg-max: 991.98px,
+  screen-lg-min: 992px,
+  screen-xl-max: 1079.98px,
+  screen-xl-min: 1080px,
 );
 
 // Extra small devices (portrait phones, less than 576px)
 @mixin xs {
-    @media (max-width: map-get($break-points, screen-sm-max)) {
-        @content;
-    }
+  @media (max-width: map-get($break-points, screen-sm-max)) {
+    @content;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
 @mixin sm {
-    @media (min-width: map-get($break-points, screen-sm-min)) and (max-width: map-get($break-points, screen-md-max)) {
-        @content;
-    }
+  @media (min-width: map-get($break-points, screen-sm-min)) and (max-width: map-get($break-points, screen-md-max)) {
+    @content;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
 @mixin md {
-    @media (min-width: map-get($break-points, screen-md-min)) and (max-width: map-get($break-points, screen-lg-max)) {
-        @content;
-    }
+  @media (min-width: map-get($break-points, screen-md-min)) and (max-width: map-get($break-points, screen-lg-max)) {
+    @content;
+  }
 }
 
 // Large devices (desktops, 992px and up)
 @mixin lg {
-    @media (min-width: map-get($break-points, screen-lg-min)) and (max-width: map-get($break-points, screen-xl-max)) {
-        @content;
-    }
+  @media (min-width: map-get($break-points, screen-lg-min)) and (max-width: map-get($break-points, screen-xl-max)) {
+    @content;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @mixin xl {
-    @media (min-width: map-get($break-points, screen-xl-min)) {
-        @content;
-    }
+  @media (min-width: map-get($break-points, screen-xl-min)) {
+    @content;
+  }
 }
 
 // Custom Range for inconvenient sizes
 @mixin min_max($min, $max) {
-    @media (min-width: $min+"px") and (max-width: $max+"px") {
-        @content;
-    }
+  @media (min-width: $min+"px") and (max-width: $max+"px") {
+    @content;
+  }
 }
 
 //////////////// Poppins Fonts Family ///////////////
 @font-face {
-    font-family: "Poppins_Medium";
-    src: url("../assets/fonts/Poppins-Medium.ttf") format("truetype");
+  font-family: "Poppins_Medium";
+  src: url("../assets/fonts/Poppins-Medium.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Poppins_Regular";
-    src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-family: "Poppins_Regular";
+  src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
 }
 
 //////////////// Lemonada Fonts Family ///////////////
 @font-face {
-    font-family: "Lemonada-SemiBold";
-    src: url("../assets/fonts/Lemonada-SemiBold.ttf") format("truetype");
+  font-family: "Lemonada-SemiBold";
+  src: url("../assets/fonts/Lemonada-SemiBold.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Lemonada-Regular";
-    src: url("../assets/fonts/Lemonada-Regular.ttf") format("truetype");
+  font-family: "Lemonada-Regular";
+  src: url("../assets/fonts/Lemonada-Regular.ttf") format("truetype");
 }
+
+//////////////// HelveticaNeuek Fonts Family ///////////////
+// @font-face {
+//   font-family: "HelveticaNeue-Medium";
+//   src: url("./fonts/HelveticaNeue-Medium.eot?#iefix")
+//       format("embedded-opentype"),
+//     url("./fonts/HelveticaNeue-Medium.woff") format("woff"),
+//     url("./fonts/HelveticaNeue-Medium.ttf") format("truetype"),
+//     url("./fonts/HelveticaNeue-Medium.svg#HelveticaNeue-Medium") format("svg");
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: "HelveticaNeue";
+//   src: url("./fonts/HelveticaNeue.eot?#iefix") format("embedded-opentype"),
+//     url("./fonts/HelveticaNeue.woff") format("woff"),
+//     url("./fonts/HelveticaNeue.ttf") format("truetype"),
+//     url("./fonts/HelveticaNeue.svg#HelveticaNeue-Medium") format("svg");
+
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 ///////////// ANIMATION ////////////
 @mixin animation {
-    -webkit-animation: animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-animation: animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 @-webkit-keyframes animation {
-    0% {
-        -webkit-transform: translateZ(0) translateY(0);
-        transform: translateZ(0) translateY(0);
-        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-    }
-    100% {
-        -webkit-transform: translateZ(50px) translateY(-5px);
-        transform: translateZ(50px) translateY(-5px);
-        -webkit-box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
-        box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
-    }
+  0% {
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(50px) translateY(-5px);
+    transform: translateZ(50px) translateY(-5px);
+    -webkit-box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+  }
 }
 @keyframes animation {
-    0% {
-        -webkit-transform: translateZ(0) translateY(0);
-        transform: translateZ(0) translateY(0);
-        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-    }
-    100% {
-        -webkit-transform: translateZ(50px) translateY(-5px);
-        transform: translateZ(50px) translateY(-5px);
-        -webkit-box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
-        box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
-    }
+  0% {
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(50px) translateY(-5px);
+    transform: translateZ(50px) translateY(-5px);
+    -webkit-box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.35);
+  }
 }
 
 ///////////// ANIMATION RETURN ////////////
 @mixin animation_return {
-    -webkit-animation: animation_return 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation: animation_return 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-animation: animation_return 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: animation_return 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 @-webkit-keyframes animation_return {
-    100% {
-        -webkit-transform: translateZ(0) translateY(0);
-        transform: translateZ(0) translateY(0);
-    }
-    0% {
-        -webkit-transform: translateZ(50px) translateY(-5px);
-        transform: translateZ(50px) translateY(-5px);
-    }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+  }
+  0% {
+    -webkit-transform: translateZ(50px) translateY(-5px);
+    transform: translateZ(50px) translateY(-5px);
+  }
 }
 @keyframes animation_return {
-    100% {
-        -webkit-transform: translateZ(0) translateY(0);
-        transform: translateZ(0) translateY(0);
-    }
-    0% {
-        -webkit-transform: translateZ(50px) translateY(-5px);
-        transform: translateZ(50px) translateY(-5px);
-    }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+    transform: translateZ(0) translateY(0);
+  }
+  0% {
+    -webkit-transform: translateZ(50px) translateY(-5px);
+    transform: translateZ(50px) translateY(-5px);
+  }
 }
 
 // ==================== create break-points by zubair - start

@@ -1,4 +1,4 @@
-import { Header, Layout, Footer, Heading } from "./common";
+import { Header, Layout, Footer, Heading, DashboardLayout } from "./common";
 import {
   Home,
   ContactUs,
@@ -23,4 +23,5 @@ export {
   SupplierRegister,
   SupplierDetail,
   SupplierDashboard,
+  DashboardLayout,
 };

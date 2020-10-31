@@ -1,0 +1,24 @@
+.status_card {
+  @include flex_col;
+  align-items: unset;
+
+  h2 {
+    color: $white;
+    font-family: "HelveticaNeue";
+    font-size: 18px;
+  }
+
+  .card_body {
+    @include flex;
+    justify-content: space-between;
+  }
+
+  .status-number {
+    font-family: "HelveticaNeue-Medium";
+    font-size: 32px;
+  }
+
+  img {
+    height: 38px;
+  }
+}

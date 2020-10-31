@@ -18,10 +18,17 @@ import { PrivateRoute } from "./routing/AppRoutes";
 export const App = () => (
   <Router>
     <BackTop />
-    <Header />
-    <div style={{ paddingTop: "75px" }}>
+    {
+      // if user false return this header 
+    false && <Header />
+    }
+    <div style={{ paddingTop: false ? null : "75px" }}>
       <Switch>
-        <PrivateRoute exact path="/dashboard" component={SupplierDashboard} />
+        <PrivateRoute
+          exact
+          path="/supplier-dashboard"
+          component={SupplierDashboard}
+        />
         <PrivateRoute exact path="/supplier-login" component={SupplierLogin} />
         <PrivateRoute
           exact

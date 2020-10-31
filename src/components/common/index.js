@@ -1,4 +1,4 @@
-import { WallCard, ProductCard, GrayCard } from "./Cards";
+import { WallCard, ProductCard, GrayCard, StatusCard } from "./Cards";
 import { CardCarousel, CardCarouselSegment } from "./Carousels";
 import Layout from "./Layout";
 import Header from "./Header";
@@ -10,6 +10,7 @@ import Notification from "./Notification";
 import { CodeVerificationModal } from "./Modals";
 import Slider from "./Slider";
 import { CommonBtn } from "./Buttons";
+import { DashboardLayout } from "./DashboardLayout";
 import {
   TextField,
   TextAreaField,
@@ -37,4 +38,6 @@ export {
   DynamicTextField,
   MultiSelectDropDown,
   CommonBtn,
+  DashboardLayout,
+  StatusCard,
 };
