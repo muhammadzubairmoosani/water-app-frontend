@@ -17,7 +17,7 @@ const supplierMenuItems = ({ active }) => (
       <Link to="/supplier-dashboard">
         <div>
           <DashboardOutlined />
-          <span> Dashboard </span>
+          <span>Dashboard</span>
         </div>
       </Link>
     </Menu.Item>
