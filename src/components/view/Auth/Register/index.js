@@ -16,7 +16,8 @@ import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import { _sendCode, _captcha } from "../../../../service/helpers";
 import areaList from "../../../../util/areaList.json";
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie"; // will remove
+import Cookies from "universal-cookie";
 
 const SupplierRegister = () => {
   const [fileList, setFileList] = useState([]);
@@ -25,8 +26,8 @@ const SupplierRegister = () => {
   const [cResult, setCResult] = useState(null);
   const [isVerifyLoading, setIsVerifyLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
-  const [cookies, setCookie] = useCookies(["name"]);
-
+  // const [cookies, setCookie] = useCookies(["name"]);
+  const cookies = new Cookies();
   const sendCode = (values) => {
     setSubmitLoading(true);
     _sendCode(values.mobile)
@@ -64,7 +65,7 @@ const SupplierRegister = () => {
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
 
-  useEffect(() => console.log(cookies), [cookies]);
+  // useEffect(() => console.log(cookies), [cookies]);
   return (
     <WallCard className="supplier_register" heading="Supplier Register">
       <Form
@@ -82,14 +83,18 @@ const SupplierRegister = () => {
             uid: "",
             fileList: [],
           })
-            .then(({ data }) => {
-              const { access_token, refresh_token } = data;
-              const options = { path: "/", httpOnly: false };
-              setCookie("access_token", access_token, options);
-              setCookie("refresh_token", refresh_token, options);
-              Notification.success({
-                message: "Your account has been successfully created!",
-              });
+            .then((data) => {
+              cookies.set("token", "Pacman", { path: "/" });
+              // console.log(cookies.get("myCat")); // Pacman
+
+              // const { access_token, refresh_token } = data;
+              // const options = { path: "/", httpOnly: false };
+              // setCookie("access_token", access_token, options);
+              // setCookie("refresh_token", refresh_token, options);
+
+              // Notification.success({
+              //   message: "Your account has been successfully created!",
+              // });
             })
             .catch((err) => Notification.error({ message: err.message }))
         }
