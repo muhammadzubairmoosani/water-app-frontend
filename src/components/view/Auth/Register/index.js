@@ -18,6 +18,7 @@ import { _sendCode, _captcha } from "../../../../service/helpers";
 import areaList from "../../../../util/areaList.json";
 // import { useCookies } from "react-cookie"; // will remove
 import Cookies from "universal-cookie";
+import { useHistory } from "react-router-dom";
 
 const SupplierRegister = () => {
   const [fileList, setFileList] = useState([]);
@@ -26,6 +27,7 @@ const SupplierRegister = () => {
   const [cResult, setCResult] = useState(null);
   const [isVerifyLoading, setIsVerifyLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+  const history = useHistory();
   // const [cookies, setCookie] = useCookies(["name"]);
   const cookies = new Cookies();
   const sendCode = (values) => {
@@ -83,8 +85,12 @@ const SupplierRegister = () => {
             uid: "",
             fileList: [],
           })
-            .then((data) => {
-              cookies.set("token", "Pacman", { path: "/" });
+            .then(({data}) => {
+              // const { access_token, refresh_token } = data;
+              // cookies.set("access_token", access_token, { path: "/", httpOnly: true });
+              // cookies.set("refresh_token", refresh_token, { path: "/", httpOnly: true });
+              history.push("/supplier-login");
+              Notification.success({message: data})
               // console.log(cookies.get("myCat")); // Pacman
 
               // const { access_token, refresh_token } = data;
@@ -92,9 +98,6 @@ const SupplierRegister = () => {
               // setCookie("access_token", access_token, options);
               // setCookie("refresh_token", refresh_token, options);
 
-              // Notification.success({
-              //   message: "Your account has been successfully created!",
-              // });
             })
             .catch((err) => Notification.error({ message: err.message }))
         }

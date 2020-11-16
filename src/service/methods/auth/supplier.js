@@ -4,24 +4,24 @@ import passwordHash from "password-hash";
 
 const _supplierLogin = (values) => {
   const { mobile, password } = values;
-  api
-    .get(`/supplier-login/${mobile}`)
-    .then((res) => {
-      const { data, token } = res.data;
-      if (passwordHash.verify(password, data.password)) {
-        localStorage.setItem("user_token", token);
-        Notification.success({
-          message: "Login Success!",
-        });
-      } else {
-        Notification.error({
-          message: "Your account is not registered yet!",
-          description:
-            "Please check your mobile number or password and try again thnak you!",
-        });
-      }
-    })
-    .catch((err) => Notification.error({ message: err.message }));
+  return api.get(`/supplier-login/${mobile}`)
+    // .then((res) => {
+    //   console.log(res)
+      // const { data, token } = res.data;
+      // if (passwordHash.verify(password, data.password)) {
+      //   localStorage.setItem("user_token", token);
+      //   Notification.success({
+      //     message: "Login Success!",
+      //   });
+      // } else {
+      //   Notification.error({
+      //     message: "Your account is not registered yet!",
+      //     description:
+      //       "Please check your mobile number or password and try again thnak you!",
+      //   });
+      // }
+    // })
+    // .catch((err) => Notification.error({ message: err.message }));
 };
 
 const _suplierRegister = ({ values, uid, fileList }) => {
