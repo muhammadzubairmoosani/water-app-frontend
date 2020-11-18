@@ -13,10 +13,6 @@ export const SupplierLogin = () => {
     <WallCard className="supplier_login" heading="Supplier Login">
       <Form
         name="normal_login"
-        initialValues={{
-          mobile: "3152396525",
-          password: "11111111",
-        }}
         onFinish={(value) => {
           setIsLoading(true);
           _supplierLogin(value)

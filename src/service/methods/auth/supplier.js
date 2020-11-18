@@ -4,38 +4,38 @@ import passwordHash from "password-hash";
 
 const _supplierLogin = (values) => {
   const { mobile, password } = values;
-  return api.get(`/supplier-login/${mobile}`)
-    // .then((res) => {
-    //   console.log(res)
-      // const { data, token } = res.data;
-      // if (passwordHash.verify(password, data.password)) {
-      //   localStorage.setItem("user_token", token);
-      //   Notification.success({
-      //     message: "Login Success!",
-      //   });
-      // } else {
-      //   Notification.error({
-      //     message: "Your account is not registered yet!",
-      //     description:
-      //       "Please check your mobile number or password and try again thnak you!",
-      //   });
-      // }
-    // })
-    // .catch((err) => Notification.error({ message: err.message }));
+  return api.get(`/supplier-login/${mobile}`);
+  // .then((res) => {
+  //   console.log(res)
+  // const { data, token } = res.data;
+  // if (passwordHash.verify(password, data.password)) {
+  //   localStorage.setItem("user_token", token);
+  //   Notification.success({
+  //     message: "Login Success!",
+  //   });
+  // } else {
+  //   Notification.error({
+  //     message: "Your account is not registered yet!",
+  //     description:
+  //       "Please check your mobile number or password and try again thnak you!",
+  //   });
+  // }
+  // })
+  // .catch((err) => Notification.error({ message: err.message }));
 };
 
 const _suplierRegister = ({ values, uid, fileList }) => {
   const {
-    // company_name,
-    // name,
+    company_name,
+    name,
     mobile,
     password,
-    // address,
-    // area_of_working,
-    // description,
+    address,
+    area_of_working,
+    description,
   } = values;
 
- return Promise.all(
+  return Promise.all(
     fileList.map((file) => {
       const formData = new FormData();
       formData.append("file", file);
@@ -46,27 +46,17 @@ const _suplierRegister = ({ values, uid, fileList }) => {
     api.post("/supplier-register", {
       time_stemp: Date.now(),
       role: "supplier",
-      // firebase_uid: uid,
-      // company_name,
-      // name,
+      firebase_uid: uid,
+      company_name,
+      name,
       mobile,
       password: passwordHash.generate(password),
-      // address,
-      // images: res.map(({ data }) => data.secure_url),
-      // area_of_working,
-      // description,
+      address,
+      images: res.map(({ data }) => data.secure_url),
+      area_of_working,
+      description,
     })
   );
-  // .then((res) => {
-  //   console.log(res);
-  //   const { access_token, refresh_token } = res;
-  //   document.cookie = `access_token = ${access_token}; refresh_token ${refresh_token}`;
-
-  //   Notification.success({
-  //     message: "Your account has been successfully created!",
-  //   });
-  // })
-  // .catch((err) => Notification.error({ message: err.message }));
 };
 
 export { _suplierRegister, _supplierLogin };

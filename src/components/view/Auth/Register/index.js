@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Form } from "antd";
+import { Link } from "react-router-dom";
+import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
+import { _suplierRegister } from "../../../../service/methods";
+import { _sendCode, _captcha } from "../../../../service/helpers";
+import areaList from "../../../../util/areaList.json";
+import { useHistory } from "react-router-dom";
 import {
   ImageUploader,
   WallCard,
@@ -10,15 +17,6 @@ import {
   TextAreaField,
   CommonBtn,
 } from "../../../common";
-import { Form } from "antd";
-import { Link } from "react-router-dom";
-import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
-import { _suplierRegister } from "../../../../service/methods";
-import { _sendCode, _captcha } from "../../../../service/helpers";
-import areaList from "../../../../util/areaList.json";
-// import { useCookies } from "react-cookie"; // will remove
-import Cookies from "universal-cookie";
-import { useHistory } from "react-router-dom";
 
 const SupplierRegister = () => {
   const [fileList, setFileList] = useState([]);
@@ -28,8 +26,7 @@ const SupplierRegister = () => {
   const [isVerifyLoading, setIsVerifyLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
   const history = useHistory();
-  // const [cookies, setCookie] = useCookies(["name"]);
-  const cookies = new Cookies();
+
   const sendCode = (values) => {
     setSubmitLoading(true);
     _sendCode(values.mobile)
@@ -50,14 +47,22 @@ const SupplierRegister = () => {
     setIsVerifyLoading(true);
     cResult
       .confirm(code)
-      .then((res) => {
+      .then(({ user }) => {
         _suplierRegister({
           values,
-          uid: res.user.uid,
+          uid: user.uid,
           fileList: fileList.map((item) => item.originFileObj),
-        });
-        setModal(!modal);
-        setIsVerifyLoading(false);
+        })
+          .then(({ data }) => {
+            history.push("/supplier-login");
+            Notification.success({ message: data });
+            setModal(!modal);
+            setIsVerifyLoading(false);
+          })
+          .catch(({ message }) => {
+            Notification.error({ message: message });
+            setIsVerifyLoading(false);
+          });
       })
       .catch(({ message }) => {
         Notification.error({ message: message });
@@ -67,42 +72,14 @@ const SupplierRegister = () => {
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
 
-  // useEffect(() => console.log(cookies), [cookies]);
   return (
     <WallCard className="supplier_register" heading="Supplier Register">
       <Form
         name="normal_login"
         className="login-form"
-        initialValues={{
-          mobile: "3152396525",
-          password: "11111111",
-        }}
-        // onFinish={(values) => sendCode(values)}
-        // onFinish={(values) => console.log(values)}
-        onFinish={(values) =>
-          _suplierRegister({
-            values,
-            uid: "",
-            fileList: [],
-          })
-            .then(({data}) => {
-              // const { access_token, refresh_token } = data;
-              // cookies.set("access_token", access_token, { path: "/", httpOnly: true });
-              // cookies.set("refresh_token", refresh_token, { path: "/", httpOnly: true });
-              history.push("/supplier-login");
-              Notification.success({message: data})
-              // console.log(cookies.get("myCat")); // Pacman
-
-              // const { access_token, refresh_token } = data;
-              // const options = { path: "/", httpOnly: false };
-              // setCookie("access_token", access_token, options);
-              // setCookie("refresh_token", refresh_token, options);
-
-            })
-            .catch((err) => Notification.error({ message: err.message }))
-        }
+        onFinish={(values) => sendCode(values)}
       >
-        {/* <TextField
+        <TextField
           name="company_name"
           placeholder="Company Name (Required)"
           icon={<UserOutlined className="site-form-item-icon" />}
@@ -118,7 +95,7 @@ const SupplierRegister = () => {
           max={500}
           placeholder="Company Address (Required)"
           icon={<HomeOutlined className="site-form-item-icon" />}
-        /> */}
+        />
 
         <TextField
           name="mobile"
@@ -137,7 +114,7 @@ const SupplierRegister = () => {
           type="password"
         />
 
-        {/* <MultiSelectDropDown list={areaList.areas} />
+        <MultiSelectDropDown list={areaList.areas} />
 
         <DynamicTextField />
 
@@ -147,7 +124,7 @@ const SupplierRegister = () => {
           fileList={fileList}
           setFileList={setFileList}
           name="image"
-        /> */}
+        />
         <Form.Item>
           <CommonBtn loading={submitLoading} className="login-form-button">
             Register
