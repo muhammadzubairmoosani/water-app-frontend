@@ -8,6 +8,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
     render={(props) => {
       switch (rest.path) {
         case "/supplier-dashboard":
+        case "/supplier-profile":
           return true ? (
             <DashboardLayout>
               <Component {...props} />

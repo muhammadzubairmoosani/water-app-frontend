@@ -6,6 +6,7 @@ export const MultiSelectDropDown = ({
   list,
   required = true,
   message = "You must add at least one area of working!",
+  label,
 }) => {
   const [areaOfService, setAreaOfService] = useState(undefined);
   const tProps = {
@@ -20,6 +21,7 @@ export const MultiSelectDropDown = ({
   };
   return (
     <Form.Item
+      label={label}
       name="area_of_working"
       hasFeedback
       rules={[{ required, message }]}

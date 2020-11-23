@@ -32,7 +32,7 @@ const supplierMenuItems = ({ active }) => (
     </Menu.Item>
 
     <Menu.Item key="3">
-      <Link to="/profile">
+      <Link to="/supplier-profile">
         <div>
           <ProfileOutlined />
           <span>Profile</span>
@@ -44,7 +44,7 @@ const supplierMenuItems = ({ active }) => (
 
 export const DashboardLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true);
-  const active = "1";
+  const active = "3";
   return (
     <Layout className="dashboard_layout">
       <Sider

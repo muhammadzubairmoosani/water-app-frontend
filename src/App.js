@@ -14,13 +14,14 @@ import {
 import { BackTop } from "antd";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { PrivateRoute } from "./routing/AppRoutes";
+import Profile from "./components/view/Supplier/dashboard/profile";
 
 export const App = () => (
   <Router>
     <BackTop />
     {
-      // if user false return this header 
-    false && <Header />
+      // if user false return this header
+      false && <Header />
     }
     <div style={{ paddingTop: false ? null : "75px" }}>
       <Switch>
@@ -29,6 +30,8 @@ export const App = () => (
           path="/supplier-dashboard"
           component={SupplierDashboard}
         />
+        <PrivateRoute exact path="/supplier-profile" component={Profile} />
+
         <PrivateRoute exact path="/supplier-login" component={SupplierLogin} />
         <PrivateRoute
           exact

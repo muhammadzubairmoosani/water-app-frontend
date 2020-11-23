@@ -17,8 +17,9 @@ export const TextField = ({
   style,
   fields,
   fieldKey,
-  message,
+  message = "Field is required*",
   help,
+  label
 }) => (
   <Form.Item
     {...fields}
@@ -28,6 +29,7 @@ export const TextField = ({
     rules={[{ required, min, max, message }]}
     className={className}
     help={help}
+    label={label}
   >
     {type === "password" ? (
       <Input.Password
