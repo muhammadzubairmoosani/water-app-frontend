@@ -13,23 +13,23 @@ const { Header, Sider, Content } = Layout;
 
 const supplierMenuItems = ({ active }) => (
   <Menu theme="light" defaultSelectedKeys={active} mode="vertical">
-    <Menu.Item key="1">
+    {/* <Menu.Item key="1">
       <Link to="/supplier-dashboard">
         <div>
           <DashboardOutlined />
           <span>Dashboard</span>
         </div>
       </Link>
-    </Menu.Item>
+    </Menu.Item> */}
 
-    <Menu.Item key="2">
+    {/* <Menu.Item key="2">
       <Link to="/feedback">
         <div>
           <MessageOutlined />
           <span>Feedbacks</span>
         </div>
       </Link>
-    </Menu.Item>
+    </Menu.Item> */}
 
     <Menu.Item key="3">
       <Link to="/supplier-profile">

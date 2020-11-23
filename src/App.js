@@ -23,7 +23,7 @@ export const App = () => (
       // if user false return this header
       false && <Header />
     }
-    <div style={{ paddingTop: false ? null : "75px" }}>
+    <div style={{ paddingTop: true ? null : "75px" }}>
       <Switch>
         <PrivateRoute
           exact

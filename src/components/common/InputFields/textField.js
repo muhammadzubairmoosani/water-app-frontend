@@ -7,7 +7,7 @@ export const TextField = ({
   name,
   placeholder,
   icon,
-  required = true,
+  required,
   hasFeedback = true,
   type = "text",
   addonBefore,
@@ -17,9 +17,9 @@ export const TextField = ({
   style,
   fields,
   fieldKey,
-  message = "Field is required*",
+  message,
   help,
-  label
+  label,
 }) => (
   <Form.Item
     {...fields}

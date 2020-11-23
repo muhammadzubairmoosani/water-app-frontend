@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { WallCard, TextField, CommonBtn, Notification } from "../../../common";
 import { Form } from "antd";
-import { LockOutlined } from "@ant-design/icons";
+import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { _supplierLogin } from "../../../../service/methods";
 import Cookies from "universal-cookie";
@@ -35,26 +35,27 @@ export const SupplierLogin = () => {
         }}
       >
         <TextField
+          required={true}
           name="mobile"
-          min={10}
-          max={10}
-          placeholder="Mobile Number"
+          min={11}
+          max={11}
+          placeholder="03002233445"
           type="number"
-          addonBefore={<span>+92</span>}
-          style={{ width: "100%" }}
+          icon={<PhoneOutlined />}
         />
         <TextField
-          min={8}
-          type="password"
+          required={true}
           name="password"
-          icon={<LockOutlined className="site-form-item-icon" />}
+          min={8}
           placeholder="Password"
+          icon={<LockOutlined />}
+          type="password"
         />
         <Form.Item>
           <CommonBtn className="login-form-button" loading={isLoading}>
             Log in
           </CommonBtn>
-          Or <Link to="supplier-register">Register now!</Link>
+          Or <Link to="supplier-register">Sign Up now!</Link>
         </Form.Item>
       </Form>
     </WallCard>

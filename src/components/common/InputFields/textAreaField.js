@@ -7,11 +7,11 @@ export const TextAreaField = ({
   max = 500,
   name = "message",
   placeholder = "Type your message here...",
-  required = true,
+  required,
   hasFeedback,
   minRows = 5,
   maxRows = 8,
-  message,
+  message = "This field is required.",
   label,
 }) => {
   const [messageLength, setMessageLength] = useState(0);

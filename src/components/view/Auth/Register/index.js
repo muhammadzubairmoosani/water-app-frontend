@@ -1,132 +1,92 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "antd";
 import { Link } from "react-router-dom";
-import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
+import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import { _sendCode, _captcha } from "../../../../service/helpers";
-import areaList from "../../../../util/areaList.json";
 import { useHistory } from "react-router-dom";
 import {
-  ImageUploader,
   WallCard,
   CodeVerificationModal,
   Notification,
   TextField,
-  DynamicTextField,
-  MultiSelectDropDown,
-  TextAreaField,
   CommonBtn,
 } from "../../../common";
 
 const SupplierRegister = () => {
-  const [fileList, setFileList] = useState([]);
   const [modal, setModal] = useState(false);
   const [values, setValues] = useState({});
   const [cResult, setCResult] = useState(null);
-  const [isVerifyLoading, setIsVerifyLoading] = useState(false);
-  const [submitLoading, setSubmitLoading] = useState(false);
+  const [verifyIsLoading, seterifyIsLoading] = useState(false);
+  const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const history = useHistory();
 
   const sendCode = (values) => {
-    setSubmitLoading(true);
+    setSubmitIsLoading(true);
     _sendCode(values.mobile)
       .then((confirmResult) => {
         setCResult(confirmResult);
         setValues(values);
         setModal(!modal);
-        setSubmitLoading(false);
+        setSubmitIsLoading(false);
       })
       .catch(({ message }) => {
         Notification.error({ message: message });
-        setSubmitLoading(false);
+        setSubmitIsLoading(false);
       });
   };
 
   const confirmCode = (code) => {
     if (!code) return;
-    setIsVerifyLoading(true);
+    seterifyIsLoading(true);
     cResult
       .confirm(code)
       .then(({ user }) => {
         _suplierRegister({
           values,
           uid: user.uid,
-          fileList: fileList.map((item) => item.originFileObj),
         })
           .then(({ data }) => {
             history.push("/supplier-login");
             Notification.success({ message: data });
             setModal(!modal);
-            setIsVerifyLoading(false);
+            seterifyIsLoading(false);
           })
           .catch(({ message }) => {
             Notification.error({ message: message });
-            setIsVerifyLoading(false);
+            seterifyIsLoading(false);
           });
       })
       .catch(({ message }) => {
         Notification.error({ message: message });
-        setIsVerifyLoading(false);
+        seterifyIsLoading(false);
       });
   };
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
 
   return (
-    <WallCard className="supplier_register" heading="Supplier Register">
-      <Form
-        name="normal_login"
-        className="login-form"
-        onFinish={(values) => sendCode(values)}
-      >
+    <WallCard className="supplier_register" heading="Supplier Sign Up">
+      <Form name="normal_login" onFinish={(values) => sendCode(values)}>
         <TextField
-          name="company_name"
-          placeholder="Company Name (Required)"
-          icon={<UserOutlined className="site-form-item-icon" />}
-        />
-        <TextField
-          name="name"
-          min={3}
-          placeholder="Owner/Supplier Name (Required)"
-          icon={<UserOutlined className="site-form-item-icon" />}
-        />
-        <TextField
-          name="address"
-          max={500}
-          placeholder="Company Address (Required)"
-          icon={<HomeOutlined className="site-form-item-icon" />}
-        />
-
-        <TextField
+          required={true}
           name="mobile"
-          min={10}
-          max={10}
-          placeholder="Mobile Number (Required)"
+          min={11}
+          max={11}
+          placeholder="03002233445"
           type="number"
-          addonBefore={<span>+92</span>}
-          subClassname="w_100"
+          icon={<PhoneOutlined />}
         />
         <TextField
+          required={true}
           name="password"
           min={8}
-          placeholder="Password (Required)"
-          icon={<LockOutlined className="site-form-item-icon" />}
+          placeholder="Password"
+          icon={<LockOutlined />}
           type="password"
         />
-
-        <MultiSelectDropDown list={areaList.areas} />
-
-        <DynamicTextField />
-
-        <TextAreaField />
-
-        <ImageUploader
-          fileList={fileList}
-          setFileList={setFileList}
-          name="image"
-        />
         <Form.Item>
-          <CommonBtn loading={submitLoading} className="login-form-button">
+          <CommonBtn loading={submitIsLoading} className="login-form-button">
             Register
           </CommonBtn>
           Or <Link to="supplier-login">Login now!</Link>
@@ -140,8 +100,8 @@ const SupplierRegister = () => {
         reSendCode={() => console.log("re-send code")}
         codeVerify={confirmCode}
         mob={values?.mobile || ""}
-        loading={isVerifyLoading}
-        reSendCodeLoading={submitLoading}
+        loading={verifyIsLoading}
+        reSendCodeLoading={submitIsLoading}
       />
       {/* code verification modal end */}
 

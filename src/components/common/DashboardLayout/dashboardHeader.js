@@ -23,7 +23,7 @@ export const DashboardHeader = () => (
       }
     >
       <Menu.Item key="profile-view">
-        <Link to="/profile">Profile</Link>
+        <Link to="/supplier-profile">Profile</Link>
       </Menu.Item>
       <Menu.Item key="logout">
         <Link to="/">Logout</Link>
