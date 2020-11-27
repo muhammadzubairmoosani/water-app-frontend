@@ -7,11 +7,12 @@ export const TextAreaField = ({
   max = 500,
   name = "message",
   placeholder = "Type your message here...",
-  required = true,
+  required,
   hasFeedback,
   minRows = 5,
   maxRows = 8,
-  message,
+  message = "This field is required.",
+  label,
 }) => {
   const [messageLength, setMessageLength] = useState(0);
   return (
@@ -21,6 +22,7 @@ export const TextAreaField = ({
         className="text_area_wrapper"
         hasFeedback={hasFeedback}
         rules={[{ required, message, min, max }]}
+        label={label}
       >
         <TextArea
           className="shadow"

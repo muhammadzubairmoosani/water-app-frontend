@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Form } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, PhoneOutlined } from "@ant-design/icons";
 import { _contactUs } from "../../../service/methods";
 import { WallCard, TextField, TextAreaField, CommonBtn } from "../../common";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,21 +20,21 @@ export const ContactUs = () => {
         onFinish={(values) => dispatch(commonEpic.contactUs(values, form))}
       >
         <TextField
+          required={true}
           name="name"
-          min={3}
-          placeholder="Owner/Supplier Name (Required)"
-          icon={<UserOutlined className="site-form-item-icon" />}
+          placeholder="Name"
+          icon={<UserOutlined />}
         />
         <TextField
+          required={true}
           name="mobile"
-          min={10}
-          max={10}
-          placeholder="Mobile Number (Required)"
+          min={11}
+          max={11}
+          placeholder="03002233445"
           type="number"
-          addonBefore={<span>+92</span>}
-          subClassname="w_100"
+          icon={<PhoneOutlined />}
         />
-        <TextAreaField />
+        <TextAreaField required={true} />
         <Form.Item>
           <CommonBtn loading={contactUsIsLoading}>Send Message</CommonBtn>
         </Form.Item>

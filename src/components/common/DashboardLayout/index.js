@@ -13,26 +13,26 @@ const { Header, Sider, Content } = Layout;
 
 const supplierMenuItems = ({ active }) => (
   <Menu theme="light" defaultSelectedKeys={active} mode="vertical">
-    <Menu.Item key="1">
+    {/* <Menu.Item key="1">
       <Link to="/supplier-dashboard">
         <div>
           <DashboardOutlined />
           <span>Dashboard</span>
         </div>
       </Link>
-    </Menu.Item>
+    </Menu.Item> */}
 
-    <Menu.Item key="2">
+    {/* <Menu.Item key="2">
       <Link to="/feedback">
         <div>
           <MessageOutlined />
           <span>Feedbacks</span>
         </div>
       </Link>
-    </Menu.Item>
+    </Menu.Item> */}
 
     <Menu.Item key="3">
-      <Link to="/profile">
+      <Link to="/supplier-profile">
         <div>
           <ProfileOutlined />
           <span>Profile</span>
@@ -44,7 +44,7 @@ const supplierMenuItems = ({ active }) => (
 
 export const DashboardLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true);
-  const active = "1";
+  const active = "3";
   return (
     <Layout className="dashboard_layout">
       <Sider

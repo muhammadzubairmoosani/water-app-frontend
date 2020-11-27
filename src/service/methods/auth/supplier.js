@@ -24,39 +24,24 @@ const _supplierLogin = (values) => {
   // .catch((err) => Notification.error({ message: err.message }));
 };
 
-const _suplierRegister = ({ values, uid, fileList }) => {
-  const {
-    company_name,
-    name,
+const _suplierRegister = ({ values, uid }) => {
+  const { mobile, password } = values;
+  return api.post("/supplier-register", {
+    time_stemp: Date.now(),
+    role: "supplier",
+    firebase_uid: uid,
     mobile,
-    password,
-    address,
-    area_of_working,
-    description,
-  } = values;
-
-  return Promise.all(
-    fileList.map((file) => {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "pani-wala");
-      return api.post(process.env.REACT_APP_CLOUDINARY_URL, formData);
-    })
-  ).then((res) =>
-    api.post("/supplier-register", {
-      time_stemp: Date.now(),
-      role: "supplier",
-      firebase_uid: uid,
-      company_name,
-      name,
-      mobile,
-      password: passwordHash.generate(password),
-      address,
-      images: res.map(({ data }) => data.secure_url),
-      area_of_working,
-      description,
-    })
-  );
+    password: passwordHash.generate(password),
+  });
 };
 
 export { _suplierRegister, _supplierLogin };
+
+// return Promise.all(
+//   fileList.map((file) => {
+//     const formData = new FormData();
+//     formData.append("file", file);
+//     formData.append("upload_preset", "pani-wala");
+//     return api.post(process.env.REACT_APP_CLOUDINARY_URL, formData);
+//   })
+// ).then((res) => {});

@@ -7,7 +7,7 @@ export const TextField = ({
   name,
   placeholder,
   icon,
-  required = true,
+  required,
   hasFeedback = true,
   type = "text",
   addonBefore,
@@ -19,6 +19,7 @@ export const TextField = ({
   fieldKey,
   message,
   help,
+  label,
 }) => (
   <Form.Item
     {...fields}
@@ -28,6 +29,7 @@ export const TextField = ({
     rules={[{ required, min, max, message }]}
     className={className}
     help={help}
+    label={label}
   >
     {type === "password" ? (
       <Input.Password
