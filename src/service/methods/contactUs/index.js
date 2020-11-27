@@ -1,13 +1,13 @@
-import api from "../../../service/api";
+// import api from "../../../config/axiosConfig";
 
-const _contactUs = (values) => {
-  const { name, mobile, message } = values;
-  return api.post("/contact-us", {
-    time_stemp: Date.now(),
-    name,
-    mobile,
-    message,
-  });
-};
+// const _contactUs = (values) => {
+//   const { name, mobile, message } = values;
+//   return api.post("/contact-us", {
+//     time_stemp: Date.now(),
+//     name,
+//     mobile,
+//     message,
+//   });
+// };
 
-export { _contactUs };
+// export { _contactUs };

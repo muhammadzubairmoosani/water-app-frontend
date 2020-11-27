@@ -1,4 +1,4 @@
-import api from "../../api";
+import api from "../../../config/axiosConfig";
 
 const _getSupplierList = (skip, limit) =>
   api.get(`/supplier-list/${skip}/${limit}`);

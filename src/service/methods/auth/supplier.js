@@ -1,4 +1,4 @@
-import api from "../../api";
+import api from "../../../config/axiosConfig";
 import { Notification } from "../../../components/common";
 import passwordHash from "password-hash";
 

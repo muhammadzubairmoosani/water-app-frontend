@@ -1,40 +1,23 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Form } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { _contactUs } from "../../../service/methods";
-import {
-  WallCard,
-  Notification,
-  TextField,
-  TextAreaField,
-  CommonBtn,
-} from "../../common";
+import { WallCard, TextField, TextAreaField, CommonBtn } from "../../common";
+import { useDispatch, useSelector } from "react-redux";
+import { commonEpic } from "../../../store/epics";
 
 export const ContactUs = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const form = useRef(null);
+  const dispatch = useDispatch();
+  const { contactUsIsLoading } = useSelector(
+    ({ commonReducer }) => commonReducer
+  );
+
   return (
     <WallCard className="contact_us" heading="Contact Us">
       <Form
         ref={form}
-        onFinish={(values) => {
-          setIsLoading(true);
-          _contactUs(values)
-            .then(() => {
-              form.current.resetFields();
-              Notification.success({
-                message: "Thanks for contacting us.",
-                description: "Your message has been received.",
-              });
-              setIsLoading(false);
-            })
-            .catch((err) => {
-              Notification.error({
-                message: err.message,
-              });
-              setIsLoading(false);
-            });
-        }}
+        onFinish={(values) => dispatch(commonEpic.contactUs(values, form))}
       >
         <TextField
           name="name"
@@ -53,7 +36,7 @@ export const ContactUs = () => {
         />
         <TextAreaField />
         <Form.Item>
-          <CommonBtn loading={isLoading}>Send Message</CommonBtn>
+          <CommonBtn loading={contactUsIsLoading}>Send Message</CommonBtn>
         </Form.Item>
       </Form>
     </WallCard>
