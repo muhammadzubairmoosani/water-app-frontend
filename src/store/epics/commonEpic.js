@@ -17,17 +17,15 @@ export default class commonEpic {
         })
         .then(() => {
           form.current.resetFields();
-          dispatch(commonAction.contactUsSuccess());
           Notification.success({
             message: "Thanks for contacting us.",
             description: "Your message has been received.",
           });
+          dispatch(commonAction.contactUsSuccess());
         })
         .catch(({ message }) => {
+          Notification.error({ message: message });
           dispatch(commonAction.contactUsFailure());
-          Notification.error({
-            message: message,
-          });
         });
     };
   }

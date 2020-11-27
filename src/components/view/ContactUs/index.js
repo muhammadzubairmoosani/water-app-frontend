@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { Form } from "antd";
 import { UserOutlined, PhoneOutlined } from "@ant-design/icons";
-import { _contactUs } from "../../../service/methods";
 import { WallCard, TextField, TextAreaField, CommonBtn } from "../../common";
 import { useDispatch, useSelector } from "react-redux";
 import { commonEpic } from "../../../store/epics";

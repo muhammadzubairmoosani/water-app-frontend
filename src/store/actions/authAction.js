@@ -6,18 +6,18 @@ import {
 
 export default class authAction {
   ////////////////////////  CONTACT US  ////////////////////
-  static isLoggedIn() {
+  static login() {
     return {
       type: IS_LOGGED_IN,
     };
   }
-  static isLoggedInSuccess(payload) {
+  static loginSuccess(payload) {
     return {
       type: IS_LOGGED_IN_SUCCESS,
       payload,
     };
   }
-  static isLoggedInFailure(error) {
+  static loginFailure(error) {
     return {
       type: IS_LOGGED_IN_FAILURE,
       error,
