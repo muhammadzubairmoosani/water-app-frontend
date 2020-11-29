@@ -12,6 +12,8 @@ import {
   TextField,
   CommonBtn,
 } from "../../../common";
+import { useDispatch, useSelector } from "react-redux";
+import { authEpic } from "../../../../store/epics";
 
 const SupplierRegister = () => {
   const [modal, setModal] = useState(false);
@@ -21,53 +23,60 @@ const SupplierRegister = () => {
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const history = useHistory();
 
-  const sendCode = (values) => {
-    setSubmitIsLoading(true);
-    _sendCode(values.mobile)
-      .then((confirmResult) => {
-        setCResult(confirmResult);
-        setValues(values);
-        setModal(!modal);
-        setSubmitIsLoading(false);
-      })
-      .catch(({ message }) => {
-        Notification.error({ message: message });
-        setSubmitIsLoading(false);
-      });
-  };
+  // const sendCode = (values) => {
+  //   setSubmitIsLoading(true);
+  //   _sendCode(values.mobile)
+  //     .then((confirmResult) => {
+  //       setCResult(confirmResult);
+  //       setValues(values);
+  //       setModal(!modal);
+  //       setSubmitIsLoading(false);
+  //     })
+  //     .catch(({ message }) => {
+  //       Notification.error({ message: message });
+  //       setSubmitIsLoading(false);
+  //     });
+  // };
 
-  const confirmCode = (code) => {
-    if (!code) return;
-    seterifyIsLoading(true);
-    cResult
-      .confirm(code)
-      .then(({ user }) => {
-        _suplierRegister({
-          values,
-          uid: user.uid,
-        })
-          .then(({ data }) => {
-            history.push("/supplier-login");
-            Notification.success({ message: data });
-            setModal(!modal);
-            seterifyIsLoading(false);
-          })
-          .catch(({ message }) => {
-            Notification.error({ message: message });
-            seterifyIsLoading(false);
-          });
-      })
-      .catch(({ message }) => {
-        Notification.error({ message: message });
-        seterifyIsLoading(false);
-      });
-  };
+  // const confirmCode = (code) => {
+  //   if (!code) return;
+  //   seterifyIsLoading(true);
+  //   cResult
+  //     .confirm(code)
+  //     .then(({ user }) => {
+  //       _suplierRegister({
+  //         values,
+  //         uid: user.uid,
+  //       })
+  //         .then(({ data }) => {
+  //           history.push("/supplier-login");
+  //           Notification.success({ message: data });
+  //           setModal(!modal);
+  //           seterifyIsLoading(false);
+  //         })
+  //         .catch(({ message }) => {
+  //           Notification.error({ message: message });
+  //           seterifyIsLoading(false);
+  //         });
+  //     })
+  //     .catch(({ message }) => {
+  //       Notification.error({ message: message });
+  //       seterifyIsLoading(false);
+  //     });
+  // };
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
+  const dispatch = useDispatch();
+  const { signUpIsLoader } = useSelector(({ authReducer }) => authReducer);
 
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
-      <Form name="normal_login" onFinish={(values) => sendCode(values)}>
+      <Form
+        initialValues={{ mobile: "11111111111", password: "11111111" }}
+        name="normal_login"
+        // onFinish={(values) => sendCode(values)}
+        onFinish={(values) => dispatch(authEpic.signUp(values))}
+      >
         <TextField
           required={true}
           name="mobile"
@@ -86,7 +95,8 @@ const SupplierRegister = () => {
           type="password"
         />
         <Form.Item>
-          <CommonBtn loading={submitIsLoading} className="login-form-button">
+          {/* <CommonBtn loading={submitIsLoading} className="login-form-button"> */}
+          <CommonBtn loading={signUpIsLoader} className="login-form-button">
             Register
           </CommonBtn>
           Or <Link to="supplier-login">Login now!</Link>
@@ -98,7 +108,7 @@ const SupplierRegister = () => {
         modal={modal}
         setModal={setModal}
         reSendCode={() => console.log("re-send code")}
-        codeVerify={confirmCode}
+        // codeVerify={confirmCode}
         mob={values?.mobile || ""}
         loading={verifyIsLoading}
         reSendCodeLoading={submitIsLoading}

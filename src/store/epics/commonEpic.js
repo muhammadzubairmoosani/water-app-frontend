@@ -7,7 +7,7 @@ export default class commonEpic {
     const { name, mobile, message } = data;
 
     return (dispatch) => {
-      dispatch(commonAction.contactUs());
+      dispatch(commonAction.contactUsIsLoading());
       axios
         .post("/contact-us", {
           time_stemp: Date.now(),

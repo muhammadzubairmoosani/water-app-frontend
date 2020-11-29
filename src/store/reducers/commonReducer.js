@@ -1,5 +1,5 @@
 import {
-  CONTACT_US,
+  CONTACT_US_IS_LOADING,
   CONTACT_US_SUCCESS,
   CONTACT_US_FAILURE,
 } from "../contants";
@@ -11,10 +11,9 @@ const initialState = {
 };
 
 export default function commonReducer(state = initialState, action) {
-  console.log("action.type", action.type);
   switch (action.type) {
     ////////////////////////// CONTACT_US /////////////////////
-    case CONTACT_US:
+    case CONTACT_US_IS_LOADING:
       return {
         ...state,
         contactUsIsLoading: true,

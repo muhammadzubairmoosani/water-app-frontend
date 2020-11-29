@@ -1,14 +1,14 @@
 import {
-  CONTACT_US,
+  CONTACT_US_IS_LOADING,
   CONTACT_US_FAILURE,
   CONTACT_US_SUCCESS,
 } from "../contants";
 
 export default class commonAction {
   ////////////////////////  CONTACT US  ////////////////////
-  static contactUs() {
+  static contactUsIsLoading() {
     return {
-      type: CONTACT_US,
+      type: CONTACT_US_IS_LOADING,
     };
   }
   static contactUsSuccess() {
