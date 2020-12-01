@@ -15,6 +15,7 @@ import { BackTop } from "antd";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { PrivateRoute } from "./routing/AppRoutes";
 import Profile from "./components/view/Supplier/dashboard/profile";
+import { useSelector, useDispatch } from "react-redux";
 
 export const App = () => (
   <Router>
