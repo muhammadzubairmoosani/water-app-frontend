@@ -17,7 +17,10 @@ export default class authEpic {
             password,
           },
         });
-        dispatch(authAction.loginSuccess(res));
+        const { access_token, user } = res.data;
+        const options = { path: "/", httpOnly: false };
+        cookies.set("access_token", access_token, options);
+        dispatch(authAction.loginSuccess(user));
       } catch (err) {
         Notification.error({ message: err?.response?.data?.message });
         dispatch(authAction.loginFailure());
