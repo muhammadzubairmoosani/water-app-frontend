@@ -48,6 +48,19 @@ export default class authEpic {
       }
     };
   }
+
+  static isLoggedIn() {
+    return (dispatch) => {
+      dispatch(authAction.isLoggedInIsLoading());
+      const token = cookies.get("access_token");
+      debugger
+      if (token) {
+        dispatch(authAction.isLoggedInSuccess(true));
+      } else {
+        dispatch(authAction.isLoggedInFailure(false));
+      }
+    };
+  }
 }
 
 //     const { access_token, refresh_token, user } = data;

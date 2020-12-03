@@ -5,6 +5,9 @@ import {
   SIGN_UP_IS_LOADING,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
+  IS_LOGGED_IN_IS_LOADING,
+  IS_LOGGED_IN_SUCCESS,
+  IS_LOGGED_IN_FAILURE,
 } from "../contants";
 
 export default class authAction {
@@ -41,6 +44,24 @@ export default class authAction {
   static signUpFailure(error) {
     return {
       type: SIGN_UP_FAILURE,
+      error,
+    };
+  }
+
+  static isLoggedInIsLoading() {
+    return {
+      type: IS_LOGGED_IN_IS_LOADING,
+    };
+  }
+  static isLoggedInSuccess(payload) {
+    return {
+      type: IS_LOGGED_IN_SUCCESS,
+      payload,
+    };
+  }
+  static isLoggedInFailure(error) {
+    return {
+      type: IS_LOGGED_IN_FAILURE,
       error,
     };
   }

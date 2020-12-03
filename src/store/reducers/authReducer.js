@@ -5,6 +5,9 @@ import {
   SIGN_UP_IS_LOADING,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
+  IS_LOGGED_IN_IS_LOADING,
+  IS_LOGGED_IN_SUCCESS,
+  IS_LOGGED_IN_FAILURE,
 } from "../contants";
 
 const initialState = {
@@ -16,6 +19,11 @@ const initialState = {
   signUpIsLoader: false,
   signUpSuccess: false,
   signUpError: null,
+
+  isLoggedIn: false,
+  // isLoggedInSuccess: false,
+  // isLoggedInError: null,
+
 };
 
 export default function authReducer(state = initialState, action) {
@@ -71,6 +79,32 @@ export default function authReducer(state = initialState, action) {
         signUpIsLoader: false,
         signUpSuccess: false,
         signUpError: action.error,
+      };
+
+    ////////////////////////// IS_LOGGED_IN /////////////////////
+    case IS_LOGGED_IN_IS_LOADING:
+      return {
+        ...state,
+        // isLoggedInIsLoader: true,
+        // isLoggedInSuccess: false,
+        // isLoggedInError: null,
+      };
+
+    case IS_LOGGED_IN_SUCCESS:
+      return {
+        ...state,
+        isLoggedIn: true
+        // isLoggedInIsLoader: false,
+        // isLoggedInSuccess: true,
+        // isLoggedInError: null,
+      };
+
+    case IS_LOGGED_IN_FAILURE:
+      return {
+        ...state,
+        // isLoggedInIsLoader: false,
+        // isLoggedInSuccess: false,
+        // isLoggedInError: action.error,
       };
 
     default:
