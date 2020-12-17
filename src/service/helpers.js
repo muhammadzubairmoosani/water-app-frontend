@@ -14,4 +14,6 @@ const _sendCode = (mobile) => {
   return firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier);
 };
 
-export { _captcha, _sendCode };
+const _isEven = (value) => (value % 2 == 0 ? true : false);
+
+export { _captcha, _sendCode, _isEven };
