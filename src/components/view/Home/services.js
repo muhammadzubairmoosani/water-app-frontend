@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { CardCarouselSegment } from "../../common";
+import { CardCarouselSegment,ServicesCard } from "../../common";
 import { _getSupplierList } from "../../../service/methods";
 import { Notification } from "../../common";
 
@@ -32,7 +32,9 @@ const Services = () => {
   ];
   return (
     <Fragment>
-      {titles.map((title, index) => (
+      
+      <ServicesCard/>
+      {/* {titles.map((title, index) => (
         <CardCarouselSegment
           key={index}
           heading={title}
@@ -41,7 +43,7 @@ const Services = () => {
           route={"/supplier-list"}
           loading={isLoading}
         />
-      ))}
+      ))} */}
     </Fragment>
   );
 };

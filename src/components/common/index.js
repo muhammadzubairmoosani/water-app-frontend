@@ -1,4 +1,10 @@
-import { WallCard, ProductCard, GrayCard, StatusCard } from "./Cards";
+import {
+  WallCard,
+  ProductCard,
+  GrayCard,
+  StatusCard,
+  ServicesCard,
+} from "./Cards";
 import { CardCarousel, CardCarouselSegment } from "./Carousels";
 import Layout from "./Layout";
 import Header from "./Header";
@@ -40,4 +46,5 @@ export {
   CommonBtn,
   DashboardLayout,
   StatusCard,
+  ServicesCard,
 };
