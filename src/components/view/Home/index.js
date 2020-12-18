@@ -15,6 +15,7 @@ export const Home = () => (
 
     <Layout className="card_carousel_container">
       <Services />
+      <div id="about_us" />
     </Layout>
     <AboutUs />
   </Fragment>

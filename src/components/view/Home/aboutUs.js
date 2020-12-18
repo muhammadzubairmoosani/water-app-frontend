@@ -2,7 +2,7 @@ import React from "react";
 import { WallCard } from "../../common";
 
 const AboutUs = () => (
-  <div className="about_us" id="about_us">
+  <div className="about_us">
     <WallCard heading={"About Us"} subHeading={"PANI VALA"}>
       <p className="description">
         Pani Vala is an on-demand Water Delivery Services that connects you to
