@@ -81,11 +81,13 @@
       padding: 1.5em;
     }
 
-    p {
+    .description {
       color: #666; // may be it will change color
-      font-weight: bold; // may be it will change color
+      font-weight: 500;
       font-size: 18px;
       text-transform: capitalize;
+      font-family: Poppins_Medium;
+      text-align: center;
 
       @include xs {
         font-size: 14px;

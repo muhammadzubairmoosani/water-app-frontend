@@ -4,7 +4,7 @@ import { WallCard } from "../../common";
 const AboutUs = () => (
   <div className="about_us" id="about_us">
     <WallCard heading={"About Us"} subHeading={"PANI VALA"}>
-      <p>
+      <p className="description">
         Pani Vala is an on-demand Water Delivery Services that connects you to
         the Water Distributors in your neighborhood. We aim to provide a
         hassle-free, high-quality water supply at your residences, offices,
