@@ -9,9 +9,9 @@ const Header = () => {
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(null);
 
-  useEffect(() => {
-    dispatch(authAction.isLoggedIn());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(authAction.isLoggedIn());
+  // }, []);
 
   useEffect(() => {
     setLoggedIn(isLoggedIn);

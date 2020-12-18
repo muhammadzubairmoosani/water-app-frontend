@@ -4,6 +4,7 @@ $black: #000;
 $themeColor: #3fcaef;
 $shadowColor1: #424242d9;
 $shadowColor2: #2b2b2b;
+
 $gray: #808080;
 $gray1: #767676;
 $gray2: #909090;
@@ -187,8 +188,7 @@ $break-points: (
 
 ///////////// ANIMATION RETURN ////////////
 @mixin animation_return {
-  -webkit-animation: animation_return 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both;
+  -webkit-animation: animation_return 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: animation_return 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 @-webkit-keyframes animation_return {

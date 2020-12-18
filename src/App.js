@@ -27,11 +27,12 @@ export const App = () => {
   return (
     <Router>
       <BackTop />
-      {
+      {/* {
         // if user false return this header
         false && <Header />
-      }
-      <div style={{ paddingTop: true ? null : "75px" }}>
+      } */}
+      <Header />
+      <div style={{ paddingTop: false ? null : "75px" }}>
         <Switch>
           <PrivateRoute
             exact

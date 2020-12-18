@@ -6,9 +6,14 @@
         @include flex_col;
         justify-content: space-evenly;
         min-height: 350px;
-        box-shadow: 0px 3px 10px 1px rgba(208, 216, 243, 0.3);
         border-radius: 16px;
         border: 1px solid $lightGray;
+        box-shadow: $shadow;
+        @include animation_return;
+
+        &:hover {
+                @include animation;
+        }
 
         .ant-btn-primary {
                 max-width: 140px;
@@ -44,39 +49,5 @@
 
         img {
                 width: 75px;
-        }
-
-        &:hover {
-                -webkit-animation: services_card_container 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-                animation: services_card_container 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        }
-}
-
-@-webkit-keyframes services_card_container {
-        0% {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-                -webkit-box-shadow: 0px 3px 10px 1px rgba(208, 216, 243, 0.3);
-                box-shadow: 0px 3px 10px 1px rgba(208, 216, 243, 0.3);
-        }
-        100% {
-                -webkit-transform: translateZ(50px);
-                transform: translateZ(50px);
-                -webkit-box-shadow: 0 0 20px 0px rgba(208, 216, 243, 0.9);
-                box-shadow: 0 0 20px 0px rgba(208, 216, 243, 0.9);
-        }
-}
-@keyframes services_card_container {
-        0% {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-                -webkit-box-shadow: 0px 3px 10px 1px rgba(208, 216, 243, 0.3);
-                box-shadow: 0px 3px 10px 1px rgba(208, 216, 243, 0.3);
-        }
-        100% {
-                -webkit-transform: translateZ(50px);
-                transform: translateZ(50px);
-                -webkit-box-shadow: 0 0 20px 0px rgba(208, 216, 243, 0.9);
-                box-shadow: 0 0 20px 0px rgba(208, 216, 243, 0.9);
         }
 }
