@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Menu, PageHeader } from "antd";
+import { Menu, PageHeader, Dropdown } from "antd";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authAction } from "../../../store/actions";
-
+import { PopOver } from "../";
+import { UserOutlined, DownOutlined } from "@ant-design/icons";
 const Header = () => {
-  const { isLoggedIn } = useSelector(({ authReducer }) => authReducer);
+  const { isLoggedIn, user } = useSelector(({ authReducer }) => authReducer);
   const dispatch = useDispatch();
   const [loggedIn, setLoggedIn] = useState(null);
 
-  // useEffect(() => {
-  //   dispatch(authAction.isLoggedIn());
-  // }, []);
+  const { SubMenu } = Menu;
+
+  useEffect(() => {
+    console.log(user);
+    // dispatch(authAction.isLoggedIn());
+  }, [user]);
 
   useEffect(() => {
     setLoggedIn(isLoggedIn);
@@ -43,7 +47,8 @@ const Header = () => {
         <Menu.Item key="4">
           <Link to="/contact-us">Contact Us</Link>
         </Menu.Item>
-        {loggedIn && (
+
+        {/* {loggedIn && (
           <Menu.Item>
             <a
               onClick={() => {
@@ -54,9 +59,50 @@ const Header = () => {
               log-out
             </a>
           </Menu.Item>
-        )}
+        )} */}
+
+        <Menu.Item onClick={()=>{}} key="5">
+          <PopOver
+            // hover
+            title={user?.name || "user name"}
+            content={
+              <>
+                <Menu.Item>3rd menu item</Menu.Item>
+                <Menu.Item>4th menu item</Menu.Item>
+              </>
+              // <>
+              //   <Link to="/dashboard">Profile</Link>
+              //   <br />
+              //   <Link>Sign out</Link>
+              // </>
+            }
+          >
+            <UserOutlined />
+          </PopOver>
+        </Menu.Item>
       </Menu>
     </header>
   );
 };
 export default Header;
+
+// {/* <SubMenu title="sub menu">
+// {/* <Menu.Item key="5"> */}
+//   <PopOver
+//     // hover
+//     title={user?.name || "user name"}
+//     content={
+//       <>
+//         <Menu.Item>3rd menu item</Menu.Item>
+//         <Menu.Item>4th menu item</Menu.Item>
+//         </>
+//         // <>
+//         //   <Link to="/dashboard">Profile</Link>
+//         //   <br />
+//         //   <Link>Sign out</Link>
+//         // </>
+//       }
+//       >
+//     <UserOutlined />
+//   </PopOver>
+//       </SubMenu> */}

@@ -23,6 +23,7 @@ import {
   DynamicTextField,
   MultiSelectDropDown,
 } from "./InputFields";
+import PopOver from "./PopOver";
 
 export {
   WallCard,
@@ -47,4 +48,5 @@ export {
   DashboardLayout,
   StatusCard,
   ServicesCard,
+  PopOver,
 };

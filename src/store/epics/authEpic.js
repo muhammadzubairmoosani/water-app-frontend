@@ -53,7 +53,7 @@ export default class authEpic {
     return (dispatch) => {
       dispatch(authAction.isLoggedInIsLoading());
       const token = cookies.get("access_token");
-      debugger
+      debugger;
       if (token) {
         dispatch(authAction.isLoggedInSuccess(true));
       } else {
