@@ -14,6 +14,7 @@ import {
 } from "../../../common";
 import { useDispatch, useSelector } from "react-redux";
 import { authEpic } from "../../../../store/epics";
+import useAxios from "axios-hooks";
 
 const SupplierRegister = () => {
   const [modal, setModal] = useState(false);
@@ -69,19 +70,40 @@ const SupplierRegister = () => {
   const dispatch = useDispatch();
   const { signUpIsLoader } = useSelector(({ authReducer }) => authReducer);
 
+  const [
+    { data: putData, loading: putLoading, error: putError },
+    executePut,
+  ] = useAxios(
+    {
+      url: "http://localhost:4000/signup",
+      method: "POST",
+    },
+    { manual: true }
+  );
+
+  useEffect(() => {
+    console.log("putLoading", putLoading);
+    console.log("putError", putError);
+    console.log("putData", putData);
+  }, [putLoading, putError, putData]);
+
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
       <Form
-        initialValues={{ mobile: "11111111111", password: "11111111" }}
+        // initialValues={{ mobile: "11111111111", password: "11111111" }}
         name="normal_login"
         // onFinish={(values) => sendCode(values)}
-        onFinish={(values) => dispatch(authEpic.signUp(values))}
+        // onFinish={(values) => dispatch(authEpic.signUp(values))}
+        onFinish={(values) => {
+          const { mobile, password } = values;
+          executePut({ data: { mobile, password } });
+        }}
       >
         <TextField
           required={true}
           name="mobile"
-          min={11}
-          max={11}
+          // min={11}
+          // max={11}
           placeholder="03002233445"
           type="number"
           icon={<PhoneOutlined />}
@@ -89,7 +111,7 @@ const SupplierRegister = () => {
         <TextField
           required={true}
           name="password"
-          min={8}
+          // min={8}
           placeholder="Password"
           icon={<LockOutlined />}
           type="password"
