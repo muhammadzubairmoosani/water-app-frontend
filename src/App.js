@@ -43,7 +43,7 @@ export const App = () => {
 
           <PrivateRoute
             exact
-            path="/supplier-login"
+            path="/login"
             component={SupplierLogin}
           />
           <PrivateRoute

@@ -71,7 +71,7 @@ const Footer = () => {
               <ul>
                 <li className="title">Supplier</li>
                 <li>
-                  <Link to="/supplier-login">Login</Link>
+                  <Link to="/login">Login</Link>
                 </li>
                 <li>
                   <Link to="/supplier-register">Register</Link>

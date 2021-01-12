@@ -14,10 +14,10 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
               <Component {...props} />
             </DashboardLayout>
           ) : (
-            <Redirect to="/supplier-login" />
+            <Redirect to="/login" />
           );
           break;
-        case "/supplier-login":
+        case "/login":
         case "/supplier-register":
           return localStorage.getItem("user_token") ? (
             <Redirect to="/" />

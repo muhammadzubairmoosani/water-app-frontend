@@ -70,7 +70,7 @@ export default class authEpic {
 //       dispatch(authAction.loginIsLoading());
 //       const { mobile, password } = data;
 //       try {
-//         const res = await axios.get(`/supplier-login`, {
+//         const res = await axios.get(`/login`, {
 //           params: {
 //             mobile,
 //             password,

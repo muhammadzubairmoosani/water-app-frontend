@@ -1,15 +1,20 @@
-import axios from "axios";
-import { configure } from "axios-hooks";
+import Axios from "axios";
+import { configure, makeUseAxios } from "axios-hooks";
+import LRU from "lru-cache";
 
-const instance = axios.create({
-  // baseURL: process.env.REACT_APP_BASE_URL,
+console.log(process.env.REACT_APP_BASE_URL)
+
+const axios = Axios.create({
   withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL: process.env.REACT_APP_BASE_URL,
+  // headers: {
+  //   "Content-Type": "application/json",
+  // },
 });
 
-export default configure({ instance });
+const cache = new LRU({ max: 10 });
+
+export default makeUseAxios({ axios, cache });
 
 // headers: {
 //   "Content-Type": "application/json",

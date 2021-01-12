@@ -11,12 +11,14 @@ import useAxios from "axios-hooks";
 export const SupplierLogin = () => {
   const dispatch = useDispatch();
   const { isLoggedInLoader } = useSelector(({ authReducer }) => authReducer);
+
   const [
     { data: putData, loading: putLoading, error: putError },
     executePut,
   ] = useAxios(
     {
-      url: "http://localhost:4000/login",
+      // url: "http://localhost:4000/login",
+      url: "/login",
       method: "POST",
     },
     { manual: true }

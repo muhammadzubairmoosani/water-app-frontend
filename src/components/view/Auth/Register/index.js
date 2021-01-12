@@ -50,7 +50,7 @@ const SupplierRegister = () => {
   //         uid: user.uid,
   //       })
   //         .then(({ data }) => {
-  //           history.push("/supplier-login");
+  //           history.push("/login");
   //           Notification.success({ message: data });
   //           setModal(!modal);
   //           seterifyIsLoading(false);
@@ -70,12 +70,15 @@ const SupplierRegister = () => {
   const dispatch = useDispatch();
   const { signUpIsLoader } = useSelector(({ authReducer }) => authReducer);
 
+  console.log(process.env.REACT_APP_BASE_URL);
+
   const [
     { data: putData, loading: putLoading, error: putError },
     executePut,
   ] = useAxios(
     {
-      url: "http://localhost:4000/signup",
+      // url: "http://localhost:4000/signup",
+      url: `${process.env.REACT_APP_BASE_URL}/signup`,
       method: "POST",
     },
     { manual: true }
@@ -121,7 +124,7 @@ const SupplierRegister = () => {
           <CommonBtn loading={signUpIsLoader} className="login-form-button">
             Register
           </CommonBtn>
-          Or <Link to="supplier-login">Login now!</Link>
+          Or <Link to="login">Login now!</Link>
         </Form.Item>
       </Form>
 
