@@ -1,22 +1,39 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Form } from "antd";
 import { UserOutlined, PhoneOutlined } from "@ant-design/icons";
-import { WallCard, TextField, TextAreaField, CommonBtn } from "../../common";
-import { useDispatch, useSelector } from "react-redux";
-import { commonEpic } from "../../../store/epics";
+import useAxios from "axios-hooks";
+import {
+  WallCard,
+  TextField,
+  TextAreaField,
+  CommonBtn,
+  Notification,
+} from "../../common";
 
 export const ContactUs = () => {
-  const form = useRef(null);
-  const dispatch = useDispatch();
-  const { contactUsIsLoading } = useSelector(
-    ({ commonReducer }) => commonReducer
+  const [form] = Form.useForm();
+  const [{ loading }, contachUs] = useAxios(
+    { url: "/contact-us", method: "POST" },
+    { manual: true }
   );
 
   return (
     <WallCard className="contact_us" heading="Contact Us">
       <Form
-        ref={form}
-        onFinish={(values) => dispatch(commonEpic.contactUs(values, form))}
+        form={form}
+        onFinish={(values) => {
+          const { name, mobile, message } = values;
+          contachUs({
+            data: { name, mobile, message, time_stemp: Date.now() },
+          })
+            .then(() => {
+              Notification.success({
+                message: "Your message has been received.",
+              });
+              form.resetFields();
+            })
+            .catch(({ message }) => Notification.error({ message: message }));
+        }}
       >
         <TextField
           required={true}
@@ -35,7 +52,7 @@ export const ContactUs = () => {
         />
         <TextAreaField required={true} />
         <Form.Item>
-          <CommonBtn loading={contactUsIsLoading}>Send Message</CommonBtn>
+          <CommonBtn loading={loading}>Send Message</CommonBtn>
         </Form.Item>
       </Form>
     </WallCard>

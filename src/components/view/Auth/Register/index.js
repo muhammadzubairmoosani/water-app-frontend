@@ -5,6 +5,7 @@ import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { _suplierRegister } from "../../../../service/methods";
 import { _sendCode, _captcha } from "../../../../service/helpers";
 import { useHistory } from "react-router-dom";
+import useAxios from "axios-hooks";
 import {
   WallCard,
   CodeVerificationModal,
@@ -12,9 +13,6 @@ import {
   TextField,
   CommonBtn,
 } from "../../../common";
-import { useDispatch, useSelector } from "react-redux";
-import { authEpic } from "../../../../store/epics";
-import useAxios from "axios-hooks";
 
 const SupplierRegister = () => {
   const [modal, setModal] = useState(false);
@@ -67,39 +65,18 @@ const SupplierRegister = () => {
   // };
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
-  const dispatch = useDispatch();
-  const { signUpIsLoader } = useSelector(({ authReducer }) => authReducer);
-
-  console.log(process.env.REACT_APP_BASE_URL);
-
-  const [
-    { data: putData, loading: putLoading, error: putError },
-    executePut,
-  ] = useAxios(
-    {
-      // url: "http://localhost:4000/signup",
-      url: `${process.env.REACT_APP_BASE_URL}/signup`,
-      method: "POST",
-    },
+  const [{ data, loading, error }, signup] = useAxios(
+    { url: "/signup", method: "POST" },
     { manual: true }
   );
-
-  useEffect(() => {
-    console.log("putLoading", putLoading);
-    console.log("putError", putError);
-    console.log("putData", putData);
-  }, [putLoading, putError, putData]);
 
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
       <Form
-        // initialValues={{ mobile: "11111111111", password: "11111111" }}
         name="normal_login"
-        // onFinish={(values) => sendCode(values)}
-        // onFinish={(values) => dispatch(authEpic.signUp(values))}
         onFinish={(values) => {
           const { mobile, password } = values;
-          executePut({ data: { mobile, password } });
+          signup({ data: { mobile, password } });
         }}
       >
         <TextField
@@ -121,7 +98,7 @@ const SupplierRegister = () => {
         />
         <Form.Item>
           {/* <CommonBtn loading={submitIsLoading} className="login-form-button"> */}
-          <CommonBtn loading={signUpIsLoader} className="login-form-button">
+          <CommonBtn loading={loading} className="login-form-button">
             Register
           </CommonBtn>
           Or <Link to="login">Login now!</Link>

@@ -4,23 +4,11 @@ import { Form } from "antd";
 import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { _supplierLogin } from "../../../../service/methods";
-import { useDispatch, useSelector } from "react-redux";
-import { authEpic } from "../../../../store/epics";
 import useAxios from "axios-hooks";
 
 export const SupplierLogin = () => {
-  const dispatch = useDispatch();
-  const { isLoggedInLoader } = useSelector(({ authReducer }) => authReducer);
-
-  const [
-    { data: putData, loading: putLoading, error: putError },
-    executePut,
-  ] = useAxios(
-    {
-      // url: "http://localhost:4000/login",
-      url: "/login",
-      method: "POST",
-    },
+  const [{ data, loading, error }, login] = useAxios(
+    { url: "/login", method: "POST" },
     { manual: true }
   );
 
@@ -28,14 +16,9 @@ export const SupplierLogin = () => {
     <WallCard className="supplier_login" heading="Supplier Login">
       <Form
         name="normal_login"
-        // initialValues={{ mobile: "11111111111", password: "11111111" }}
-        // onFinish={(values) => dispatch(authEpic.login(values))}
         onFinish={(values) => {
-          
-
           const { mobile, password } = values;
-          executePut({ data: { mobile, password } });
-
+          login({ data: { mobile, password } });
         }}
       >
         <TextField
@@ -56,7 +39,7 @@ export const SupplierLogin = () => {
           type="password"
         />
         <Form.Item>
-          <CommonBtn className="login-form-button" loading={isLoggedInLoader}>
+          <CommonBtn className="login-form-button" loading={loading}>
             Log in
           </CommonBtn>
           Or <Link to="supplier-register">Sign Up now!</Link>
