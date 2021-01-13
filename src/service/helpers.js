@@ -1,3 +1,4 @@
+import { createContext } from "react";
 import { firebase } from "../config";
 
 // set captcha container
@@ -16,4 +17,6 @@ const _sendCode = (mobile) => {
 
 const _isEven = (value) => (value % 2 == 0 ? true : false);
 
-export { _captcha, _sendCode, _isEven };
+const ThemeContext = createContext("context");
+
+export { _captcha, _sendCode, _isEven, ThemeContext };

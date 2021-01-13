@@ -1,13 +1,16 @@
-import React from "react";
-import { WallCard, TextField, CommonBtn } from "../../../common";
+import React, { useContext } from "react";
+import { WallCard, TextField, CommonBtn, Notification } from "../../../common";
 import { Form } from "antd";
 import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { _supplierLogin } from "../../../../service/methods";
 import useAxios from "axios-hooks";
+import { ThemeContext } from "../../../../service/helpers";
 
 export const SupplierLogin = () => {
-  const [{ data, loading, error }, login] = useAxios(
+  const [form] = Form.useForm();
+  const { setUser } = useContext(ThemeContext);
+  const [{ loading }, login] = useAxios(
     { url: "/login", method: "POST" },
     { manual: true }
   );
@@ -15,10 +18,19 @@ export const SupplierLogin = () => {
   return (
     <WallCard className="supplier_login" heading="Supplier Login">
       <Form
+        form={form}
         name="normal_login"
         onFinish={(values) => {
           const { mobile, password } = values;
-          login({ data: { mobile, password } });
+          login({ data: { mobile, password } })
+            .then(({ data }) => {
+              setUser(data);
+              form.resetFields();
+              Notification.success({
+                message: "Your message has been received.",
+              });
+            })
+            .catch(({ message }) => Notification.error({ message: message }));
         }}
       >
         <TextField

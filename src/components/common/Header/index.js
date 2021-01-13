@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Menu, PageHeader, Dropdown } from "antd";
+import React, { useContext } from "react";
+import { Menu, PageHeader } from "antd";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { authAction } from "../../../store/actions";
-import { PopOver } from "../";
-import { UserOutlined, DownOutlined } from "@ant-design/icons";
+// import { PopOver } from "../";
+import { ThemeContext } from "../../../service/helpers";
+
 const Header = () => {
-  const { isLoggedIn, user } = useSelector(({ authReducer }) => authReducer);
-  const dispatch = useDispatch();
-  const [loggedIn, setLoggedIn] = useState(null);
-
-  const { SubMenu } = Menu;
-
-  useEffect(() => {
-    console.log(user);
-    // dispatch(authAction.isLoggedIn());
-  }, [user]);
-
-  useEffect(() => {
-    setLoggedIn(isLoggedIn);
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
+  const { user, setUser } = useContext(ThemeContext);
 
   return (
     <header className="_header">
@@ -48,61 +33,13 @@ const Header = () => {
           <Link to="/contact-us">Contact Us</Link>
         </Menu.Item>
 
-        {/* {loggedIn && (
-          <Menu.Item>
-            <a
-              onClick={() => {
-                localStorage.removeItem("user_token");
-                setLoggedIn(null);
-              }}
-            >
-              log-out
-            </a>
+        {user && (
+          <Menu.Item key="5" onClick={() => setUser(null)}>
+            <Link to="/">Log out</Link>
           </Menu.Item>
-        )} */}
-
-        <Menu.Item onClick={()=>{}} key="5">
-          <PopOver
-            // hover
-            title={user?.name || "user name"}
-            content={
-              <>
-                <Menu.Item>3rd menu item</Menu.Item>
-                <Menu.Item>4th menu item</Menu.Item>
-              </>
-              // <>
-              //   <Link to="/dashboard">Profile</Link>
-              //   <br />
-              //   <Link>Sign out</Link>
-              // </>
-            }
-          >
-            <UserOutlined />
-          </PopOver>
-        </Menu.Item>
+        )}
       </Menu>
     </header>
   );
 };
 export default Header;
-
-// {/* <SubMenu title="sub menu">
-// {/* <Menu.Item key="5"> */}
-//   <PopOver
-//     // hover
-//     title={user?.name || "user name"}
-//     content={
-//       <>
-//         <Menu.Item>3rd menu item</Menu.Item>
-//         <Menu.Item>4th menu item</Menu.Item>
-//         </>
-//         // <>
-//         //   <Link to="/dashboard">Profile</Link>
-//         //   <br />
-//         //   <Link>Sign out</Link>
-//         // </>
-//       }
-//       >
-//     <UserOutlined />
-//   </PopOver>
-//       </SubMenu> */}
