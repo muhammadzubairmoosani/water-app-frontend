@@ -18,19 +18,31 @@ const SupplierList = () => {
   const [suppliers, setSuppliers] = useState([]);
   // const [isfetch, setIsFetch] = useState(true);
 
-  const [{ data, loading, error }, getSuppliers] = useAxios({
+  const [{ loading }, getSuppliers] = useAxios({
     url: `/suppliers/${suppliers.length}/${9}`,
     method: "GET",
   });
 
-  useEffect(() => {
-    console.log(data);
-    data && setSuppliers((supplier) => [...supplier, ...data]);
-  }, [data]);
+  const fetchData = useCallback(() => {
+    getSuppliers()
+      .then(({ data }) => {
+        setSuppliers((supplier) => [...supplier, ...data]);
+      })
+      .catch((error) => {
+        console.log(error);
+        // Notification.error({ message: error.response.data.message })
+      });
+  }, [suppliers.length]);
 
   useEffect(() => {
-    error?.message && Notification.error({ message: error.message });
-  }, [error]);
+    fetchData();
+    // console.log(data);
+    // setSuppliers((supplier) => [...supplier, ...data]);
+  }, []);
+
+  // useEffect(() => {
+  //   error?.message && Notification.error({ message: error.message });
+  // }, [error]);
 
   return (
     <div className="supplier_list_container">
@@ -39,7 +51,7 @@ const SupplierList = () => {
         <InfiniteScroll
           className="list"
           dataLength={suppliers.length}
-          next={getSuppliers}
+          next={fetchData}
           hasMore={loading}
           loader={
             <div className="list">

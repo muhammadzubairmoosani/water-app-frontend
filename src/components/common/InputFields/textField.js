@@ -17,7 +17,7 @@ export const TextField = ({
   style,
   fields,
   fieldKey,
-  message,
+  message = "* Required",
   help,
   label,
 }) => (

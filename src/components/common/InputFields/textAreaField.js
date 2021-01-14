@@ -11,7 +11,7 @@ export const TextAreaField = ({
   hasFeedback,
   minRows = 5,
   maxRows = 8,
-  message = "This field is required.",
+  message = "* Rquired",
   label,
 }) => {
   const [messageLength, setMessageLength] = useState(0);

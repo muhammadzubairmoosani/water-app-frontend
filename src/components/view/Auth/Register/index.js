@@ -80,8 +80,8 @@ const SupplierRegister = () => {
           const { mobile, password } = values;
           signup({ data: { mobile, password } })
             .then(() => {
-              form.resetFields();
-              push("/login");
+              // form.resetFields();
+              // push("/login");
               Notification.success({
                 message: "Your account has been successfully created.",
               });
@@ -94,8 +94,8 @@ const SupplierRegister = () => {
         <TextField
           required={true}
           name="mobile"
-          min={11}
-          max={11}
+          // min={11}
+          // max={11}
           placeholder="03002233445"
           type="number"
           icon={<PhoneOutlined />}
@@ -103,7 +103,7 @@ const SupplierRegister = () => {
         <TextField
           required={true}
           name="password"
-          min={8}
+          // min={8}
           placeholder="Password"
           icon={<LockOutlined />}
           type="password"
