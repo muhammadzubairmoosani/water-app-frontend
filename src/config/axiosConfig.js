@@ -11,4 +11,4 @@ const cache = new LRU({ max: 10 });
 
 configure({ axios, cache });
 
-export default "hello";
+export default axios;
