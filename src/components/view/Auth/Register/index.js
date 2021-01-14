@@ -20,7 +20,8 @@ const SupplierRegister = () => {
   const [cResult, setCResult] = useState(null);
   const [verifyIsLoading, seterifyIsLoading] = useState(false);
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
-  const history = useHistory();
+  const { push } = useHistory();
+  const [form] = Form.useForm();
 
   // const sendCode = (values) => {
   //   setSubmitIsLoading(true);
@@ -65,7 +66,7 @@ const SupplierRegister = () => {
   // };
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
-  const [{ data, loading, error }, signup] = useAxios(
+  const [{ loading }, signup] = useAxios(
     { url: "/signup", method: "POST" },
     { manual: true }
   );
@@ -73,17 +74,28 @@ const SupplierRegister = () => {
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
       <Form
+        form={form}
         name="normal_login"
         onFinish={(values) => {
           const { mobile, password } = values;
-          signup({ data: { mobile, password } });
+          signup({ data: { mobile, password } })
+            .then(() => {
+              form.resetFields();
+              push("/login");
+              Notification.success({
+                message: "Your account has been successfully created.",
+              });
+            })
+            .catch((error) =>
+              Notification.error({ message: error.response.data.message })
+            );
         }}
       >
         <TextField
           required={true}
           name="mobile"
-          // min={11}
-          // max={11}
+          min={11}
+          max={11}
           placeholder="03002233445"
           type="number"
           icon={<PhoneOutlined />}
@@ -91,7 +103,7 @@ const SupplierRegister = () => {
         <TextField
           required={true}
           name="password"
-          // min={8}
+          min={8}
           placeholder="Password"
           icon={<LockOutlined />}
           type="password"
