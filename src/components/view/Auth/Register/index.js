@@ -23,10 +23,9 @@ const SupplierRegister = () => {
   const [form] = Form.useForm();
 
   const sendCode = (values) => {
-    console.log("values", values);
     setSubmitIsLoading(true);
-    // _sendCode(values.mobile.substring(1))
-    _sendCode(values.mobile)
+
+    _sendCode(values.mobile.substring(1))
       .then((confirmResult) => {
         setConfirmResult(confirmResult);
         setValues(values);
@@ -41,13 +40,13 @@ const SupplierRegister = () => {
 
   const confirmCode = (code) => {
     if (!code) return;
+
     setVerifyIsLoading(true);
+
     confirmResult
       .confirm(code)
       .then(({ user }) => {
         values.firebase_uid = user.uid;
-
-        console.log("values", values);
 
         signup({ data: values })
           .then(() => {
@@ -81,8 +80,8 @@ const SupplierRegister = () => {
         <TextField
           required={true}
           name="mobile"
-          // min={11}
-          // max={11}
+          min={11}
+          max={11}
           placeholder="Mobile number"
           type="number"
           icon={<PhoneOutlined />}
@@ -90,7 +89,7 @@ const SupplierRegister = () => {
         <TextField
           required={true}
           name="password"
-          // min={8}
+          min={8}
           placeholder="Password"
           icon={<LockOutlined />}
           type="password"
