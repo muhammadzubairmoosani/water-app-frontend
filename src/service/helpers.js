@@ -10,8 +10,7 @@ const _captcha = (id) => {
 
 // send OTP into mobile number
 const _sendCode = (mobile) => {
-  // const phoneNumber = `+92${mobile}`;
-  const phoneNumber = `+1${mobile}`;
+  const phoneNumber = `+92${mobile}`;
   const appVerifier = window.recaptchaVerifier;
   return firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier);
 };

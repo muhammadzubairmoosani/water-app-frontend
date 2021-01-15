@@ -57,7 +57,6 @@ const SupplierRegister = () => {
             });
           })
           .catch((error) => {
-            console.log("signup err", error);
             Notification.error({ message: error?.response?.data?.message });
           });
       })
