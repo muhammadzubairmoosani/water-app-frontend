@@ -29,10 +29,7 @@ const SupplierList = () => {
         if (!data.length) return setIsFetch(false);
         setSuppliers((suppliers) => [...suppliers, ...data]);
       })
-      .catch((error) => {
-        console.log(error);
-        Notification.error({ message: error?.response?.data?.message });
-      });
+      .catch(({ message }) => Notification.error({ message }));
   }, [suppliers.length]);
 
   useEffect(() => fetchData(), []);

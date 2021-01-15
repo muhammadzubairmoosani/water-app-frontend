@@ -1,11 +1,26 @@
 import React, { useContext } from "react";
 import { Menu, PageHeader } from "antd";
 import { Link } from "react-router-dom";
-// import { PopOver } from "../";
+import { Notification } from "../";
 import { ThemeContext } from "../../../service/helpers";
+import useAxios from "axios-hooks";
 
 const Header = () => {
   const { user, setUser } = useContext(ThemeContext);
+
+  const [{}, logOut] = useAxios(
+    { url: "/logout", method: "GET" },
+    { manual: true }
+  );
+
+  const _onLogOut = () => {
+    debugger;
+    logOut()
+      .then(() => setUser(null))
+      .catch((error) =>
+        Notification.error({ message: error?.response?.data?.message })
+      );
+  };
 
   return (
     <header className="_header">
@@ -34,8 +49,8 @@ const Header = () => {
         </Menu.Item>
 
         {user && (
-          <Menu.Item key="5" onClick={() => setUser(null)}>
-            <Link to="/">Log out</Link>
+          <Menu.Item key="5" onClick={_onLogOut}>
+            <Link to="/">Sign out</Link>
           </Menu.Item>
         )}
       </Menu>
