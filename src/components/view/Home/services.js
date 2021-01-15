@@ -1,49 +1,32 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { CardCarouselSegment } from "../../common";
+import React from "react";
+import { ServicesCard, WallCard } from "../../common";
 import { _getSupplierList } from "../../../service/methods";
-import { Notification } from "../../common";
+import { _isEven } from "../../../service/helpers";
 
-const Services = () => {
-  const [list, setList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+const services = [
+  { heading: "19", subHeading: "Liter" },
+  { heading: "200", subHeading: "Gallon" },
+  { heading: "1,000", subHeading: "Gallon" },
+  { heading: "2,000", subHeading: "Gallon" },
+  { heading: "3,000", subHeading: "Gallon" },
+  { heading: "4,000", subHeading: "Gallon" },
+  { heading: "6,000", subHeading: "Gallon" },
+  { heading: "10,000", subHeading: "Gallon" },
+];
 
-  useEffect(() => {
-    setIsLoading(true);
-    _getSupplierList(0, 9)
-      .then(({ data }) => {
-        setList(data);
-        setIsLoading(false);
-      })
-      .catch(({ message }) => {
-        setIsLoading(false);
-        Notification.error({ message: message });
-      });
-  }, []);
-
-  const titles = [
-    "19 liters gallon services",
-    "200 gallon services",
-    "1,000 gallon services",
-    "2,000 gallon services",
-    "3,000 gallon services",
-    "4,000 gallon services",
-    "6,000 gallon services",
-    "10,000 gallon services",
-  ];
-  return (
-    <Fragment>
-      {titles.map((title, index) => (
-        <CardCarouselSegment
-          key={index}
-          heading={title}
-          subHeading="see all"
-          array={list}
-          route={"/supplier-list"}
-          loading={isLoading}
+const Services = () => (
+  <div className="services_container">
+    <WallCard heading={"Services"} subHeading={"See all"}>
+      {services.map((service) => (
+        <ServicesCard
+          key={service.heading}
+          heading={service.heading}
+          subHeading={service.subHeading}
         />
       ))}
-    </Fragment>
-  );
-};
+      {_isEven(services.length) && <div className="isEven_dev" />}
+    </WallCard>
+  </div>
+);
 
 export default Services;

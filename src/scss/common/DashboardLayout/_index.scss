@@ -1,0 +1,169 @@
+@import "dashboardHeader";
+
+.dashboard_layout {
+  @include xs {
+    .ant-table {
+      th,
+      td {
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  .rtl {
+    .ant-layout-sider-collapsed {
+      .ant-menu-submenu-title,
+      .ant-menu-item {
+        .anticon {
+          right: 32px !important;
+        }
+      }
+    }
+
+    .sidebar-left {
+      &.ant-layout-sider {
+        right: 0;
+        left: auto;
+      }
+
+      .ant-menu-submenu-title,
+      .ant-menu-item {
+        position: relative;
+        .anticon {
+          position: absolute;
+          top: 15px;
+          right: 0;
+        }
+        span {
+          span {
+            position: absolute;
+            right: 30px;
+            top: 2px;
+          }
+        }
+      }
+
+      .ant-menu-submenu-arrow {
+        left: 16px;
+        right: auto !important;
+        &::before {
+          transform: rotate(45deg) translateY(2px) !important;
+        }
+        &::after {
+          transform: rotate(-45deg) translateY(-2px) !important;
+        }
+      }
+
+      .ant-menu-item {
+        span {
+          position: absolute;
+          right: 30px;
+          top: 2px;
+        }
+      }
+    }
+
+    .mainContnet.ant-layout-content {
+      margin-right: 200px !important;
+      margin-left: 0 !important;
+      &.collapsed {
+        margin-right: 100px !important;
+        margin-left: 0 !important;
+      }
+    }
+
+    .sidebar-left {
+      &.ant-layout-sider {
+        .trigger {
+          right: 24px;
+          left: auto;
+        }
+      }
+    }
+  }
+
+  .sidebar-left {
+    &.ant-layout-sider {
+      position: fixed !important;
+      height: 100vh;
+      left: 0;
+      top: 63px;
+      transition: all 0.2s ease-in-out;
+      z-index: 99;
+      .trigger {
+        background: #e6f7ff;
+        display: block;
+        text-align: center;
+        font-size: 25px;
+        padding: 5px;
+        color: $primary;
+      }
+    }
+
+    .ant-layout-sider-children {
+      position: fixed;
+      width: inherit;
+      height: 100vh;
+      background: #fff;
+    }
+  }
+
+  .headerTop {
+    &.ant-layout-header {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 9;
+      top: 0;
+      height: auto;
+      padding: 0;
+
+      .ant-menu-submenu-title {
+        padding: 0;
+      }
+
+      .anticon {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .mainContnet {
+    &.ant-layout-content {
+      margin-top: 65px !important;
+      margin-left: 200px !important;
+      &.collapsed {
+        margin-left: 80px !important;
+      }
+    }
+
+    .layout-trigger {
+      font-size: 22px;
+      margin-left: -24px;
+      position: fixed;
+      top: 65px;
+    }
+  }
+
+  .ant-layout-sider-children {
+    .ant-menu-root {
+      height: calc(100vh - 114px);
+      overflow: auto;
+    }
+  }
+
+  .ant-layout-sider-children {
+    overflow: hidden;
+  }
+
+  @include sm {
+    .mainContnet.ant-layout-content {
+      margin-right: -100px !important;
+      &.collapsed {
+        margin-right: 0 !important;
+      }
+    }
+  }
+}

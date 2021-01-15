@@ -1,28 +1,55 @@
 ////////////// MAIN CAROUSEL //////////////
-.main_carousel {
-  img {
+// .main_carousel {
+//   img {
+//     width: 100%;
+//     @include xs {
+//       min-height: 180px;
+//     }
+//   }
+
+//   li.slick-active button {
+//     background-color: $themeColor !important;
+//   }
+// }
+
+// .videoWrapper {
+//   position: relative;
+//   padding-bottom: 56.25%; /* 16:9 */
+//   height: 0;
+// }
+// .videoWrapper iframe {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+// }
+
+////////////// SERVICES //////////////
+.services_container {
+  .wall_card_body {
+    @include flex;
+  }
+
+  .isEven_dev {
+    max-width: 280px;
     width: 100%;
-    @include xs {
-      min-height: 180px;
-    }
-  }
-
-  li.slick-active button {
-    background-color: $themeColor !important;
+    padding: 10px 15px;
+    margin: 10px;
   }
 }
 
-.ant-carousel-vertical .slick-dots-right {
-  right: 20px !important;
-}
+// .ant-carousel-vertical .slick-dots-right {
+//   right: 20px !important;
+// }
 
-.slick-dots {
-  width: auto !important;
-}
+// .slick-dots {
+//   width: auto !important;
+// }
 
-.slick-dots li button:before {
-  display: none !important;
-}
+// .slick-dots li button:before {
+//   display: none !important;
+// }
 
 ////////////// ABOUT ME //////////////
 .about_us {
@@ -54,11 +81,13 @@
       padding: 1.5em;
     }
 
-    p {
+    .description {
       color: #666; // may be it will change color
-      font-weight: bold; // may be it will change color
-      font-size: 18px;
+      font-weight: 500;
+      font-size: 17px;
       text-transform: capitalize;
+      font-family: Poppins_Medium;
+      text-align: center;
 
       @include xs {
         font-size: 14px;

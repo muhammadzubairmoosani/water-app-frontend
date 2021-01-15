@@ -1,54 +1,35 @@
 .code_verification_modal {
-  form {
-    .form_item {
-      width: 100%;
-      flex-wrap: nowrap;
-      text-align: start;
-
-      span {
-        color: $themeColor;
-      }
-
-      ::after {
-        display: none;
-      }
-    }
-
-    :nth-child(2n) {
-      width: 100%;
-
-      .input_wrapper {
-        display: flex;
-
-        @include xs {
-          margin-top: 5px;
-        }
-
-        input {
-          flex: 1;
-          margin-right: 10px;
-        }
-
-        button {
-          flex: 0;
-        }
-      }
-    }
-  }
-
-  .wallcard_container {
-    .heading {
+  .title_container {
+    b {
       @include xs {
-        font-size: 20px;
+        font-size: 13px;
       }
     }
-    .wall_card_body {
-      margin-top: 0;
+
+    span {
+      color: $themeColor;
     }
   }
 
-  .ant-modal-footer {
-    @include flex;
-    justify-content: space-between;
+  .input_wrapper {
+    width: 100%;
+    margin-top: 8px;
+
+    .ant-form-item {
+      @include xs {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .heading {
+    @include xs {
+      font-size: 20px;
+    }
+  }
+
+  .wall_card_body {
+    margin-top: 0;
   }
 }

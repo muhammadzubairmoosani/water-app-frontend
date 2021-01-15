@@ -1,4 +1,4 @@
 import authAction from "./authAction";
-// import supplierAction from "./supplierAction";
+import commonAction from "./commonAction";
 
-export { authAction };
+export { authAction, commonAction };

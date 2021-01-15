@@ -1,5 +1,6 @@
 import React from "react";
-import { Result, Button } from "antd";
+import { Result } from "antd";
+import { CommonBtn } from "../../common";
 import { useHistory } from "react-router-dom";
 export const ErrorPage = () => {
   let history = useHistory();
@@ -9,9 +10,9 @@ export const ErrorPage = () => {
       title="404"
       subTitle="Sorry, the page you visited does not exist."
       extra={
-        <Button type="primary" onClick={() => history.goBack()}>
+        <CommonBtn block={false} onClick={() => history.goBack()}>
           Go Back
-        </Button>
+        </CommonBtn>
       }
     />
   );

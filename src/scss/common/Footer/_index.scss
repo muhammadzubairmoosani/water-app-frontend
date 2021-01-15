@@ -1,98 +1,31 @@
 footer {
   background: url("../../../assets/images/footer.webp") 100% 100% / 100% 100% no-repeat;
-  @include flex_col;
-  justify-content: space-between;
 
-  .footer_nest_contain {
-    margin: 5em 0;
-
-    @include xs {
-      margin: 2em 0;
-    }
-    @include sm {
-      margin: 3em 0;
-    }
-
-    .list_wrapper {
-      @include flex;
-      justify-content: space-evenly;
-      align-items: flex-start;
-      width: 1200px;
-      max-width: 1200px;
-      text-transform: capitalize;
-
-      @include min_max(0, 1200) {
-        width: auto;
-      }
-
-      ul {
-        padding: 0 20px;
-
-        .title {
-          color: $white;
-          text-decoration: none;
-          font-family: Poppins_Medium;
-          font-size: 24px;
-
-          @include xs {
-            font-size: 18px;
-          }
-          @include sm {
-            font-size: 18px;
-          }
-
-          &:hover {
-            color: $white;
-            cursor: default;
-            text-decoration: none;
-          }
-        }
-
-        li {
-          list-style: none;
-
-          a,
-          span {
-            font-family: Poppins_Medium;
-            color: $white;
-            font-size: 16px;
-            line-height: 2.7em;
-            width: fit-content;
-
-            @include xs {
-              font-size: 12px;
-            }
-            @include sm {
-              font-size: 12px;
-            }
-
-            &:hover {
-              color: $themeColor;
-              cursor: pointer;
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-    }
+  ul,
+  li > a {
+    list-style: none;
+    padding: 0;
+    font-family: Poppins_Medium;
+    color: $white;
+    font-size: 16px;
+    line-height: 2.7em;
   }
 
-  .copyright_contian {
-    width: 100%;
+  .title {
+    font-size: 24px;
+  }
+
+  .ant-col {
+    display: flex;
+    justify-content: center;
+  }
+
+  .copyright {
+    color: $white;
     border-top: 0.1px solid #4b4b4b;
-
-    .copyright_text {
-      margin: 45px 0 47px 0;
-      color: $white;
-      text-align: center;
-      font-family: Poppins_Regular;
-
-      @include xs {
-        margin: 25px 0 27px 0;
-      }
-      @include xs {
-        margin: 35px 0 37px 0;
-      }
-    }
+    padding: 30px;
+    margin: 0;
+    text-align: center;
+    font-family: Poppins_Regular;
   }
 }

@@ -1,31 +1,36 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useHistory } from "react-router-dom";
+import { _getSupplierList } from "../../../service/methods";
+import { Empty } from "antd";
+import InfiniteScroll from "react-infinite-scroll-component";
+import useAxios from "axios-hooks";
 import {
   Layout,
   ProductCard,
   Heading,
   ProductCardSkeleton,
   Notification,
+  CommonBtn,
 } from "../../common";
-import { useHistory } from "react-router-dom";
-import { _getSupplierList } from "../../../service/methods";
-import { Empty, Button } from "antd";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 const SupplierList = () => {
   const history = useHistory();
-  const [supplierList, setSupplierList] = useState([]);
   const [isfetch, setIsFetch] = useState(true);
+  const [suppliers, setSuppliers] = useState([]);
+
+  const [{}, getSuppliers] = useAxios({
+    url: `/suppliers/${suppliers.length}/${9}`,
+    method: "GET",
+  });
 
   const fetchData = useCallback(() => {
-    _getSupplierList(supplierList.length, 9)
+    getSuppliers()
       .then(({ data }) => {
         if (!data.length) return setIsFetch(false);
-        setSupplierList((supplierList) => [...supplierList, ...data]);
+        setSuppliers((suppliers) => [...suppliers, ...data]);
       })
-      .catch(({ message }) => {
-        Notification.error({ message: message });
-      });
-  }, [supplierList.length]);
+      .catch(({ message }) => Notification.error({ message }));
+  }, [suppliers.length]);
 
   useEffect(() => fetchData(), []);
 
@@ -35,7 +40,7 @@ const SupplierList = () => {
         <Heading heading="Supplier List" />
         <InfiniteScroll
           className="list"
-          dataLength={supplierList.length}
+          dataLength={suppliers.length}
           next={fetchData}
           hasMore={isfetch}
           loader={
@@ -49,16 +54,16 @@ const SupplierList = () => {
             </div>
           }
         >
-          {!supplierList.length && !isfetch ? (
+          {!suppliers.length && !isfetch ? (
             <>
               <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
-                <Button type="primary" onClick={() => history.goBack()}>
+                <CommonBtn block={false} onClick={() => history.goBack()}>
                   Go Back
-                </Button>
+                </CommonBtn>
               </Empty>
             </>
           ) : (
-            supplierList.map((supplier) => (
+            suppliers.map((supplier) => (
               <ProductCard product={supplier} key={supplier._id} />
             ))
           )}
@@ -67,4 +72,5 @@ const SupplierList = () => {
     </div>
   );
 };
+
 export default SupplierList;

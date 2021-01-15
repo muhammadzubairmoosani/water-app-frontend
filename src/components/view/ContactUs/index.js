@@ -1,55 +1,58 @@
-import React, { useState, useRef } from "react";
-import { Form, Button } from "antd";
-import { UserOutlined } from "@ant-design/icons";
-import { _contactUs } from "../../../service/methods";
-import { WallCard, Notification, TextField, TextAreaField } from "../../common";
+import React from "react";
+import { Form } from "antd";
+import { UserOutlined, PhoneOutlined } from "@ant-design/icons";
+import useAxios from "axios-hooks";
+import {
+  WallCard,
+  TextField,
+  TextAreaField,
+  CommonBtn,
+  Notification,
+} from "../../common";
 
 export const ContactUs = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const form = useRef(null);
+  const [form] = Form.useForm();
+  const [{ loading }, contachUs] = useAxios(
+    { url: "/contact-us", method: "POST" },
+    { manual: true }
+  );
+
   return (
     <WallCard className="contact_us" heading="Contact Us">
       <Form
-        ref={form}
+        form={form}
         onFinish={(values) => {
-          setIsLoading(true);
-          _contactUs(values)
+          const { name, mobile, message } = values;
+          contachUs({
+            data: { name, mobile, message, time_stemp: Date.now() },
+          })
             .then(() => {
-              form.current.resetFields();
               Notification.success({
-                message: "Thanks for contacting us.",
-                description: "Your message has been received.",
+                message: "Your message has been received.",
               });
-              setIsLoading(false);
+              form.resetFields();
             })
-            .catch((err) => {
-              Notification.error({
-                message: err.message,
-              });
-              setIsLoading(false);
-            });
+            .catch(({ message }) => Notification.error({ message: message }));
         }}
       >
         <TextField
+          required={true}
           name="name"
-          min={3}
-          placeholder="Owner/Supplier Name (Required)"
-          icon={<UserOutlined className="site-form-item-icon" />}
+          placeholder="Name"
+          icon={<UserOutlined />}
         />
         <TextField
+          required={true}
           name="mobile"
-          min={10}
-          max={10}
-          placeholder="Mobile Number (Required)"
+          min={11}
+          max={11}
+          placeholder="Mobile number"
           type="number"
-          addonBefore={<span>+92</span>}
-          subClassname="w_100"
+          icon={<PhoneOutlined />}
         />
-        <TextAreaField />
+        <TextAreaField required={true} />
         <Form.Item>
-          <Button htmlType="submit" loading={isLoading} type="primary" block>
-            Send Message
-          </Button>
+          <CommonBtn loading={loading}>Send Message</CommonBtn>
         </Form.Item>
       </Form>
     </WallCard>

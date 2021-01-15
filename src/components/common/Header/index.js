@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Menu, PageHeader } from "antd";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { authAction } from "../../../store/actions";
+import { Notification } from "../";
+import { ThemeContext } from "../../../service/helpers";
+import useAxios from "axios-hooks";
 
 const Header = () => {
-  const { isLoggedIn } = useSelector(({ authReducer }) => authReducer);
-  const dispatch = useDispatch();
-  const [loggedIn, setLoggedIn] = useState(null);
+  const { user, setUser } = useContext(ThemeContext);
 
-  useEffect(() => {
-    dispatch(authAction.isLoggedIn());
-  }, []);
+  const [, logOut] = useAxios(
+    { url: "/logout", method: "GET" },
+    { manual: true }
+  );
 
-  useEffect(() => {
-    setLoggedIn(isLoggedIn);
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
+  const _onLogOut = () => {
+    logOut()
+      .then(() => setUser(null))
+      .catch((error) =>
+        Notification.error({ message: error?.response?.data?.message })
+      );
+  };
 
   return (
     <header className="_header">
@@ -43,16 +46,10 @@ const Header = () => {
         <Menu.Item key="4">
           <Link to="/contact-us">Contact Us</Link>
         </Menu.Item>
-        {loggedIn && (
-          <Menu.Item>
-            <a
-              onClick={() => {
-                localStorage.removeItem("user_token");
-                setLoggedIn(null);
-              }}
-            >
-              log-out
-            </a>
+
+        {user && (
+          <Menu.Item key="5" onClick={_onLogOut}>
+            <Link to="/">Sign out</Link>
           </Menu.Item>
         )}
       </Menu>

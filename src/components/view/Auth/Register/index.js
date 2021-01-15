@@ -1,145 +1,119 @@
 import React, { useState, useEffect } from "react";
+import { Form } from "antd";
+import { Link } from "react-router-dom";
+import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
+import { _sendCode, _captcha } from "../../../../service/helpers";
+import { useHistory } from "react-router-dom";
+import useAxios from "axios-hooks";
 import {
-  ImageUploader,
   WallCard,
   CodeVerificationModal,
   Notification,
   TextField,
-  DynamicTextField,
-  MultiSelectDropDown,
-  TextAreaField,
+  CommonBtn,
 } from "../../../common";
-import { Form, Button } from "antd";
-import { Link } from "react-router-dom";
-import { LockOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
-import { _suplierRegister } from "../../../../service/methods";
-import { _sendCode, _captcha } from "../../../../service/helpers";
-import areaList from "../../../../util/areaList.json";
 
 const SupplierRegister = () => {
-  const [fileList, setFileList] = useState([]);
   const [modal, setModal] = useState(false);
   const [values, setValues] = useState({});
-  const [cResult, setCResult] = useState(null);
-  const [isVerifyLoading, setIsVerifyLoading] = useState(false);
-  const [submitLoading, setSubmitLoading] = useState(false);
+  const [confirmResult, setConfirmResult] = useState(null);
+  const [verifyIsLoading, setVerifyIsLoading] = useState(false);
+  const [submitIsLoading, setSubmitIsLoading] = useState(false);
+  const { push } = useHistory();
+  const [form] = Form.useForm();
 
   const sendCode = (values) => {
-    setSubmitLoading(true);
-    _sendCode(values.mobile)
+    setSubmitIsLoading(true);
+
+    _sendCode(values.mobile.substring(1))
       .then((confirmResult) => {
-        setCResult(confirmResult);
+        setConfirmResult(confirmResult);
         setValues(values);
-        setModal(!modal);
-        setSubmitLoading(false);
+        setModal(true);
+        setSubmitIsLoading(false);
       })
       .catch(({ message }) => {
-        Notification.error({ message: message });
-        setSubmitLoading(false);
+        Notification.error({ message });
+        setSubmitIsLoading(false);
       });
   };
 
   const confirmCode = (code) => {
     if (!code) return;
-    setIsVerifyLoading(true);
-    cResult
+
+    setVerifyIsLoading(true);
+
+    confirmResult
       .confirm(code)
-      .then((res) => {
-        _suplierRegister({
-          values,
-          uid: res.user.uid,
-          fileList: fileList.map((item) => item.originFileObj),
-        });
-        setModal(!modal);
-        setIsVerifyLoading(false);
+      .then(({ user }) => {
+        values.firebase_uid = user.uid;
+
+        signup({ data: values })
+          .then(() => {
+            form.resetFields();
+            push("/login");
+            Notification.success({
+              message: "Your account has been successfully created.",
+            });
+          })
+          .catch((error) => {
+            Notification.error({ message: error?.response?.data?.message });
+          });
       })
       .catch(({ message }) => {
-        Notification.error({ message: message });
-        setIsVerifyLoading(false);
+        Notification.error({ message });
+        setVerifyIsLoading(false);
       });
   };
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
 
+  const [{}, signup] = useAxios(
+    { url: "/signup", method: "POST" },
+    { manual: true }
+  );
+
   return (
-    <WallCard className="supplier_register" heading="Supplier Register">
-      <Form
-        name="normal_login"
-        className="login-form"
-        onFinish={(values) => sendCode(values)}
-        // onFinish={(values) => console.log(values)}
-      >
+    <WallCard className="supplier_register" heading="Supplier Sign Up">
+      <Form form={form} name="normal_login" onFinish={sendCode}>
         <TextField
-          name="company_name"
-          placeholder="Company Name (Required)"
-          icon={<UserOutlined className="site-form-item-icon" />}
-        />
-        <TextField
-          name="name"
-          min={3}
-          placeholder="Owner/Supplier Name (Required)"
-          icon={<UserOutlined className="site-form-item-icon" />}
-        />
-        <TextField
+          required={true}
           name="mobile"
-          min={10}
-          max={10}
-          placeholder="Mobile Number (Required)"
+          min={11}
+          max={11}
+          placeholder="Mobile number"
           type="number"
-          addonBefore={<span>+92</span>}
-          subClassname="w_100"
+          icon={<PhoneOutlined />}
         />
         <TextField
+          required={true}
           name="password"
           min={8}
-          placeholder="Password (Required)"
-          icon={<LockOutlined className="site-form-item-icon" />}
+          placeholder="Password"
+          icon={<LockOutlined />}
           type="password"
         />
-        <TextField
-          name="address"
-          max={500}
-          placeholder="Company Address (Required)"
-          icon={<HomeOutlined className="site-form-item-icon" />}
-        />
-        <MultiSelectDropDown list={areaList.areas} />
-
-        <DynamicTextField />
-
-        <TextAreaField />
-        <ImageUploader
-          fileList={fileList}
-          setFileList={setFileList}
-          name="image"
-        />
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-            loading={submitLoading}
-            block
-          >
+          <CommonBtn loading={submitIsLoading} className="login-form-button">
             Register
-          </Button>
-          Or <Link to="supplier-login">Login now!</Link>
+          </CommonBtn>
+          Or <Link to="login">Login now!</Link>
         </Form.Item>
       </Form>
 
-      {/* code verification modal start */}
+      {/* code verification modal */}
       <CodeVerificationModal
         modal={modal}
         setModal={setModal}
         reSendCode={() => console.log("re-send code")}
         codeVerify={confirmCode}
         mob={values?.mobile || ""}
-        loading={isVerifyLoading}
-        reSendCodeLoading={submitLoading}
+        loading={verifyIsLoading}
+        reSendCodeLoading={submitIsLoading}
       />
-      {/* code verification modal end */}
-      {/* recaptcha-container div must be required for phone varifivation start*/}
+
+      {/* recaptcha-container div with id must be required for phone varifivation start*/}
       <div id="supplier-registration-recaptcha-container"></div>
-      {/* recaptcha-container div must be required for phone varifivation end*/}
     </WallCard>
   );
 };

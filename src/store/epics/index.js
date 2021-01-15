@@ -1,7 +1,4 @@
-import { combineEpics } from "redux-observable";
+import commonEpic from "./commonEpic";
 import authEpic from "./authEpic";
-// import supplierEpic from "./supplierEpic";
 
-const rootEpic = combineEpics(authEpic.isLoggedIn);
-
-export default rootEpic;
+export { commonEpic, authEpic };

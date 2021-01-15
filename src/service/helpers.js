@@ -1,4 +1,5 @@
-import firebase from "../config/index";
+import { createContext } from "react";
+import { firebase } from "../config";
 
 // set captcha container
 const _captcha = (id) => {
@@ -14,4 +15,8 @@ const _sendCode = (mobile) => {
   return firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier);
 };
 
-export { _captcha, _sendCode };
+const _isEven = (value) => (value % 2 === 0 ? true : false);
+
+const ThemeContext = createContext("context");
+
+export { _captcha, _sendCode, _isEven, ThemeContext };
