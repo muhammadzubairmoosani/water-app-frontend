@@ -20,11 +20,9 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
             ) : (
               <Redirect to="/login" />
             );
-            break;
           case "/login":
           case "/supplier-register":
             return user ? <Redirect to="/" /> : <Component {...props} />;
-            break;
           default:
             return <Redirect to="/" />;
         }

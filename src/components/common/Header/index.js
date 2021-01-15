@@ -8,7 +8,7 @@ import useAxios from "axios-hooks";
 const Header = () => {
   const { user, setUser } = useContext(ThemeContext);
 
-  const [{}, logOut] = useAxios(
+  const [, logOut] = useAxios(
     { url: "/logout", method: "GET" },
     { manual: true }
   );
