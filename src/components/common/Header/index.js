@@ -14,7 +14,6 @@ const Header = () => {
   );
 
   const _onLogOut = () => {
-    debugger;
     logOut()
       .then(() => setUser(null))
       .catch((error) =>

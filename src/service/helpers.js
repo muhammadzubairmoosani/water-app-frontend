@@ -10,12 +10,13 @@ const _captcha = (id) => {
 
 // send OTP into mobile number
 const _sendCode = (mobile) => {
-  const phoneNumber = `+92${mobile}`;
+  // const phoneNumber = `+92${mobile}`;
+  const phoneNumber = `+1${mobile}`;
   const appVerifier = window.recaptchaVerifier;
   return firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier);
 };
 
-const _isEven = (value) => (value % 2 == 0 ? true : false);
+const _isEven = (value) => (value % 2 === 0 ? true : false);
 
 const ThemeContext = createContext("context");
 

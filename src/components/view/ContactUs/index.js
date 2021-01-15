@@ -46,7 +46,7 @@ export const ContactUs = () => {
           name="mobile"
           min={11}
           max={11}
-          placeholder="03002233445"
+          placeholder="Mobile number"
           type="number"
           icon={<PhoneOutlined />}
         />

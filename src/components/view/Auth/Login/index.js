@@ -38,16 +38,16 @@ export const SupplierLogin = () => {
         <TextField
           required={true}
           name="mobile"
-          // min={11}
-          // max={11}
-          placeholder="03002233445"
+          min={11}
+          max={11}
+          placeholder="Mobile number"
           type="number"
           icon={<PhoneOutlined />}
         />
         <TextField
           required={true}
           name="password"
-          // min={8}
+          min={8}
           placeholder="Password"
           icon={<LockOutlined />}
           type="password"

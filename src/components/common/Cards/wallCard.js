@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const WallCard = ({ heading, subHeading, children, route, className }) => (
+const WallCard = ({ heading, subHeading, children, route ="", className }) => (
   <div className={`wallcard_container ${className}`}>
     <div className="items_container">
       <img src={require("../../../assets/icons/drops.png")} alt="drops" />

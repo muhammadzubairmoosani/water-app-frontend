@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Form } from "antd";
 import { Link } from "react-router-dom";
 import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
-import { _suplierRegister } from "../../../../service/methods";
 import { _sendCode, _captcha } from "../../../../service/helpers";
 import { useHistory } from "react-router-dom";
 import useAxios from "axios-hooks";
@@ -17,86 +16,74 @@ import {
 const SupplierRegister = () => {
   const [modal, setModal] = useState(false);
   const [values, setValues] = useState({});
-  const [cResult, setCResult] = useState(null);
-  const [verifyIsLoading, seterifyIsLoading] = useState(false);
+  const [confirmResult, setConfirmResult] = useState(null);
+  const [verifyIsLoading, setVerifyIsLoading] = useState(false);
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const { push } = useHistory();
   const [form] = Form.useForm();
 
-  // const sendCode = (values) => {
-  //   setSubmitIsLoading(true);
-  //   _sendCode(values.mobile)
-  //     .then((confirmResult) => {
-  //       setCResult(confirmResult);
-  //       setValues(values);
-  //       setModal(!modal);
-  //       setSubmitIsLoading(false);
-  //     })
-  //     .catch(({ message }) => {
-  //       Notification.error({ message: message });
-  //       setSubmitIsLoading(false);
-  //     });
-  // };
+  const sendCode = (values) => {
+    console.log("values", values);
+    setSubmitIsLoading(true);
+    // _sendCode(values.mobile.substring(1))
+    _sendCode(values.mobile)
+      .then((confirmResult) => {
+        setConfirmResult(confirmResult);
+        setValues(values);
+        setModal(true);
+        setSubmitIsLoading(false);
+      })
+      .catch(({ message }) => {
+        Notification.error({ message });
+        setSubmitIsLoading(false);
+      });
+  };
 
-  // const confirmCode = (code) => {
-  //   if (!code) return;
-  //   seterifyIsLoading(true);
-  //   cResult
-  //     .confirm(code)
-  //     .then(({ user }) => {
-  //       _suplierRegister({
-  //         values,
-  //         uid: user.uid,
-  //       })
-  //         .then(({ data }) => {
-  //           history.push("/login");
-  //           Notification.success({ message: data });
-  //           setModal(!modal);
-  //           seterifyIsLoading(false);
-  //         })
-  //         .catch(({ message }) => {
-  //           Notification.error({ message: message });
-  //           seterifyIsLoading(false);
-  //         });
-  //     })
-  //     .catch(({ message }) => {
-  //       Notification.error({ message: message });
-  //       seterifyIsLoading(false);
-  //     });
-  // };
+  const confirmCode = (code) => {
+    if (!code) return;
+    setVerifyIsLoading(true);
+    confirmResult
+      .confirm(code)
+      .then(({ user }) => {
+        values.firebase_uid = user.uid;
+
+        console.log("values", values);
+
+        signup({ data: values })
+          .then(() => {
+            form.resetFields();
+            push("/login");
+            Notification.success({
+              message: "Your account has been successfully created.",
+            });
+          })
+          .catch((error) => {
+            console.log("signup err", error);
+            Notification.error({ message: error?.response?.data?.message });
+          });
+      })
+      .catch(({ message }) => {
+        Notification.error({ message });
+        setVerifyIsLoading(false);
+      });
+  };
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
-  const [{ loading }, signup] = useAxios(
+
+  const [{}, signup] = useAxios(
     { url: "/signup", method: "POST" },
     { manual: true }
   );
 
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
-      <Form
-        form={form}
-        name="normal_login"
-        onFinish={(values) => {
-          const { mobile, password } = values;
-          signup({ data: { mobile, password } })
-            .then(() => {
-              form.resetFields();
-              push("/login");
-              Notification.success({
-                message: "Your account has been successfully created.",
-              });
-            })
-            .catch((error) => {
-              Notification.error({ message: error.response.data.message });
-            });
-        }}
-      >
+      <Form form={form} name="normal_login" onFinish={sendCode}>
         <TextField
           required={true}
           name="mobile"
           // min={11}
           // max={11}
-          placeholder="03002233445"
+          placeholder="Mobile number"
           type="number"
           icon={<PhoneOutlined />}
         />
@@ -109,29 +96,26 @@ const SupplierRegister = () => {
           type="password"
         />
         <Form.Item>
-          {/* <CommonBtn loading={submitIsLoading} className="login-form-button"> */}
-          <CommonBtn loading={loading} className="login-form-button">
+          <CommonBtn loading={submitIsLoading} className="login-form-button">
             Register
           </CommonBtn>
           Or <Link to="login">Login now!</Link>
         </Form.Item>
       </Form>
 
-      {/* code verification modal start */}
+      {/* code verification modal */}
       <CodeVerificationModal
         modal={modal}
         setModal={setModal}
         reSendCode={() => console.log("re-send code")}
-        // codeVerify={confirmCode}
+        codeVerify={confirmCode}
         mob={values?.mobile || ""}
         loading={verifyIsLoading}
         reSendCodeLoading={submitIsLoading}
       />
-      {/* code verification modal end */}
 
-      {/* recaptcha-container div must be required for phone varifivation start*/}
+      {/* recaptcha-container div with id must be required for phone varifivation start*/}
       <div id="supplier-registration-recaptcha-container"></div>
-      {/* recaptcha-container div must be required for phone varifivation end*/}
     </WallCard>
   );
 };
