@@ -27,7 +27,7 @@ export const SupplierLogin = () => {
               setUser(data);
               form.resetFields();
               Notification.success({
-                message: "Your message has been received.",
+                message: "Login success.",
               });
             })
             .catch((error) =>
