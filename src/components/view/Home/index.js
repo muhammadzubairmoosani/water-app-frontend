@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import AboutUs from "./aboutUs";
 import Services from "./services";
-import { Layout } from "../../common";
+import { Layout, CardCarouselSegment } from "../../common";
 
 export const Home = () => (
   <Fragment>
@@ -15,6 +15,11 @@ export const Home = () => (
 
     <Layout className="card_carousel_container">
       <Services />
+      <CardCarouselSegment
+        heading="Our Suppliers"
+        subHeading={"See all"}
+        array={[0, 0, 0, 0, 0]}
+      />
       <div id="about_us" />
     </Layout>
     <AboutUs />

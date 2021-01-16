@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ServicesCard = ({ heading, subHeading }) => (
   <div className="service_card">
-    <div className="first_child">
+    <div className="heading_container">
       <p className="heading">{heading} </p>
       <p className="sub_heading">{subHeading} </p>
     </div>

@@ -1,54 +1,55 @@
 .service_card {
-        max-width: 200px;
-        width: 100%;
-        padding: 10px;
-        margin: 10px;
-        @include flex_col;
-        justify-content: space-evenly;
-        min-height: 250px;
-        border-radius: 16px;
-        border: 1px solid $lightGray;
-        box-shadow: $shadow;
-        @include animation_return;
+  width: 100%;
+  max-width: 200px;
+  min-height: 250px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 16px;
+  border: 1px solid $lightGray;
+  @include animation_return;
+  @include flex_col;
+  justify-content: space-evenly;
 
-        &:hover {
-                @include animation;
-        }
+  &:hover {
+    @include animation;
+  }
 
-        .ant-btn-primary {
-                max-width: 120px;
-                height: 35px;
-                border-radius: 4px;
-                font-weight: 500;
-                font-size: 12px;
-        }
+  .ant-btn-primary {
+    max-width: 120px;
+    height: 35px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+  }
 
-        .first_child {
-                text-align: center;
-                .heading {
-                        font-weight: bold;
-                        font-size: 30px;
-                        margin: 0;
-                        height: auto;
-                        display: inline-block;
-                        font-family: Lemonada-SemiBold;
-                }
-                .sub_heading {
-                        font-weight: 600;
-                        font-family: Lemonada-Regular;
-                        font-size: 18px;
-                        margin: 0;
-                }
-        }
+  .heading_container {
+    text-align: center;
 
-        .title {
-                margin: 0;
-                font-weight: 500;
-                font-size: 15px;
-                font-family: Poppins_Medium;
-        }
+    .heading {
+      font-weight: bold;
+      font-size: 30px;
+      margin: 0;
+      height: auto;
+      display: inline-block;
+      font-family: Lemonada-SemiBold;
+    }
 
-        img {
-                width: 45px;
-        }
+    .sub_heading {
+      font-weight: 600;
+      font-family: Lemonada-Regular;
+      font-size: 18px;
+      margin: 0;
+    }
+  }
+
+  .title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: Poppins_Medium;
+  }
+
+  img {
+    width: 45px;
+  }
 }

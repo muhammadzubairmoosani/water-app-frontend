@@ -47,9 +47,13 @@ const Header = () => {
           <Link to="/contact-us">Contact Us</Link>
         </Menu.Item>
 
-        {user && (
+        {user ? (
           <Menu.Item key="5" onClick={_onLogOut}>
             <Link to="/">Sign out</Link>
+          </Menu.Item>
+        ) : (
+          <Menu.Item key="5">
+            <Link to="/login">Login</Link>
           </Menu.Item>
         )}
       </Menu>

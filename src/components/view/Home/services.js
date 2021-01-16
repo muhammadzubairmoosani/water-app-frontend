@@ -16,7 +16,7 @@ const services = [
 
 const Services = () => (
   <div className="services_container">
-    <WallCard heading={"Services"} subHeading={"See all"}>
+    <WallCard heading={"Our Services"} subHeading={"See all"}>
       {services.map((service) => (
         <ServicesCard
           key={service.heading}
