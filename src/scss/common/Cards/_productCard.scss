@@ -1,58 +1,61 @@
 .product_card_wrapper {
-    @include flex;
+  @include flex;
 
-    .ant-card {
-        position: relative;
-        min-width: 280px;
-        max-width: 280px;
-        min-height: 395px;
-        max-height: 395px;
-        margin: 1em;
-        border-radius: 10px 10px 0 0;
-        @include animation_return;
-        border-top: 0;
+  .ant-card {
+    position: relative;
+    min-width: 280px;
+    max-width: 280px;
+    min-height: 375px;
+    max-height: 375px;
+    margin: 1em;
+    border-radius: 10px 10px 0 0;
+    @include animation_return;
+    border-top: 0;
 
-        &:hover {
-            @include animation;
-        }
-
-        .ant-card-meta-title {
-            text-transform: capitalize;
-        }
-
-        .ant-card-meta-description {
-            display: -webkit-box;
-            -webkit-line-clamp: 5;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-transform: capitalize;
-        }
-
-        .ant-avatar {
-            position: relative;
-            top: -48px;
-            width: 50px;
-            height: 49px;
-        }
-
-        .ant-card-meta-avatar {
-            float: none;
-            padding-right: 0;
-            height: 5px;
-        }
-
-        .ant-card-cover img {
-            border-radius: 10px;
-            min-height: 160px;
-            max-height: 160px;
-            object-fit: cover;
-        }
-
-        ul {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
+    &:hover {
+      @include animation;
     }
+
+    .ant-card-meta-title {
+      text-transform: capitalize;
+    }
+
+    .ant-card-meta-description {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-transform: capitalize;
+      margin-top: 10px;
+    }
+
+    .ant-avatar {
+      position: relative;
+      top: -48px;
+      width: 50px;
+      height: 49px;
+      border: 1px solid $lightGray;
+    }
+
+    .ant-card-meta-avatar {
+      float: none;
+      padding-right: 0;
+      height: 5px;
+    }
+
+    .ant-card-cover img {
+      border-radius: 10px;
+      min-height: 160px;
+      max-height: 160px;
+      object-fit: cover;
+      border: 1px solid $lightGray;
+    }
+
+    ul {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+  }
 }
