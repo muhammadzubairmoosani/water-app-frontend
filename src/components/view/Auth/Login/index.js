@@ -29,7 +29,7 @@ export const SupplierLogin = () => {
               Notification.success({ message: "Login success." });
             })
             .catch((error) =>
-              Notification.error({ message: error.response.data.message })
+              Notification.error({ message: error?.response?.data?.message })
             );
         }}
       >
