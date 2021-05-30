@@ -20,6 +20,7 @@ export const TextField = ({
   message = "* Required",
   help,
   label,
+  onChange
 }) => (
   <Form.Item
     {...fields}
@@ -49,6 +50,7 @@ export const TextField = ({
         addonBefore={addonBefore}
         className={`shadow ${subClassname}`}
         allowClear={allowClear}
+        onChange={onChange}
       />
     )}
   </Form.Item>

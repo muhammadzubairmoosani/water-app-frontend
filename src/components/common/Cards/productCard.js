@@ -7,7 +7,7 @@ import noImageAvailable from "../../../assets/images/noImageAvailable.png";
 const { Meta } = Card;
 
 const ProductCard = ({ product }) => {
-  const { images, company_name } = product;
+  const { images, company_name, username } = product;
   return (
     <div className="product_card_wrapper">
       <Card
@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
           avatar={
             <Avatar src={images?.[1] || images?.[0] || noImageAvailable} />
           }
-          title={company_name}
+          title={username}
           description={
             "hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world"
           }

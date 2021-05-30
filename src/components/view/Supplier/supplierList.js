@@ -11,14 +11,17 @@ import {
   ProductCardSkeleton,
   Notification,
   CommonBtn,
+  SearchField
 } from "../../common";
 
 const SupplierList = () => {
   const history = useHistory();
   const [isfetch, setIsFetch] = useState(true);
   const [suppliers, setSuppliers] = useState([]);
+  const [searchResult, setSearchResult] = useState([])
 
-  const [{}, getSuppliers] = useAxios({
+
+  const [{ }, getSuppliers] = useAxios({
     url: `/suppliers/${suppliers.length}/${9}`,
     method: "GET",
   });
@@ -34,10 +37,16 @@ const SupplierList = () => {
 
   useEffect(() => fetchData(), []);
 
+  useEffect(() => console.log(searchResult), [searchResult]);
+
   return (
     <div className="supplier_list_container">
       <Layout>
         <Heading heading="Supplier List" />
+
+        <SearchField url='suppliers' callback={setSearchResult} />
+        {/* <SearchField url='suppliers' callback={e => console.log(e)} /> */}
+
         <InfiniteScroll
           className="list"
           dataLength={suppliers.length}
@@ -54,19 +63,30 @@ const SupplierList = () => {
             </div>
           }
         >
-          {!suppliers.length && !isfetch ? (
-            <>
-              <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
-                <CommonBtn block={false} onClick={() => history.goBack()}>
-                  Go Back
+
+          {
+            // !searchResult.length ? 'no search result'
+            // : 
+            searchResult.length ?
+              searchResult.map((supplier) => (
+                <ProductCard product={supplier} key={supplier._id} />
+              ))
+              :
+
+              !suppliers.length && !isfetch ? (
+                <>
+                  <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
+                    <CommonBtn block={false} onClick={() => history.goBack()}>
+                      Go Back
                 </CommonBtn>
-              </Empty>
-            </>
-          ) : (
-            suppliers.map((supplier) => (
-              <ProductCard product={supplier} key={supplier._id} />
-            ))
-          )}
+                  </Empty>
+                </>
+              ) : (
+                suppliers.map((supplier) => (
+                  <ProductCard product={supplier} key={supplier._id} />
+                ))
+              )}
+
         </InfiniteScroll>
       </Layout>
     </div>

@@ -24,6 +24,7 @@ import {
   MultiSelectDropDown,
 } from "./InputFields";
 import PopOver from "./PopOver";
+import SearchField from "./SearchField";
 
 export {
   WallCard,
@@ -49,4 +50,5 @@ export {
   StatusCard,
   ServicesCard,
   PopOver,
+  SearchField
 };
