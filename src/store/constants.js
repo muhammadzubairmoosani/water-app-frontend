@@ -1,0 +1,1 @@
+export const ROUT_GUARD = "ROUT_GUARD"

@@ -18,5 +18,6 @@ const _sendCode = (mobile) => {
 const _isEven = (value) => (value % 2 === 0 ? true : false);
 
 const ThemeContext = createContext("context");
+const StoreContext = createContext('StoreContext');
 
-export { _captcha, _sendCode, _isEven, ThemeContext };
+export { _captcha, _sendCode, _isEven, ThemeContext, StoreContext };

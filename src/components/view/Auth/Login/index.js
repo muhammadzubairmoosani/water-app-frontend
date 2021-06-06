@@ -5,11 +5,16 @@ import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { _supplierLogin } from "../../../../service/methods";
 import useAxios from "axios-hooks";
-import { ThemeContext } from "../../../../service/helpers";
+import { ThemeContext ,StoreContext} from "../../../../service/helpers";
 
 export const SupplierLogin = () => {
   const [form] = Form.useForm();
   const { setUser } = useContext(ThemeContext);
+
+  const context = useContext(StoreContext);
+
+  console.log("context",context)
+
   const [{ loading }, login] = useAxios(
     { url: "/login", method: "POST" },
     { manual: true }
