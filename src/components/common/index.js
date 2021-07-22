@@ -25,6 +25,7 @@ import {
 } from "./InputFields";
 import PopOver from "./PopOver";
 import SearchField from "./SearchField";
+import { Spinner } from "./Spinner";
 
 export {
   WallCard,
@@ -50,5 +51,6 @@ export {
   StatusCard,
   ServicesCard,
   PopOver,
-  SearchField
+  SearchField,
+  Spinner
 };

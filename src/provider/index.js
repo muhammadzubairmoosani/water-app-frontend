@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ThemeContext } from "../service/helpers";
 import useAxios from "axios-hooks";
-import { Notification } from "../components/common";
+import { Notification, Spinner } from "../components/common";
 
 export const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -18,7 +18,7 @@ export const Provider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ user, setUser }}>
-      {loading ? "loading..." : children}
+      {loading ? <Spinner /> : children}
     </ThemeContext.Provider>
   );
 };
