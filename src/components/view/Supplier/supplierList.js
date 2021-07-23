@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { _getSupplierList } from "../../../service/methods";
-import { Empty } from "antd";
+import { Empty, Row, Col } from "antd";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useAxios from "axios-hooks";
 import {
@@ -11,7 +11,8 @@ import {
   ProductCardSkeleton,
   Notification,
   CommonBtn,
-  SearchField
+  SearchField,
+  Spinner
 } from "../../common";
 import lodash from 'lodash'
 
@@ -23,10 +24,11 @@ const SupplierList = () => {
   const [isSearchResultMessage, setIsSearchResultMessage] = useState(false)
 
 
-  const [{ }, getSuppliers] = useAxios({
+  const [{ loading }, getSuppliers] = useAxios({
     url: `/suppliers/${key ? 0 : suppliers.length}/${9}/${key}`,
     method: "GET",
   });
+
 
   const fetchData = useCallback(() => {
     getSuppliers()
@@ -55,7 +57,11 @@ const SupplierList = () => {
       <Layout>
         <Heading heading="Supplier List" />
 
-        <SearchField callback={setKey} />
+        <Row>
+          <Col span={8} offset={16}>
+            <SearchField callback={setKey} />
+          </Col>
+        </Row>
 
         <InfiniteScroll
           className="list"
@@ -64,22 +70,25 @@ const SupplierList = () => {
           hasMore={isfetch}
           loader={<div className="list">{lodash.range(6).map(i => <ProductCardSkeleton key={i} />)}</div>}
         >
-          {
-            isSearchResultMessage && key ? 'No search result.'
-              :
-              !suppliers?.length && !isfetch ? (
-                <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
-                  <CommonBtn block={false} onClick={() => history.goBack()}>
-                    Go Back
-                  </CommonBtn>
-                </Empty>
-              ) : (
-                suppliers?.map((supplier) => (
-                  <ProductCard product={supplier} key={supplier._id} />
-                ))
-              )
-          }
 
+          {
+            loading ?
+              <Spinner />
+              :
+              isSearchResultMessage && key ? 'No search result.'
+                :
+                !suppliers?.length && !isfetch ? (
+                  <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
+                    <CommonBtn block={false} onClick={() => history.goBack()}>
+                      Go Back
+                    </CommonBtn>
+                  </Empty>
+                ) : (
+                  suppliers?.map((supplier) => (
+                    <ProductCard product={supplier} key={supplier._id} />
+                  ))
+                )
+          }
         </InfiniteScroll>
       </Layout>
     </div>
