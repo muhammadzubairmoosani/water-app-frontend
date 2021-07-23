@@ -13,79 +13,72 @@ import {
   CommonBtn,
   SearchField
 } from "../../common";
+import lodash from 'lodash'
 
 const SupplierList = () => {
   const history = useHistory();
   const [isfetch, setIsFetch] = useState(true);
   const [suppliers, setSuppliers] = useState([]);
-  const [searchResult, setSearchResult] = useState([])
+  const [key, setKey] = useState(null)
+  const [isSearchResultMessage, setIsSearchResultMessage] = useState(false)
 
 
   const [{ }, getSuppliers] = useAxios({
-    url: `/suppliers/${suppliers.length}/${9}`,
+    url: `/suppliers/${key ? 0 : suppliers.length}/${9}/${key}`,
     method: "GET",
   });
 
   const fetchData = useCallback(() => {
     getSuppliers()
       .then(({ data }) => {
+        if (!data.length && key) {
+          setSuppliers([])
+          setIsFetch(false)
+          return setIsSearchResultMessage(true)
+        };
+
         if (!data.length) return setIsFetch(false);
-        setSuppliers((suppliers) => [...suppliers, ...data]);
+
+        if (data.length) setIsSearchResultMessage(false);
+
+        setSuppliers((suppliers) => key ? data : [...suppliers, ...data]);
       })
       .catch(({ message }) => Notification.error({ message }));
-  }, [suppliers.length]);
+  }, [suppliers.length, key]);
 
-  useEffect(() => fetchData(), []);
-
-  useEffect(() => console.log(searchResult), [searchResult]);
+  useEffect(() => {
+    fetchData()
+  }, [key])
 
   return (
     <div className="supplier_list_container">
       <Layout>
         <Heading heading="Supplier List" />
 
-        <SearchField url='suppliers' callback={setSearchResult} />
-        {/* <SearchField url='suppliers' callback={e => console.log(e)} /> */}
+        <SearchField callback={setKey} />
 
         <InfiniteScroll
           className="list"
           dataLength={suppliers.length}
           next={fetchData}
           hasMore={isfetch}
-          loader={
-            <div className="list">
-              <ProductCardSkeleton />
-              <ProductCardSkeleton />
-              <ProductCardSkeleton />
-              <ProductCardSkeleton />
-              <ProductCardSkeleton />
-              <ProductCardSkeleton />
-            </div>
-          }
+          loader={<div className="list">{lodash.range(6).map(i => <ProductCardSkeleton key={i} />)}</div>}
         >
-
           {
-            // !searchResult.length ? 'no search result'
-            // : 
-            searchResult.length ?
-              searchResult.map((supplier) => (
-                <ProductCard product={supplier} key={supplier._id} />
-              ))
+            isSearchResultMessage && key ? 'No search result.'
               :
-
-              !suppliers.length && !isfetch ? (
-                <>
-                  <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
-                    <CommonBtn block={false} onClick={() => history.goBack()}>
-                      Go Back
-                </CommonBtn>
-                  </Empty>
-                </>
+              !suppliers?.length && !isfetch ? (
+                <Empty image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg">
+                  <CommonBtn block={false} onClick={() => history.goBack()}>
+                    Go Back
+                  </CommonBtn>
+                </Empty>
               ) : (
-                suppliers.map((supplier) => (
+                suppliers?.map((supplier) => (
                   <ProductCard product={supplier} key={supplier._id} />
                 ))
-              )}
+              )
+          }
 
         </InfiniteScroll>
       </Layout>

@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
           avatar={
             <Avatar src={images?.[1] || images?.[0] || noImageAvailable} />
           }
-          title={company_name || "Company name"}
+          title={username || "Company name"}
           description={
             "hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world"
           }
