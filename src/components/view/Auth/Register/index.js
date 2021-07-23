@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "antd";
 import { Link } from "react-router-dom";
-import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
+import { LockOutlined, PhoneOutlined, GoogleOutlined } from "@ant-design/icons";
 import { _sendCode, _captcha } from "../../../../service/helpers";
 import { useHistory } from "react-router-dom";
 import useAxios from "axios-hooks";
@@ -12,6 +12,7 @@ import {
   TextField,
   CommonBtn,
 } from "../../../common";
+import { firebase } from '../../../../config'
 
 const SupplierRegister = () => {
   const [modal, setModal] = useState(false);
@@ -21,6 +22,8 @@ const SupplierRegister = () => {
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const { push } = useHistory();
   const [form] = Form.useForm();
+  const provider = new firebase.auth.GoogleAuthProvider();
+
 
   const sendCode = (values) => {
     setSubmitIsLoading(true);
@@ -37,6 +40,20 @@ const SupplierRegister = () => {
         setSubmitIsLoading(false);
       });
   };
+
+  function googleSignInPopup() {
+    firebase.auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+
+        console.log(result)
+
+      }).catch((error) => {
+
+        console.log(error)
+
+      });
+  }
 
   const confirmCode = (code) => {
     if (!code) return;
@@ -68,14 +85,17 @@ const SupplierRegister = () => {
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
 
-  const [{}, signup] = useAxios(
+  const [{ }, signup] = useAxios(
     { url: "/signup", method: "POST" },
     { manual: true }
   );
 
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
-      <Form form={form} name="normal_login" onFinish={sendCode}>
+      <Form form={form} name="normal_login"
+        onFinish={sendCode}
+      >
+        {/* <Form form={form} name="normal_login" onFinish={googleSignInPopup}> */}
         <TextField
           required={true}
           name="mobile"
@@ -93,10 +113,26 @@ const SupplierRegister = () => {
           icon={<LockOutlined />}
           type="password"
         />
+
         <Form.Item>
-          <CommonBtn loading={submitIsLoading} className="login-form-button">
+          <CommonBtn
+            // onClick={sendCode}
+
+            loading={submitIsLoading} className="login-form-button">
             Register
           </CommonBtn>
+          <br />
+          Or
+          <br />
+
+          <CommonBtn icon={<GoogleOutlined />}
+            // loading={submitIsLoading}
+            onClick={googleSignInPopup}
+
+            className="login-form-button">
+            Sign in with Google
+          </CommonBtn>
+
           Or <Link to="login">Login now!</Link>
         </Form.Item>
       </Form>
@@ -111,6 +147,8 @@ const SupplierRegister = () => {
         loading={verifyIsLoading}
         reSendCodeLoading={submitIsLoading}
       />
+
+
 
       {/* recaptcha-container div with id must be required for phone varifivation start*/}
       <div id="supplier-registration-recaptcha-container"></div>

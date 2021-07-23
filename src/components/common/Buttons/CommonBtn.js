@@ -1,13 +1,14 @@
 import React from "react";
 import { Button } from "antd";
 export const CommonBtn = ({
+  type = "primary",
+  htmlType = "submit",
+  block = true,
   children,
   className,
   loading,
-  type = "primary",
   onClick,
-  block = true,
-  htmlType = "submit",
+  icon
 }) => (
   <Button
     htmlType={htmlType}
@@ -16,6 +17,7 @@ export const CommonBtn = ({
     block={block}
     type={type}
     onClick={onClick}
+    icon={icon}
   >
     {children}
   </Button>
