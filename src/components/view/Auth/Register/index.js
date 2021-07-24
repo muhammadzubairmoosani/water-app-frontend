@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "antd";
 import { Link } from "react-router-dom";
-import { LockOutlined, PhoneOutlined, GoogleOutlined } from "@ant-design/icons";
-import { _sendCode, _captcha } from "../../../../service/helpers";
+import { LockOutlined, PhoneOutlined, GoogleOutlined, FacebookFilled } from "@ant-design/icons";
+import { _sendCode, _captcha, _signInWithGoogle } from "../../../../service/helpers";
 import { useHistory } from "react-router-dom";
 import useAxios from "axios-hooks";
 import {
@@ -12,7 +12,7 @@ import {
   TextField,
   CommonBtn,
 } from "../../../common";
-import { firebase } from '../../../../config'
+import { firebase } from "../../../../config";
 
 const SupplierRegister = () => {
   const [modal, setModal] = useState(false);
@@ -22,7 +22,10 @@ const SupplierRegister = () => {
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const { push } = useHistory();
   const [form] = Form.useForm();
-  const provider = new firebase.auth.GoogleAuthProvider();
+  const [signInwithGoogleIsLoading, setSignInwithGoogleIsLoading] = useState(false)
+  const [signInwithFacebookIsLoading, setSignInwithFacebookIsLoading] = useState(false)
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 
   const sendCode = (values) => {
@@ -41,19 +44,6 @@ const SupplierRegister = () => {
       });
   };
 
-  function googleSignInPopup() {
-    firebase.auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-
-        console.log(result)
-
-      }).catch((error) => {
-
-        console.log(error)
-
-      });
-  }
 
   const confirmCode = (code) => {
     if (!code) return;
@@ -92,10 +82,7 @@ const SupplierRegister = () => {
 
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
-      <Form form={form} name="normal_login"
-        onFinish={sendCode}
-      >
-        {/* <Form form={form} name="normal_login" onFinish={googleSignInPopup}> */}
+      <Form form={form} name="normal_login" onFinish={sendCode}>
         <TextField
           required={true}
           name="mobile"
@@ -116,26 +103,31 @@ const SupplierRegister = () => {
 
         <Form.Item>
           <CommonBtn
-            // onClick={sendCode}
-
+            onClick={sendCode}
             loading={submitIsLoading} className="login-form-button">
             Register
           </CommonBtn>
-          <br />
-          Or
-          <br />
 
-          <CommonBtn icon={<GoogleOutlined />}
-            // loading={submitIsLoading}
-            onClick={googleSignInPopup}
-
-            className="login-form-button">
-            Sign in with Google
-          </CommonBtn>
 
           Or <Link to="login">Login now!</Link>
         </Form.Item>
       </Form>
+
+      <CommonBtn block={false} icon={<GoogleOutlined />}
+        loading={signInwithGoogleIsLoading}
+        onClick={() => _signInWithGoogle(setSignInwithGoogleIsLoading, googleProvider)}
+        className="login-form-button">
+        Sign up with Google
+      </CommonBtn>
+
+      <CommonBtn block={false} icon={<FacebookFilled />}
+        loading={signInwithFacebookIsLoading}
+        onClick={() => _signInWithGoogle(setSignInwithFacebookIsLoading, facebookProvider)}
+        className="login-form-button">
+        Sign up with Facebook
+      </CommonBtn>
+
+
 
       {/* code verification modal */}
       <CodeVerificationModal
