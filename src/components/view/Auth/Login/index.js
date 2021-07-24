@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { _supplierLogin } from "../../../../service/methods";
 import useAxios from "axios-hooks";
 import { ThemeContext } from "../../../../service/helpers";
+import { firebase } from "../../../../config";
 
 export const SupplierLogin = () => {
   const [form] = Form.useForm();
@@ -14,6 +15,50 @@ export const SupplierLogin = () => {
     { url: "/login", method: "POST" },
     { manual: true }
   );
+
+  const auth = firebase.auth();
+
+  const signInWithFacebook = () => {
+    const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+    // firebase.auth().signInWithRedirect(facebookProvider);
+    auth
+      .signInWithPopup(facebookProvider)
+      .then((res) => {
+        console.log(res);
+        window.location.assign("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // firebase
+    //   .auth()
+    //   .signInWithPopup(facebookProvider)
+    //   // .getRedirectResult()
+  };
+
+  // const submitSignedInOrNot = () => {
+  //   // firebase.auth().onAuthStateChanged((user) => {
+  //   //   if (user) {
+  //   //     console.log(user);
+  //   //   } else {
+  //   //     console.log("User is not Signed In");
+  //   //   }
+  //   // });
+  //   const user = firebase.auth().currentUser;
+
+  //   if (user) {
+  //     console.log(user);
+
+  //     // User is signed in, see docs for a list of available properties
+  //     // https://firebase.google.com/docs/reference/js/firebase.User
+  //     // ...
+  //   } else {
+  //     console.log("User is not Signed In");
+  //     // No user is signed in.
+  //   }
+  // };
 
   return (
     <WallCard className="supplier_login" heading="Supplier Login">
@@ -57,6 +102,10 @@ export const SupplierLogin = () => {
           Or <Link to="supplier-register">Sign Up now!</Link>
         </Form.Item>
       </Form>
+
+      <button onClick={signInWithFacebook}>sign in with facebook</button>
+
+      {/* <button onClick={submitSignedInOrNot}>Check SignedIn Or Not</button> */}
     </WallCard>
   );
 };

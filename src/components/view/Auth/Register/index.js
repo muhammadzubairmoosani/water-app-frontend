@@ -75,7 +75,11 @@ const SupplierRegister = () => {
 
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
-      <Form form={form} name="normal_login" onFinish={sendCode}>
+      <Form
+        form={form}
+        name="normal_login"
+        //  onFinish={sendCode}
+      >
         <TextField
           required={true}
           name="mobile"
