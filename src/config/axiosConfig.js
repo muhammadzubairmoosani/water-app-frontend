@@ -3,7 +3,7 @@ import { configure } from "axios-hooks";
 import LRU from "lru-cache";
 
 const axios = Axios.create({
-  withCredentials: true,
+  // withCredentials: true,
   baseURL: process.env.REACT_APP_BASE_URL,
   // baseURL:  'http://localhost:4000',
 });
