@@ -5,6 +5,7 @@ import LRU from "lru-cache";
 const axios = Axios.create({
   withCredentials: true,
   baseURL: process.env.REACT_APP_BASE_URL,
+  // baseURL:  'http://localhost:4000',
 });
 
 const cache = new LRU({ max: 10 });
