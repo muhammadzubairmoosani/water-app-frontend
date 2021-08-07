@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "antd";
+
 export const CommonBtn = ({
   type = "primary",
   htmlType = "submit",

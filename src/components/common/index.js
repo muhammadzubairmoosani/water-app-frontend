@@ -15,7 +15,7 @@ import { ProductCardSkeleton } from "./Skeletons";
 import Notification from "./Notification";
 import { CodeVerificationModal } from "./Modals";
 import Slider from "./Slider";
-import { CommonBtn } from "./Buttons";
+import { CommonBtn, GoogleButton } from "./Buttons";
 import { DashboardLayout } from "./DashboardLayout";
 import {
   TextField,
@@ -52,5 +52,6 @@ export {
   ServicesCard,
   PopOver,
   SearchField,
-  Spinner
+  Spinner,
+  GoogleButton
 };

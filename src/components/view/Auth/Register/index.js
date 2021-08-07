@@ -11,6 +11,7 @@ import {
   Notification,
   TextField,
   CommonBtn,
+  GoogleButton
 } from "../../../common";
 import { firebase } from "../../../../config";
 
@@ -109,23 +110,28 @@ const SupplierRegister = () => {
           </CommonBtn>
 
 
-          Or <Link to="login">Login now!</Link>
+          Already have an account? <Link to="login">Login now!</Link>
         </Form.Item>
+
+        <div className="flex">
+          <GoogleButton onClick={() => _signInWithGoogle(setSignInwithGoogleIsLoading, googleProvider)} />
+        </div>
       </Form>
 
-      <CommonBtn block={false} icon={<GoogleOutlined />}
+
+      {/* <CommonBtn block={false} icon={<GoogleOutlined />}
         loading={signInwithGoogleIsLoading}
         onClick={() => _signInWithGoogle(setSignInwithGoogleIsLoading, googleProvider)}
         className="login-form-button">
         Sign up with Google
-      </CommonBtn>
+      </CommonBtn> */}
 
-      <CommonBtn block={false} icon={<FacebookFilled />}
+      {/* <CommonBtn block={false} icon={<FacebookFilled />}
         loading={signInwithFacebookIsLoading}
         onClick={() => _signInWithGoogle(setSignInwithFacebookIsLoading, facebookProvider)}
         className="login-form-button">
         Sign up with Facebook
-      </CommonBtn>
+      </CommonBtn> */}
 
 
 

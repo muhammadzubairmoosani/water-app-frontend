@@ -24,6 +24,10 @@ $shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 $bgShadow: #1f1f1f;
 $radius: 4px;
 
+$google-blue: #4285f4;
+$button-active-blue: #1669F2;
+
+
 @mixin bg_shadow {
   background: $bgShadow;
   opacity: 0.2;
