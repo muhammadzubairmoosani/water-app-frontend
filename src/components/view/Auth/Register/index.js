@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "antd";
 import { Link } from "react-router-dom";
-import { LockOutlined, PhoneOutlined, GoogleOutlined, FacebookFilled } from "@ant-design/icons";
-import { _sendCode, _captcha, _signInWithGoogle } from "../../../../service/helpers";
+import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
+import { _sendCode, _captcha } from "../../../../service/helpers";
 import { useHistory } from "react-router-dom";
 import useAxios from "axios-hooks";
 import {
@@ -10,10 +10,8 @@ import {
   CodeVerificationModal,
   Notification,
   TextField,
-  CommonBtn,
-  GoogleButton
+  CommonBtn
 } from "../../../common";
-import { firebase } from "../../../../config";
 
 const SupplierRegister = () => {
   const [modal, setModal] = useState(false);
@@ -23,11 +21,6 @@ const SupplierRegister = () => {
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const { push } = useHistory();
   const [form] = Form.useForm();
-  const [signInwithGoogleIsLoading, setSignInwithGoogleIsLoading] = useState(false)
-  const [signInwithFacebookIsLoading, setSignInwithFacebookIsLoading] = useState(false)
-  const googleProvider = new firebase.auth.GoogleAuthProvider();
-  const facebookProvider = new firebase.auth.FacebookAuthProvider();
-
 
   const sendCode = (values) => {
     setSubmitIsLoading(true);
@@ -44,7 +37,6 @@ const SupplierRegister = () => {
         setSubmitIsLoading(false);
       });
   };
-
 
   const confirmCode = (code) => {
     if (!code) return;
@@ -112,28 +104,7 @@ const SupplierRegister = () => {
 
           Already have an account? <Link to="login">Login now!</Link>
         </Form.Item>
-
-        <div className="flex">
-          <GoogleButton onClick={() => _signInWithGoogle(setSignInwithGoogleIsLoading, googleProvider)} />
-        </div>
       </Form>
-
-
-      {/* <CommonBtn block={false} icon={<GoogleOutlined />}
-        loading={signInwithGoogleIsLoading}
-        onClick={() => _signInWithGoogle(setSignInwithGoogleIsLoading, googleProvider)}
-        className="login-form-button">
-        Sign up with Google
-      </CommonBtn> */}
-
-      {/* <CommonBtn block={false} icon={<FacebookFilled />}
-        loading={signInwithFacebookIsLoading}
-        onClick={() => _signInWithGoogle(setSignInwithFacebookIsLoading, facebookProvider)}
-        className="login-form-button">
-        Sign up with Facebook
-      </CommonBtn> */}
-
-
 
       {/* code verification modal */}
       <CodeVerificationModal
@@ -145,8 +116,6 @@ const SupplierRegister = () => {
         loading={verifyIsLoading}
         reSendCodeLoading={submitIsLoading}
       />
-
-
 
       {/* recaptcha-container div with id must be required for phone varifivation start*/}
       <div id="supplier-registration-recaptcha-container"></div>

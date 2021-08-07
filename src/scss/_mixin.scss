@@ -27,6 +27,8 @@ $radius: 4px;
 $google-blue: #4285f4;
 $button-active-blue: #1669F2;
 
+$google-font: url("https://fonts.googleapis.com/css?family=Roboto:500");
+
 
 @mixin bg_shadow {
   background: $bgShadow;
