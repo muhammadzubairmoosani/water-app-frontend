@@ -22,6 +22,14 @@ const SupplierRegister = () => {
   const { push } = useHistory();
   const [form] = Form.useForm();
 
+  useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
+
+  const [{ }, signup] = useAxios(
+    { url: "/signup", method: "POST" },
+    { manual: true }
+  );
+
+
   const sendCode = (values) => {
     setSubmitIsLoading(true);
 
@@ -55,9 +63,11 @@ const SupplierRegister = () => {
             Notification.success({
               message: "Your account has been successfully created.",
             });
+            setVerifyIsLoading(false);
           })
           .catch((error) => {
             Notification.error({ message: error?.response?.data?.message });
+            setVerifyIsLoading(false);
           });
       })
       .catch(({ message }) => {
@@ -66,12 +76,6 @@ const SupplierRegister = () => {
       });
   };
 
-  useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
-
-  const [{}, signup] = useAxios(
-    { url: "/signup", method: "POST" },
-    { manual: true }
-  );
 
   return (
     <WallCard className="supplier_register" heading="Supplier Sign Up">
