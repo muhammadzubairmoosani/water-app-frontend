@@ -18,7 +18,7 @@ const SearchField = ({ callback }) => {
                 callback(key)
             }, 500)
         )
-    }, [key])
+    }, [callback, key])
 
     return (
         <Form onValuesChange={_onChangeKey}>
