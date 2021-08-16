@@ -7,7 +7,7 @@ export const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const [{ data, loading, error }] = useAxios({
-    url: "/logged-in",
+    url: "https://pani-vala-server.herokuapp.com/logged-in",
     method: "GET",
   });
 
