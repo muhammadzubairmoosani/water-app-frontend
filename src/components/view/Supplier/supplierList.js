@@ -24,7 +24,7 @@ const SupplierList = () => {
   const [isSearchResultMessage, setIsSearchResultMessage] = useState(false)
 
   const [{ loading }, getSuppliers] = useAxios({
-    url: `${process.env.REACT_APP_BASE_URL}/suppliers/${key ? 0 : suppliers.length}/${9}/${key}`,
+    url: `/suppliers/${key ? 0 : suppliers.length}/${9}/${key}`,
     method: "GET",
   }, { manual: true });
 

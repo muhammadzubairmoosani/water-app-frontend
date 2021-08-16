@@ -7,7 +7,7 @@ export const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const [{ data, loading, error }] = useAxios({
-    url: `${process.env.REACT_APP_BASE_URL}/logged-in`,
+    url: '/logged-in',
     method: "GET",
   });
 
