@@ -4,7 +4,7 @@ import LRU from "lru-cache";
 
 const axios = Axios.create({
   // withCredentials: true,
-  baseURL: process.env.REACT_APP_BASE_URL || secrets.REACT_APP_BASE_URL,
+  baseURL: process.env.REACT_APP_BASE_URL || ["secrets"]["REACT_APP_BASE_URL"],
   // headers: {
   //   "Access-Control-Allow-Origin": "https://pani-wala-f7ad8.web.app/"
   // }
