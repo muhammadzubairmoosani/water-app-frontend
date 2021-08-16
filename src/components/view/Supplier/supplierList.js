@@ -25,9 +25,8 @@ const SupplierList = () => {
 
   const [{ loading }, getSuppliers] = useAxios({
     url: `/suppliers/${key ? 0 : suppliers.length}/${9}/${key}`,
-    // url: `/suppliers/0/9/a`,
     method: "GET",
-  });
+  }, { manual: true });
 
 
   const fetchData = useCallback(() => {
@@ -70,7 +69,6 @@ const SupplierList = () => {
           hasMore={isfetch}
           loader={<div className="list">{lodash.range(6).map(i => <ProductCardSkeleton key={i} />)}</div>}
         >
-
           {
             loading ?
               <Spinner />
