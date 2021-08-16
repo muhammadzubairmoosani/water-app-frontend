@@ -8,7 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "./provider";
-import "./config/axiosConfig";
 
 ReactDOM.render(
   <Provider>
