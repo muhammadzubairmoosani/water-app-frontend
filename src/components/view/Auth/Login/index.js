@@ -12,7 +12,7 @@ export const SupplierLogin = () => {
   const { setUser } = useContext(ThemeContext);
 
   const [{ loading }, login] = useAxios(
-    { url: "/login", method: "POST", withCredentials: true },
+    { url: "/login", method: "POST" },
     { manual: true }
   );
 
@@ -23,7 +23,7 @@ export const SupplierLogin = () => {
         name="normal_login"
         onFinish={(values) => {
           const { mobile, password } = values;
-          login({ data: { mobile, password } })
+          login({ data: { mobile, password }, withCredentials: true })
             .then(({ data }) => {
               setUser(data);
               form.resetFields();
