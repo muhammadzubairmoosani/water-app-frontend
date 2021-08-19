@@ -10,8 +10,9 @@ import { ThemeContext } from "../../../../service/helpers";
 export const SupplierLogin = () => {
   const [form] = Form.useForm();
   const { setUser } = useContext(ThemeContext);
+
   const [{ loading }, login] = useAxios(
-    { url: "/login", method: "POST" },
+    { url: "/login", method: "POST", withCredentials: true },
     { manual: true }
   );
 
