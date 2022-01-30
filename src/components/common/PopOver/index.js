@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover } from "antd";
 
-const PopOver = ({ children, title, content, hover }) =>
+export const PopOver = ({ children, title, content, hover }) =>
   hover ? (
     <Popover placement="bottom" title={title} content={content}>
       {children}
@@ -11,5 +11,3 @@ const PopOver = ({ children, title, content, hover }) =>
       {children}
     </Popover>
   );
-
-export default PopOver;

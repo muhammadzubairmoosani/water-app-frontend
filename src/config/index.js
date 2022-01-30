@@ -1,4 +1,4 @@
 import axios from "./axiosConfig";
-import firebase from "./firebaseConfig";
+import { app, auth, db } from "./firebaseConfig";
 
-export { axios, firebase };
+export { axios, app, auth, db };

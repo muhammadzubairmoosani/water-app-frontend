@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "../index";
 import { Row, Col } from "antd";
 
-const Footer = () => {
+export const Footer = () => {
   const [year, setYear] = useState(0);
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -85,4 +85,3 @@ const Footer = () => {
     </footer>
   );
 };
-export default Footer;

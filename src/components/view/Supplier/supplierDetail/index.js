@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { _getSupplierDetail } from "../../../../service/methods";
 import { useParams } from "react-router-dom";
-import { Layout, Notification, Heading } from "../../../common";
+import { Layout, toast, Heading } from "../../../common";
 import { Row, Col } from "antd";
 import RightPanel from "./rightPanel";
 import LeftPanel from "./leftPanel";
@@ -20,7 +20,7 @@ const SupplierDetail = () => {
       })
       .catch(({ message }) => {
         setIsLoading(false);
-        Notification.error({ message: message });
+        toast.error(message);
       });
   }, [id]);
 

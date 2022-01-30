@@ -9,7 +9,7 @@ import {
   ProductCard,
   Heading,
   ProductCardSkeleton,
-  Notification,
+  toast,
   CommonBtn,
   SearchField,
   Spinner
@@ -45,7 +45,7 @@ const SupplierList = () => {
 
         setSuppliers((suppliers) => key ? data : [...suppliers, ...data]);
       })
-      .catch(({ message }) => Notification.error({ message }));
+      .catch(({ message }) => toast.error({ message }));
   }, [suppliers.length, key]);
 
   useEffect(() => {

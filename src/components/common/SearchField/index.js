@@ -3,7 +3,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 import { TextField } from "../../common";
 
-const SearchField = ({ callback }) => {
+export const SearchField = ({ callback }) => {
     const [typingTimeout, setTypingTimeout] = useState(0)
     const [key, setKey] = useState(null)
 
@@ -30,5 +30,3 @@ const SearchField = ({ callback }) => {
         </Form >
     )
 }
-
-export default SearchField

@@ -15,7 +15,7 @@ const RightPanel = ({ name, mobile, address, area_of_working, loading }) => (
     <GrayCard title="Area of Service">
       <Skeleton active loading={loading}>
         <ol>
-          {area_of_working && area_of_working.map((area) => <li>{area}</li>)}
+          {area_of_working && area_of_working.map((area) => <li key={area}>{area}</li>)}
         </ol>
       </Skeleton>
     </GrayCard>

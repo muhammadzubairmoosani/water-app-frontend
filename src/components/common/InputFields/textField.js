@@ -20,7 +20,8 @@ export const TextField = ({
   message = "* Required",
   help,
   label,
-  onChange
+  onChange,
+  defaultValue
 }) => (
   <Form.Item
     {...fields}
@@ -51,6 +52,7 @@ export const TextField = ({
         className={`shadow ${subClassname}`}
         allowClear={allowClear}
         onChange={onChange}
+        defaultValue={defaultValue}
       />
     )}
   </Form.Item>

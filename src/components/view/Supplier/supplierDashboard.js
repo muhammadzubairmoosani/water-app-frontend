@@ -39,7 +39,7 @@ export const SupplierDashboard = () => (
     {/* <!--Stats view --> */}
     <Row gutter={16}>
       {statusData.map((status) => (
-        <Col xs={24} sm={12} lg={6} className="status_card_wrapper">
+        <Col key={status.text} xs={24} sm={12} lg={6} className="status_card_wrapper">
           <StatusCard
             bgColor={status.className}
             icon={status.icon}

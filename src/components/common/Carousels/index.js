@@ -1,4 +1,2 @@
-import CardCarousel from "./cardCarousel";
-import CardCarouselSegment from "./cardCarouselSegment";
-
-export { CardCarousel, CardCarouselSegment };
+export * from "./cardCarousel";
+export * from "./cardCarouselSegment";

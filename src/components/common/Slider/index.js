@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "antd";
 
-const Slider = ({ effect, dotPosition, autoplay, images, className }) => (
+export const Slider = ({ effect, dotPosition, autoplay, images, className }) => (
   <Carousel
     effect={effect}
     dotPosition={dotPosition}
@@ -15,4 +15,3 @@ const Slider = ({ effect, dotPosition, autoplay, images, className }) => (
     ))}
   </Carousel>
 );
-export default Slider;

@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { ThemeContext } from "../service/helpers";
-import useAxios from "axios-hooks";
-import { Notification, Spinner } from "../components/common";
+import { Spinner } from "../components/common";
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../config'
+import { supplier } from '../schema'
 
 export const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
-
-  const [{ data, loading, error }] = useAxios({
-    url: "/logged-in",
-    method: "GET",
-  });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (data) return setUser(data);
-    if (error) Notification.error({ message: error.message });
-  }, [error, data]);
+    setLoading(true)
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser({ ...supplier, phoneNumberPrimary: user.phoneNumber, uid: user.uid })
+      }
+      setLoading(false)
+    })
+  }, [])
 
   return (
     <ThemeContext.Provider value={{ user, setUser }}>

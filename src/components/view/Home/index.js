@@ -18,7 +18,7 @@ export const Home = () => (
       <CardCarouselSegment
         heading="Our Suppliers"
         subHeading={"See all"}
-        array={[0, 0, 0, 0, 0]}
+        array={[0, 1, 2, 3, 4]}
       />
       <div id="about_us" />
     </Layout>

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "antd";
-import { Link } from "react-router-dom";
-import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
+import { PhoneOutlined, UserOutlined } from "@ant-design/icons";
 import { _sendCode, _captcha } from "../../../../service/helpers";
-import { useHistory } from "react-router-dom";
-import useAxios from "axios-hooks";
+// import { useHistory } from "react-router-dom";
 import {
   WallCard,
   CodeVerificationModal,
-  Notification,
+  // Notification,
   TextField,
   CommonBtn,
+  toast
 } from "../../../common";
+import { setDoc, doc } from 'firebase/firestore'
+import { db } from "../../../../config";
+import { supplier } from '../../../../schema'
 
 const SupplierRegister = () => {
   const [modal, setModal] = useState(false);
@@ -19,7 +21,7 @@ const SupplierRegister = () => {
   const [confirmResult, setConfirmResult] = useState(null);
   const [verifyIsLoading, setVerifyIsLoading] = useState(false);
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
-  const { push } = useHistory();
+  // const { push } = useHistory();
   const [form] = Form.useForm();
 
   const sendCode = (values) => {
@@ -33,49 +35,56 @@ const SupplierRegister = () => {
         setSubmitIsLoading(false);
       })
       .catch(({ message }) => {
-        Notification.error({ message });
+        toast.error(message);
         setSubmitIsLoading(false);
       });
   };
 
   const confirmCode = (code) => {
     if (!code) return;
-
     setVerifyIsLoading(true);
-
     confirmResult
       .confirm(code)
       .then(({ user }) => {
-        values.firebase_uid = user.uid;
-
-        signup({ data: values })
+        const supplierSchema = {
+          ...supplier,
+          uid: user.uid,
+          phoneNumberPrimary: user.phoneNumber,
+          username: values.username,
+          createAt: Date.now()
+        }
+        setDoc(doc(db, "users", user.uid), supplierSchema)
           .then(() => {
             form.resetFields();
-            push("/login");
-            Notification.success({
-              message: "Your account has been successfully created.",
-            });
+            toast.success("Your account has been successfully created.");
+            setModal(false)
+            setVerifyIsLoading(false);
           })
           .catch((error) => {
-            Notification.error({ message: error?.response?.data?.message });
+            toast.error(error);
+            setVerifyIsLoading(false);
           });
       })
       .catch(({ message }) => {
-        Notification.error({ message });
+        toast.error(message);
         setVerifyIsLoading(false);
       });
   };
 
   useEffect(() => _captcha("supplier-registration-recaptcha-container"), []);
 
-  const [{}, signup] = useAxios(
-    { url: "/signup", method: "POST" },
-    { manual: true }
-  );
 
   return (
-    <WallCard className="supplier_register" heading="Supplier Sign Up">
+    <WallCard className="supplier_register" heading="Create Your Account">
       <Form form={form} name="normal_login" onFinish={sendCode}>
+        <TextField
+          required={true}
+          name="username"
+          min={3}
+          max={30}
+          placeholder="User name"
+          icon={<UserOutlined />}
+        />
         <TextField
           required={true}
           name="mobile"
@@ -84,20 +93,12 @@ const SupplierRegister = () => {
           placeholder="Mobile number"
           type="number"
           icon={<PhoneOutlined />}
-        />
-        <TextField
-          required={true}
-          name="password"
-          min={8}
-          placeholder="Password"
-          icon={<LockOutlined />}
-          type="password"
+          defaultValue='03152396525'
         />
         <Form.Item>
           <CommonBtn loading={submitIsLoading} className="login-form-button">
             Register
           </CommonBtn>
-          Or <Link to="login">Login now!</Link>
         </Form.Item>
       </Form>
 

@@ -30,12 +30,12 @@ export const App = () => {
           />
           <PrivateRoute exact path="/supplier-profile" component={Profile} />
 
-          <PrivateRoute exact path="/login" component={SupplierLogin} />
-          <PrivateRoute
+          <PrivateRoute exact path="/login" component={SupplierRegister} />
+          {/* <PrivateRoute
             exact
             path="/supplier-register"
             component={SupplierRegister}
-          />
+          /> */}
           <Route exact path="/" component={Home} />
           <Route exact path="/contact-us" component={ContactUs} />
           <Route exact path="/supplier-list" component={SupplierList} />

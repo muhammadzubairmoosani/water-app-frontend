@@ -1,18 +1,17 @@
 import { createContext } from "react";
-import { firebase } from "../config";
+import { auth } from "../config";
+import { signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth'
 
 // set captcha container
 const _captcha = (id) => {
-  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(id, {
-    size: "invisible",
-  });
+  window.recaptchaVerifier = new RecaptchaVerifier(id, { size: "invisible" }, auth);
 };
 
 // send OTP into mobile number
 const _sendCode = (mobile) => {
   const phoneNumber = `+92${mobile}`;
   const appVerifier = window.recaptchaVerifier;
-  return firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier);
+  return signInWithPhoneNumber(auth, phoneNumber, appVerifier)
 };
 
 const _isEven = (value) => (value % 2 === 0 ? true : false);

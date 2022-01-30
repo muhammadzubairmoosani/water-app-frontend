@@ -1,7 +1,7 @@
 import React from "react";
 import { WallCard, ProductCard, CardCarousel, ProductCardSkeleton } from "../";
 
-const CardCarouselSegment = ({
+export const CardCarouselSegment = ({
   heading,
   subHeading,
   array,
@@ -28,4 +28,3 @@ const CardCarouselSegment = ({
     </WallCard>
   </div>
 );
-export default CardCarouselSegment;

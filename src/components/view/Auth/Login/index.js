@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { WallCard, TextField, CommonBtn, Notification } from "../../../common";
+import { WallCard, TextField, CommonBtn, toast } from "../../../common";
 import { Form } from "antd";
 import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -26,10 +26,10 @@ export const SupplierLogin = () => {
             .then(({ data }) => {
               setUser(data);
               form.resetFields();
-              Notification.success({ message: "Login success." });
+              toast.success("Login success.");
             })
             .catch((error) =>
-              Notification.error({ message: error?.response?.data?.message })
+              toast.error(error?.response?.data?.message)
             );
         }}
       >

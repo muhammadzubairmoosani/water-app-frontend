@@ -5,7 +5,7 @@ import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { TextField, CommonBtn } from "../index";
 
 const { Option } = Select;
-export const DynamicTextField = ({}) => {
+export const DynamicTextField = ({ }) => {
   // const [waterQty, setWaterQty] = useState("");
   const [services, setServices] = useState([
     { name: 0, key: 0, isListField: true, fieldKey: 0 },
@@ -20,7 +20,7 @@ export const DynamicTextField = ({}) => {
             //   style={{ display: "flex", marginBottom: 8 }}
             //   align="start"
             // >
-            <Row gutter={{ md: 12 }}>
+            <Row key={key} gutter={{ md: 12 }}>
               <Col xs={24} md={12}>
                 <TextField
                   addonBefore={
@@ -39,7 +39,7 @@ export const DynamicTextField = ({}) => {
                   label="Water quantity"
                   // message="* (Required)"
                   type="number"
-                  // style={{ width: 200 }}
+                // style={{ width: 200 }}
                 />
               </Col>
 

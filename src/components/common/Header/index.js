@@ -1,24 +1,23 @@
 import React, { useContext } from "react";
 import { Menu, PageHeader } from "antd";
 import { Link } from "react-router-dom";
-import { Notification } from "../";
+import { toast } from "../";
 import { ThemeContext } from "../../../service/helpers";
-import useAxios from "axios-hooks";
+import { auth } from '../../../config'
+import { signOut } from 'firebase/auth'
 
-const Header = () => {
+export const Header = () => {
   const { user, setUser } = useContext(ThemeContext);
 
-  const [, logOut] = useAxios(
-    { url: "/logout", method: "GET" },
-    { manual: true }
-  );
-
   const _onLogOut = () => {
-    logOut()
-      .then(() => setUser(null))
-      .catch((error) =>
-        Notification.error({ message: error?.response?.data?.message })
-      );
+    signOut(auth, false)
+      .then(() => {
+        setUser(null)
+        toast.success('Sign out successfully!')
+      })
+      .catch((error) => {
+        toast.success(error)
+      })
   };
 
   return (
@@ -60,4 +59,3 @@ const Header = () => {
     </header>
   );
 };
-export default Header;
