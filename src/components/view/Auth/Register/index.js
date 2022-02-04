@@ -6,7 +6,6 @@ import { _sendCode, _captcha } from "../../../../service/helpers";
 import {
   WallCard,
   CodeVerificationModal,
-  // Notification,
   TextField,
   CommonBtn,
   toast

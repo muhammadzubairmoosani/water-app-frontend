@@ -7,11 +7,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { App } from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { Provider } from "./provider";
+import { ContextProvider } from "./provider";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
-  <Provider>
-    <App />
+  <Provider store={store}>
+    <ContextProvider>
+      <App />
+    </ContextProvider>
   </Provider>,
   document.getElementById("root")
 );

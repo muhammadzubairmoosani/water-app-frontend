@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { ThemeContext } from "../service/helpers";
 import { Spinner } from "../components/common";
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../config'
-import { supplier } from '../schema'
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../config";
+import { supplier } from "../schema";
 
-export const Provider = ({ children }) => {
+export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser({ ...supplier, phoneNumberPrimary: user.phoneNumber, uid: user.uid })
+        setUser({
+          ...supplier,
+          phoneNumberPrimary: user.phoneNumber,
+          uid: user.uid,
+        });
       }
-      setLoading(false)
-    })
-  }, [])
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ user, setUser }}>

@@ -1,54 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Form } from "antd";
 import { UserOutlined, PhoneOutlined } from "@ant-design/icons";
-import {
-  WallCard,
-  TextField,
-  TextAreaField,
-  CommonBtn,
-  toast,
-} from "../../common";
-import { db } from '../../../config'
-import { addDoc, collection } from 'firebase/firestore'
+import { WallCard, TextField, TextAreaField, CommonBtn } from "../../common";
+import { useDispatch, useSelector } from "react-redux";
+import { NotificationMiddleware } from "../../../store/middlewares";
 
 export const ContactUs = () => {
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState();
+  const dispatch = useDispatch();
+  const { isLoading, isSuccess } = useSelector(
+    (store) => store.notificationReducer
+  );
 
   const onSubmit = (values) => {
-    setLoading(true)
-    const { name, mobile, message } = values;
-    const schema = {
-      username: name,
-      phoneNumber: mobile,
-      message
-    }
+    dispatch(NotificationMiddleware.sendNotification(values));
+  };
 
-    addDoc(collection(db, "notifications"), schema)
-      .then(() => {
-        form.resetFields();
-        toast.success("Your message has been received.");
-        setLoading(false)
-      })
-      .catch((error) => {
-        toast.success(error);
-        setLoading(false)
-      });
-
-  }
+  useEffect(() => {
+    isSuccess && form.resetFields();
+  }, [form, isSuccess]);
 
   return (
     <WallCard className="contact_us" heading="Contact Us">
       <Form form={form} onFinish={onSubmit}>
         <TextField
           required={true}
-          name="name"
+          name="username"
           placeholder="Name"
           icon={<UserOutlined />}
         />
         <TextField
           required={true}
-          name="mobile"
+          name="phoneNumber"
           min={11}
           max={11}
           placeholder="Mobile number"
@@ -57,7 +40,7 @@ export const ContactUs = () => {
         />
         <TextAreaField required={true} />
         <Form.Item>
-          <CommonBtn loading={loading}>Send Message</CommonBtn>
+          <CommonBtn loading={isLoading}>Send Message</CommonBtn>
         </Form.Item>
       </Form>
     </WallCard>
