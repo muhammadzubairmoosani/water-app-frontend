@@ -52,7 +52,7 @@ export const Header = () => {
           </Menu.Item>
         ) : (
           <Menu.Item key="5">
-            <Link to="/login">Login</Link>
+            <Link to="/login">Let's Start</Link>
           </Menu.Item>
         )}
       </Menu>

@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { WallCard } from "../";
 import { Link } from "react-router-dom";
 import { Layout } from "../index";
 import { Row, Col } from "antd";
+import { ThemeContext } from "../../../service/helpers";
 
 export const Footer = () => {
   const [year, setYear] = useState(0);
+  const { user } = useContext(ThemeContext);
+
   useEffect(() => {
     setYear(new Date().getFullYear());
   }, [year]);
+
   return (
     <footer>
       <Layout>
@@ -69,13 +73,15 @@ export const Footer = () => {
 
             <Col xs={24} sm={12} lg={6}>
               <ul>
-                <li className="title">Supplier</li>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/supplier-register">Register</Link>
-                </li>
+                <li className="title">Let's Start</li>
+                {!user && (
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                )}
+                {/* <li>
+                   <Link to="/supplier-register">Register</Link>
+                </li> */}
               </ul>
             </Col>
           </Row>
